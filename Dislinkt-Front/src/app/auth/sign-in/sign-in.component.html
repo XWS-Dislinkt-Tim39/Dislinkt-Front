@@ -1,5 +1,6 @@
 <div class="container">
   <div class="content">
+    <div id="logo"><a>Logo</a></div>
     <div class="title mat-display-1">Welcome back!
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="text-align: center;">
@@ -18,8 +19,6 @@
         </button>
         <mat-error *ngIf="login.password.errors?.required">Password is required</mat-error>
       </mat-form-field>
-
-
     </form>
     <button class="primary-button">Sign In</button>
     <div class="mat-h2">

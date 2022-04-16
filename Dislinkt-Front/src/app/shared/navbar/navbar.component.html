@@ -1,0 +1,10 @@
+<div class="navbar">
+  <a href="#home" id="logo">Logo</a>
+  <button id="profile" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>person</mat-icon>Profile
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>View profile</button>
+    <button mat-menu-item>Log Out</button>
+  </mat-menu>
+</div>

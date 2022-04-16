@@ -13,6 +13,7 @@
     flex-direction: column;
 }
 .content{
+    margin-top: 30px;
     background-color: white;
     width: 30%;
     display: flex;
@@ -21,6 +22,16 @@
     padding:30px;
     align-items: center;
     flex-direction: column;
+}
+#logo{
+    position:absolute;
+    top:15px;
+    left:15px;
+    color:white;
+    font-size: 30px;
+}
+#logo:hover{
+    cursor:pointer;
 }
 .title{
     margin-bottom:20px;
