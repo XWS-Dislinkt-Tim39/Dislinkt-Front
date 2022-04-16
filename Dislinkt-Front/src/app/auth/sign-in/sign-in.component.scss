@@ -1,0 +1,49 @@
+@use '../../../base-style' as base;
+
+.container{
+    background-color: base.$background-color;
+    background-image: url(../../../assets/background1.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.content{
+    background-color: white;
+    width: 30%;
+    display: flex;
+    align-self: center;
+    border-radius: base.$border-radius;
+    padding:30px;
+    padding-bottom:60px;
+    align-items: center;
+    flex-direction: column;
+}
+form{
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center;
+}
+.primary-button{
+    margin-top:30px;
+    @extend %primary-button
+}
+.primary-button:hover{
+    @extend %primary-button-hover
+}
+
+#sign-up {
+    color: base.$primary-color-dark;
+    text-decoration: none;
+    font-weight: bold;
+ }
+ #sign-up:hover{
+     color:base.$primary-color;
+ }
+

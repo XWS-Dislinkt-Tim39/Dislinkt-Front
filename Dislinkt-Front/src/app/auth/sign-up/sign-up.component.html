@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="content">
+    <div class="title mat-display-1">Welcome to Dislinkt!
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="text-align: center;">
+      <mat-form-field appearance="standard">
+        <mat-label>First Name*</mat-label>
+        <input formControlName="firstName" matInput placeholder="First Name">
+        <mat-error *ngIf="register.firstName.errors?.required">Email required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Last Name*</mat-label>
+        <input formControlName="lastName" matInput placeholder="Last Name">
+        <mat-error *ngIf="register.lastName.errors?.required">Email required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Username*</mat-label>
+        <input formControlName="username" matInput placeholder="Username">
+        <mat-error *ngIf="register.username.errors?.required">Email required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Email*</mat-label>
+        <input formControlName="email" matInput placeholder="Email">
+        <mat-error *ngIf="register.email.errors?.required">Email required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Phone number*</mat-label>
+        <input type="number" formControlName="phoneNumber" matInput placeholder="Phone Number">
+        <mat-error *ngIf="register.phoneNumber.errors?.required">Email required</mat-error>
+      </mat-form-field>
+
+      <div class="gender">
+        <div>Gender*</div>
+      </div>
+      <mat-radio-group formControlName="gender" aria-label="Select an option">
+        <mat-radio-button value="Female">Female</mat-radio-button>
+        <mat-radio-button value="Male">Male</mat-radio-button>
+      </mat-radio-group>
+
+    </form>
+    <button class="primary-button">Sign Up</button>
+    <div class="mat-h2">
+      <div>Already have an account?
+        <a id="sign-up" [routerLink]="['/sign-in']">Sign In</a></div>
+    </div>
+  </div>
+</div>
