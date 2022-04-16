@@ -5,14 +5,17 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="text-align: center;">
       <mat-form-field appearance="standard">
         <mat-label>Username*</mat-label>
-        <input formControlName="username" matInput placeholder="Username">
+        <input formControlName="username" matInput placeholder="Username" [errorStateMatcher]="matcher">
         <mat-error *ngIf="login.username.errors?.required">Email required</mat-error>
         <mat-error *ngIf="login.username.errors?.email">Email not valid</mat-error>
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Password*</mat-label>
-        <input formControlName="password" matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'">
-
+        <input formControlName="password" matInput placeholder="Password" [errorStateMatcher]="matcher"
+          [type]="hidePassword ? 'password' : 'text'">
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
         <mat-error *ngIf="login.password.errors?.required">Password is required</mat-error>
       </mat-form-field>
 

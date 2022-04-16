@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorMatcher } from 'src/app/core/error/error-matcher';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,8 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   hidePassword = true;
+  matcher: ErrorMatcher = new ErrorMatcher();
+
 
   constructor(
     private formBuilder: FormBuilder,
