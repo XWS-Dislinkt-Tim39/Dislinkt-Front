@@ -1,3 +1,4 @@
+import { ProfileSkillsComponent } from './public/profile-skills/profile-skills.component';
 import { ProfileExperienceComponent } from './public/profile-experience/profile-experience.component';
 import { ProfilePostsComponent } from './public/profile-posts/profile-posts.component';
 import { ProfileDetailsComponent } from './public/profile-details/profile-details.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'profile-experience',
     component: ProfileExperienceComponent
+  },
+  {
+    path: 'profile-skills',
+    component: ProfileSkillsComponent
   },
 ];
 

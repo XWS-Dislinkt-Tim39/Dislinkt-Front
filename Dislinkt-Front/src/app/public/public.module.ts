@@ -19,6 +19,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountNavigationComponent } from './account-navigation/account-navigation.component';
 import { ProfilePostsComponent } from './profile-posts/profile-posts.component';
 import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
+import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
 
 
 
@@ -30,7 +31,8 @@ import { ProfileExperienceComponent } from './profile-experience/profile-experie
     AccountInfoComponent,
     AccountNavigationComponent,
     ProfilePostsComponent,
-    ProfileExperienceComponent
+    ProfileExperienceComponent,
+    ProfileSkillsComponent
   ],
   imports: [
     CommonModule,
