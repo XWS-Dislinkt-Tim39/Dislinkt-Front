@@ -2,6 +2,7 @@ $font-stack: 'Open Sans', sans-serif;
 $primary-color: #00acc1;
 $primary-color-dark:#00838f;
 $dark-grey: #344147;
+$darker-grey: #2d383d;
 $success: #CCFF90;
 $error: #E53935;
 $background-color: #F3F3F3;
@@ -27,6 +28,55 @@ $border-radius: 20px;
   cursor: pointer;
 }
 
+%secondary-button{
+  display: inline-block;
+  border-radius: 15px;
+  border:3px solid $primary-color;
+  color:  $primary-color;
+  background-color:white;
+  padding:12px 20px;
+  margin: 20px ;
+  font-size:18px;
+}
+%secondary-button-hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   background-color: $primary-color-dark;
+   cursor: pointer;
+   color:white;
+   padding:15px 25px;
+   border: 0px;
+ }
 
+%filter-button{
+  display: inline-block;
+  border-radius: 15px;
+  border:3px solid $medium-grey-letters;
+  color: $medium-grey-letters;
+  background-color:white;
+  padding:15px 50px;
+  margin: 20px ;
+  font-size:18px;
+}
+%filter-button-hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   background-color: $primary-color-dark;
+   cursor: pointer;
+ }
+
+%grey-button{
+  display: inline-block;
+  border-radius: 15px;
+  border:0px solid black;
+  background-color: $dark-grey;
+  color:white;
+  padding:15px 25px;
+  margin: 20px ;
+  font-size:18px;
+}
+%grey-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   background-color: $darker-grey;
+   cursor: pointer;
+ }
 
 
