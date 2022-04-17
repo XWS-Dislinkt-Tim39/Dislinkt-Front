@@ -16,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { AccountNavigationComponent } from './account-navigation/account-navigation.component';
 
 
 
@@ -24,7 +25,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     HomeComponent,
     ProfilesComponent,
     ProfileDetailsComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    AccountNavigationComponent
   ],
   imports: [
     CommonModule,

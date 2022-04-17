@@ -4,44 +4,13 @@
 
     <div class="left">
       <div class="left-content">
-        <div class="isPublic">
-          <mat-icon>visibility</mat-icon>Public
-        </div>
-        <div class="profile">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
-        </div>
-        <div class="information">
-          <div class="text">
-            <mat-icon>person</mat-icon>Female
-          </div>
-          <div class="text">
-            <mat-icon>cake</mat-icon>15.03.1995.
-          </div>
-          <div class="text">
-            <mat-icon> phone</mat-icon>065 548 1665
-          </div>
-          <div class="text">
-            <mat-icon>email</mat-icon>savanovicsara@gmail.com
-          </div>
-          <div class="text">
-            <mat-icon> location_on</mat-icon>Novi Sad,Srbija
-          </div>
-        </div>
+        <app-account-info></app-account-info>
       </div>
     </div>
 
     <div class="right">
       <div class="right-content">
-
-        <div class="navigation">
-          <button class="links" [routerLink]="['/profile-details']" routerLinkActive="active">About</button>
-          <button class="links" [routerLink]="['dd']" routerLinkActive="active">Posts</button>
-          <button class="links" [routerLink]="['/profisdle-details']" routerLinkActive="active">Experience</button>
-          <button class="links" [routerLink]="['/profisdle-details']" routerLinkActive="active">Skills</button>
-        </div>
+        <app-account-navigation></app-account-navigation>
 
         <div class="tab-content">
           <div class="main">
@@ -56,7 +25,9 @@
               mollit anim id est laborum.
             </div>
           </div>
+
           <div class="line"></div>
+
           <div class="main">
             <div class="main-title mat-h1">
               Interests
@@ -96,9 +67,7 @@
               </mat-grid-list>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>

@@ -43,70 +43,12 @@
     box-shadow: base.$box-shadow;
 }
 
-.profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile img {
-    width: 50%;
-    border-radius: 50%;
-}
-
-.text {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px;
-    font-size: 16px;
-    color: base.$dark-grey;
-}
-
-.isPublic {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    gap: 5px;
-    font-size: 14px;
-    color: base.$light-grey-letters;
-}
-
 .right-content {
     width: 100%;
     border-radius: base.$border-radius;
     display: flex;
     gap: 30px;
     flex-direction: column;
-}
-
-.navigation {
-    box-shadow: base.$box-shadow;
-    background-color: base.$primary-color;
-    border-radius: base.$border-radius;
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    justify-content: space-around;
-}
-
-.links {
-    font-size: 18px;
-    padding: 10px 30px;
-    background-color: transparent;
-    border: 0px;
-    color: white;
-    border-bottom: 3px solid transparent;
-}
-
-.links:hover {
-    border-bottom: 3px solid base.$primary-color-dark;
-    cursor: pointer;
-}
-
-.active {
-    border-bottom: 3px solid white;
 }
 
 .tab-content {
