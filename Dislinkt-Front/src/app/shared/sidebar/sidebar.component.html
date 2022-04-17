@@ -6,29 +6,28 @@
   </div>
   <ul class="list-unstyled components">
     <li>
-      <a [routerLink]="['/restaurant-details']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
+      <a [routerLink]="['/dashboard']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
         class="dropdown-toggle">
         <mat-icon>dashboard</mat-icon>Dashboard
       </a>
     </li>
     <li>
-      <a [routerLink]="['/restaurant-categories']" routerLinkActive="active" data-toggle="collapse"
-        aria-expanded="false" class="dropdown-toggle">
+      <a [routerLink]="['/jobs']" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <mat-icon>business_center</mat-icon>Jobs
       </a>
     </li>
     <li>
-      <a [routerLink]="['/restaurant-archive']" routerLinkActive="active">
+      <a [routerLink]="['/massages']">
         <mat-icon> message</mat-icon>Messages
       </a>
     </li>
     <li>
-      <a [routerLink]="['/restaurant-archive']" routerLinkActive="active">
+      <a [routerLink]="['/notificaations']">
         <mat-icon>notifications</mat-icon>Notifications
       </a>
     </li>
     <li>
-      <a [routerLink]="['/restaurant-archive']" routerLinkActive="active">
+      <a [routerLink]="['/profile-settings']">
         <mat-icon>settings</mat-icon>Profile Settings
       </a>
     </li>
@@ -39,22 +38,22 @@
 </nav>
 
 <div class="bottom-navbar">
-  <a class="nav-col" [routerLink]="['/restaurant-details']" routerLinkActive="active-mobile">
+  <a class="nav-col" routerLinkActive="active-mobile">
     <div>
       <mat-icon>dashboard</mat-icon>
     </div>
   </a>
-  <a class="nav-col" [routerLink]="['/restaurant-details']" routerLinkActive="active-mobile">
+  <a class="nav-col" routerLinkActive="active-mobile">
     <div>
       <mat-icon>business_center</mat-icon>
     </div>
   </a>
-  <a class="nav-col" [routerLink]="['/restaurant-details']" routerLinkActive="active-mobile">
+  <a class="nav-col" routerLinkActive="active-mobile">
     <div>
       <mat-icon> message</mat-icon>
     </div>
   </a>
-  <a class="nav-col" [routerLink]="['/restaurant-details']" routerLinkActive="active-mobile">
+  <a class="nav-col" routerLinkActive="active-mobile">
     <div>
       <mat-icon>notifications</mat-icon>
     </div>

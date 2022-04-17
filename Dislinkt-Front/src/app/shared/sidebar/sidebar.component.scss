@@ -72,7 +72,6 @@ a:focus {
       color:base.$dark-grey;
   }
   
-
 .bottom-navbar {
   background-color: white;
   overflow: hidden;
@@ -105,15 +104,6 @@ a:focus {
 
 .bottom-navbar a.active-mobile {
   color: base.$primary-color;
-}
-
-.menu-icon {
-  transform: scale(2);
-  color: base.$dark-grey;
-}
-
-.home-image {
-  width: 30px;
 }
 
 #sidebar ul li a {
@@ -166,13 +156,5 @@ a[data-toggle="collapse"] {
     margin-left: 0;
   }
 
-  .container-fluid {
-    display: block;
-    margin-bottom: 10px;
-  }
 
-  .main {
-    flex-direction: column;
-
-  }
 }

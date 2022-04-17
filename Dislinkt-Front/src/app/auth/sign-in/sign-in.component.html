@@ -1,10 +1,9 @@
 <div class="container">
-
-  <app-sidebar></app-sidebar>
   <div class="content">
     <div id="logo"><a>Logo</a></div>
     <div class="title mat-display-1">Welcome back!
     </div>
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="text-align: center;">
       <mat-form-field appearance="standard">
         <mat-label>Username*</mat-label>
@@ -22,6 +21,7 @@
         <mat-error *ngIf="login.password.errors?.required">Password is required</mat-error>
       </mat-form-field>
     </form>
+
     <button class="primary-button">Sign In</button>
     <div class="mat-h2">
       <div>New to Dislinkt?
