@@ -2,7 +2,7 @@
 
 
 .container {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,6 +16,52 @@
     flex-direction: row;
     flex-wrap: wrap;
     background-color: base.$background-color;
+}
+
+.image img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 1fr 9fr 3fr;
+}
+
+.head .image {
+    grid-column: 1;
+}
+
+.info {
+    grid-column: 2;
+}
+
+.image img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.date {
+    display: flex;
+    justify-self: flex-end;
+
+}
+
+.body img {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.mat-h2 {
+    font-weight: 500;
+    color: base.$dark-grey;
+}
+
+.mat-h3 {
+    font-weight: 50;
+    margin-top: -20px;
+    font-size: 16px;
+    color: base.$light-grey-letters;
 }
 
 .left {
@@ -52,57 +98,35 @@
 }
 
 .tab-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.post {
+    background-color: white;
     border-radius: base.$border-radius;
     box-shadow: base.$box-shadow;
-    background-color: white;
-    padding: 20px;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.head {
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+.line {
+    border-bottom: 2px solid base.$light-grey-letters;
+    margin: 10px 0;
 }
 
-.head .image {
-    grid-column: 1;
+.main {
+    display: flex;
+    flex-direction: column;
 }
 
-.info {
-    grid-column: 2;
-}
-
-.image img {
-    width: 50px;
-    border-radius: 50%;
-}
-
-.body img {
-    margin-top: 10px;
-    width: 100%;
-}
-
-.mat-h2 {
-    font-weight: 500;
+.interest {
+    display: flex;
+    align-items: center;
     color: base.$dark-grey;
+    gap: 10px;
 }
 
-.mat-h3 {
-    font-weight: 50;
-    margin-top: -20px;
-    font-size: 16px;
-    color: base.$light-grey-letters;
-}
-
-.mat-h4 {
-    font-size: 16px;
-    color: base.$light-grey-letters;
+.interest .mat-icon {
+    color: base.$primary-color
 }
 
 .mat-body-1 {
@@ -111,6 +135,10 @@
     color: base.$dark-grey;
 }
 
+.mat-h4 {
+    font-size: 16px;
+    color: base.$light-grey-letters;
+}
 
 @media (pointer: coarse) {
     .container {

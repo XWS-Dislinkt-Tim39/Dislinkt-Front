@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountNavigationComponent } from './account-navigation/account-navigation.component';
 import { ProfilePostsComponent } from './profile-posts/profile-posts.component';
+import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
 
 
 
@@ -28,7 +29,8 @@ import { ProfilePostsComponent } from './profile-posts/profile-posts.component';
     ProfileDetailsComponent,
     AccountInfoComponent,
     AccountNavigationComponent,
-    ProfilePostsComponent
+    ProfilePostsComponent,
+    ProfileExperienceComponent
   ],
   imports: [
     CommonModule,
