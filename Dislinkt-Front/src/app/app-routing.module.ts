@@ -1,3 +1,4 @@
+import { ProfilePostsComponent } from './public/profile-posts/profile-posts.component';
 import { ProfileDetailsComponent } from './public/profile-details/profile-details.component';
 import { ProfilesComponent } from './public/profiles/profiles.component';
 import { HomeComponent } from './public/home/home.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'profile-details',
     component: ProfileDetailsComponent
+  },
+  {
+    path: 'profile-posts',
+    component: ProfilePostsComponent
   },
 ];
 
