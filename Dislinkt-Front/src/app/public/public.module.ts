@@ -9,12 +9,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ProfilesComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,11 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatRadioModule,
     RouterModule,
+    MatSelectModule
+  ],
+  exports: [
+    HomeComponent,
+    ProfilesComponent
   ]
 })
 export class PublicModule { }

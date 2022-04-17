@@ -1,3 +1,4 @@
+import { ProfilesComponent } from './public/profiles/profiles.component';
 import { HomeComponent } from './public/home/home.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'sign-in',
     component: SignInComponent
@@ -14,8 +19,8 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
-    path: '',
-    component: HomeComponent
+    path: 'search-profiles',
+    component: ProfilesComponent
   },
 ];
 
