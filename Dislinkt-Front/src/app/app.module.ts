@@ -1,3 +1,4 @@
+import { PublicModule } from './public/public.module';
 import { SharedModule } from './shared/shared.module';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PublicModule,
     AuthModule,
     SharedModule,
     CommonModule,

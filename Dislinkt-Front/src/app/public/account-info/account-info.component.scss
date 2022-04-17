@@ -1,0 +1,44 @@
+@use '../../../base-style'as base;
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
+
+.isPublic {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    gap: 5px;
+    font-size: 14px;
+    color: base.$light-grey-letters;
+}
+
+.mat-h2 {
+    margin-top: 10px;
+    font-weight: 500;
+    color: base.$dark-grey;
+}
+
+.mat-h3 {
+    font-weight: 600;
+    margin-top: -20px;
+    font-size: 17px;
+    color: base.$primary-color-dark;
+}
