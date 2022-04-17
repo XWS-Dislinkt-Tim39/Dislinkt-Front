@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -30,7 +31,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    SharedModule
+  ],
+  exports: [
+    SignUpComponent, SignInComponent
   ]
 })
 export class AuthModule { }

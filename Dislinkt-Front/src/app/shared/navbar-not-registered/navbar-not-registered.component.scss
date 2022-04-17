@@ -1,0 +1,49 @@
+@use '../../../base-style' as base;
+.navbar {
+    overflow: hidden;
+    background-color: white;
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    display: flex;
+  }
+
+  a {
+    float: left;
+    display: block;
+    color:base.$primary-color;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+  }
+
+  #logo{
+      display: flex;
+      font-size: 30px;
+      justify-self: flex-start;
+      flex-grow: 3;
+  }
+  a:hover{
+      color:base.$dark-grey
+  }
+
+  #profile{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:10px;
+      font-size: 18px;
+      font-weight: 600;
+      color:base.$dark-grey;
+      margin-right: 20px;
+      background-color: transparent;
+      border: 0;
+  }
+  #profile:hover{
+    color:base.$primary-color-dark;
+    cursor: pointer;
+  }
+
+  button.mat-menu-item{
+    font-size: 18px;
+}

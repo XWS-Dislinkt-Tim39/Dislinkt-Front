@@ -1,0 +1,61 @@
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="profile-circle">AAA</div>
+    <br>
+    <p id="header-profile"><a>View profile</a></p>
+  </div>
+  <ul class="list-unstyled components">
+    <li>
+      <a [routerLink]="['/dashboard']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
+        class="dropdown-toggle">
+        <mat-icon>dashboard</mat-icon>Dashboard
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/jobs']" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <mat-icon>business_center</mat-icon>Jobs
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/massages']">
+        <mat-icon> message</mat-icon>Messages
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/notificaations']">
+        <mat-icon>notifications</mat-icon>Notifications
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/profile-settings']">
+        <mat-icon>settings</mat-icon>Profile Settings
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-bottom">
+    <img id="sidebar-image" src="../../../assets/navbar.png">
+  </div>
+</nav>
+
+<div class="bottom-navbar">
+  <a class="nav-col" routerLinkActive="active-mobile">
+    <div>
+      <mat-icon>dashboard</mat-icon>
+    </div>
+  </a>
+  <a class="nav-col" routerLinkActive="active-mobile">
+    <div>
+      <mat-icon>business_center</mat-icon>
+    </div>
+  </a>
+  <a class="nav-col" routerLinkActive="active-mobile">
+    <div>
+      <mat-icon> message</mat-icon>
+    </div>
+  </a>
+  <a class="nav-col" routerLinkActive="active-mobile">
+    <div>
+      <mat-icon>notifications</mat-icon>
+    </div>
+  </a>
+</div>

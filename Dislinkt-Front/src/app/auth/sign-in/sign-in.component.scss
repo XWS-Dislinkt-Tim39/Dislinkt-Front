@@ -10,7 +10,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 .content{
     background-color: white;
@@ -22,6 +22,16 @@
     padding-bottom:60px;
     align-items: center;
     flex-direction: column;
+}
+#logo{
+    position:absolute;
+    top:15px;
+    left:15px;
+    color:white;
+    font-size: 30px;
+}
+#logo:hover{
+    cursor:pointer;
 }
 form{
     margin-top:20px;

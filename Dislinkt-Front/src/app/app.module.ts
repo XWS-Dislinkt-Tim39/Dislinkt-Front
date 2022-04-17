@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,9 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    SharedModule,
     CommonModule,
-
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

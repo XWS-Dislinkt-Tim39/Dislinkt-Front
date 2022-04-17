@@ -17,8 +17,6 @@ export class SignInComponent implements OnInit {
   submitted = false;
   hidePassword = true;
   matcher: ErrorMatcher = new ErrorMatcher();
-
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
