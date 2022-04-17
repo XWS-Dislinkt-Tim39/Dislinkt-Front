@@ -4,22 +4,27 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { NavbarNotRegisteredComponent } from './navbar-not-registered/navbar-not-registered.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    NavbarNotRegisteredComponent
+    NavbarNotRegisteredComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule,
   ],
   exports: [
     NavbarComponent,
-    NavbarNotRegisteredComponent
+    NavbarNotRegisteredComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }
