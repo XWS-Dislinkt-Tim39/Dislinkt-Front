@@ -1,38 +1,49 @@
-@use '../../../base-style' as base;
+@use '../../../base-style'as base;
 
 
 .container {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: base.$background-color;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: base.$background-color;
+}
+
+.wrapper {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: base.$background-color;
 }
 
 .left {
-margin-top: 100px;
-  height: 100%;
-  width: 70%;
-  font-family: base.$font-stack;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap:20px;
-}
-.right {
-    margin-top: 70px;
-  height: 90%;
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 100px;
+    height: 100%;
+    width: 70%;
+    font-family: base.$font-stack;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.right-content{
-  box-shadow: base.$box-shadow;
+.right {
+    margin-top: 70px;
+    height: 90%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-content {
+    box-shadow: base.$box-shadow;
     height: 100%;
     border-radius: base.$border-radius;
-    padding:30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,74 +51,86 @@ margin-top: 100px;
     margin: 30px;
     background-color: white;
 }
-.search{
-  width:60%;
-}
-.search .mat-form-field{
-    width: 100%;
-}
-.right .mat-form-field{
-    width: 70%;
+
+.search {
+    width: 60%;
 }
 
-.card{
-  background-color: white;
-  width: 70%;
-  border-radius: base.$border-radius;
-  padding:20px 20px 10px 20px;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 6fr 2fr;
-  column-gap:20px;
-  justify-items: start;
-  box-shadow: base.$box-shadow;
+.search .mat-form-field {
+    width: 100%;
 }
-.card-image{
+
+.right .mat-form-field {
+    width: 80%;
+}
+
+.card {
+    background-color: white;
+    width: 90%;
+    border-radius: base.$border-radius;
+    padding: 20px 20px 10px 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 6fr 2fr;
+    column-gap: 20px;
+    justify-items: start;
+    box-shadow: base.$box-shadow;
+}
+
+.card-image {
     grid-column: 1;
 }
-.card-image img{
+
+.card-image img {
     border-radius: 50%;
     width: 100px;
     width: 100px;
 }
-.name{
+
+.name {
     grid-column: 2;
 }
-.view{
+
+.view {
     grid-column: 3;
     display: grid;
     justify-self: center;
     justify-items: center;
+}
 
+.title {
+    font-weight: 700;
+    color: base.$dark-grey;
+    justify-content: center;
 }
-.title{
-  font-weight:700 ;
-  color:base.$dark-grey;
-  justify-content: center;
-}
-.mat-h2{
+
+.mat-h2 {
     font-weight: 500;
-    color:base.$dark-grey;
-}
-.mat-h3{
-    font-weight: 600;
-    margin-top:-10px;
-    font-size:17px;
-    color:base.$primary-color-dark;
-}
-.mat-h4{
-    margin-bottom: -10px;
-    color:base.$light-grey-letters
-}
-.primary-button{
-  @extend %primary-button;
-}
-.primary-button:hover{
-  @extend %primary-button-hover;
+    color: base.$dark-grey;
 }
 
-.filter-button{
-    @extend %filter-button;
+.mat-h3 {
+    font-weight: 600;
+    margin-top: -10px;
+    font-size: 17px;
+    color: base.$primary-color-dark;
+}
+
+.mat-h4 {
+    margin-bottom: -10px;
+    color: base.$light-grey-letters
+}
+
+.primary-button {
+    @extend %primary-button;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+.grey-button {
+    @extend %grey-button;
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -115,30 +138,32 @@ margin-top: 100px;
     margin: 10px;
 }
 
-.filter-button:hover{
-  @extend %filter-button-hover;
-  display: flex;
+.grey-button:hover {
+    @extend %grey-button-hover;
+    display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
     margin: 10px;
 }
 
-#home-image{
+#home-image {
     width: 60%;
 }
 
 @media (pointer: coarse) {
-.container{
-  flex-direction: row;
-}
-  .left {
-    width: 90%;
-  }
-  .mat-h1{
-    width: 100%;
-    margin:0px 0px;
-    text-align: center;
-  }
-  
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .mat-h1 {
+        width: 100%;
+        margin: 0px 0px;
+        text-align: center;
+    }
+
 }

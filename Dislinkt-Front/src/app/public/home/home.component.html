@@ -1,28 +1,30 @@
 <div class="container">
+  <div class="wrapper">
 
-  <div class="left">
-    <div class="content-left">
-      <div class="title mat-display-1">Welcome to Dislinkt!
-      </div>
-      <div class="mat-h1">
-        <div>Place where you can grow your business, make connections and find a job!
+    <div class="left">
+      <div class="content-left">
+        <div class="title mat-display-1">Welcome to Dislinkt!
         </div>
+        <div class="mat-h1">
+          <div>Place where you can grow your business, make connections and find a job!
+          </div>
+        </div>
+        <div class="mat-h2">
+          <div>Already have an account?</div>
+        </div>
+        <button class="primary-button" [routerLink]="['/sign-in']">Sign In</button>
+        <div class="mat-h2">
+          <div>New to Dislinkt?</div>
+        </div>
+        <button class="secondary-button" [routerLink]="['/sign-up']">Sign Up</button>
       </div>
-      <div class="mat-h2">
-        <div>Already have an account?</div>
-      </div>
-      <button class="primary-button" [routerLink]="['/sign-in']">Sign In</button>
-      <div class="mat-h2">
-        <div>New to Dislinkt?</div>
-      </div>
-      <button class="secondary-button" [routerLink]="['/sign-up']">Sign Up</button>
     </div>
-  </div>
 
-  <div class="right">
-    <img id="home-image" src="../../../assets/home.png">
-    <button class="filter-button" [routerLink]="['/search-profiles']">
-      <mat-icon>search</mat-icon>Search profiles
-    </button>
+    <div class="right">
+      <img id="home-image" src="../../../assets/home.png">
+      <button class="filter-button" [routerLink]="['/search-profiles']">
+        <mat-icon>search</mat-icon>Search profiles
+      </button>
+    </div>
   </div>
 </div>

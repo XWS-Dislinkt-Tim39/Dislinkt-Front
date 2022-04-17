@@ -9,6 +9,7 @@ $background-color: #F3F3F3;
 $light-grey-letters: #A8A8A8;
 $medium-grey-letters: #717171;
 
+$box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
 $border-radius: 20px;
 
 %primary-button{
@@ -22,9 +23,6 @@ $border-radius: 20px;
   font-size:18px;
 }
 
-  $box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-
-
 %primary-button-hover {
  box-shadow:$box-shadow;
   background-color: $primary-color-dark;
@@ -37,7 +35,7 @@ $border-radius: 20px;
   border:3px solid $primary-color;
   color:  $primary-color;
   background-color:white;
-  padding:12px 20px;
+  padding:12px 22px;
   margin: 20px ;
   font-size:18px;
 }
@@ -76,7 +74,7 @@ $border-radius: 20px;
   margin: 20px ;
   font-size:18px;
 }
-%grey-button:hover {
+%grey-button-hover {
   box-shadow:$box-shadow;
    background-color: $darker-grey;
    cursor: pointer;

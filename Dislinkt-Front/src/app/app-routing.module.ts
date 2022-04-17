@@ -1,3 +1,4 @@
+import { ProfileDetailsComponent } from './public/profile-details/profile-details.component';
 import { ProfilesComponent } from './public/profiles/profiles.component';
 import { HomeComponent } from './public/home/home.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'search-profiles',
     component: ProfilesComponent
+  },
+  {
+    path: 'profile-details',
+    component: ProfileDetailsComponent
   },
 ];
 

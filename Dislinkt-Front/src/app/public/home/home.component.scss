@@ -1,14 +1,21 @@
 @use '../../../base-style' as base;
 
-
 .container {
-  height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: base.$background-color;
+}
+.wrapper{
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .left {
@@ -22,7 +29,6 @@
 }
 .right {
   color: white;
-  height: 100%;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -75,7 +81,7 @@
 }
 
 .filter-button:hover{
-  @extend %grey-button;
+  @extend %grey-button-hover;
   display: flex;
     gap: 10px;
     justify-content: center;

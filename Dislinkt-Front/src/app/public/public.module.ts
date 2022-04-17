@@ -11,13 +11,20 @@ import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    ProfileDetailsComponent,
+    AccountInfoComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +36,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatRadioModule,
     RouterModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatGridListModule
   ],
   exports: [
     HomeComponent,
