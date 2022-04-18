@@ -2,25 +2,34 @@
 
 
 .container {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    background-color: base.$background-color;
+    background-image: url(../../../assets/background1.png);
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .wrapper {
+    margin-top: 20px;
     width: 80%;
     height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: base.$background-color;
+    border-radius: base.$border-radius;
 }
 
 .left {
-    margin-top: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     height: 100%;
     width: 70%;
     font-family: base.$font-stack;
@@ -31,7 +40,6 @@
 }
 
 .right {
-    margin-top: 170px;
     height: 90%;
     width: 30%;
     display: flex;
@@ -40,7 +48,6 @@
 }
 
 .right-content {
-    margin-top: 100px;
     box-shadow: base.$box-shadow;
     height: 100%;
     border-radius: base.$border-radius;
@@ -54,11 +61,17 @@
 }
 
 .search {
+    margin-top: 80px;
     width: 60%;
 }
 
 .search .mat-form-field {
     width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
 }
 
 .right .mat-form-field {
