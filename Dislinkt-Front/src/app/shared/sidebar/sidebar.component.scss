@@ -66,6 +66,12 @@ a:focus {
   text-align: center;
 }
 
+.profile-circle img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
 #header-profile {
   font-size: 16px;
   color: base.$medium-grey-letters

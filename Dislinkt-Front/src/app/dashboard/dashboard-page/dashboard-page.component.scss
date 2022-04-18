@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 50px;
 }
 
 .left {
@@ -45,6 +45,13 @@
     border-radius: base.$border-radius;
     box-shadow: base.$box-shadow;
 }
+
+.subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
 
 .left-content {
     width: 100%;
@@ -100,12 +107,35 @@
 
 .image img {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
 .body img {
     margin-top: 10px;
     width: 100%;
+}
+
+.reactions {
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.reaction-button {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 2px solid base.$medium-grey-letters;
+    display: flex;
+    color: base.$medium-grey-letters;
+    align-items: center;
+    gap: 5px;
+}
+
+.reaction-button:hover {
+    box-shadow: base.$box-shadow;
+    cursor: pointer;
 }
 
 .mat-h2 {
@@ -131,6 +161,46 @@
     color: base.$dark-grey;
 }
 
+.head-connection {
+    display: grid;
+    grid-template-columns: 2fr 6fr
+}
+
+.accept {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -5px
+}
+
+.accept-button {
+    @extend %primary-button;
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.accept-button:hover {
+    @extend %primary-button-hover;
+}
+
+.decline-button {
+    @extend %secondary-button;
+    margin: 0;
+    padding: 7px 20px;
+    border-radius: 10px;
+}
+
+.decline-button:hover {
+    @extend %secondary-button-hover;
+    margin: 0;
+    padding: 10px 23px;
+}
+
+.line {
+    border-bottom: 2px solid base.$light-grey-letters;
+    margin: 10px 0;
+}
 
 @media (pointer: coarse) {
     .container {
