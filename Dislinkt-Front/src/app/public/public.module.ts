@@ -51,7 +51,8 @@ import { ProfileSkillsComponent } from './profile-skills/profile-skills.componen
   ],
   exports: [
     HomeComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    AccountInfoComponent
   ]
 })
 export class PublicModule { }

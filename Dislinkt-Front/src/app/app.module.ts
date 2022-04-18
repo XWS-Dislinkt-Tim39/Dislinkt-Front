@@ -1,3 +1,5 @@
+import { DashboardModule } from './dashboard/dashboard.module';
+
 import { PublicModule } from './public/public.module';
 import { SharedModule } from './shared/shared.module';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -29,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     SharedModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
