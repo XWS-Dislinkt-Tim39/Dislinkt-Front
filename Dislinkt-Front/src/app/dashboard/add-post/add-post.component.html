@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="mat-h2" mat-dialog-title>Add post</div>
+  <div mat-dialog-content>
+    <div class="buttons">
+      <button class="post-element">Add Text<mat-icon> notes</mat-icon></button>
+      <button class="post-element">Add Image<mat-icon>image</mat-icon></button>
+      <button class="post-element">Add Link<mat-icon>link</mat-icon></button>
+    </div>
+    <form [formGroup]="form">
+      <mat-form-field appearance="standard">
+        <mat-label>Text*</mat-label>
+        <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
+      </mat-form-field>
+      <div class="row">
+        <label>Picture (optional)</label>
+        <input id="image" type="file" class="dropify" data-height="100" (change)="logoUpdate($event)"
+          data-show-remove="false" style="margin-top: 20px;" data-height="200"
+          data-allowed-file-extensions="jpg jpeg png svg" data-default-file="" />
+      </div>
+      <mat-form-field appearance="standard">
+        <mat-label>Username*</mat-label>
+        <input formControlName="link" matInput placeholder="Enter text">
+      </mat-form-field>
+    </form>
+
+  </div>
+  <div mat-dialog-actions>
+    <button class="add" mat-raised-button mat-dialog-close cdkFocusInitial>Add</button>
+    <button class="close" mat-raised-button mat-dialog-close raised>Close</button>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div class="left">
+      <div class="left-content">
+        <div class="add-post">
+          <button class="add-button" (click)="openAddDialog($event)">
+            <mat-icon>add_circle</mat-icon>Add new post
+          </button>
+        </div>
+        <div class="tab-content">
+          <div class="post">
+            <div class="head">
+              <div class="image">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+              </div>
+              <div class="info">
+                <div class="mat-h2">IT Company</div>
+                <div class="mat-h3">Software developer</div>
+              </div>
+              <div class="mat-h4">10.02.2022</div>
+            </div>
+            <div class="mat-body-1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </div>
+            <div class="reactions">
+              <button class="reaction-button">
+                <mat-icon>thumb_up</mat-icon>Like
+              </button>
+              <button class="reaction-button">
+                <mat-icon>thumb_down</mat-icon>Dislike
+              </button>
+              <button class="reaction-button">
+                <mat-icon> comment</mat-icon>Comment
+              </button>
+            </div>
+          </div>
+          <div class="post">
+            <div class="head">
+              <div class="image">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+              </div>
+              <div class="info">
+                <div class="mat-h2">Sara Savanovic</div>
+                <div class="mat-h3">Software developer</div>
+              </div>
+              <div class="mat-h4">10.02.2022</div>
+            </div>
+            <div class="body mat-body-1">
+              <div> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et
+                dolore magna aliqua.</div>
+              <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014__340.jpg">
+            </div>
+            <div class="reactions">
+              <button class="reaction-button">
+                <mat-icon>thumb_up</mat-icon>Like
+              </button>
+              <button class="reaction-button">
+                <mat-icon>thumb_down</mat-icon>Dislike
+              </button>
+              <button class="reaction-button">
+                <mat-icon> comment</mat-icon>Comment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-content">
+        <div class="subtitle">Connection requests</div>
+        <div class="connection">
+          <div class="head-connection">
+            <div class="image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+            </div>
+            <div class="info-connection">
+              <div class="mat-h2">Sara Savanovic</div>
+              <div class="mat-h3">Software developer</div>
+            </div>
+          </div>
+          <div class="accept">
+            <button class="accept-button">Accept</button>
+            <button class="decline-button">Decline</button>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="connection">
+          <div class="head-connection">
+            <div class="image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+            </div>
+            <div class="info-connection">
+              <div class="mat-h2">Sara Savanovic</div>
+              <div class="mat-h3">Software developer</div>
+            </div>
+          </div>
+          <div class="accept">
+            <button class="accept-button">Accept</button>
+            <button class="decline-button">Decline</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-content">
+        <div class="subtitle">Suggestion connections</div>
+        <div class="connection">
+          <div class="head-connection">
+            <div class="image">
+              <img
+                src="https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg">
+            </div>
+            <div class="info-connection">
+              <div class="mat-h2">Marko Markovic</div>
+              <div class="mat-h3">Software developer</div>
+            </div>
+          </div>
+          <div class="accept">
+            <button class="accept-button">Connect</button>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="connection">
+          <div class="head-connection">
+            <div class="image">
+              <img
+                src="https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201001384/157765614-profile-picture-of-smiling-indian-female-isolated-on-grey-studio-background-show-optimism-and-positi.jpg?ver=6">
+            </div>
+            <div class="info-connection">
+              <div class="mat-h2">Ana Malinovic</div>
+              <div class="mat-h3">Software developer</div>
+            </div>
+          </div>
+          <div class="accept">
+            <button class="accept-button">Connect</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

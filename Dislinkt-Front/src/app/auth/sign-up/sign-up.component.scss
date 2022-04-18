@@ -1,52 +1,61 @@
-@use '../../../base-style' as base;
+@use '../../../base-style'as base;
 
-.container{
+.container {
     background-color: base.$background-color;
     background-image: url(../../../assets/background1.png);
+    min-height: 100vh;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-     background-size: cover;
-    height: 100vh;
+    background-size: cover;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.content{
+
+.content {
     margin-top: 30px;
     background-color: white;
     width: 30%;
     display: flex;
     align-self: center;
     border-radius: base.$border-radius;
-    padding:30px;
+    padding: 30px;
     align-items: center;
     flex-direction: column;
 }
-#logo{
-    position:absolute;
-    top:15px;
-    left:15px;
-    color:white;
+
+#logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
     font-size: 30px;
 }
-#logo:hover{
-    cursor:pointer;
+
+#logo:hover {
+    cursor: pointer;
 }
-.title{
-    margin-bottom:20px;
+
+.title {
+    margin-bottom: 20px;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     width: 80%;
     justify-content: center;
 }
-.primary-button{
-    margin-top:30px;
+
+.primary-button {
+    margin-top: 30px;
     @extend %primary-button
 }
-.primary-button:hover{
+
+.primary-button:hover {
     @extend %primary-button-hover
 }
 
@@ -55,20 +64,21 @@ form{
     color: base.$primary-color-dark;
     text-decoration: none;
     font-weight: bold;
- }
- #sign-up:hover{
-     color:base.$primary-color;
- }
- mat-radio-group{
-     display: flex;
-     justify-content: center;
-     gap:20px;
- }
+}
 
- .gender{
-     display: flex;
-     color:rgb(116, 116, 116);
-     margin:20px 0 20px 0;
-     font-size: 15px;
- }
+#sign-up:hover {
+    color: base.$primary-color;
+}
 
+mat-radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gender {
+    display: flex;
+    color: rgb(116, 116, 116);
+    margin: 20px 0 20px 0;
+    font-size: 15px;
+}

@@ -1,4 +1,4 @@
-@use '../../../base-style' as base;
+@use '../../../base-style'as base;
 
 a,
 a:hover,
@@ -9,41 +9,44 @@ a:focus {
 }
 
 #sidebar {
-    display: flex;
-    flex-direction: column;
-  width: 300px;
+  padding-top: 40px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
   background: white;
   transition: all 0.1s;
   height: 100vh;
 }
 
-#sidebar.active {
-  margin-left: -250px;
-}
-
 #sidebar .sidebar-header {
-    height: 20%;
-  padding: 20px;
+  height: 20%;
+  padding: 20px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#sidebar-image{
-    width: 300px;
+
+#sidebar-image {
+  width: 270px;
 }
+
 #sidebar .sidebar-bottom {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 #sidebar ul.components {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap:5px;
+  gap: 5px;
   list-style-type: none;
 }
 
@@ -53,25 +56,32 @@ a:focus {
 }
 
 .profile-circle {
-    background:base.$primary-color;
-    color: white;
-    font-weight: 450;
-    border-radius: 50%;
-    width: 65px;
-    height: 65px;
-    line-height: 65px;
-    text-align: center;
-  }
-  
-  #header-profile{
-      font-size: 18px;
-      color:base.$medium-grey-letters
-  }
-  #header-profile:hover{
-      cursor: pointer;
-      color:base.$dark-grey;
-  }
-  
+  background: base.$primary-color;
+  color: white;
+  font-weight: 450;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+}
+
+.profile-circle img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+#header-profile {
+  font-size: 16px;
+  color: base.$medium-grey-letters
+}
+
+#header-profile:hover {
+  cursor: pointer;
+  color: base.$dark-grey;
+}
+
 .bottom-navbar {
   background-color: white;
   overflow: hidden;
@@ -108,27 +118,29 @@ a:focus {
 
 #sidebar ul li a {
   padding: 20px;
-  font-size:20px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   font-weight: 500;
-  gap:10px;
+  gap: 10px;
   color: base.$dark-grey;
   border-radius: 15px;
 }
-#sidebar ul li a .mat-icon{
-   margin-top: -4px;
-  }
+
+#sidebar ul li a .mat-icon {
+  margin-top: -4px;
+}
 
 #sidebar ul li a:hover {
   color: white;
-  background-color:base.$primary-color ;
+  background-color: base.$primary-color;
 }
 
 #sidebar ul li>a.active,
 a[aria-expanded="true"] {
   font-size: 18px;
-  color: base.$primary-color;
+  background-color: base.$primary-color-dark;
+  color: white
 }
 
 a[data-toggle="collapse"] {

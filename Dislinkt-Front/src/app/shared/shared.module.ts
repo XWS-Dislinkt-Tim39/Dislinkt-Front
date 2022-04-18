@@ -13,7 +13,7 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     NavbarComponent,
     NavbarNotRegisteredComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     CommonModule,

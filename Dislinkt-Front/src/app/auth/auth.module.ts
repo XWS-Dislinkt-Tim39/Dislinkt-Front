@@ -1,3 +1,4 @@
+import { DashboardModule } from './../dashboard/dashboard.module';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,6 +25,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     BrowserModule,
     RouterModule,
+    DashboardModule,
     BrowserAnimationsModule,
     MatCardModule,
     ReactiveFormsModule,

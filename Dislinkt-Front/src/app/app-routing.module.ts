@@ -1,3 +1,5 @@
+import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-page.component';
+
 import { ProfileSkillsComponent } from './public/profile-skills/profile-skills.component';
 import { ProfileExperienceComponent } from './public/profile-experience/profile-experience.component';
 import { ProfilePostsComponent } from './public/profile-posts/profile-posts.component';
@@ -41,6 +43,10 @@ const routes: Routes = [
   {
     path: 'profile-skills',
     component: ProfileSkillsComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardPageComponent
   },
 ];
 
