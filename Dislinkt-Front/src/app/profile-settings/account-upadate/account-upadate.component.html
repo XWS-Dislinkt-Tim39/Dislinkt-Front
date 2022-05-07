@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="left">
+      <div class="left-content">
+        <app-account-info></app-account-info>
+        <button class="primary-button connect">Connect</button>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-content">
+        <app-profile-navigation></app-profile-navigation>
+
+        <div class="tab-content">
+          <div class="main">
+            <form [formGroup]="loginForm" style="text-align: center;">
+              <div class="row">
+                <div class="left-column">
+                  <mat-form-field appearance="standard">
+                    <mat-label>First Name*</mat-label>
+                    <input formControlName="username" matInput placeholder="Username">
+                  </mat-form-field>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Last Name*</mat-label>
+                    <input formControlName="username" matInput placeholder="Username">
+                  </mat-form-field>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Email*</mat-label>
+                    <input formControlName="username" matInput placeholder="Username">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="standard">
+                    <mat-label>Date of birth*</mat-label>
+                    <input formControlName="username" matInput placeholder="Username">
+                  </mat-form-field>
+
+                </div>
+                <div class="right-column">
+                  <mat-form-field appearance="standard">
+                    <mat-label>Address*</mat-label>
+                    <input formControlName="password" matInput placeholder="Password">
+                  </mat-form-field>
+                  <mat-form-field appearance="standard">
+                    <mat-label>City*</mat-label>
+                    <input formControlName="password" matInput placeholder="Password">
+                  </mat-form-field>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Country*</mat-label>
+                    <input formControlName="password" matInput placeholder="Password">
+                  </mat-form-field>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Phone number*</mat-label>
+                    <input formControlName="username" matInput placeholder="Username">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field class="biography" appearance="standard">
+                  <mat-label>Biography*</mat-label>
+                  <textarea formControlName="password" matInput placeholder="Password"></textarea>
+                </mat-form-field>
+              </div>
+
+            </form>
+            <div class="update">
+              <button class="primary-button">Update about info</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
