@@ -1,3 +1,4 @@
+import { ExperienceComponent } from './profile-settings/experience/experience.component';
 import { AccountUpadateComponent } from './profile-settings/account-upadate/account-upadate.component';
 import { UserSkillsComponent } from './dashboard/user-skills/user-skills.component';
 import { UserExperienceComponent } from './dashboard/user-experience/user-experience.component';
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path: 'account-update',
     component: AccountUpadateComponent
+  },
+  {
+    path: 'account-experience',
+    component: ExperienceComponent
   },
 ];
 

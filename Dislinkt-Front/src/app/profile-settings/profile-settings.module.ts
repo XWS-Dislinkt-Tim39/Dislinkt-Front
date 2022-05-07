@@ -20,10 +20,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AccountInfoComponent } from '../public/account-info/account-info.component';
 import { AccountNavigationComponent } from '../public/account-navigation/account-navigation.component';
+import { ExperienceComponent } from './experience/experience.component';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
-        ProfileNavigationComponent
+        ProfileNavigationComponent,
+        ExperienceComponent
     ],
     entryComponents: [],
     imports: [
