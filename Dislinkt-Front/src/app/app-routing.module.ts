@@ -1,3 +1,4 @@
+import { SearchProfilesComponent } from './dashboard/search-profiles/search-profiles.component';
 import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-page.component';
 
 import { ProfileSkillsComponent } from './public/profile-skills/profile-skills.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent
+  },
+  {
+    path: 'dashboard-search-profiles',
+    component: SearchProfilesComponent
   },
 ];
 

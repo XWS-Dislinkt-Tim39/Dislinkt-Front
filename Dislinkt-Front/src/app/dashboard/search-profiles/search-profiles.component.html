@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <form class="search">
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Search">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </form>
+
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div class="left">
+      <div class="left-content">
+        <div class="card">
+          <div class="card-image"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+          </div>
+          <div class="name ">
+            <div class="mat-h2">Sara Savanovic</div>
+            <div class="mat-h3">Software developer</div>
+          </div>
+          <div class="view">
+            <div class="mat-h4">Novi Sad,Srbija</div>
+            <button class="primary-button">Profile</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+          </div>
+          <div class="name ">
+            <div class="mat-h2">Sara Savanovic</div>
+            <div class="mat-h3">Software developer</div>
+          </div>
+          <div class="view">
+            <div class="mat-h4">Novi Sad,Srbija</div>
+            <button class="primary-button">Profile</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+          </div>
+          <div class="name ">
+            <div class="mat-h2">Sara Savanovic</div>
+            <div class="mat-h3">Software developer</div>
+          </div>
+          <div class="view">
+            <div class="mat-h4">Novi Sad,Srbija</div>
+            <button class="primary-button">Profile</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+          </div>
+          <div class="name ">
+            <div class="mat-h2">Sara Savanovic</div>
+            <div class="mat-h3">Software developer</div>
+          </div>
+          <div class="view">
+            <div class="mat-h4">Novi Sad,Srbija</div>
+            <button class="primary-button">Profile</button>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-content">
+        <div class="mat-h2">Filters</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Experience level</mat-label>
+          <mat-select [formControl]="experience" multiple>
+            <mat-select-trigger>
+              {{experience.value ? experience.value[0] : ''}}
+              <span *ngIf="experience.value?.length > 1" class="example-additional-selection">
+                (+{{experience.value.length - 1}} {{experience.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let experience of experienceList" [value]="experience">{{experience}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Industry</mat-label>
+          <mat-select [formControl]="industry" multiple>
+            <mat-select-trigger>
+              {{industry.value ? industry.value[0] : ''}}
+              <span *ngIf="industry.value?.length > 1" class="example-additional-selection">
+                (+{{industry.value.length - 1}} {{industry.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let industry of industryList" [value]="industry">{{industry}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <mat-select [formControl]="age" multiple>
+            <mat-select-trigger>
+              {{age.value ? age.value[0] : ''}}
+              <span *ngIf="age.value?.length > 1" class="example-additional-selection">
+                (+{{age.value.length - 1}} {{age.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let age of ageList" [value]="age">{{age}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button class="grey-button">Apply</button>
+        <img id="home-image" src="../../../assets/home.png">
+      </div>
+
+    </div>
+  </div>
+</div>

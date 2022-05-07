@@ -1,49 +1,56 @@
-@use '../../../base-style' as base;
+@use '../../../base-style'as base;
+
 .navbar {
-    overflow: hidden;
-    background-color: white;
-    position: fixed; 
-    top: 0;
-    width: 100%; 
-    display: flex;
-    justify-content: space-between;
-    z-index: 10;
-  }
-  
-  .navbar a {
-    float: left;
-    display: block;
-    color:base.$dark-grey;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-  }
+  overflow: hidden;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
 
-  #logo{
-      font-size: 30px;
-      color:base.$primary-color
-  }
-  #logo:hover{
-      color:base.$dark-grey
-  }
+.navbar a {
+  float: left;
+  display: block;
+  color: base.$dark-grey;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
 
-  #profile{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap:10px;
-      font-size: 18px;
-      font-weight: 600;
-      color:base.$dark-grey;
-      margin-right: 20px;
-      background-color: transparent;
-      border: 0;
-  }
-  #profile:hover{
-    color:base.$primary-color-dark;
-    cursor: pointer;
-  }
+#logo {
+  font-size: 30px;
+  color: base.$primary-color
+}
 
-  button.mat-menu-item{
-    font-size: 18px;
+#logo:hover {
+  color: base.$dark-grey
+}
+
+#search {
+  font-size: 20px;
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: base.$dark-grey;
+  margin-right: 20px;
+  background-color: transparent;
+  border: 0;
+}
+
+#profile:hover {
+  color: base.$primary-color-dark;
+  cursor: pointer;
+}
+
+button.mat-menu-item {
+  font-size: 18px;
 }
