@@ -9,6 +9,7 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 })
 export class ProfilesComponent implements OnInit {
   profiles: any[] = [];
+  resultProfile: any;
   constructor(private publicProfilesService: PublicProfilesService) { }
 
   ngOnInit(): void {
@@ -20,6 +21,8 @@ export class ProfilesComponent implements OnInit {
   experienceList: string[] = ['No experience', 'One year', 'Two year', 'More than 2 years'];
   industryList: string[] = ['IT', 'Doctor', 'Economist', 'Architect', 'Menager', 'Lawyer'];
   ageList: string[] = ['<18', '18-25', '25-35', '>35']
+  noExperienceList: any[] = []
+
 
   getAllProfiles() {
     this.publicProfilesService.getAllPublicProfiles().subscribe((data: any) => {
@@ -28,6 +31,12 @@ export class ProfilesComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+  }
+
+  showExperienceFilter() {
+    this.profiles.forEach(profile => {
+
+    });
   }
 
   sarchUserByUsername(username: string) {
