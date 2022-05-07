@@ -38,10 +38,10 @@ export class SignInComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const login: UserSignIn = { username: '', password: '' };
-    login.username = this.loginForm.value.username;
+    const login: UserSignIn = { emailAddress: '', password: '' };
+    login.emailAddress = this.loginForm.value.username;
     login.password = this.loginForm.value.password;
-    this.authenticationService.signIn(login).subscribe((data: UserToken) => {
+    this.authenticationService.signUp(login).subscribe((data: UserToken) => {
       this.jwtService.saveUserDetails(data);
       //this.router.navigate(['/my-restaurants']);
     },

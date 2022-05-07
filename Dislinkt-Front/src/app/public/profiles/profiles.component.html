@@ -9,16 +9,15 @@
 
   <div class="wrapper">
     <div class="left">
-      <div class="card">
-        <div class="card-image"><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+      <div class="card" *ngFor="let profile of profiles;let i = index">
+        <div class="card-image"><img src="https://bbdu.ac.in/wp-content/uploads/2018/01/profile-pictures.png">
         </div>
         <div class="name ">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
+          <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+          <div class="mat-h3">{{profile.workExperience[0].fieldOfWork}}</div>
         </div>
         <div class="view">
-          <div class="mat-h4">Novi Sad,Srbija</div>
+          <div class="mat-h4">{{profile.city}},{{profile.caountry}}</div>
           <button class="primary-button" [routerLink]="['/profile-details']">Profile</button>
         </div>
       </div>
