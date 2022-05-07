@@ -1,3 +1,4 @@
+import { UserPostsComponent } from './user-posts/user-posts.component';
 import { MatIconModule } from '@angular/material/icon';
 import { PublicModule } from './../public/public.module';
 import { SharedModule } from './../shared/shared.module';
@@ -29,7 +30,8 @@ import { UserNavigationComponent } from './user-navigation/user-navigation.compo
     AddPostComponent,
     SearchProfilesComponent,
     UserProfileComponent,
-    UserNavigationComponent
+    UserNavigationComponent,
+    UserPostsComponent
   ],
   entryComponents: [AddPostComponent, SearchProfilesComponent],
   imports: [

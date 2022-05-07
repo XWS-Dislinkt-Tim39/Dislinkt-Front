@@ -1,3 +1,4 @@
+import { UserPostsComponent } from './dashboard/user-posts/user-posts.component';
 import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
 import { SearchProfilesComponent } from './dashboard/search-profiles/search-profiles.component';
 import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-page.component';
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'user-profile',
     component: UserProfileComponent
+  },
+  {
+    path: 'user-posts',
+    component: UserPostsComponent
   },
 ];
 
