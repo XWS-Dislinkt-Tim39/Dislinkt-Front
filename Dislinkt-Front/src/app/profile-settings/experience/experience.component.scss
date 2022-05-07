@@ -120,9 +120,17 @@
     width: 30%;
 }
 
-.primary-button {
+.add {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
+}
+
+.add:hover {
+    @extend %primary-button-hover;
+}
+
+.primary-button {
+    @extend %primary-button;
     height: 50px;
 }
 
@@ -132,6 +140,24 @@
 
 .mat-form-field {
     width: 90%;
+}
+
+.add-experience {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.add-button {
+    @extend %grey-button;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-button:hover {
+    @extend %grey-button-hover;
 }
 
 .biography {
