@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileSettingsModule } from './profile-settings/profile-settings.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     CommonModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    ProfileSettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { AccountUpadateComponent } from './profile-settings/account-upadate/account-upadate.component';
 import { UserSkillsComponent } from './dashboard/user-skills/user-skills.component';
 import { UserExperienceComponent } from './dashboard/user-experience/user-experience.component';
 import { UserPostsComponent } from './dashboard/user-posts/user-posts.component';
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: 'user-skills',
     component: UserSkillsComponent
+  },
+  {
+    path: 'account-update',
+    component: AccountUpadateComponent
   },
 ];
 
