@@ -1,3 +1,4 @@
+import { UserSkillsComponent } from './dashboard/user-skills/user-skills.component';
 import { UserExperienceComponent } from './dashboard/user-experience/user-experience.component';
 import { UserPostsComponent } from './dashboard/user-posts/user-posts.component';
 import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: 'user-experience',
     component: UserExperienceComponent
+  },
+  {
+    path: 'user-skills',
+    component: UserSkillsComponent
   },
 ];
 
