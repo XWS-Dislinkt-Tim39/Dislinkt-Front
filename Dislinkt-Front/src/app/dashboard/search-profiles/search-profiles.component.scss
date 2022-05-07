@@ -151,22 +151,79 @@
     color: base.$dark-grey;
 }
 
-.mat-h3 {
-    font-weight: 50;
-    margin-top: -20px;
-    font-size: 16px;
+.public {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.isPublic {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
     color: base.$light-grey-letters;
+    font-size: 14px;
+}
+
+.mat-h3 {
+    font-weight: 600;
+    margin-top: -10px;
+    font-size: 17px;
+    color: base.$primary-color-dark;
 }
 
 .mat-h4 {
-    font-size: 16px;
-    color: base.$light-grey-letters;
+    margin-bottom: -5px;
+    color: base.$light-grey-letters
 }
 
 .mat-body-1 {
     font-weight: 500;
     font-size: 16px;
     color: base.$dark-grey;
+}
+
+.primary-button {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+}
+
+.connect {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+    background-color: base.$primary-color-dark;
+}
+
+.view {
+    grid-column: 5;
+    display: grid;
+    justify-self: center;
+    justify-items: center;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+.grey-button {
+    @extend %grey-button;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.grey-button:hover {
+    @extend %grey-button-hover;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
 
 .search {
