@@ -10,13 +10,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SearchProfilesComponent } from './search-profiles/search-profiles.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
-    AddPostComponent
+    AddPostComponent,
+    SearchProfilesComponent
   ],
-  entryComponents: [AddPostComponent],
+  entryComponents: [AddPostComponent, SearchProfilesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,10 +36,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatRadioModule,
+    RouterModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatGridListModule
   ],
   exports: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    SearchProfilesComponent
   ]
 })
 export class DashboardModule { }

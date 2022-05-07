@@ -1,6 +1,6 @@
 import { User } from './../models/user.model';
 import { UserSignIn } from './../models/user-sign-in.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtService } from './jwt.service';
 import { environment } from 'src/environments/environment';
@@ -17,8 +17,13 @@ export class AuthenticationService {
     private jwtService: JwtService
   ) { }
 
-  signIn(user: UserSignIn): Observable<any> {
-    return this.http.post(`${environment.api_url}Account/authenticate`, user, { headers: this.headers, responseType: 'json' });
+  signUp(user: UserSignIn): Observable<any> {
+    return this.http.post(`${environment.api_url}sign-up`, user, {
+      params: {
+        emailAddress: user.emailAddress,
+        password: user.password
+      }, headers: this.headers, responseType: 'json'
+    });
   }
 
   register(user: User): Observable<any> {
