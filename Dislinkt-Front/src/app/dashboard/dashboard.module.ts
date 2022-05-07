@@ -18,12 +18,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AccountInfoComponent } from '../public/account-info/account-info.component';
+import { AccountNavigationComponent } from '../public/account-navigation/account-navigation.component';
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
     AddPostComponent,
-    SearchProfilesComponent
+    SearchProfilesComponent,
+    UserProfileComponent
   ],
   entryComponents: [AddPostComponent, SearchProfilesComponent],
   imports: [
@@ -49,7 +53,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   exports: [
     DashboardPageComponent,
