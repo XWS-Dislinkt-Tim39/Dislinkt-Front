@@ -21,13 +21,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AccountInfoComponent } from '../public/account-info/account-info.component';
 import { AccountNavigationComponent } from '../public/account-navigation/account-navigation.component';
+import { UserNavigationComponent } from './user-navigation/user-navigation.component';
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
     AddPostComponent,
     SearchProfilesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserNavigationComponent
   ],
   entryComponents: [AddPostComponent, SearchProfilesComponent],
   imports: [
