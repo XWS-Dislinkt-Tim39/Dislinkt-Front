@@ -22,7 +22,7 @@ export class AuthenticationService {
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${environment.api_url}Accounts/register`, user, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`${environment.api_url}register-user`, user, { headers: this.headers, responseType: 'json' });
   }
 
   logout(): void {
