@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 .container {
     min-height: 100vh;
@@ -85,13 +85,13 @@
 }
 
 .left-main {
-    width: 70%;
+    width: 60%;
 }
 
 .right-main {
     display: flex;
     justify-content: flex-end;
-    width: 30%;
+    width: 40%;
 }
 
 .main-title {
@@ -115,7 +115,7 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
 }
 
 .row {
@@ -146,7 +146,7 @@
 
 .update {
     display: flex;
-    width: 30%;
+    width: 40%;
 }
 
 .add {
@@ -161,7 +161,7 @@
 .primary-button {
     @extend %primary-button;
     height: 50px;
-    width: 150px;
+    width: 200px;
 }
 
 .primary-button:hover {
