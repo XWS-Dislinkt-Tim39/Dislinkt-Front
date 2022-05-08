@@ -9,7 +9,7 @@
       <div class="right-content">
         <app-profile-navigation></app-profile-navigation>
         <div class="add-experience">
-          <button class="add-button">
+          <button class="add-button" (click)="opetAddDialog( $event)">
             <mat-icon>add_circle</mat-icon>Add new experience
           </button>
         </div>
@@ -98,3 +98,46 @@
     </div>
   </div>
 </div>
+
+
+
+<ng-template #addExperience let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new experience</div>
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="addForm">
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="standard">
+            <mat-label>Company Name*</mat-label>
+            <input formControlName="companyName" matInput placeholder="companyName">
+          </mat-form-field>
+          <mat-form-field appearance="standard">
+            <mat-label>Start Date*</mat-label>
+            <input formControlName="startDate" matInput placeholder="startDate">
+          </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field appearance="standard">
+            <mat-label>Job name-Role*</mat-label>
+            <input formControlName="role" matInput placeholder="role">
+          </mat-form-field>
+          <mat-form-field appearance="standard">
+            <mat-label>End Date*</mat-label>
+            <input formControlName="endDate" matInput placeholder="endDate">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="standard">
+          <mat-label>Job description*</mat-label>
+          <textarea formControlName="description" matInput placeholder="description"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" cdkFocusInitial mat-dialog-close>Save</button>
+    <button mat-raised-button mat-dialog-close raised>Close</button>
+  </div>
+</ng-template>
