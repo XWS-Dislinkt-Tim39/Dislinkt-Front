@@ -119,8 +119,9 @@
 }
 
 .row {
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -178,6 +179,38 @@
 
 }
 
+.dialog-title {
+    padding: 20px 30px 20px 30px;
+    font-size: 26px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.yes-button {
+    background-color: base.$primary-color-dark;
+    color: white;
+}
+
+.dialog-content {
+    padding: 0px 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
 .add-button {
     @extend %grey-button;
     margin: 0;
@@ -230,6 +263,10 @@
 
 .field-value {
     font-size: 20px;
+}
+
+.dialog {
+    padding: 30px;
 }
 
 @media (pointer: coarse) {
