@@ -8,8 +8,8 @@
       <div class="right-content">
         <app-profile-navigation></app-profile-navigation>
         <div class="add-experience">
-          <button class="add-button">
-            <mat-icon>add_circle</mat-icon>Add new skill
+          <button class="add-button" (click)="opetAddCategoryDialog( $event)">
+            <mat-icon>add_circle</mat-icon>Add new skill category
           </button>
         </div>
         <div class="tab-content">
@@ -22,22 +22,25 @@
                 <div class="skill">
                   <div>Lorem ipsum dolor sit ame
                   </div>
+                  <mat-icon>edit</mat-icon>
                   <mat-icon>delete</mat-icon>
                 </div>
                 <div class="skill">
                   <div>Lorem ipsum dolor sit ame
                   </div>
+                  <mat-icon>edit</mat-icon>
                   <mat-icon>delete</mat-icon>
                 </div>
                 <div class="skill">
                   <div>Lorem ipsum dolor sit ame
                   </div>
+                  <mat-icon>edit</mat-icon>
                   <mat-icon>delete</mat-icon>
                 </div>
               </div>
             </div>
             <div class="right-main">
-              <button class="primary-button">Edit</button>
+              <button class="primary-button" (click)="opetAddSkillDialog( $event)">Add skill</button>
               <button class="primary-button">Delete</button>
             </div>
 
@@ -54,17 +57,19 @@
                 <div class="skill">
                   <div>Lorem ipsum dolor sit ame
                   </div>
+                  <mat-icon>edit</mat-icon>
                   <mat-icon>delete</mat-icon>
                 </div>
                 <div class="skill">
                   <div>Lorem ipsum dolor sit ame
                   </div>
+                  <mat-icon>edit</mat-icon>
                   <mat-icon>delete</mat-icon>
                 </div>
               </div>
             </div>
             <div class="right-main">
-              <button class="primary-button">Edit</button>
+              <button class="primary-button">Add skill</button>
               <button class="primary-button">Delete</button>
             </div>
 
@@ -75,3 +80,59 @@
     </div>
   </div>
 </div>
+
+
+
+<ng-template #addSkill let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new skill</div>
+  <div mat-dialog-content class="dialog-content">
+    <div>Select skill:</div>
+    <form [formGroup]="addSkillForm">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Skills</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{category}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>or</div>
+      <div class="row">
+        <div>Enter custom skill</div>
+        <mat-form-field appearance="standard">
+          <mat-label>Skill name*</mat-label>
+          <input formControlName="skill" matInput placeholder="skill">
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" cdkFocusInitial mat-dialog-close>Save</button>
+    <button mat-raised-button mat-dialog-close raised>Close</button>
+  </div>
+</ng-template>
+
+<ng-template #addSkillCategory let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new skill category</div>
+  <div mat-dialog-content class="dialog-content">
+    <div>Select skill category:</div>
+    <form [formGroup]="addForm">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Skill category</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{category}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" cdkFocusInitial mat-dialog-close>Save</button>
+    <button mat-raised-button mat-dialog-close raised>Close</button>
+  </div>
+</ng-template>

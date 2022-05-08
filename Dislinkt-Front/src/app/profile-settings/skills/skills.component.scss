@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 .container {
     min-height: 100vh;
@@ -85,13 +85,13 @@
 }
 
 .left-main {
-    width: 70%;
+    width: 60%;
 }
 
 .right-main {
     display: flex;
     justify-content: flex-end;
-    width: 30%;
+    width: 40%;
 }
 
 .main-title {
@@ -115,12 +115,13 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
 }
 
 .row {
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -146,7 +147,7 @@
 
 .update {
     display: flex;
-    width: 30%;
+    width: 40%;
 }
 
 .add {
@@ -161,7 +162,7 @@
 .primary-button {
     @extend %primary-button;
     height: 50px;
-    width: 150px;
+    width: 200px;
 }
 
 .primary-button:hover {
@@ -176,6 +177,38 @@
     display: flex;
     justify-content: flex-end;
 
+}
+
+.dialog-title {
+    padding: 20px 30px 20px 30px;
+    font-size: 26px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.yes-button {
+    background-color: base.$primary-color-dark;
+    color: white;
+}
+
+.dialog-content {
+    padding: 0px 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
 }
 
 .add-button {
@@ -230,6 +263,10 @@
 
 .field-value {
     font-size: 20px;
+}
+
+.dialog {
+    padding: 30px;
 }
 
 @media (pointer: coarse) {
