@@ -17,6 +17,7 @@
     gap: 20px;
     padding: 30px;
     display: flex;
+    justify-content: center;
     flex-direction: row;
     background-color: base.$background-color;
     border-radius: base.$border-radius;
@@ -56,6 +57,7 @@
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
+    width: 150px;
 }
 
 .primary-button:hover {
