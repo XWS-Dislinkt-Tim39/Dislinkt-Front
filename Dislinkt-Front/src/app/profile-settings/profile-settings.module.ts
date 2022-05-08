@@ -21,11 +21,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AccountInfoComponent } from '../public/account-info/account-info.component';
 import { AccountNavigationComponent } from '../public/account-navigation/account-navigation.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { SkillsComponent } from './skills/skills.component';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
         ProfileNavigationComponent,
-        ExperienceComponent
+        ExperienceComponent,
+        SkillsComponent
     ],
     entryComponents: [],
     imports: [
