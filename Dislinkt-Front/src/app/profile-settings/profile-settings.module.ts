@@ -56,6 +56,7 @@ import { SkillsComponent } from './skills/skills.component';
         MatGridListModule,
     ],
     exports: [
+        ProfileNavigationComponent,
     ]
 })
 export class ProfileSettingsModule { }

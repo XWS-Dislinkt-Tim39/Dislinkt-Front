@@ -23,6 +23,7 @@
 }
 
 .chatbox{
+    box-shadow: base.$box-shadow;
     display: flex;
     flex-direction: row;
     background-color: white;
