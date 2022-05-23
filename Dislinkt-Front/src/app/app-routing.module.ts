@@ -20,6 +20,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { MessagesComponent } from './messages/messages.component';
 import { FindJobComponent } from './jobs/find-job/find-job.component';
+import { MyJobsComponent } from './jobs/my-jobs/my-jobs.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path: 'find-job',
     component: FindJobComponent
+  },
+  {
+    path: 'my-jobs',
+    component: MyJobsComponent
   },
 ];
 

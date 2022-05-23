@@ -9,12 +9,14 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MyJobsComponent } from './my-jobs/my-jobs.component';
 
 
 
 @NgModule({
   declarations: [
-    FindJobComponent
+    FindJobComponent,
+    MyJobsComponent
   ],
   entryComponents: [ ProfileNavigationComponent],
   imports: [
