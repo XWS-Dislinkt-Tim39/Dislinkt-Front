@@ -20,6 +20,8 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileSettingsModule } from './profile-settings/profile-settings.module';
+import { MessagesComponent } from './messages/messages.component';
+import { MessagesModule } from './messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ProfileSettingsModule } from './profile-settings/profile-settings.modul
     CommonModule,
     HttpClientModule,
     DashboardModule,
-    ProfileSettingsModule
+    ProfileSettingsModule,
+    MessagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
