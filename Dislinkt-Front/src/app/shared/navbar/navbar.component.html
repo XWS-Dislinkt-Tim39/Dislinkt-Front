@@ -1,8 +1,11 @@
 <div class="navbar">
   <a href="#home" id="logo">Logo</a>
-  <a [routerLink]="['/dashboard-search-profiles']" id="search">
-    <mat-icon>search</mat-icon>Search profiles
+  <div class="search">
+    <mat-icon>search</mat-icon>
+  <a [routerLink]="['/dashboard-search-profiles']">
+Search profiles
   </a>
+</div>
   <button id="profile" mat-button [matMenuTriggerFor]="menu">
     <mat-icon>person</mat-icon>Profile
   </button>
