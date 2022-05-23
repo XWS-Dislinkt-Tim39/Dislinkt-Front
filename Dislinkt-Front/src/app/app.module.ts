@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileSettingsModule } from './profile-settings/profile-settings.module';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesModule } from './messages/messages.module';
+import { JobsModule } from './jobs/jobs.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MessagesModule } from './messages/messages.module';
     DashboardModule,
     ProfileSettingsModule,
     MessagesModule,
+    JobsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,262 @@
+@use '../../../base-style'as base;
+
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color: base.$background-color;
+}
+
+.wrapper {
+    width: 100%;
+    margin-left: 270px;
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    background-color: base.$background-color;
+}
+.card {
+    background-color: white;
+    border-radius: base.$border-radius;
+    padding: 20px 20px 10px 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 6fr 1fr;
+    column-gap: 20px;
+    justify-items: start;
+    box-shadow: base.$box-shadow;
+}
+
+.card-image {
+    grid-column: 1;
+}
+
+.card-image img {
+    border-radius: 50%;
+    width: 100px;
+    width: 100px;
+}
+.view {
+    grid-column: 5;
+    display: grid;
+    justify-self: center;
+    justify-items: center;
+}
+.primary-button {
+    @extend %primary-button;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+
+.right {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    width: 25%;
+}
+
+.left {
+    margin-top: 80px;
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-content {
+    margin-top: -20px;
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+}
+
+.subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+
+.left-content {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.search .mat-form-field {
+    width: 80%;
+}
+
+
+.tab-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+}
+
+.add-post {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0
+}
+
+.add-button {
+    @extend %grey-button;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-button:hover {
+    @extend %grey-button-hover;
+}
+
+.post {
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    background-color: white;
+    padding: 20px;
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+}
+
+.head .image {
+    grid-column: 1;
+}
+
+.info {
+    grid-column: 2;
+}
+
+.image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.body img {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.mat-h2 {
+    font-weight: 500;
+    color: base.$dark-grey;
+}
+
+.mat-h3 {
+    font-weight: 50;
+    margin-top: -20px;
+    font-size: 16px;
+    color: base.$light-grey-letters;
+}
+
+.mat-h4 {
+    font-size: 16px;
+    color: base.$light-grey-letters;
+}
+
+.mat-body-1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
+
+.head-connection {
+    display: grid;
+    grid-template-columns: 2fr 6fr
+}
+
+.accept {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -5px
+}
+
+.accept-button {
+    @extend %primary-button;
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.accept-button:hover {
+    @extend %primary-button-hover;
+}
+
+.line {
+    border-bottom: 2px solid base.$light-grey-letters;
+    margin: 10px 0;
+}
+
+.navigation {
+    box-shadow: base.$box-shadow;
+    background-color: base.$primary-color;
+    border-radius: base.$border-radius;
+    display: flex;
+    gap: 100px;
+    padding: 10px 50px;
+}
+
+.links {
+    font-size: 18px;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+
+.links:hover {
+    border-bottom: 3px solid base.$primary-color-dark;
+    cursor: pointer;
+}
+
+.active {
+    border-bottom: 3px solid white;
+}
+
+@media (pointer: coarse) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .mat-h1 {
+        width: 100%;
+        margin: 0px 0px;
+        text-align: center;
+    }
+
+}
