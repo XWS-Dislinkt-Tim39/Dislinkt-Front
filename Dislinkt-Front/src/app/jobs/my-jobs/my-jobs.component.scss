@@ -1,6 +1,5 @@
 @use '../../../base-style'as base;
 
-
 .container {
     min-height: 100vh;
     display: flex;
@@ -54,7 +53,6 @@
     @extend %primary-button-hover;
 }
 
-
 .right {
     margin-top: 100px;
     display: flex;
@@ -95,15 +93,6 @@
     gap: 30px;
     flex-direction: column;
 }
-.search {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.search .mat-form-field {
-    width: 80%;
-}
-
 
 .tab-content {
     height: 100%;
@@ -151,10 +140,6 @@
     grid-column: 1;
 }
 
-.info {
-    grid-column: 2;
-}
-
 .image img {
     width: 50px;
     height: 50px;
@@ -164,28 +149,6 @@
 .body img {
     margin-top: 10px;
     width: 100%;
-}
-
-.reactions {
-    padding-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.reaction-button {
-    background-color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: 2px solid base.$medium-grey-letters;
-    display: flex;
-    color: base.$medium-grey-letters;
-    align-items: center;
-    gap: 5px;
-}
-
-.reaction-button:hover {
-    box-shadow: base.$box-shadow;
-    cursor: pointer;
 }
 
 .mat-h2 {
@@ -205,46 +168,28 @@
     color: base.$light-grey-letters;
 }
 
-.mat-body-1 {
-    font-weight: 500;
-    font-size: 16px;
-    color: base.$dark-grey;
-}
 
 .head-connection {
     display: grid;
     grid-template-columns: 2fr 6fr
 }
 
-.accept {
+.view {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: -5px
 }
 
-.accept-button {
+.view-button {
     @extend %primary-button;
     margin: 0;
     padding: 10px 20px;
     border-radius: 10px;
 }
 
-.accept-button:hover {
+.view-button:hover {
     @extend %primary-button-hover;
-}
-
-.decline-button {
-    @extend %secondary-button;
-    margin: 0;
-    padding: 7px 20px;
-    border-radius: 10px;
-}
-
-.decline-button:hover {
-    @extend %secondary-button-hover;
-    margin: 0;
-    padding: 10px 23px;
 }
 
 .line {
