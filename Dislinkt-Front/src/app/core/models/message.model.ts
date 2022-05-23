@@ -1,6 +1,6 @@
 export interface Message {
     name: string;
     lastName: string;
-    massage:string;
+    message:string;
     date:Date;
 }

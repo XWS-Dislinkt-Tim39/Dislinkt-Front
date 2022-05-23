@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from '../core/models/message.model';
 
 @Component({
@@ -12,54 +13,87 @@ export class MessagesComponent implements OnInit {
   messages1:Message[]=[{
     'name':'Ana',
     'lastName':'Anic',
-    'massage':'Heeej',
+    'message':'Heeej',
     'date':new Date(2022,5,10,10,15)
   },
   {
     'name':'Ja',
     'lastName':'Ja',
-    'massage':'O Olaa',
+    'message':'O Olaa',
     'date':new Date(2022,5,10,10,20)
   },
   {
     'name':'Ana',
     'lastName':'Anic',
-    'massage':'Sta ima?',
+    'message':'Sta ima?',
     'date':new Date(2022,5,10,10,22)
   },
   {
     'name':'Ja',
     'lastName':'Ja',
-    'massage':'Ma radim XML :(',
+    'message':'Ma radim XML :(',
     'date':new Date(2022,5,10,10,25)
   }];
   messages2:Message[]=[{
     'name':'Marko',
     'lastName':'Markovic',
-    'massage':'Djes',
+    'message':'Djes',
     'date':new Date(2022,5,10,10,15)
   },
   {
     'name':'Ja',
     'lastName':'Ja',
-    'massage':'Heloo',
+    'message':'Heloo',
     'date':new Date(2022,5,10,10,20)
   },
   {
     'name':'Marko',
     'lastName':'Markovic',
-    'massage':'Kako si',
+    'message':'Kako si',
     'date':new Date(2022,5,10,10,22)
   },
   {
     'name':'Ja',
     'lastName':'Ja',
-    'massage':'Da se ubijes :D',
+    'message':'Da se ubijes :D',
     'date':new Date(2022,5,10,10,25)
   }]
-  constructor() { }
+  selectedChat:Message[]=[{
+    'name':'sd',
+    'lastName':'sd',
+    'message':'',
+    'date':new Date()
+  }];
+  messagesList:any[]=[this.messages1,this.messages2]
+  myMessage:any='';
+  sendForm!: FormGroup;
+  constructor(    private formBuilder: FormBuilder,) { 
+    
+  }
 
   ngOnInit(): void {
+    this.selectedChat=this.messages1;
+    this.sendForm = this.formBuilder.group({
+      message: []
+    });
+  }
+
+  get sendFormControl() {
+    return this.sendForm.controls;
+  }
+  showChat(row:Message[]){
+  this.selectedChat=row;
+  }
+
+  sendMessage(){
+    this.myMessage= this.sendForm.value.message;
+    this.selectedChat.push({
+      'name':'Ja',
+      'lastName':'Ja',
+      'message':this.myMessage,
+      'date':new Date()
+    })
+    this.sendForm.reset();
   }
 
 }

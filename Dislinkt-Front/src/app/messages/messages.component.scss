@@ -72,6 +72,11 @@
    width: 90%;
    border-bottom: 1px solid base.$light-grey-letters;
 }
+.friend:hover{
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
 .name{
     font-size: 17px;
 }
@@ -112,6 +117,9 @@
     min-width: 550px;
     max-width: 600px;
 }
+.send-message .mat-form-field .mat-icon:hover{
+    cursor: pointer;
+}
 .messages-list{
     height: 70%;
     overflow: auto;
@@ -127,7 +135,9 @@
     font-size: 16px;
     border-radius: base.$border-radius;
     border:1px solid base.$light-grey-letters;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    max-width: 70%;
 }
 .message-right{
     display: flex;
@@ -142,6 +152,9 @@
     border-radius: base.$border-radius;
     border:1px solid base.$light-grey-letters;
     width: auto;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    max-width: 70%;
     background-color: rgb(181, 213, 230);
 }
 
