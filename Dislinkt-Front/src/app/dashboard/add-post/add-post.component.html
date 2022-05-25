@@ -2,12 +2,12 @@
   <div class="mat-h2" mat-dialog-title>Add post</div>
   <div mat-dialog-content>
     <div class="buttons">
-      <button class="post-element">Add Text<mat-icon> notes</mat-icon></button>
-      <button class="post-element">Add Image<mat-icon>image</mat-icon></button>
-      <button class="post-element">Add Link<mat-icon>link</mat-icon></button>
+      <button class="post-element" [ngClass]="[textStyle]" (click)="toggleText()">Text<mat-icon> notes</mat-icon></button>
+      <button class="post-element" [ngClass]="[imageStyle]" (click)="toggleImage()">Image<mat-icon>image</mat-icon></button>
+      <button class="post-element" [ngClass]="[linkStyle]" (click)="toggleLink()">Link<mat-icon>link</mat-icon></button>
     </div>
     <form [formGroup]="form">
-      <mat-form-field appearance="standard">
+      <mat-form-field *ngIf="showText" appearance="outline">
         <mat-label>Text*</mat-label>
         <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
       </mat-form-field>

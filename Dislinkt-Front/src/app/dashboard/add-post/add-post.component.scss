@@ -21,13 +21,20 @@
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+    width:80px;
     gap: 10px;
     background-color: white;
     border-radius: base.$border-radius;
     border: 2px solid base.$medium-grey-letters;
     color: base.$medium-grey-letters
 }
-
+.text-default{
+}
+.text-checked{
+    background-color: base.$primary-color-dark;
+    border: 2px solid white;
+    color:white;
+}
 .post-element:hover {
     cursor: pointer;
     box-shadow: base.$box-shadow;
