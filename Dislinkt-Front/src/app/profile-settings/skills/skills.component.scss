@@ -102,7 +102,7 @@
 .skills {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .skill {
@@ -121,7 +121,7 @@
 .row {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
@@ -162,15 +162,20 @@
 .primary-button {
     @extend %primary-button;
     height: 50px;
-    width: 200px;
 }
 
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+.delete-button {
+    @extend %primary-button;
+    height: 50px;
+    background-color: base.$danger;
+}
 
-.mat-form-field {
-    width: 90%;
+.delete-button:hover {
+    @extend %primary-button-hover;
+    background-color: base.$danger;
 }
 
 .add-experience {
@@ -180,9 +185,6 @@
 }
 
 .dialog-title {
-    padding: 20px 30px 20px 30px;
-    font-size: 26px;
-    font-weight: 400;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -193,17 +195,8 @@
     background-color: base.$primary-color-dark;
     color: white;
 }
-
-.dialog-content {
-    padding: 0px 30px;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
 .dialog-actions {
+    padding:20px;
     margin-top: 20px;
     display: flex;
     gap: 20px;
@@ -217,6 +210,29 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.yes-button {
+    background-color: base.$primary-color;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.yes-button:hover{
+   box-shadow: base.$box-shadow;
+}
+.cancel-button {
+    background-color: base.$light-grey-letters;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.cancel-button:hover{
+   box-shadow: base.$box-shadow;
+}
+.mat-form-field {
+    width: 100%;
 }
 
 .add-button:hover {
@@ -265,9 +281,16 @@
     font-size: 20px;
 }
 
-.dialog {
-    padding: 30px;
+.mat-dialog-content{
+    padding:50px;
 }
+.mat-dialog-title{
+    padding:30px 50px 0px 50px;
+}
+.dialog{
+    width: 600px;
+}
+
 
 @media (pointer: coarse) {
     .container {
