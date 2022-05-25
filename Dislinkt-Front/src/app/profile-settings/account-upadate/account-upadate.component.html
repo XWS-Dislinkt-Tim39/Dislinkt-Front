@@ -14,46 +14,46 @@
             <form [formGroup]="loginForm" style="text-align: center;">
               <div class="row">
                 <div class="left-column">
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>First Name*</mat-label>
                     <input formControlName="username" matInput placeholder="Username">
                   </mat-form-field>
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Last Name*</mat-label>
                     <input formControlName="username" matInput placeholder="Username">
                   </mat-form-field>
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Email*</mat-label>
                     <input formControlName="username" matInput placeholder="Username">
                   </mat-form-field>
 
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Date of birth*</mat-label>
                     <input formControlName="username" matInput placeholder="Username">
                   </mat-form-field>
 
                 </div>
                 <div class="right-column">
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Address*</mat-label>
                     <input formControlName="password" matInput placeholder="Password">
                   </mat-form-field>
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>City*</mat-label>
                     <input formControlName="password" matInput placeholder="Password">
                   </mat-form-field>
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Country*</mat-label>
                     <input formControlName="password" matInput placeholder="Password">
                   </mat-form-field>
-                  <mat-form-field appearance="standard">
+                  <mat-form-field appearance="outline">
                     <mat-label>Phone number*</mat-label>
                     <input formControlName="username" matInput placeholder="Username">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
-                <mat-form-field class="biography" appearance="standard">
+                <mat-form-field class="biography" appearance="outline">
                   <mat-label>Biography*</mat-label>
                   <textarea formControlName="password" matInput placeholder="Password"></textarea>
                 </mat-form-field>
@@ -61,7 +61,11 @@
 
             </form>
             <div class="update">
-              <button class="primary-button">Update about info</button>
+              <div class="profile-circle"><img
+                  src="https://qph.cf2.quoracdn.net/main-thumb-1278318002-200-ydzfegagslcexelzgsnplcklfkienzfr.jpeg">
+              </div>
+              <button class="primary-button">Edit profile image</button>
+              <button class="primary-button">Edit about info</button>
             </div>
           </div>
 

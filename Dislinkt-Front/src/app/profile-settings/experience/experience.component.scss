@@ -76,26 +76,35 @@
 }
 
 .dialog-title {
-    font-size: 26px;
-    font-weight: 400;
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
 .yes-button {
-    background-color: base.$primary-color-dark;
+    background-color: base.$primary-color;
     color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.yes-button:hover{
+   box-shadow: base.$box-shadow;
+}
+.cancel-button {
+    background-color: base.$light-grey-letters;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.cancel-button:hover{
+   box-shadow: base.$box-shadow;
 }
 
-.dialog-content {
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 
 .dialog-actions {
+    padding:20px;
     margin-top: 20px;
     display: flex;
     gap: 20px;
@@ -120,6 +129,7 @@
 }
 
 .row {
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -168,6 +178,17 @@
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+.delete-button {
+    @extend %primary-button;
+    height: 50px;
+    background-color: base.$danger;
+}
+
+.delete-button:hover {
+    @extend %primary-button-hover;
+    background-color: base.$danger;
+}
+
 
 .mat-form-field {
     width: 100%;
@@ -177,6 +198,12 @@
     display: flex;
     justify-content: flex-end;
 
+}
+.mat-dialog-content{
+    padding:50px;
+}
+.mat-dialog-title{
+    padding:30px 50px 0px 50px;
 }
 
 
@@ -222,16 +249,25 @@
     align-items: flex-start;
     width: 100%;
     padding: 10px;
-    gap: 10px;
+    gap: 5px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 0px;;
+    gap: 5px;
 }
 
 .field-title {
-    font-size: 16px;
+    font-size: 14px;
     color: base.$medium-grey-letters
 }
 
 .field-value {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 @media (pointer: coarse) {

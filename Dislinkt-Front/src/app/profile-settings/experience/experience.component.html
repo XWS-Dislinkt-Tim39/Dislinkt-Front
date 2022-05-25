@@ -9,7 +9,7 @@
       <div class="right-content">
         <app-profile-navigation></app-profile-navigation>
         <div class="add-experience">
-          <button class="add-button" (click)="opetAddDialog( $event)">
+          <button class="add-button" (click)="opetAddDialog($event)">
             <mat-icon>add_circle</mat-icon>Add new experience
           </button>
         </div>
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="field">
+                <div class="description">
                   <div class="field-title">Description</div>
                   <div class="field-value">Sara</div>
                 </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="update">
               <button class="primary-button">Edit</button>
-              <button class="primary-button">Delete</button>
+              <button class="delete-button">Delete</button>
             </div>
           </div>
           <div class="line">
@@ -78,7 +78,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="field">
+                <div class="description">
                   <div class="field-title">Description</div>
                   <div class="field-value">Sara</div>
                 </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="update">
               <button class="primary-button">Edit</button>
-              <button class="primary-button">Delete</button>
+              <button class="delete-button">Delete</button>
             </div>
           </div>
 
@@ -107,28 +107,34 @@
     <form [formGroup]="addForm">
       <div class="row">
         <div class="column">
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="outline">
             <mat-label>Company Name*</mat-label>
             <input formControlName="companyName" matInput placeholder="companyName">
           </mat-form-field>
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="outline">
             <mat-label>Start Date*</mat-label>
-            <input formControlName="startDate" matInput placeholder="startDate">
+            <input formControlName="startDate" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
         <div class="column">
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="outline">
             <mat-label>Job name-Role*</mat-label>
             <input formControlName="role" matInput placeholder="role">
           </mat-form-field>
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="outline">
             <mat-label>End Date*</mat-label>
-            <input formControlName="endDate" matInput placeholder="endDate">
+            <input formControlName="endDate" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
       </div>
       <div class="row">
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="outline">
           <mat-label>Job description*</mat-label>
           <textarea formControlName="description" matInput placeholder="description"></textarea>
         </mat-form-field>
@@ -137,7 +143,7 @@
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button" cdkFocusInitial mat-dialog-close>Save</button>
-    <button mat-raised-button mat-dialog-close raised>Close</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close>Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
   </div>
 </ng-template>

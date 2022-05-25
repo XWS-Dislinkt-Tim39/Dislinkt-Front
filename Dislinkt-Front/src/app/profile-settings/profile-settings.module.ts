@@ -22,6 +22,7 @@ import { AccountInfoComponent } from '../public/account-info/account-info.compon
 import { AccountNavigationComponent } from '../public/account-navigation/account-navigation.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { SkillsComponent } from './skills/skills.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
@@ -54,6 +55,7 @@ import { SkillsComponent } from './skills/skills.component';
         MatTabsModule,
         MatButtonToggleModule,
         MatGridListModule,
+        MatDatepickerModule
     ],
     exports: [
         ProfileNavigationComponent,
