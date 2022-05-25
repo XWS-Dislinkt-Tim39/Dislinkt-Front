@@ -115,12 +115,18 @@ form {
 .update {
     display: flex;
     width: 30%;
+    flex-direction: column;
+   align-items: center
 }
+.profile-circle img {
+    border-radius: 50%;
+    position: relative
+  }
 
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
-    height: 50px;
+    width: 70%;
 }
 
 .primary-button:hover {
