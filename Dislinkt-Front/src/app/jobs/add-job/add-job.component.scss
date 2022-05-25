@@ -1,0 +1,87 @@
+@use '../../../base-style'as base;
+.container{
+    padding:30px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
+.mat-form-field{
+    width: 100%;
+    
+}
+.list{
+    display: flex;
+    flex-direction: column;
+}
+.mat-grid-list{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+ }
+.interest {
+   
+    display: flex;
+    position: absolute;
+    left: 0px;
+    color: base.$dark-grey;
+    gap: 5px;
+}
+.interest .mat-icon {
+    color: base.$primary-color
+}
+.add-list {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.add-lkist .mat-icon {
+    color: base.$dark-grey;
+    font-size: 18px;
+}
+.primary-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+.save-button {
+    @extend %primary-button;
+    width:100px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.save-button:hover {
+    @extend %primary-button-hover;
+}
+
+.close-button {
+    @extend %secondary-button;
+    width:100px;
+    padding-top:8px;
+    padding-bottom:8px;
+
+}
+
+.close-button:hover {
+    @extend %secondary-button-hover;
+    padding-top:11px;
+    padding-bottom:11px;
+}

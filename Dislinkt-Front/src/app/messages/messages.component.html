@@ -7,12 +7,7 @@
 
         <div class="chatbox">
             <div class="people">
-                <form class="search">
-                    <mat-form-field appearance="outline">
-                        <input matInput placeholder="Search people">
-                        <mat-icon matSuffix>search</mat-icon>
-                    </mat-form-field>
-                </form>
+               
                 <div class="friends">
                     <div class="friend" *ngFor="let item of messagesList" (click)="showChat(item)">
                         <div class="friend-image"><img
