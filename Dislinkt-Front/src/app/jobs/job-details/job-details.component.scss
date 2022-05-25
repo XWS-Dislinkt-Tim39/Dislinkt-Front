@@ -1,5 +1,6 @@
 @use '../../../base-style'as base;
 
+
 .container {
     min-height: 100vh;
     display: flex;
@@ -21,12 +22,9 @@
 .card {
     background-color: white;
     border-radius: base.$border-radius;
-    padding: 20px 20px 10px 20px;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 6fr 1fr;
-    column-gap: 20px;
-    justify-items: start;
+    padding: 30px;;
+   display: flex;
+   flex-direction: column;
     box-shadow: base.$box-shadow;
 }
 
@@ -39,11 +37,10 @@
     width: 100px;
     width: 100px;
 }
-.view {
-    grid-column: 5;
-    display: grid;
-    justify-self: center;
-    justify-items: center;
+.about-info{
+    display: flex;
+    flex-direction: row;
+   gap:20px;
 }
 .primary-button {
     @extend %primary-button;
@@ -51,6 +48,30 @@
 
 .primary-button:hover {
     @extend %primary-button-hover;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+}
+.mat-grid-list{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+ }
+.interest {
+    display: flex;
+    position: absolute;
+    left: 0px;
+    color: base.$dark-grey;
+    gap: 5px;
+}
+.interest .mat-icon {
+    color: base.$primary-color
 }
 
 .right {
@@ -85,6 +106,12 @@
     font-size: 20px;
     margin-bottom: 30px;
 }
+.job-subtitle {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top:20px;
+}
 
 
 .left-content {
@@ -93,6 +120,15 @@
     gap: 30px;
     flex-direction: column;
 }
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.search .mat-form-field {
+    width: 80%;
+}
+
 
 .tab-content {
     height: 100%;
@@ -140,6 +176,10 @@
     grid-column: 1;
 }
 
+.info {
+    grid-column: 2;
+}
+
 .image img {
     width: 50px;
     height: 50px;
@@ -163,16 +203,38 @@
     color: base.$light-grey-letters;
 }
 
-
 .mat-h4 {
     font-size: 16px;
     color: base.$light-grey-letters;
 }
 
+.mat-body-1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
 
 .head-connection {
     display: grid;
     grid-template-columns: 2fr 6fr
+}
+
+.accept {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -5px
+}
+
+.accept-button {
+    @extend %primary-button;
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.accept-button:hover {
+    @extend %primary-button-hover;
 }
 
 .line {
@@ -206,28 +268,7 @@
 .active {
     border-bottom: 3px solid white;
 }
-.add-post {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0
-}
-.accept {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: -5px
-}
 
-.accept-button {
-    @extend %primary-button;
-    margin: 0;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
-.accept-button:hover {
-    @extend %primary-button-hover;
-}
 @media (pointer: coarse) {
     .container {
         flex-direction: row;

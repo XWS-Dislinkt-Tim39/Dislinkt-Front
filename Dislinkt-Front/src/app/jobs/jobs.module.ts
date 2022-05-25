@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { JobDetailsComponent } from './job-details/job-details.component';
 
 
 
@@ -26,7 +27,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   declarations: [
     FindJobComponent,
     MyJobsComponent,
-    AddJobComponent
+    AddJobComponent,
+    JobDetailsComponent
   ],
   entryComponents: [ ProfileNavigationComponent],
   imports: [
