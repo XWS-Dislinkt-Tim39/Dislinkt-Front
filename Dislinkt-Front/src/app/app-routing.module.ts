@@ -21,6 +21,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { MessagesComponent } from './messages/messages.component';
 import { FindJobComponent } from './jobs/find-job/find-job.component';
 import { MyJobsComponent } from './jobs/my-jobs/my-jobs.component';
+import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,10 @@ const routes: Routes = [
   {
     path: 'my-jobs',
     component: MyJobsComponent
+  },
+  {
+    path: 'job-details',
+    component: JobDetailsComponent
   },
 ];
 
