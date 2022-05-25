@@ -123,7 +123,7 @@
     gap: 10px;
 }
 
-.reaction-button {
+.reaction-button,.like-button,.dislike-button,.comment-button {
     background-color: white;
     padding: 5px 10px;
     border-radius: 10px;
@@ -134,9 +134,24 @@
     gap: 5px;
 }
 
-.reaction-button:hover {
+.reaction-button:hover,.like-button:hover,.dislike-button:hover.comment-button:hover{
     box-shadow: base.$box-shadow;
     cursor: pointer;
+}
+.like-button{
+    background-color: base.$success;
+    border: 2px solid base.$success;
+    color: white;
+}
+.dislike-button{
+    background-color: base.$danger;
+    border: 2px solid base.$danger;
+    color: white;
+}
+.comment-button{
+    background-color: base.$medium-grey-letters;
+    border: 2px solid base.$medium-grey-letters;
+    color: white;
 }
 
 .mat-h2 {
