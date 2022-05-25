@@ -10,25 +10,48 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 
 @NgModule({
   declarations: [
     FindJobComponent,
-    MyJobsComponent
+    MyJobsComponent,
+    AddJobComponent
   ],
   entryComponents: [ ProfileNavigationComponent],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
-    ProfileSettingsModule,
-    RouterModule,
     MatIconModule,
-   ReactiveFormsModule,
-   FormsModule,
-   MatFormFieldModule,
-   MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatRadioModule,
+    RouterModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatGridListModule,
+    MatDatepickerModule
   ]
 })
 export class JobsModule { }

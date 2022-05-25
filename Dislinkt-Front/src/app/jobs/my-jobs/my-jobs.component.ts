@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddJobComponent } from '../add-job/add-job.component';
 
 @Component({
   selector: 'app-my-jobs',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-jobs.component.scss']
 })
 export class MyJobsComponent implements OnInit {
-
-  constructor() { }
+  dilogRef: any
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+  openAddDialog(event: { stopPropagation: () => void; }) {
+    this.dilogRef = this.dialog.open(AddJobComponent, {
+      data: {
+      }
+    });
   }
 
 }

@@ -17,7 +17,6 @@ export class DashboardPageComponent implements OnInit {
   openAddDialog(event: { stopPropagation: () => void; }) {
     this.dilogRef = this.dialog.open(AddPostComponent, {
       data: {
-
       }
     });
   }

@@ -33,8 +33,9 @@
 }
 .people{
     border-radius: 20px 0px 0px 20px;
-    background-color: rgb(181, 213, 230);
+    background-color: base.$primary-color-dark;
     width:30%;
+    color:white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +55,6 @@
 }
 
 .search .mat-form-field {
-  
     width: 100%;
 }
 .friends{
@@ -62,7 +62,7 @@
     flex-direction: column;
     align-items: center;
     overflow:auto;
-   width: 100%;
+    width: 100%;
 }
 .friend{
    display: flex;
@@ -71,15 +71,15 @@
    align-items: center;
    padding:10px;
    width: 90%;
-   border-bottom: 1px solid base.$light-grey-letters;
+   border-bottom: 1px solid base.$primary-color;
 }
 .friend:hover{
-    background-color: white;
+    background-color: base.$primary-color;
     border-radius: 20px;
     cursor: pointer;
 }
 .name{
-    font-size: 17px;
+    font-size: 18px;
 }
 .friend-image img{
     width:50px;
@@ -146,6 +146,7 @@
     justify-content: flex-end;
     gap:10px;
     padding:10px 20px;
+    color:white
 }
 .message-body-right{
     padding:10px;
@@ -156,7 +157,7 @@
     flex-wrap: wrap;
     overflow-wrap: break-word;
     max-width: 70%;
-    background-color: rgb(181, 213, 230);
+    background-color:base.$primary-color;
 }
 
 
