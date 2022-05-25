@@ -19,12 +19,14 @@ export class AddPostComponent implements OnInit {
   textStyle:string='';
   imageStyle:string='';
   linkStyle:string='';
+  imageDropifyStyle:string='';
   constructor(private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<AddPostComponent>,
   ) {
     this. textStyle = 'text-default';
     this. imageStyle = 'text-default';
     this. linkStyle = 'text-default';
+    this. imageDropifyStyle = 'image-default';
     this.form = this.formBuilder.group({
       text: [''],
       image: [''],
@@ -57,6 +59,12 @@ export class AddPostComponent implements OnInit {
   }
   toggleImage(){
     this.showImage=!this.showImage;
+    if(this.showImage){
+      this.imageDropifyStyle='image-checked';
+    }
+    else{
+      this.imageDropifyStyle ='image-default';
+    }
     if(this.showImage){
       this.imageStyle='text-checked';
     }
