@@ -163,6 +163,7 @@
     color: base.$light-grey-letters;
 }
 
+
 .mat-h4 {
     font-size: 16px;
     color: base.$light-grey-letters;
@@ -174,23 +175,7 @@
     grid-template-columns: 2fr 6fr
 }
 
-.view {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: -5px
-}
 
-.view-button {
-    @extend %primary-button;
-    margin: 0;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
-.view-button:hover {
-    @extend %primary-button-hover;
-}
 
 .line {
     border-bottom: 2px solid base.$light-grey-letters;
