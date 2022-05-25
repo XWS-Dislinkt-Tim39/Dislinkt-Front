@@ -13,10 +13,20 @@ export class AddPostComponent implements OnInit {
   form: FormGroup;
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef | undefined;
   myfilename = 'Select File';
-
+  showText:boolean=false;
+  showImage:boolean=false;
+  showLink:boolean=false;
+  textStyle:string='';
+  imageStyle:string='';
+  linkStyle:string='';
+  imageDropifyStyle:string='';
   constructor(private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<AddPostComponent>,
   ) {
+    this. textStyle = 'text-default';
+    this. imageStyle = 'text-default';
+    this. linkStyle = 'text-default';
+    this. imageDropifyStyle = 'image-default';
     this.form = this.formBuilder.group({
       text: [''],
       image: [''],
@@ -35,6 +45,41 @@ export class AddPostComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = e => this.imageSrc = reader.result;
     reader.readAsDataURL(file);
+  }
+
+  toggleText(){
+    this.showText=!this.showText;
+    if(this.showText){
+      this.textStyle='text-checked';
+    }
+    else{
+      this.textStyle = 'text-default';
+    }
+    
+  }
+  toggleImage(){
+    this.showImage=!this.showImage;
+    if(this.showImage){
+      this.imageDropifyStyle='image-checked';
+    }
+    else{
+      this.imageDropifyStyle ='image-default';
+    }
+    if(this.showImage){
+      this.imageStyle='text-checked';
+    }
+    else{
+      this.imageStyle ='text-default';
+    }
+  }
+  toggleLink(){
+    this.showLink=!this.showLink;
+    if(this.showLink){
+      this.linkStyle='text-checked';
+    }
+    else{
+      this.linkStyle = 'text-default';
+    }
   }
 
   fileChangeEvent(fileInput: any) {

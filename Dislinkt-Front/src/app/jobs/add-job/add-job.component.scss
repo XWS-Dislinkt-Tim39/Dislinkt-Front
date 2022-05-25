@@ -1,6 +1,11 @@
 @use '../../../base-style'as base;
 .container{
     padding:30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
 
 }
 form{
