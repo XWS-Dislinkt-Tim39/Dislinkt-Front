@@ -32,14 +32,14 @@
               mollit anim id est laborum.
             </div>
             <div class="reactions">
-              <button class="reaction-button">
-                <mat-icon>thumb_up</mat-icon>Like
+              <button [ngClass]="[likeStyle]" (click)="toggleLike()">
+                <mat-icon>thumb_up</mat-icon>30
               </button>
-              <button class="reaction-button">
-                <mat-icon>thumb_down</mat-icon>Dislike
+              <button [ngClass]="[dislikeStyle]" (click)="toggleDislike()">
+                <mat-icon>thumb_down</mat-icon>2
               </button>
-              <button class="reaction-button">
-                <mat-icon> comment</mat-icon>Comment
+              <button [ngClass]="[commentStyle]" (click)="toggleComment()">
+                <mat-icon> comment</mat-icon>5
               </button>
             </div>
           </div>
@@ -63,13 +63,13 @@
             </div>
             <div class="reactions">
               <button class="reaction-button">
-                <mat-icon>thumb_up</mat-icon>Like
+                <mat-icon>thumb_up</mat-icon>25
               </button>
               <button class="reaction-button">
-                <mat-icon>thumb_down</mat-icon>Dislike
+                <mat-icon>thumb_down</mat-icon>10
               </button>
               <button class="reaction-button">
-                <mat-icon> comment</mat-icon>Comment
+                <mat-icon> comment</mat-icon>3
               </button>
             </div>
           </div>

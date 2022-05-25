@@ -65,27 +65,32 @@ form{
 .primary-button:hover {
     @extend %primary-button-hover;
 }
-.save-button {
-    @extend %primary-button;
-    width:100px;
-    padding-top:10px;
-    padding-bottom:10px;
+.dialog-actions {
+    padding:20px;
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
 }
 
-.save-button:hover {
-    @extend %primary-button-hover;
+.yes-button {
+    background-color: base.$primary-color;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
 }
-
-.close-button {
-    @extend %secondary-button;
-    width:100px;
-    padding-top:8px;
-    padding-bottom:8px;
-
+.yes-button:hover{
+   box-shadow: base.$box-shadow;
 }
-
-.close-button:hover {
-    @extend %secondary-button-hover;
-    padding-top:11px;
-    padding-bottom:11px;
+.cancel-button {
+    background-color: base.$light-grey-letters;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.cancel-button:hover{
+   box-shadow: base.$box-shadow;
 }
