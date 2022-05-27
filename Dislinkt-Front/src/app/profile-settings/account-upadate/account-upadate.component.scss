@@ -63,6 +63,17 @@
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+.save-button {
+    @extend %primary-button;
+    background-color: base.$success;
+    width: 200px;
+}
+
+.save-button:hover {
+    @extend %primary-button-hover;
+    background-color: base.$success;
+}
+
 
 .tab-content {
     background-color: white;
@@ -158,6 +169,12 @@ form {
     font-weight: 500;
     font-size: 16px;
     color: base.$dark-grey;
+}
+input:disabled{
+    color:base.$dark-grey
+}
+textarea:disabled{
+    color:base.$dark-grey
 }
 
 @media (pointer: coarse) {

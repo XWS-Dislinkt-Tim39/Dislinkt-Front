@@ -11,51 +11,54 @@
 
         <div class="tab-content">
           <div class="main">
-            <form [formGroup]="loginForm" style="text-align: center;">
+            <form [formGroup]="profileForm" style="text-align: center;">
               <div class="row">
                 <div class="left-column">
                   <mat-form-field appearance="outline">
                     <mat-label>First Name*</mat-label>
-                    <input formControlName="username" matInput placeholder="Username">
+                    <input formControlName="firstName" matInput placeholder="Username">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Last Name*</mat-label>
-                    <input formControlName="username" matInput placeholder="Username">
+                    <input formControlName="lastName" matInput placeholder="Username">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Email*</mat-label>
-                    <input formControlName="username" matInput placeholder="Username">
+                    <input formControlName="email" matInput placeholder="Username">
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
-                    <mat-label>Date of birth*</mat-label>
-                    <input formControlName="username" matInput placeholder="Username">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"  [value]="date1.value">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
 
                 </div>
                 <div class="right-column">
                   <mat-form-field appearance="outline">
                     <mat-label>Address*</mat-label>
-                    <input formControlName="password" matInput placeholder="Password">
+                    <input formControlName="address" matInput placeholder="Password">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>City*</mat-label>
-                    <input formControlName="password" matInput placeholder="Password">
+                    <input formControlName="city" matInput placeholder="Password">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Country*</mat-label>
-                    <input formControlName="password" matInput placeholder="Password">
+                    <input formControlName="country" matInput placeholder="Password">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Phone number*</mat-label>
-                    <input formControlName="username" matInput placeholder="Username">
+                    <input formControlName="phoneNumber" matInput placeholder="Username">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <mat-form-field class="biography" appearance="outline">
                   <mat-label>Biography*</mat-label>
-                  <textarea formControlName="password" matInput placeholder="Password"></textarea>
+                  <textarea formControlName="biography" matInput placeholder="Password"></textarea>
                 </mat-form-field>
               </div>
 
@@ -64,8 +67,9 @@
               <div class="profile-circle"><img
                   src="https://qph.cf2.quoracdn.net/main-thumb-1278318002-200-ydzfegagslcexelzgsnplcklfkienzfr.jpeg">
               </div>
-              <button class="primary-button">Edit profile image</button>
-              <button class="primary-button">Edit about info</button>
+              <button class="primary-button" >Edit profile image</button>
+              <button class="primary-button" *ngIf="!isEdit" (click)="editProfile()">Edit about info</button>
+              <button class="save-button" (click)="saveProfile()" *ngIf="isEdit">Save changes</button>
             </div>
           </div>
 
