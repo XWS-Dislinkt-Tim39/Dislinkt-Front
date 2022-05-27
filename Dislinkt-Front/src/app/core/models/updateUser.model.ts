@@ -1,4 +1,5 @@
 export interface UpdateUser {
+    id:string;
     firstName: string;
     lastName: string;
     emailAddress: string;
