@@ -18,7 +18,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       useClass: HttpTokenInterceptor,
       multi: true,
     }
-
   ]
 })
 export class CoreModule { }

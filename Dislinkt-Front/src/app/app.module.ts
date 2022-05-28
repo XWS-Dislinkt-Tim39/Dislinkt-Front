@@ -23,6 +23,7 @@ import { ProfileSettingsModule } from './profile-settings/profile-settings.modul
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesModule } from './messages/messages.module';
 import { JobsModule } from './jobs/jobs.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { JobsModule } from './jobs/jobs.module';
     DashboardModule,
     ProfileSettingsModule,
     MessagesModule,
-    JobsModule
+    JobsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
