@@ -6,6 +6,7 @@ import { JwtService } from './jwt.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { UpdateUser } from '../models/updateUser.model';
+import { UserExperience } from '../models/user-experience.model';
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +27,9 @@ export class ProfileService {
       return this.http.post(`${environment.api_url}update-user`, editedUser, { headers: this.headers, responseType: 'json' });
     }
 
-
+    addWorkExperience(experience:UserExperience): Observable<any> {
+        return this.http.post(`${environment.api_url}add-work-experience`,experience, { headers: this.headers, responseType: 'json' });
+    }
 
 
 

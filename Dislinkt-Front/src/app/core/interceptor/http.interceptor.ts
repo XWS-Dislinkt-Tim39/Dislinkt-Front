@@ -14,6 +14,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const userDetails= this.jwtService.getUserDetails();
+        alert(userDetails)
         if (userDetails) {
             req = req.clone({
                 setHeaders: {

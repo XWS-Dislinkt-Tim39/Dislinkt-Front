@@ -49,4 +49,13 @@ export class JwtService {
     return '';
   }
 
+  getUserId():string{
+    let userDetailsString = localStorage.getItem('userDetails');
+    if (userDetailsString) {
+      let userDetails= JSON.parse(userDetailsString || '');
+      return userDetails.user.id;
+    }
+    return '';
+  }
+
 }
