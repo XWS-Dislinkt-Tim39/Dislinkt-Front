@@ -13,11 +13,11 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const userDetails: UserToken = this.jwtService.getUserDetails();
+        const userDetails= this.jwtService.getUserDetails();
         if (userDetails) {
             req = req.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${userDetails.jwtToken}`
+                    Authorization: `Bearer ${userDetails.token}`
                 }
             });
         }
