@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   hidePassword = true;
+  token:string='';
   matcher: ErrorMatcher = new ErrorMatcher();
   constructor(
     private formBuilder: FormBuilder,
@@ -41,13 +42,14 @@ export class SignInComponent implements OnInit {
     const login: UserSignIn = { emailAddress: '', password: '' };
     login.emailAddress = this.loginForm.value.username;
     login.password = this.loginForm.value.password;
-    this.authenticationService.signUp(login).subscribe((data: UserToken) => {
+    this.authenticationService.signUp(login).subscribe((data: any) => {
       this.jwtService.saveUserDetails(data);
-      //this.router.navigate(['/my-restaurants']);
+      this.router.navigate(['/dashboard']);  
     },
       error => {
         alert(error.error.message);
       });
+
 
   }
 

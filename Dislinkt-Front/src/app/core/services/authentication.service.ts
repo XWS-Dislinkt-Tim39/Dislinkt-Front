@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthenticationService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private headers1 = new HttpHeaders({ 'Content-Type': 'text/plain' });
 
   constructor(
     private http: HttpClient,
@@ -18,7 +19,7 @@ export class AuthenticationService {
   ) { }
 
   signUp(user: UserSignIn): Observable<any> {
-    return this.http.post(`${environment.api_url}sign-up`, user, {
+    return this.http.get(`${environment.api_url}sign-up`, {
       params: {
         emailAddress: user.emailAddress,
         password: user.password

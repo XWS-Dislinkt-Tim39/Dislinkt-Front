@@ -16,7 +16,7 @@ export class JwtService {
     return null;
   }
 
-  saveUserDetails(userToken: UserToken): void {
+  saveUserDetails(userToken: string): void {
     localStorage.setItem('userDetails', JSON.stringify(userToken));
   }
 

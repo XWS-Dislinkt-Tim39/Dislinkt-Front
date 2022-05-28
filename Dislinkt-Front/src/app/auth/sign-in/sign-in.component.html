@@ -4,7 +4,7 @@
     <div class="title mat-display-1">Welcome back!
     </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="text-align: center;">
+    <form [formGroup]="loginForm" style="text-align: center;">
       <mat-form-field appearance="outline">
         <mat-label>Username*</mat-label>
         <input formControlName="username" matInput placeholder="Username" [errorStateMatcher]="matcher">
@@ -22,7 +22,7 @@
       </mat-form-field>
     </form>
 
-    <button class="primary-button" [routerLink]="['/dashboard']">Sign In</button>
+    <button class="primary-button" (click)="onSubmit()">Sign In</button>
     <div class="mat-h2">
       <div>New to Dislinkt?
         <a id="sign-up" [routerLink]="['/sign-up']">Sign Up</a></div>
