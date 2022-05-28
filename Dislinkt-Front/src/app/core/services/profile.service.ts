@@ -18,11 +18,17 @@ export class ProfileService {
     ) { }
 
     getAboutInfo(userId:string): Observable<any> {
-        return this.http.get(`${environment.api_url}get-user/${userId}`, { headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.api_url}get-user`, { params: {
+            id: userId
+          }, headers: this.headers, responseType: 'json' });
     }
     editAboutInfo(editedUser: UpdateUser): Observable<any> {
       return this.http.post(`${environment.api_url}update-user`, editedUser, { headers: this.headers, responseType: 'json' });
     }
+
+
+
+
 
 
 

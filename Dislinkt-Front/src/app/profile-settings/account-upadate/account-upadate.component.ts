@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { UpdateUser } from 'src/app/core/models/updateUser.model';
+import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
@@ -41,7 +43,8 @@ export class AccountUpadateComponent implements OnInit {
   isEdit:boolean=false;
   constructor(
     private formBuilder: FormBuilder,
-    private profileService:ProfileService
+    private profileService:ProfileService,
+    private jwtService:JwtService
     ) 
     {
     this.profileForm = this.formBuilder.group({
@@ -77,7 +80,7 @@ export class AccountUpadateComponent implements OnInit {
     this.profileForm.get('dateOfBirth')?.setValue(userDetails.user.dateOfBirth);
     this.profileForm.get('biography')?.setValue(userDetails.user.biography);
     this.date1=new FormControl(userDetails.user.dateOfBirth);
-    this.profileForm.disable()
+    this.profileForm.disable();
   }
 
   editProfile(){
@@ -104,9 +107,10 @@ export class AccountUpadateComponent implements OnInit {
     this.editedProfile.biography = this.profileForm.value.biography;
     this.editedProfile.gender =userDetails.user.gender;
     this.editedProfile.dateOfBirth =this.dateOfBirth;
-   this.profileService.editAboutInfo(this.editedProfile).subscribe(
+    this.profileService.editAboutInfo(this.editedProfile).subscribe(
       (data: any) => {
           this.oldUserInfo = data;
+          this.jwtService.updateUserDetails(this.editedProfile)
           alert('Successfully edited about info')
       },
       (error) => {
