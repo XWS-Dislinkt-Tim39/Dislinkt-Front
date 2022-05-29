@@ -43,8 +43,14 @@ export class SignInComponent implements OnInit {
     login.emailAddress = this.loginForm.value.username;
     login.password = this.loginForm.value.password;
     this.authenticationService.signUp(login).subscribe((data: any) => {
-      this.jwtService.saveUserDetails(data);
-      this.router.navigate(['/dashboard']);  
+      if(data==null){
+        alert('Username od password invalid! Try again!');
+        this.loginForm.reset();
+      }
+      else{
+        this.jwtService.saveUserDetails(data);
+        this.router.navigate(['/dashboard']);  
+      }
     },
       error => {
         alert(error.error.message);

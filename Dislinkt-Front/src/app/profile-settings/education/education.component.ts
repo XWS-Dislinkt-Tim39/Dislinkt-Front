@@ -2,57 +2,58 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateUserEducation } from 'src/app/core/models/update-user-education.model';
 import { UpdateUserExperience } from 'src/app/core/models/update-user-experience.model';
+import { UserEducation } from 'src/app/core/models/user-education.model';
 import { UserExperience } from 'src/app/core/models/user-experience.model';
 import { User } from 'src/app/core/models/user.model';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
-import { UserExperienceComponent } from 'src/app/dashboard/user-experience/user-experience.component';
 
 @Component({
-  selector: 'app-experience',
-  templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.scss']
+  selector: 'app-education',
+  templateUrl: './education.component.html',
+  styleUrls: ['./education.component.scss']
 })
-export class ExperienceComponent implements OnInit {
+export class EducationComponent implements OnInit {
   isIconPress: boolean = false;
   addForm: FormGroup;
   editForm: FormGroup;
   userId: any;
-  selectedExperience: any = {
+  selectedEducation: any = {
     id:"",
     userId: "",
-    nameOfCompany: "",
-    fieldOfWork: "",
+    nameOfSchool: "",
+    fieldOfStudy: "",
     startDate: new Date(),
     endDate: new Date(),
     description: ""
   }
-  experience: UserExperience = {
+  education: UserEducation= {
     userId: "",
-    nameOfCompany: "",
-    fieldOfWork: "aaa",
+    nameOfSchool: "",
+    fieldOfStudy: "aaa",
     startDate: new Date(),
     endDate: new Date(),
     description: ""
   }
-  editedExperience: UpdateUserExperience = {
+  editedEducation: UpdateUserEducation = {
     id:"",
     userId: "",
-    nameOfCompany: "",
-    fieldOfWork: "aaa",
+    nameOfSchool: "",
+    fieldOfStudy: "aaa",
     startDate: new Date(),
     endDate: new Date(),
     description: ""
   }
-  experiences:any=[]
+  educations:any=[]
   startDate: Date = new Date();
   endDate: Date = new Date();
   startDateEdit: Date = new Date();
   endDateEdit: Date = new Date();
 
-  @ViewChild('addExperience') addDialog!: TemplateRef<any>;
-  @ViewChild('editExperience') editDialog!: TemplateRef<any>;
+  @ViewChild('addEducation') addDialog!: TemplateRef<any>;
+  @ViewChild('editEducation') editDialog!: TemplateRef<any>;
 
   constructor(private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -61,16 +62,16 @@ export class ExperienceComponent implements OnInit {
   ) {
     this.userId = this.jwtService.getUserId();
     this.addForm = this.formBuilder.group({
-      nameOfCompany: ['', Validators.required],
-      fieldOfWork: ['', Validators.required],
+      nameOfSchool: ['', Validators.required],
+      fieldOfStudy: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       description: ['']
     });
 
     this.editForm = this.formBuilder.group({
-      nameOfCompany: ['', Validators.required],
-      fieldOfWork: ['', Validators.required],
+      nameOfSchool: ['', Validators.required],
+      fieldOfStudy: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       description: ['']
@@ -79,7 +80,7 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getAllExperiences();
+    this.getAllEducations();
   }
   get addFormControl(): { [key: string]: AbstractControl; } { return this.addForm.controls; }
   get editFormControl(): { [key: string]: AbstractControl; } { return this.addForm.controls; }
@@ -93,8 +94,8 @@ export class ExperienceComponent implements OnInit {
   }
   opetEditDialog(event: any,row:UpdateUserExperience) {
     event?.stopPropagation();
-    this.selectedExperience=row;
-    this.editedExperience.id=row.id
+    this.selectedEducation=row;
+    this.editedEducation.id=row.id
     const myTempDialog = this.dialog.open(this.editDialog);
     this.setEditFields();
     myTempDialog.afterClosed().subscribe((res) => {
@@ -102,9 +103,9 @@ export class ExperienceComponent implements OnInit {
     });
   }
 
-  getAllExperiences() {
+  getAllEducations() {
     this.profileService.getAboutInfo(this.userId).subscribe(data => {
-      this.experiences=data.workExperiences;
+      this.educations=data.educations;
     }, error => {
       console.log(error.error);
       alert('Error! Try again');
@@ -113,24 +114,24 @@ export class ExperienceComponent implements OnInit {
 
 
   setEditFields(){
-    this.editForm.get('nameOfCompany')?.setValue(this.selectedExperience.nameOfCompany);
-    this.editForm.get('fieldOfWork')?.setValue(this.selectedExperience.fieldOfWork);
-    this.startDateEdit=this.selectedExperience.startDate;
-    this.endDateEdit=this.selectedExperience.endDate;
-    this.editForm.get('description')?.setValue(this.selectedExperience.description);
+    this.editForm.get('nameOfSchool')?.setValue(this.selectedEducation.nameOfSchool);
+    this.editForm.get('fieldOfStudy')?.setValue(this.selectedEducation.fieldOfStudy);
+    this.startDateEdit=this.selectedEducation.startDate;
+    this.endDateEdit=this.selectedEducation.endDate;
+    this.editForm.get('description')?.setValue(this.selectedEducation.description);
   }
   addWorkExperience() {
     if (this.addForm.invalid) {
       return;
     }
-    this.experience.userId = this.userId;
-    this.experience.nameOfCompany = this.addForm.value.nameOfCompany;
-    this.experience.fieldOfWork = this.addForm.value.fieldOfWork;
-    this.experience.startDate = this.addForm.value.startDate;
-    this.experience.endDate = this.addForm.value.endDate;
-    this.experience.description = this.addForm.value.description;
-    this.profileService.addWorkExperience(this.experience).subscribe(data => {
-      alert('Sucessfully added new work experience');
+    this.education.userId = this.userId;
+    this.education.nameOfSchool = this.addForm.value.nameOfSchool;
+    this.education.fieldOfStudy = this.addForm.value.fieldOfStudy;
+    this.education.startDate = this.addForm.value.startDate;
+    this.education.endDate = this.addForm.value.endDate;
+    this.education.description = this.addForm.value.description;
+    this.profileService.addEducation(this.education).subscribe(data => {
+      alert('Sucessfully added new education');
       window.location.reload();
     }, error => {
       console.log(error.error);
@@ -139,16 +140,16 @@ export class ExperienceComponent implements OnInit {
   }
 
   editWorkExperience(){
-    this.editedExperience.userId=this.userId;
-    this.editedExperience.nameOfCompany=this.editForm.value.nameOfCompany;
-    this.editedExperience.fieldOfWork=this.editForm.value.fieldOfWork;
-    this.editedExperience.startDate=this.startDateEdit;
-    this.editedExperience.endDate=this.endDateEdit;
-    this.editedExperience.description=this.editForm.value.description;
-    console.log(this.editedExperience);
+    this.editedEducation.userId=this.userId;
+    this.editedEducation.nameOfSchool=this.editForm.value.nameOfSchool;
+    this.editedEducation.fieldOfStudy=this.editForm.value.fieldOfStudy;
+    this.editedEducation.startDate=this.startDateEdit;
+    this.editedEducation.endDate=this.endDateEdit;
+    this.editedEducation.description=this.editForm.value.description;
+    console.log(this.editedEducation);
 
-    this.profileService.editWorkExperience(this.editedExperience).subscribe(data=>{
-      alert('Successfully edited selected work experience');
+    this.profileService.editEducation(this.editedEducation).subscribe(data=>{
+      alert('Successfully edited selected education');
       window.location.reload();
     },error=>{
         alert('Error! Try again!')

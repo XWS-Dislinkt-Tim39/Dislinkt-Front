@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { UpdateUser } from '../models/updateUser.model';
 import { UserExperience } from '../models/user-experience.model';
 import { UpdateUserExperience } from '../models/update-user-experience.model';
+import { UserEducation } from '../models/user-education.model';
+import { UpdateUserEducation } from '../models/update-user-education.model';
 
 @Injectable({
     providedIn: 'root'
@@ -33,6 +35,13 @@ export class ProfileService {
     }
     editWorkExperience(experience:UpdateUserExperience): Observable<any> {
         return this.http.post(`${environment.api_url}update-work-experience`,experience, { headers: this.headers, responseType: 'json' });
+    }
+
+    addEducation(education:UserEducation): Observable<any> {
+        return this.http.post(`${environment.api_url}add-education`,education, { headers: this.headers, responseType: 'json' });
+    }
+    editEducation(education:UpdateUserEducation): Observable<any> {
+        return this.http.post(`${environment.api_url}update-education`,education, { headers: this.headers, responseType: 'json' });
     }
 
 
