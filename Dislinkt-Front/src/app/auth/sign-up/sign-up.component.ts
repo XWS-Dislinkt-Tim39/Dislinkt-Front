@@ -62,11 +62,12 @@ export class SignUpComponent implements OnInit {
     newUser.gender = this.registerForm.value.gender;
     this.authenticationService.register(newUser).subscribe((res: any) => {
       console.log(res);
+      alert('Sucessfully registered! Please check your e-mail to confirm your registration!')
       // this.router.navigate(['/registration-success']);
     },
       error => {
         console.log(error.error);
-        alert(error.error.message);
+        alert('Error! Try again!');
       });
   }
 

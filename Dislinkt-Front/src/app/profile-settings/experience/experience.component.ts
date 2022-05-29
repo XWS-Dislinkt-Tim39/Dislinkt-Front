@@ -148,7 +148,8 @@ export class ExperienceComponent implements OnInit {
     console.log(this.editedExperience);
 
     this.profileService.editWorkExperience(this.editedExperience).subscribe(data=>{
-      alert('uspjesno')
+      alert('Successfully edited selected work experience');
+      window.location.reload();
     },error=>{
         alert('Error! Try again!')
     })
