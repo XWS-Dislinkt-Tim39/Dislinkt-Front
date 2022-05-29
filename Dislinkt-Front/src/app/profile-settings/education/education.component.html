@@ -1,0 +1,165 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div class="right">
+      <div class="right-content">
+        <app-profile-navigation></app-profile-navigation>
+        <div class="add-experience">
+          <button class="add-button" (click)="opetAddDialog($event)">
+            <mat-icon>add_circle</mat-icon>Add new education
+          </button>
+        </div>
+        <div class="tab-content" >
+          <div class="main"  *ngFor="let item of educations">
+            <div class="card" style="text-align: center;">
+              <div class="row">
+                <div class="left-column">
+                  <div class="field">
+                    <div class="field-title">Field Of Study</div>
+                    <div class="field-value">{{item.fieldOfStudy}}</div>
+                  </div>
+                  <div class="field">
+                    <div class="field-title">School Name</div>
+                    <div class="field-value">{{item.nameOfSchool}}</div>
+                  </div>
+                </div>
+                <div class="right-column">
+                  <div class="field">
+                    <div class="field-title">Date Start</div>
+                    <div class="field-value">{{item.startDate | date:'mediumDate'}}</div>
+                  </div>
+                  <div class="field">
+                    <div class="field-title">Date End</div>
+                    <div class="field-value">{{item.endDate | date:'mediumDate'}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="description">
+                  <div class="field-title">Description</div>
+                  <div class="field-value">{{item.description}}</div>
+                </div>
+               
+              </div>
+            </div>
+           
+            <div class="update">
+              <button class="primary-button" (click)="opetEditDialog($event,item)">Edit</button>
+              
+              <button class="delete-button">Delete</button>
+            </div>
+          </div>
+         
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #addEducation let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new education</div>
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="addForm">
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>School Name*</mat-label>
+            <input formControlName="nameOfSchool" matInput placeholder="schoolName">
+            <mat-error *ngIf="addFormControl.nameOfSchool.errors?.required">School name required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date*</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Field Of Study*</mat-label>
+            <input formControlName="fieldOfStudy" matInput placeholder="role">
+            <mat-error *ngIf="addFormControl.fieldOfStudy.errors?.required">Role required</mat-error>
+        
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>End Date*</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+           </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Description*</mat-label>
+          <textarea formControlName="description" matInput placeholder="description"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="addWorkExperience()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #editEducation let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Edit education</div>
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="editForm">
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>School Name*</mat-label>
+            <input formControlName="nameOfSchool" matInput placeholder="schoolName">
+            <mat-error *ngIf="editFormControl.nameOfSchool.errors?.required">School name required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date*</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDateEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Field of study*</mat-label>
+            <input formControlName="fieldOfStudy" matInput placeholder="role">
+            <mat-error *ngIf="editFormControl.fieldOfStudy.errors?.required">Role required</mat-error>
+        
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>End Date*</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDateEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+           </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Description*</mat-label>
+          <textarea formControlName="description" matInput placeholder="description"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="editWorkExperience()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
+  </div>
+</ng-template>

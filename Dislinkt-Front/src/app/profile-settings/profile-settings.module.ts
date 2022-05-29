@@ -23,12 +23,14 @@ import { AccountNavigationComponent } from '../public/account-navigation/account
 import { ExperienceComponent } from './experience/experience.component';
 import { SkillsComponent } from './skills/skills.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EducationComponent } from './education/education.component';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
         ProfileNavigationComponent,
         ExperienceComponent,
-        SkillsComponent
+        SkillsComponent,
+        EducationComponent
     ],
     entryComponents: [],
     imports: [

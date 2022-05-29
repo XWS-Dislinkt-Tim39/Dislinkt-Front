@@ -1,0 +1,290 @@
+@use '../../../base-style' as base;
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color: base.$background-color;
+}
+
+.wrapper {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 80%;
+    gap: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: base.$background-color;
+    border-radius: base.$border-radius;
+}
+
+.left {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-content {
+    width: 100%;
+    border-radius: base.$border-radius;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.primary-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+    width: 150px;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+.tab-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.yes-button {
+    background-color: base.$primary-color;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.yes-button:hover{
+   box-shadow: base.$box-shadow;
+}
+.cancel-button {
+    background-color: base.$light-grey-letters;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding:5px 20px;
+}
+.cancel-button:hover{
+   box-shadow: base.$box-shadow;
+}
+
+
+.dialog-actions {
+    padding:20px;
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.line {
+    border-bottom: 50px solid base.$light-grey-letters;
+    margin: 10px 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid base.$light-grey-letters;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.row {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.line {
+    border-bottom: 2px solid base.$light-grey-letters;
+    margin: 10px 0;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.update {
+    display: flex;
+    width: 30%;
+}
+
+.add {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+}
+
+.add:hover {
+    @extend %primary-button-hover;
+}
+
+.primary-button {
+    @extend %primary-button;
+    height: 50px;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+.delete-button {
+    @extend %primary-button;
+    height: 50px;
+    background-color: base.$danger;
+}
+
+.delete-button:hover {
+    @extend %primary-button-hover;
+    background-color: base.$danger;
+}
+
+
+.mat-form-field {
+    width: 100%;
+}
+
+.add-experience {
+    display: flex;
+    justify-content: flex-end;
+
+}
+.mat-dialog-content{
+    padding:50px;
+}
+.mat-dialog-title{
+    padding:30px 50px 0px 50px;
+}
+
+
+.add-button {
+    @extend %grey-button;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-button:hover {
+    @extend %grey-button-hover;
+}
+
+.biography {
+    width: 100%;
+}
+
+.mat-h2 {
+    margin-top: 10px;
+    font-weight: 500;
+    color: base.$dark-grey;
+}
+
+.mat-h3 {
+    font-weight: 600;
+    margin-top: -20px;
+    font-size: 17px;
+    color: base.$primary-color-dark;
+}
+
+.mat-body-1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    gap: 5px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0px 0px;;
+    gap: 5px;
+
+}
+
+.field-title {
+    font-size: 14px;
+    color: base.$medium-grey-letters
+}
+
+.field-value {
+    font-size: 18px;
+}
+
+@media (pointer: coarse) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .mat-h1 {
+        width: 100%;
+        margin: 0px 0px;
+        text-align: center;
+    }
+
+}

@@ -22,6 +22,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { FindJobComponent } from './jobs/find-job/find-job.component';
 import { MyJobsComponent } from './jobs/my-jobs/my-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
+import { EducationComponent } from './profile-settings/education/education.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'account-experience',
     component: ExperienceComponent
+  },
+  {
+    path: 'account-education',
+    component: EducationComponent
   },
   {
     path: 'account-skills',
