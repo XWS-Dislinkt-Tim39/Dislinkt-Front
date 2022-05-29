@@ -85,7 +85,7 @@
 }
 
 .left-main {
-    width: 60%;
+    width: 100%;
 }
 
 .right-main {
@@ -106,10 +106,14 @@
 }
 
 .skill {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 10px;
     font-size: 16px;
+}
+.skill .mat-icon{
+    color: base.$primary-color-dark;
 }
 
 .card {

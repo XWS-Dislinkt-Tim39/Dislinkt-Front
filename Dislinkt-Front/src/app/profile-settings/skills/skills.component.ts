@@ -1,6 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NewSkill } from 'src/app/core/models/new-skill.model';
+import { JwtService } from 'src/app/core/services/jwt.service';
+import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
   selector: 'app-skills',
@@ -11,10 +14,22 @@ export class SkillsComponent implements OnInit {
   isIconPress: boolean = false;
   addForm: FormGroup;
   addSkillForm: FormGroup;
-  @ViewChild('addSkillCategory') addDialog!: TemplateRef<any>;
-  @ViewChild('addSkill') addSkillDialog!: TemplateRef<any>;
-  categories: string[] = ['Technical skills', 'SOft skills'];
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {
+  @ViewChild('addSkillCategory') addDialog!: any;
+  @ViewChild('addSkill') addSkillDialog!: any;
+userId:any;
+  skills: NewSkill[] = [];
+  newSkill:NewSkill={
+    name:'',
+    userId:''
+  }
+  selected:any;
+
+  constructor(private formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private profileService: ProfileService,
+    private jwtService:JwtService
+  ) {
+    this.userId = this.jwtService.getUserId();
     this.addForm = this.formBuilder.group({
       category: [''],
     });
@@ -24,7 +39,32 @@ export class SkillsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllSkills();
   }
+
+  getAllSkills() {
+    this.profileService.getAllSkills().subscribe(data => {
+      this.skills = data;
+    },
+      error => {
+        alert('Error!')
+      })
+  }
+
+  addNewSkill() {
+    this.newSkill.userId=this.userId;
+    if(this.addSkillForm.value.skill==""){
+      this.newSkill.name=this.selected.name;
+     
+    }else{
+      this.newSkill.name=this.addSkillForm.value.skill;
+    }
+    this.profileService.addNewSkill(this.newSkill).subscribe(data=>{
+      alert('Successfully added new skill');
+    },error=>{
+      alert('Error! Try again!')
+    })
+   }
 
   opetAddCategoryDialog(event: any) {
     event?.stopPropagation();
