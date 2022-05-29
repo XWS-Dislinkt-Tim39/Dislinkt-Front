@@ -1,6 +1,8 @@
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateUserExperience } from 'src/app/core/models/update-user-experience.model';
 import { UserExperience } from 'src/app/core/models/user-experience.model';
 import { User } from 'src/app/core/models/user.model';
 import { JwtService } from 'src/app/core/services/jwt.service';
@@ -17,7 +19,8 @@ export class ExperienceComponent implements OnInit {
   addForm: FormGroup;
   editForm: FormGroup;
   userId: any;
-  selectedExperience: UserExperience = {
+  selectedExperience: any = {
+    id:"",
     userId: "",
     nameOfCompany: "",
     fieldOfWork: "",
@@ -26,6 +29,15 @@ export class ExperienceComponent implements OnInit {
     description: ""
   }
   experience: UserExperience = {
+    userId: "",
+    nameOfCompany: "",
+    fieldOfWork: "aaa",
+    startDate: new Date(),
+    endDate: new Date(),
+    description: ""
+  }
+  editedExperience: UpdateUserExperience = {
+    id:"",
     userId: "",
     nameOfCompany: "",
     fieldOfWork: "aaa",
@@ -79,9 +91,10 @@ export class ExperienceComponent implements OnInit {
       console.log({ res });
     });
   }
-  opetEditDialog(event: any,row:UserExperience) {
+  opetEditDialog(event: any,row:UpdateUserExperience) {
     event?.stopPropagation();
     this.selectedExperience=row;
+    this.editedExperience.id=row.id
     const myTempDialog = this.dialog.open(this.editDialog);
     this.setEditFields();
     myTempDialog.afterClosed().subscribe((res) => {
@@ -123,6 +136,23 @@ export class ExperienceComponent implements OnInit {
       console.log(error.error);
       alert('Error! Try again');
     });
+  }
+
+  editWorkExperience(){
+    this.editedExperience.userId=this.userId;
+    this.editedExperience.nameOfCompany=this.editForm.value.nameOfCompany;
+    this.editedExperience.fieldOfWork=this.editForm.value.fieldOfWork;
+    this.editedExperience.startDate=this.startDateEdit;
+    this.editedExperience.endDate=this.endDateEdit;
+    this.editedExperience.description=this.editForm.value.description;
+    console.log(this.editedExperience);
+
+    this.profileService.editWorkExperience(this.editedExperience).subscribe(data=>{
+      alert('uspjesno')
+    },error=>{
+        alert('Error! Try again!')
+    })
+
   }
 
 }

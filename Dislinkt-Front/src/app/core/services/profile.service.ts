@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { UpdateUser } from '../models/updateUser.model';
 import { UserExperience } from '../models/user-experience.model';
+import { UpdateUserExperience } from '../models/update-user-experience.model';
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +30,9 @@ export class ProfileService {
 
     addWorkExperience(experience:UserExperience): Observable<any> {
         return this.http.post(`${environment.api_url}add-work-experience`,experience, { headers: this.headers, responseType: 'json' });
+    }
+    editWorkExperience(experience:UpdateUserExperience): Observable<any> {
+        return this.http.post(`${environment.api_url}update-work-experience`,experience, { headers: this.headers, responseType: 'json' });
     }
 
 
