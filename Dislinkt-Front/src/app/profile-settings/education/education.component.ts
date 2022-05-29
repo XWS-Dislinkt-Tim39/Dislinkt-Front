@@ -141,15 +141,16 @@ export class EducationComponent implements OnInit {
 
   editWorkExperience(){
     this.editedEducation.userId=this.userId;
-    this.editedEducation.nameOfSchool=this.editForm.value.nameOfCompany;
-    this.editedEducation.fieldOfStudy=this.editForm.value.fieldOfWork;
+    this.editedEducation.nameOfSchool=this.editForm.value.nameOfSchool;
+    this.editedEducation.fieldOfStudy=this.editForm.value.fieldOfStudy;
     this.editedEducation.startDate=this.startDateEdit;
     this.editedEducation.endDate=this.endDateEdit;
     this.editedEducation.description=this.editForm.value.description;
     console.log(this.editedEducation);
 
     this.profileService.editEducation(this.editedEducation).subscribe(data=>{
-      alert('uspjesno')
+      alert('Successfully edited selected education');
+      window.location.reload();
     },error=>{
         alert('Error! Try again!')
     })
