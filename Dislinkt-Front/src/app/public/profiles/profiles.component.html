@@ -1,9 +1,9 @@
 <app-navbar-not-registered></app-navbar-not-registered>
 <div class="container">
-  <form class="search">
+  <form [formGroup]="searchForm" class="search">
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Search">
-      <mat-icon matSuffix>search</mat-icon>
+      <input matInput placeholder="Search" formControlName="inputUser">
+      <mat-icon matSuffix (click)="sarchUserByUsername()">search</mat-icon>
     </mat-form-field>
   </form>
 
@@ -15,6 +15,7 @@
        
         <div class="name ">
           <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+          <div class="mat-h3">{{profile.username}}</div>
           <div class="mat-h4">{{profile.city}},{{profile.country}},{{profile.address}}</div>
           
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -10,10 +10,20 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 export class ProfilesComponent implements OnInit {
   profiles: any[] = [];
   resultProfile: any;
-  constructor(private publicProfilesService: PublicProfilesService) { }
+  searchForm: FormGroup;
+  constructor( 
+    private formBuilder: FormBuilder,
+    private publicProfilesService: PublicProfilesService) {
+    this.searchForm = this.formBuilder.group({
+      inputUser: [''],
+    });
+   }
 
   ngOnInit(): void {
     this.getAllProfiles();
+  }
+  get searchF(): { [key: string]: AbstractControl } {
+    return this.searchForm.controls;
   }
   experience = new FormControl();
   industry = new FormControl();
@@ -33,15 +43,18 @@ export class ProfilesComponent implements OnInit {
       });
   }
 
+
   showExperienceFilter() {
     this.profiles.forEach(profile => {
 
     });
   }
 
-  sarchUserByUsername(username: string) {
+  sarchUserByUsername() {
+    let username=this.searchForm.value.inputUser;
     this.publicProfilesService.searchUser(username).subscribe((data: any) => {
       this.profiles = data;
+
     },
       error => {
         console.log(error.error.message);

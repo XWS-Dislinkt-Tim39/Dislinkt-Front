@@ -68,6 +68,9 @@
 .search .mat-form-field {
     width: 100%;
 }
+.search .mat-icon:hover{
+cursor: pointer;
+}
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
     background-color: rgb(255, 255, 255);
