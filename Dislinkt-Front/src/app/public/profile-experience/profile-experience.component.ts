@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile-experience',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-experience.component.scss']
 })
 export class ProfileExperienceComponent implements OnInit {
-
+  @Input() selectedProfile: any;  
   constructor() { }
 
   ngOnInit(): void {

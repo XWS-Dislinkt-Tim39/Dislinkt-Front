@@ -3,23 +3,22 @@
 </div>
 <div class="profile">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-  <div class="mat-h2">Sara Savanovic</div>
-  <div class="mat-h3">Software developer</div>
+  <div class="mat-h2">{{selectedProfile.firstName}} {{selectedProfile.lastName}}</div>
 </div>
 <div class="information">
   <div class="text">
-    <mat-icon>person</mat-icon>Female
+    <mat-icon>person</mat-icon>{{selectedProfile.gender}} 
   </div>
   <div class="text">
-    <mat-icon>cake</mat-icon>15.03.1995.
+    <mat-icon>cake</mat-icon>{{selectedProfile.dateOfBirth | date:'mediumDate'}}
   </div>
   <div class="text">
-    <mat-icon> phone</mat-icon>065 548 1665
+    <mat-icon> phone</mat-icon>{{selectedProfile.phoneNumber}}
   </div>
   <div class="text">
-    <mat-icon>email</mat-icon>savanovicsara@gmail.com
+    <mat-icon>email</mat-icon>{{selectedProfile.emailAddress}}
   </div>
   <div class="text">
-    <mat-icon> location_on</mat-icon>Novi Sad,Srbija
+    <mat-icon> location_on</mat-icon>{{selectedProfile.city}},{{selectedProfile.country}}
   </div>
 </div>

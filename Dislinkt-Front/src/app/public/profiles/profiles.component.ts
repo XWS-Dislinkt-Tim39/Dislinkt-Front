@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ProfilesComponent implements OnInit {
   searchForm: FormGroup;
   constructor( 
     private formBuilder: FormBuilder,
+    private router: Router,
     private publicProfilesService: PublicProfilesService) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
@@ -59,6 +61,12 @@ export class ProfilesComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+  }
+
+  viewProfile(profile:any){
+    this.router.navigate(['/profile-details'], {
+      state: profile,
+    });
   }
 
 }

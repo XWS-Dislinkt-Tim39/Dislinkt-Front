@@ -20,7 +20,7 @@
           
         </div>
         <div class="view">
-          <button class="primary-button" [routerLink]="['/profile-details']">Profile</button>
+          <button class="primary-button" (click)="viewProfile(profile)" [routerLink]="['/profile-details']">Profile</button>
         </div>
       </div>
     </div>
