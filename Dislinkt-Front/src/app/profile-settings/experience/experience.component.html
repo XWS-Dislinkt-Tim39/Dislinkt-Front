@@ -13,84 +13,47 @@
             <mat-icon>add_circle</mat-icon>Add new experience
           </button>
         </div>
-        <div class="tab-content">
-          <div class="main">
+        <div class="tab-content" >
+          <div class="main"  *ngFor="let item of experiences">
             <div class="card" style="text-align: center;">
               <div class="row">
                 <div class="left-column">
                   <div class="field">
                     <div class="field-title">Job Name-Role</div>
-                    <div class="field-value">Software developer</div>
+                    <div class="field-value">{{item.fieldOfWork}}</div>
                   </div>
                   <div class="field">
                     <div class="field-title">Company Name</div>
-                    <div class="field-value">It comany</div>
+                    <div class="field-value">{{item.nameOfCompany}}</div>
                   </div>
                 </div>
                 <div class="right-column">
                   <div class="field">
                     <div class="field-title">Date Start</div>
-                    <div class="field-value">18-05-2020</div>
+                    <div class="field-value">{{item.startDate | date:'mediumDate'}}</div>
                   </div>
                   <div class="field">
                     <div class="field-title">Date End</div>
-                    <div class="field-value">22-03-2021</div>
+                    <div class="field-value">{{item.endDate | date:'mediumDate'}}</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="description">
                   <div class="field-title">Description</div>
-                  <div class="field-value">Sara</div>
+                  <div class="field-value">{{item.description}}</div>
                 </div>
+               
               </div>
             </div>
+           
             <div class="update">
-              <button class="primary-button">Edit</button>
+              <button class="primary-button" (click)="opetEditDialog($event,item)">Edit</button>
+              
               <button class="delete-button">Delete</button>
             </div>
           </div>
-          <div class="line">
-          </div>
-
-          <div class="main">
-            <div class="card" style="text-align: center;">
-              <div class="row">
-                <div class="left-column">
-                  <div class="field">
-                    <div class="field-title">Job Name-Role</div>
-                    <div class="field-value">Software developer</div>
-                  </div>
-                  <div class="field">
-                    <div class="field-title">Company Name</div>
-                    <div class="field-value">It comany</div>
-                  </div>
-                </div>
-                <div class="right-column">
-                  <div class="field">
-                    <div class="field-title">Date Start</div>
-                    <div class="field-value">15-10-2018</div>
-                  </div>
-                  <div class="field">
-                    <div class="field-title">Date End</div>
-                    <div class="field-value">06-11-2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="description">
-                  <div class="field-title">Description</div>
-                  <div class="field-value">Sara</div>
-                </div>
-              </div>
-            </div>
-            <div class="update">
-              <button class="primary-button">Edit</button>
-              <button class="delete-button">Delete</button>
-            </div>
-          </div>
-
-
+         
 
         </div>
       </div>
@@ -109,28 +72,31 @@
         <div class="column">
           <mat-form-field appearance="outline">
             <mat-label>Company Name*</mat-label>
-            <input formControlName="companyName" matInput placeholder="companyName">
+            <input formControlName="nameOfCompany" matInput placeholder="companyName">
+            <mat-error *ngIf="addFormControl.nameOfCompany.errors?.required">Company name required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Start Date*</mat-label>
-            <input formControlName="startDate" matInput [matDatepicker]="picker">
+            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="column">
           <mat-form-field appearance="outline">
             <mat-label>Job name-Role*</mat-label>
-            <input formControlName="role" matInput placeholder="role">
+            <input formControlName="fieldOfWork" matInput placeholder="role">
+            <mat-error *ngIf="addFormControl.fieldOfWork.errors?.required">Role required</mat-error>
+        
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>End Date*</mat-label>
-            <input formControlName="endDate" matInput [matDatepicker]="picker">
+            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+           </mat-form-field>
         </div>
       </div>
       <div class="row">
@@ -143,7 +109,57 @@
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close>Save</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="addWorkExperience()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #editExperience let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Edit experience</div>
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="editForm">
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Company Name*</mat-label>
+            <input formControlName="nameOfCompany" matInput placeholder="companyName">
+            <mat-error *ngIf="editFormControl.nameOfCompany.errors?.required">Company name required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date*</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDateEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="column">
+          <mat-form-field appearance="outline">
+            <mat-label>Job name-Role*</mat-label>
+            <input formControlName="fieldOfWork" matInput placeholder="role">
+            <mat-error *ngIf="editFormControl.fieldOfWork.errors?.required">Role required</mat-error>
+        
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>End Date*</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDateEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+           </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Job description*</mat-label>
+          <textarea formControlName="description" matInput placeholder="description"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="editWorkExperience()">Save</button>
     <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
   </div>
 </ng-template>
