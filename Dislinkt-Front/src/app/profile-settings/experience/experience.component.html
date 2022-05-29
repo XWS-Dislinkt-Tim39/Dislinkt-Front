@@ -13,84 +13,47 @@
             <mat-icon>add_circle</mat-icon>Add new experience
           </button>
         </div>
-        <div class="tab-content">
-          <div class="main">
+        <div class="tab-content" >
+          <div class="main"  *ngFor="let item of experiences">
             <div class="card" style="text-align: center;">
               <div class="row">
                 <div class="left-column">
                   <div class="field">
                     <div class="field-title">Job Name-Role</div>
-                    <div class="field-value">Software developer</div>
+                    <div class="field-value">{{item.fieldOfWork}}</div>
                   </div>
                   <div class="field">
                     <div class="field-title">Company Name</div>
-                    <div class="field-value">It comany</div>
+                    <div class="field-value">{{item.nameOfCompany}}</div>
                   </div>
                 </div>
                 <div class="right-column">
                   <div class="field">
                     <div class="field-title">Date Start</div>
-                    <div class="field-value">18-05-2020</div>
+                    <div class="field-value">{{item.startDate | date:'mediumDate'}}</div>
                   </div>
                   <div class="field">
                     <div class="field-title">Date End</div>
-                    <div class="field-value">22-03-2021</div>
+                    <div class="field-value">{{item.endDate | date:'mediumDate'}}</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="description">
                   <div class="field-title">Description</div>
-                  <div class="field-value">Sara</div>
+                  <div class="field-value">{{item.description}}</div>
                 </div>
+               
               </div>
             </div>
+           
             <div class="update">
               <button class="primary-button">Edit</button>
+              
               <button class="delete-button">Delete</button>
             </div>
           </div>
-          <div class="line">
-          </div>
-
-          <div class="main">
-            <div class="card" style="text-align: center;">
-              <div class="row">
-                <div class="left-column">
-                  <div class="field">
-                    <div class="field-title">Job Name-Role</div>
-                    <div class="field-value">Software developer</div>
-                  </div>
-                  <div class="field">
-                    <div class="field-title">Company Name</div>
-                    <div class="field-value">It comany</div>
-                  </div>
-                </div>
-                <div class="right-column">
-                  <div class="field">
-                    <div class="field-title">Date Start</div>
-                    <div class="field-value">15-10-2018</div>
-                  </div>
-                  <div class="field">
-                    <div class="field-title">Date End</div>
-                    <div class="field-value">06-11-2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="description">
-                  <div class="field-title">Description</div>
-                  <div class="field-value">Sara</div>
-                </div>
-              </div>
-            </div>
-            <div class="update">
-              <button class="primary-button">Edit</button>
-              <button class="delete-button">Delete</button>
-            </div>
-          </div>
-
-
+         
 
         </div>
       </div>

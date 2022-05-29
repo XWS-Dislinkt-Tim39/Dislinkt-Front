@@ -14,7 +14,7 @@ import { UserExperienceComponent } from 'src/app/dashboard/user-experience/user-
 export class ExperienceComponent implements OnInit {
   isIconPress: boolean = false;
   addForm: FormGroup;
-  userId:any;
+  userId: any;
   experience: UserExperience = {
     userId: "",
     nameOfCompany: "",
@@ -23,17 +23,18 @@ export class ExperienceComponent implements OnInit {
     endDate: new Date(),
     description: ""
   }
-  startDate:Date=new Date();
-  endDate:Date=new Date();
+  experiences:any=[]
+  startDate: Date = new Date();
+  endDate: Date = new Date();
 
   @ViewChild('addExperience') addDialog!: TemplateRef<any>;
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private jwtService:JwtService,
-    private profileService:ProfileService
-    ) {
-
+    private jwtService: JwtService,
+    private profileService: ProfileService
+  ) {
+    this.userId = this.jwtService.getUserId();
     this.addForm = this.formBuilder.group({
       nameOfCompany: ['', Validators.required],
       fieldOfWork: ['', Validators.required],
@@ -44,7 +45,8 @@ export class ExperienceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId=this.jwtService.getUserId();
+
+    this.getAllExperiences();
   }
   get addFormControl(): { [key: string]: AbstractControl; } { return this.addForm.controls; }
   opetAddDialog(event: any) {
@@ -56,17 +58,27 @@ export class ExperienceComponent implements OnInit {
     this.isIconPress = false;
   }
 
+  getAllExperiences() {
+    this.profileService.getAboutInfo(this.userId).subscribe(data => {
+      this.experiences=data.workExperiences;
+      alert(this.experiences[3].nameOfCompany)
+    }, error => {
+      console.log(error.error);
+      alert('Error! Try again');
+    });
+  }
+
   addWorkExperience() {
     if (this.addForm.invalid) {
       return;
     }
-    this.experience.userId=this.userId;
-    this.experience.nameOfCompany=this.addForm.value.nameOfCompany;
-    this.experience.fieldOfWork=this.addForm.value.fieldOfWork;
-    this.experience.startDate=this.addForm.value.startDate;
-    this.experience.endDate=this.addForm.value.endDate;
-    this.experience.description=this.addForm.value.description;
-    this.profileService.addWorkExperience(this.experience).subscribe(data=>{
+    this.experience.userId = this.userId;
+    this.experience.nameOfCompany = this.addForm.value.nameOfCompany;
+    this.experience.fieldOfWork = this.addForm.value.fieldOfWork;
+    this.experience.startDate = this.addForm.value.startDate;
+    this.experience.endDate = this.addForm.value.endDate;
+    this.experience.description = this.addForm.value.description;
+    this.profileService.addWorkExperience(this.experience).subscribe(data => {
       alert('Sucessfully added new work experience')
     }, error => {
       console.log(error.error);
