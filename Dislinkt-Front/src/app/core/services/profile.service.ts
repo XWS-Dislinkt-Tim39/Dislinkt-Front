@@ -11,6 +11,7 @@ import { UpdateUserExperience } from '../models/update-user-experience.model';
 import { UserEducation } from '../models/user-education.model';
 import { UpdateUserEducation } from '../models/update-user-education.model';
 import { NewSkill } from '../models/new-skill.model';
+import { NewInterest } from '../models/new-interest.model';
 
 @Injectable({
     providedIn: 'root'
@@ -50,6 +51,13 @@ export class ProfileService {
     }
     addNewSkill(skill:NewSkill): Observable<any> {
         return this.http.post(`${environment.api_url}add-new-skill`,skill, { headers: this.headers, responseType: 'json' });
+    }
+
+    getAllInterests(): Observable<any> {
+        return this.http.get(`${environment.api_url}get-all-interests`,{ headers: this.headers, responseType: 'json' });
+    }
+    addNewInterest(interest:NewInterest): Observable<any> {
+        return this.http.post(`${environment.api_url}add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
     }
 
 

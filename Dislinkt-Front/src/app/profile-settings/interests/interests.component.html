@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="right">
+      <div class="right-content">
+        <app-profile-navigation></app-profile-navigation>
+        <div class="add-experience">
+          <button class="add-button" (click)="opetAddInterestDialog( $event)">
+            <mat-icon>add_circle</mat-icon>Add new interest
+          </button>
+        </div>
+        <div class="tab-content">
+          <div class="main">
+            <div class="left-main">
+              <mat-grid-list cols="2" rowHeight="8:1">
+                <mat-grid-tile>
+                  <div class="skill">
+                    <div>Lorem ipsum dolor sit amet</div>
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="skill">
+                    <div>Lorem ipsum dolor sit amet</div>
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="skill">
+                    <div>Lorem ipsum dolor sit amet</div>
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="skill">
+                    <div>Lorem ipsum dolor sit amet</div>
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="skill">
+                    <div>Lorem ipsum dolor sit amet</div>
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+          
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #addSkill let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new interest</div>
+  <div mat-dialog-content class="dialog-content">
+    <div>Select interest:</div>
+    <form [formGroup]="addInterestForm">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Interests</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option *ngFor="let interest of interests" [value]="interest">
+              {{interest.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>or</div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter custom interest name</mat-label>
+          <input formControlName="interest" matInput placeholder="interest">
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button"  mat-dialog-close (click)="addNewInterest()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button" > Close</button>
+  </div>
+</ng-template>
+
+<ng-template #addSkillCategory let-mydata class="dialog">
+  <div class="dialog-title" mat-dialog-title>Add new skill category</div>
+  <div mat-dialog-content class="dialog-content">
+    <div>Select skill category:</div>
+    <form [formGroup]="addForm">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Skill category</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let interest of interests" [value]="interest">
+              {{interest.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close>Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button"> Close</button>
+  </div>
+</ng-template>

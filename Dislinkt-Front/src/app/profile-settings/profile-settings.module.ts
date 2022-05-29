@@ -24,13 +24,15 @@ import { ExperienceComponent } from './experience/experience.component';
 import { SkillsComponent } from './skills/skills.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EducationComponent } from './education/education.component';
+import { InterestsComponent } from './interests/interests.component';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
         ProfileNavigationComponent,
         ExperienceComponent,
         SkillsComponent,
-        EducationComponent
+        EducationComponent,
+        InterestsComponent
     ],
     entryComponents: [],
     imports: [
