@@ -25,7 +25,7 @@ export class ProfilesComponent implements OnInit {
 
 
   getAllProfiles() {
-    this.publicProfilesService.getAllPublicProfiles().subscribe((data: any) => {
+    this.publicProfilesService.getAllPublicUsers().subscribe((data: any) => {
       this.profiles = data;
     },
       error => {

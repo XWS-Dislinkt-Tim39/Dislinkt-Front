@@ -23,6 +23,7 @@ export class ProfileService {
         private http: HttpClient
     ) { }
 
+
     getAboutInfo(userId:string): Observable<any> {
         return this.http.get(`${environment.api_url}get-user`, { params: {
             id: userId
