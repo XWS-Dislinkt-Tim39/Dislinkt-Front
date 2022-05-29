@@ -1,24 +1,25 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NewInterest } from 'src/app/core/models/new-interest.model';
 import { NewSkill } from 'src/app/core/models/new-skill.model';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  selector: 'app-interests',
+  templateUrl: './interests.component.html',
+  styleUrls: ['./interests.component.scss']
 })
-export class SkillsComponent implements OnInit {
+export class InterestsComponent implements OnInit {
   isIconPress: boolean = false;
   addForm: FormGroup;
-  addSkillForm: FormGroup;
+  addInterestForm: FormGroup;
   @ViewChild('addSkillCategory') addDialog!: any;
   @ViewChild('addSkill') addSkillDialog!: any;
 userId:any;
-  skills: NewSkill[] = [];
-  newSkill:NewSkill={
+  interests: NewInterest[] = [];
+  newInterest:NewInterest={
     name:'',
     userId:''
   }
@@ -33,49 +34,42 @@ userId:any;
     this.addForm = this.formBuilder.group({
       category: [''],
     });
-    this.addSkillForm = this.formBuilder.group({
-      skill: [''],
+    this.addInterestForm = this.formBuilder.group({
+      interest: [''],
     });
   }
 
   ngOnInit(): void {
-    this.getAllSkills();
+    this.getAllInterests();
   }
 
-  getAllSkills() {
-    this.profileService.getAllSkills().subscribe(data => {
-      this.skills = data;
+  getAllInterests() {
+    this.profileService.getAllInterests().subscribe(data => {
+      this.interests = data;
     },
       error => {
         alert('Error!')
       })
   }
 
-  addNewSkill() {
-    this.newSkill.userId=this.userId;
-    if(this.addSkillForm.value.skill==""){
-      this.newSkill.name=this.selected.name;
+  addNewInterest() {
+    this.newInterest.userId=this.userId;
+    if(this.addInterestForm.value.interest==""){
+      this.newInterest.name=this.selected.name;
      
     }else{
-      this.newSkill.name=this.addSkillForm.value.skill;
+      this.newInterest.name=this.addInterestForm.value.interest;
     }
-    this.profileService.addNewSkill(this.newSkill).subscribe(data=>{
-      alert('Successfully added new skill');
+    this.profileService.addNewInterest(this.newInterest).subscribe(data=>{
+      alert('Successfully added new interest');
     },error=>{
       alert('Error! Try again!')
     })
    }
 
-  opetAddCategoryDialog(event: any) {
-    event?.stopPropagation();
-    const myTempDialog = this.dialog.open(this.addDialog);
-    myTempDialog.afterClosed().subscribe((res) => {
-      console.log({ res });
-    });
-    this.isIconPress = false;
-  }
 
-  opetAddSkillDialog(event: any) {
+
+  opetAddInterestDialog(event: any) {
     event?.stopPropagation();
     const myTempDialog = this.dialog.open(this.addSkillDialog);
     myTempDialog.afterClosed().subscribe((res) => {

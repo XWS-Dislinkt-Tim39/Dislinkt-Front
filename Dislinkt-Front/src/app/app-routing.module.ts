@@ -23,6 +23,7 @@ import { FindJobComponent } from './jobs/find-job/find-job.component';
 import { MyJobsComponent } from './jobs/my-jobs/my-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 import { EducationComponent } from './profile-settings/education/education.component';
+import { InterestsComponent } from './profile-settings/interests/interests.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'account-skills',
     component: SkillsComponent
+  },
+  {
+    path: 'account-interests',
+    component: InterestsComponent
   },
   {
     path: 'messages',
