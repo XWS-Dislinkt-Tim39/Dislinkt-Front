@@ -46,9 +46,15 @@ export class ProfileService {
     editEducation(education:UpdateUserEducation): Observable<any> {
         return this.http.post(`${environment.api_url}update-education`,education, { headers: this.headers, responseType: 'json' });
     }
+ 
 
     getAllSkills(): Observable<any> {
         return this.http.get(`${environment.api_url}get-all-skills`,{ headers: this.headers, responseType: 'json' });
+    }
+    getUserSkills(userId:string): Observable<any> {
+        return this.http.get(`${environment.api_url}get-user-skills`,{ params: {
+            id: userId
+          },headers: this.headers, responseType: 'json' });
     }
     addNewSkill(skill:NewSkill): Observable<any> {
         return this.http.post(`${environment.api_url}add-new-skill`,skill, { headers: this.headers, responseType: 'json' });
@@ -56,6 +62,11 @@ export class ProfileService {
 
     getAllInterests(): Observable<any> {
         return this.http.get(`${environment.api_url}get-all-interests`,{ headers: this.headers, responseType: 'json' });
+    }
+    getUserInterests(userId:string): Observable<any> {
+        return this.http.get(`${environment.api_url}get-user-interests`,{ params: {
+            id: userId
+          },headers: this.headers, responseType: 'json' });
     }
     addNewInterest(interest:NewInterest): Observable<any> {
         return this.http.post(`${environment.api_url}add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
