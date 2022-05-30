@@ -20,6 +20,7 @@ import { AccountNavigationComponent } from './account-navigation/account-navigat
 import { ProfilePostsComponent } from './profile-posts/profile-posts.component';
 import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
+import { ProfileEducationComponent } from './profile-education/profile-education.component';
 
 
 
@@ -32,7 +33,8 @@ import { ProfileSkillsComponent } from './profile-skills/profile-skills.componen
     AccountNavigationComponent,
     ProfilePostsComponent,
     ProfileExperienceComponent,
-    ProfileSkillsComponent
+    ProfileSkillsComponent,
+    ProfileEducationComponent
   ],
   imports: [
     CommonModule,

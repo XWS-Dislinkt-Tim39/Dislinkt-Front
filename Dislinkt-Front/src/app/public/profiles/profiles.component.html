@@ -1,76 +1,26 @@
 <app-navbar-not-registered></app-navbar-not-registered>
 <div class="container">
-  <form class="search">
+  <form [formGroup]="searchForm" class="search">
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Search">
-      <mat-icon matSuffix>search</mat-icon>
+      <input matInput placeholder="Search" formControlName="inputUser">
+      <mat-icon matSuffix (click)="sarchUserByUsername()">search</mat-icon>
     </mat-form-field>
   </form>
 
   <div class="wrapper">
     <div class="left">
       <div class="card" *ngFor="let profile of profiles;let i = index">
-        <div class="card-image"><img src="https://bbdu.ac.in/wp-content/uploads/2018/01/profile-pictures.png">
-        </div>
+        <div class="card-image" *ngIf="profile.gender==1"><img src="https://www.shareicon.net/data/512x512/2016/09/15/829452_user_512x512.png"> </div>
+          <div class="card-image" *ngIf="profile.gender==0"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlZZzWC0mxI0meU3_n53mzCMQ2QTMRE-yI_A&usqp=CAU"> </div>
+       
         <div class="name ">
           <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
-          <div class="mat-h3">{{profile.workExperience[0].fieldOfWork}}</div>
+          <div class="mat-h3">{{profile.username}}</div>
+          <div class="mat-h4">{{profile.city}},{{profile.country}},{{profile.address}}</div>
+          
         </div>
         <div class="view">
-          <div class="mat-h4">{{profile.city}},{{profile.caountry}}</div>
-          <button class="primary-button" [routerLink]="['/profile-details']">Profile</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image"><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-        </div>
-        <div class="name ">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
-        </div>
-        <div class="view">
-          <div class="mat-h4">Novi Sad,Srbija</div>
-          <button class="primary-button" [routerLink]="['/profile-details']">Profile</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image"><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-        </div>
-        <div class="name ">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
-        </div>
-        <div class="view">
-          <div class="mat-h4">Novi Sad,Srbija</div>
-          <button class="primary-button">Profile</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image"><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-        </div>
-        <div class="name ">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
-        </div>
-        <div class="view">
-          <div class="mat-h4">Novi Sad,Srbija</div>
-          <button class="primary-button">Profile</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image"><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-        </div>
-        <div class="name ">
-          <div class="mat-h2">Sara Savanovic</div>
-          <div class="mat-h3">Software developer</div>
-        </div>
-        <div class="view">
-          <div class="mat-h4">Novi Sad,Srbija</div>
-          <button class="primary-button">Profile</button>
+          <button class="primary-button" (click)="viewProfile(profile)" [routerLink]="['/profile-details']">Profile</button>
         </div>
       </div>
     </div>

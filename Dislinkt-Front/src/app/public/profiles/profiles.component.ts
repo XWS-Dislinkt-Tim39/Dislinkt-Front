@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -10,10 +11,21 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 export class ProfilesComponent implements OnInit {
   profiles: any[] = [];
   resultProfile: any;
-  constructor(private publicProfilesService: PublicProfilesService) { }
+  searchForm: FormGroup;
+  constructor( 
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private publicProfilesService: PublicProfilesService) {
+    this.searchForm = this.formBuilder.group({
+      inputUser: [''],
+    });
+   }
 
   ngOnInit(): void {
     this.getAllProfiles();
+  }
+  get searchF(): { [key: string]: AbstractControl } {
+    return this.searchForm.controls;
   }
   experience = new FormControl();
   industry = new FormControl();
@@ -25,13 +37,14 @@ export class ProfilesComponent implements OnInit {
 
 
   getAllProfiles() {
-    this.publicProfilesService.getAllPublicProfiles().subscribe((data: any) => {
+    this.publicProfilesService.getAllPublicUsers().subscribe((data: any) => {
       this.profiles = data;
     },
       error => {
         console.log(error.error.message);
       });
   }
+
 
   showExperienceFilter() {
     this.profiles.forEach(profile => {
@@ -39,13 +52,21 @@ export class ProfilesComponent implements OnInit {
     });
   }
 
-  sarchUserByUsername(username: string) {
+  sarchUserByUsername() {
+    let username=this.searchForm.value.inputUser;
     this.publicProfilesService.searchUser(username).subscribe((data: any) => {
       this.profiles = data;
+
     },
       error => {
         console.log(error.error.message);
       });
+  }
+
+  viewProfile(profile:any){
+    this.router.navigate(['/profile-posts'], {
+      state: profile,
+    });
   }
 
 }
