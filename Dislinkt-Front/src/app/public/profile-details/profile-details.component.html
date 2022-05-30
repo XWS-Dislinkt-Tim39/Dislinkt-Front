@@ -29,37 +29,14 @@
               Interests
             </div>
             <div class="mat-body-1">
-              <mat-grid-list cols="3" rowHeight="6:1">
+              <mat-grid-list cols="3" rowHeight="3:1" >
                 <mat-grid-tile>
-                  <div class="interest">
+                  <div class="interest" *ngFor="let item of interests">
                     <mat-icon>check_circle</mat-icon>
-                    <div>Lorem ipsum dolor sit amet</div>
+                    <div>{{item.name}}</div>
                   </div>
                 </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="interest">
-                    <mat-icon>check_circle</mat-icon>
-                    <div>Lorem ipsum dolor sit amet</div>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="interest">
-                    <mat-icon>check_circle</mat-icon>
-                    <div>Lorem ipsum dolor sit amet</div>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="interest">
-                    <mat-icon>check_circle</mat-icon>
-                    <div>Lorem ipsum dolor sit amet</div>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="interest">
-                    <mat-icon>check_circle</mat-icon>
-                    <div>Lorem ipsum dolor sit amet</div>
-                  </div>
-                </mat-grid-tile>
+               
               </mat-grid-list>
             </div>
           </div>

@@ -24,6 +24,7 @@ import { MyJobsComponent } from './jobs/my-jobs/my-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 import { EducationComponent } from './profile-settings/education/education.component';
 import { InterestsComponent } from './profile-settings/interests/interests.component';
+import { ProfileEducationComponent } from './public/profile-education/profile-education.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'profile-experience',
     component: ProfileExperienceComponent
+  },
+  {
+    path: 'profile-education',
+    component: ProfileEducationComponent
   },
   {
     path: 'profile-skills',
