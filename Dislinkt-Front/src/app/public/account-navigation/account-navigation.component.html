@@ -1,6 +1,8 @@
 <div class="navigation">
-  <button class="links" [routerLink]="['/profile-details']"  routerLinkActive="active">About</button>
-  <button class="links" [routerLink]="['/profile-posts']" routerLinkActive="active">Posts</button>
-  <button class="links"  [routerLink]="['/profile-experience']" routerLinkActive="active">Experience</button>
-  <button class="links" [routerLink]="['/profile-skills']" routerLinkActive="active">Skills</button>
+  <button class="links"  [routerLink]="['/profile-posts']"  (click)="goToPosts()" routerLinkActive="active">Posts</button>
+  <button class="links" [routerLink]="['/profile-details']"  (click)="goToAbout()" routerLinkActive="active">About</button>
+  <button class="links" [routerLink]="['/profile-skills']"  (click)="goToEducation()" routerLinkActive="active">Education</button>
+  <button class="links"  [routerLink]="['/profile-experience']"  (click)="goToExperience()" routerLinkActive="active">Experience</button>
+  <button class="links" [routerLink]="['/profile-interests']"  (click)="goToSkills()" routerLinkActive="active">Skills</button>
+
 </div>

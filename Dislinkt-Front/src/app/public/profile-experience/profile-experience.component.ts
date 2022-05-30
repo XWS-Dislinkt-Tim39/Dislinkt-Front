@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-experience',
@@ -6,9 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./profile-experience.component.scss']
 })
 export class ProfileExperienceComponent implements OnInit {
-  @Input() selectedProfile: any;  
-  constructor() { }
-
+  routeState: any;
+  selectedProfile:any
+  constructor( private router: Router) { 
+    this.routeState = this.router.getCurrentNavigation()?.extras.state;
+    this.selectedProfile = this.routeState;
+  }
   ngOnInit(): void {
   }
 

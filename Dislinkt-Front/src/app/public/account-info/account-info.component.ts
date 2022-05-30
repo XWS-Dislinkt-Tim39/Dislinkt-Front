@@ -7,9 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AccountInfoComponent implements OnInit {
   @Input() selectedProfile: any;  
+  gender:string='';
   constructor() { }
 
   ngOnInit(): void {
+    if(this.selectedProfile.gender=='1'){
+      this.gender='Female'
+    }
+    else{
+      this.gender='Male'
+    }
   }
 
 }
