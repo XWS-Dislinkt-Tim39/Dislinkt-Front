@@ -18,6 +18,8 @@ export class SkillsComponent implements OnInit {
   @ViewChild('addSkill') addSkillDialog!: any;
 userId:any;
   skills: NewSkill[] = [];
+  distinctSkills:NewSkill[] = [];
+  userSkills: NewSkill[] = [];
   newSkill:NewSkill={
     name:'',
     userId:''
@@ -40,17 +42,28 @@ userId:any;
 
   ngOnInit(): void {
     this.getAllSkills();
+    this.getSkills();
   }
 
   getAllSkills() {
     this.profileService.getAllSkills().subscribe(data => {
       this.skills = data;
+      this.distinctSkills = this.skills.filter(
+        (thing, i, arr) => arr.findIndex(t => t.name === thing.name) === i
+      );
     },
       error => {
         alert('Error!')
       })
   }
-
+  getSkills(){
+    this.profileService.getUserSkills(this.userId).subscribe(data=>{
+      this.userSkills=data;
+    },error=>{
+      alert('Error! Try again!')
+    }
+    )
+  }
   addNewSkill() {
     this.newSkill.userId=this.userId;
     if(this.addSkillForm.value.skill==""){
@@ -61,6 +74,7 @@ userId:any;
     }
     this.profileService.addNewSkill(this.newSkill).subscribe(data=>{
       alert('Successfully added new skill');
+      window.location.reload();
     },error=>{
       alert('Error! Try again!')
     })

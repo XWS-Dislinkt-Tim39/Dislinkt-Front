@@ -10,9 +10,14 @@
   <div class="wrapper">
     <div class="left">
       <div class="card" *ngFor="let profile of profiles;let i = index">
-        <div class="card-image" *ngIf="profile.gender==1"><img src="https://www.shareicon.net/data/512x512/2016/09/15/829452_user_512x512.png"> </div>
-          <div class="card-image" *ngIf="profile.gender==0"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlZZzWC0mxI0meU3_n53mzCMQ2QTMRE-yI_A&usqp=CAU"> </div>
-       
+        <div class="card-image">
+          <div class="avatar-girl" *ngIf="profile.gender=='1'">
+            {{profile.firstName[0]}} {{profile.lastName[0]}}
+          </div>
+          <div class="avatar-boy"  *ngIf="profile.gender=='0'">
+            {{profile.firstName[0]}} {{profile.lastName[0]}}
+          </div>
+      </div>
         <div class="name ">
           <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
           <div class="mat-h3">{{profile.username}}</div>

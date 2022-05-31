@@ -13,22 +13,24 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 })
 export class InterestsComponent implements OnInit {
   isIconPress: boolean = false;
+  distinctInterests: NewSkill[] = [];
+  userInterests: NewSkill[] = [];
   addForm: FormGroup;
   addInterestForm: FormGroup;
   @ViewChild('addSkillCategory') addDialog!: any;
   @ViewChild('addSkill') addSkillDialog!: any;
-userId:any;
+  userId: any;
   interests: NewInterest[] = [];
-  newInterest:NewInterest={
-    name:'',
-    userId:''
+  newInterest: NewInterest = {
+    name: '',
+    userId: ''
   }
-  selected:any;
+  selected: any;
 
   constructor(private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private profileService: ProfileService,
-    private jwtService:JwtService
+    private jwtService: JwtService
   ) {
     this.userId = this.jwtService.getUserId();
     this.addForm = this.formBuilder.group({
@@ -41,31 +43,44 @@ userId:any;
 
   ngOnInit(): void {
     this.getAllInterests();
+    this.getSkills();
   }
 
   getAllInterests() {
     this.profileService.getAllInterests().subscribe(data => {
       this.interests = data;
+      this.distinctInterests = this.interests.filter(
+        (thing, i, arr) => arr.findIndex(t => t.name === thing.name) === i
+      );
     },
       error => {
         alert('Error!')
       })
   }
 
-  addNewInterest() {
-    this.newInterest.userId=this.userId;
-    if(this.addInterestForm.value.interest==""){
-      this.newInterest.name=this.selected.name;
-     
-    }else{
-      this.newInterest.name=this.addInterestForm.value.interest;
+  getSkills() {
+    this.profileService.getUserInterests(this.userId).subscribe(data => {
+      this.userInterests = data;
+    }, error => {
+      alert('Error! Try again!')
     }
-    this.profileService.addNewInterest(this.newInterest).subscribe(data=>{
+    )
+  }
+
+  addNewInterest() {
+    this.newInterest.userId = this.userId;
+    if (this.addInterestForm.value.interest == "") {
+      this.newInterest.name = this.selected.name;
+
+    } else {
+      this.newInterest.name = this.addInterestForm.value.interest;
+    }
+    this.profileService.addNewInterest(this.newInterest).subscribe(data => {
       alert('Successfully added new interest');
-    },error=>{
+    }, error => {
       alert('Error! Try again!')
     })
-   }
+  }
 
 
 

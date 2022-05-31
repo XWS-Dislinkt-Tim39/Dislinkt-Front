@@ -16,53 +16,21 @@
           <div class="main">
             <div class="left-main">
               <mat-grid-list cols="2" rowHeight="8:1">
-                <mat-grid-tile>
+                <mat-grid-tile *ngFor="let interest of userInterests">
                   <div class="skill">
-                    <div>Lorem ipsum dolor sit amet</div>
-                    <mat-icon>edit</mat-icon>
-                    <mat-icon>delete</mat-icon>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="skill">
-                    <div>Lorem ipsum dolor sit amet</div>
-                    <mat-icon>edit</mat-icon>
-                    <mat-icon>delete</mat-icon>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="skill">
-                    <div>Lorem ipsum dolor sit amet</div>
-                    <mat-icon>edit</mat-icon>
-                    <mat-icon>delete</mat-icon>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="skill">
-                    <div>Lorem ipsum dolor sit amet</div>
-                    <mat-icon>edit</mat-icon>
-                    <mat-icon>delete</mat-icon>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <div class="skill">
-                    <div>Lorem ipsum dolor sit amet</div>
+                    <div>{{interest.name}}</div>
                     <mat-icon>edit</mat-icon>
                     <mat-icon>delete</mat-icon>
                   </div>
                 </mat-grid-tile>
               </mat-grid-list>
-          
             </div>
-            
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
 
 
 <ng-template #addSkill let-mydata class="dialog">
@@ -74,7 +42,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Interests</mat-label>
           <mat-select [(value)]="selected">
-            <mat-option *ngFor="let interest of interests" [value]="interest">
+            <mat-option *ngFor="let interest of distinctInterests" [value]="interest">
               {{interest.name}}
             </mat-option>
           </mat-select>
@@ -104,7 +72,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Skill category</mat-label>
           <mat-select>
-            <mat-option *ngFor="let interest of interests" [value]="interest">
+            <mat-option *ngFor="let interest of distinctInterests" [value]="interest">
               {{interest.name}}
             </mat-option>
           </mat-select>
