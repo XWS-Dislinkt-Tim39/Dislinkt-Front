@@ -29,9 +29,9 @@
               Interests
             </div>
             <div class="mat-body-1">
-              <mat-grid-list cols="3" rowHeight="3:1" >
-                <mat-grid-tile>
-                  <div class="interest" *ngFor="let item of interests">
+              <mat-grid-list cols="5" rowHeight="4:1" >
+                <mat-grid-tile *ngFor="let item of interests">
+                  <div class="interest" >
                     <mat-icon>check_circle</mat-icon>
                     <div>{{item.name}}</div>
                   </div>
