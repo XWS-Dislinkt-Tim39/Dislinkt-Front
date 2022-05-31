@@ -25,6 +25,7 @@ import { AccountNavigationComponent } from '../public/account-navigation/account
 import { UserNavigationComponent } from './user-navigation/user-navigation.component';
 import { UserExperienceComponent } from './user-experience/user-experience.component';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
+import { UserEducationComponent } from './user-education/user-education.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UserSkillsComponent } from './user-skills/user-skills.component';
     UserNavigationComponent,
     UserPostsComponent,
     UserExperienceComponent,
-    UserSkillsComponent
+    UserSkillsComponent,
+    UserEducationComponent
   ],
   entryComponents: [AddPostComponent, SearchProfilesComponent],
   imports: [

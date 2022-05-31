@@ -18,7 +18,7 @@ export class UserNavigationComponent implements OnInit {
     });
   }
   goToAbout(){
-    this.router.navigate(['/user-details'], {
+    this.router.navigate(['/user-profile'], {
       state: this.selectedUser,
     });
   }
