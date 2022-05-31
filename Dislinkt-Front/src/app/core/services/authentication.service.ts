@@ -21,7 +21,7 @@ export class AuthenticationService {
   signUp(user: UserSignIn): Observable<any> {
     return this.http.get(`${environment.api_url}sign-up`, {
       params: {
-        emailAddress: user.emailAddress,
+        username: user.username,
         password: user.password
       }, headers: this.headers, responseType: 'json'
     });
