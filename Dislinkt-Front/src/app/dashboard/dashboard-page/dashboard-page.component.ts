@@ -18,6 +18,7 @@ export class DashboardPageComponent implements OnInit {
   dislikeStyle: string = '';
   commentStyle: string = '';
   posts:any[]=[]
+  sortedPosts:any[]=[]
 userDetails:any;
 user:any;
   constructor(
@@ -42,7 +43,11 @@ user:any;
       this.posts=data;
       this.posts.forEach((value,i: any)=>{
         value.showComments=false;
+    
     });
+    this.sortedPosts = this.posts.sort(
+      (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
+    );
     },error=>{
       alert('Error! Try again!')
     })
