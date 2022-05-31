@@ -61,6 +61,19 @@
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+.private-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    font-size: 18px;;
+    align-items: center;
+    justify-content: center;
+    color:base.$medium-grey-letters
+}
+
 
 .tab-content {
     background-color: white;

@@ -7,14 +7,17 @@
     <div class="left">
       <div class="left-content">
         <app-account-info  [selectedProfile]="selectedUser"></app-account-info>
-        <button class="primary-button connect">Connect</button>
+        <button class="primary-button connect" *ngIf="selectedUser.status==1">Connect</button>
+        <button class="primary-button connect" *ngIf="selectedUser.status==0">Send request</button>
       </div>
     </div>
     <div class="right">
       <div class="right-content">
         <app-user-navigation  [selectedUser]="selectedUser" ></app-user-navigation>
-
-        <div class="tab-content">
+        <div class="private-content"  *ngIf="selectedUser.status==0">
+          This profile is private! Send request to make connection!
+        </div>
+        <div class="tab-content" *ngIf="selectedUser.status==1">
           <div class="main">
             <div class="mat-body-1">
               <mat-grid-list cols="5" rowHeight="4:1" >
