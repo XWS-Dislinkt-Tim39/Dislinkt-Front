@@ -1,10 +1,19 @@
 <div class="navbar">
-  <div id="logo"><a href="#home">Logo</a></div>
-  <button id="profile" mat-button [routerLink]="['/sign-in']">
-    Sign In
-  </button>
-  <button id="profile" mat-button [routerLink]="['/sign-up']">
-    Sign up
-  </button>
-
+  <a href="#home" id="logo">Logo</a>
+  <div class="search">
+    <mat-icon>search</mat-icon>
+  <a [routerLink]="['/search-profiles']">
+Search profiles
+  </a>
 </div>
+<div class="auth">
+<button id="profile" mat-button [routerLink]="['/sign-in']">
+  Sign In
+</button>
+
+<button id="profile" mat-button [routerLink]="['/sign-up']">
+  Sign up
+</button>
+</div>
+</div>
+
