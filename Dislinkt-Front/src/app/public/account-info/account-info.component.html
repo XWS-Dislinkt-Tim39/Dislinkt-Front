@@ -1,5 +1,8 @@
-<div class="isPublic">
+<div class="isPublic" *ngIf="selectedProfile.status==1">
   <mat-icon>visibility</mat-icon>Public
+</div>
+<div class="isPublic" *ngIf="selectedProfile.status==0">
+  <mat-icon>visibility_off</mat-icon>Private
 </div>
 <div class="profile">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">

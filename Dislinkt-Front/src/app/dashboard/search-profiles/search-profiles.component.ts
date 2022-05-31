@@ -65,7 +65,7 @@ export class SearchProfilesComponent implements OnInit {
   }
 
   viewProfile(profile:any){
-    this.router.navigate(['/profile-posts'], {
+    this.router.navigate(['/user-profile'], {
       state: profile,
     });
   }
