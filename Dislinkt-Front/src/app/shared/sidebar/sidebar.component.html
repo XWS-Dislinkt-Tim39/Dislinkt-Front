@@ -1,7 +1,11 @@
 <nav id="sidebar">
   <div class="sidebar-header">
-    <div class="profile-circle"><img
-        src="https://qph.cf2.quoracdn.net/main-thumb-1278318002-200-ydzfegagslcexelzgsnplcklfkienzfr.jpeg">
+    <div class="profile-circle">  <div class="avatar-girl" *ngIf="gender=='1'">
+      {{firstName[0]}} {{lastName[0]}}
+    </div>
+    <div class="avatar-boy"  *ngIf="gender=='0'">
+      {{firstName[0]}} {{lastName[0]}}
+    </div>
     </div>
     <br>
     <p id="header-profile"><a [routerLink]="['/profile-details']">View profile</a></p>

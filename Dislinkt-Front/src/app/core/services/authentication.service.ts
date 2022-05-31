@@ -30,6 +30,9 @@ export class AuthenticationService {
   register(user: User): Observable<any> {
     return this.http.post(`${environment.api_url}register-user`, user, { headers: this.headers, responseType: 'json' });
   }
+  approve(id: string): Observable<any> {
+    return this.http.post(`${environment.api_url}approve-user/${id}`, { headers: this.headers, responseType: 'json' });
+  }
 
   logout(): void {
     this.jwtService.destroyUserDetails();

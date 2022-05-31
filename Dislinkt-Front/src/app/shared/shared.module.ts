@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarNotRegisteredComponent } from './navbar-not-registered/navbar-not-registered.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { RegistrationConfirmComponent } from './registration-confirm/registration-confirm.component';
 
 
 
@@ -14,6 +15,7 @@ import { AppRoutingModule } from '../app-routing.module';
     NavbarComponent,
     NavbarNotRegisteredComponent,
     SidebarComponent,
+    RegistrationConfirmComponent,
   ],
   imports: [
     CommonModule,

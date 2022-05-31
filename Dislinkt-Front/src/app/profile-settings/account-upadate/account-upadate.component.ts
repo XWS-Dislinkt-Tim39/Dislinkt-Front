@@ -41,6 +41,7 @@ export class AccountUpadateComponent implements OnInit {
     gender:""
   }
   isEdit:boolean=false;
+  user:any;
   constructor(
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
@@ -70,6 +71,7 @@ export class AccountUpadateComponent implements OnInit {
   loadData(){
     let userDetails=JSON.parse(localStorage.getItem('userDetails') || '');
       console.log(userDetails)
+    this.user=userDetails;
     this.profileForm.get('firstName')?.setValue(userDetails.user.firstName);
     this.profileForm.get('lastName')?.setValue(userDetails.user.lastName);
     this.profileForm.get('email')?.setValue(userDetails.user.emailAddress);
