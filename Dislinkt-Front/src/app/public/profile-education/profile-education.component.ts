@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ProfileEducationComponent implements OnInit {
   routeState: any;
   selectedProfile:any;
-  educations:any;
+  educations:any[]=[];
   constructor( private router: Router) { 
     this.routeState = this.router.getCurrentNavigation()?.extras.state;
     this.selectedProfile = this.routeState;

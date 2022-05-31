@@ -23,7 +23,6 @@ export class ProfileSkillsComponent implements OnInit {
   }
 
   getSkills(){
-    alert(this.selectedProfile.id)
     this.profileService.getUserSkills(this.selectedProfile.id).subscribe(data=>{
       this.skills=data;
     },error=>{

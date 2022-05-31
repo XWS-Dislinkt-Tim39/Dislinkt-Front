@@ -4,13 +4,13 @@
 
     <div class="left">
       <div class="left-content">
-        <app-account-info  [selectedProfile]="selectedProfile"></app-account-info>
+        <app-account-info [selectedProfile]="selectedProfile"></app-account-info>
       </div>
     </div>
 
     <div class="right">
       <div class="right-content">
-        <app-account-navigation  [selectedProfile]="selectedProfile"></app-account-navigation>
+        <app-account-navigation [selectedProfile]="selectedProfile"></app-account-navigation>
 
         <div class="tab-content">
           <div class="main" *ngFor="let item of educations">
@@ -19,15 +19,14 @@
                 <div class="mat-h2">{{item.fieldOfStudy}}</div>
                 <div class="mat-h3">{{item.nameOfSchool}}</div>
               </div>
-              <div class="mat-h4 date">{{item.startDate  | date:'mediumDate' }} -{{item.endDate | date:'mediumDate' }}</div>
+              <div class="mat-h4 date">{{item.startDate | date:'mediumDate' }} -{{item.endDate | date:'mediumDate' }}
+              </div>
             </div>
             <div class="mat-body-1">
-             {{item.description}}
-          
+              {{item.description}}
             </div>
+            <div class="line"></div>
           </div>
-
-          <div class="line"></div>
         </div>
       </div>
     </div>
