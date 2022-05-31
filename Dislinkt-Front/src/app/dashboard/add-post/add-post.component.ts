@@ -2,6 +2,9 @@ import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NewPost } from 'src/app/core/models/new-post.model';
+import { JwtService } from 'src/app/core/services/jwt.service';
+import { PostService } from 'src/app/core/services/post.service';
 
 declare var $: any;
 @Component({
@@ -13,24 +16,30 @@ export class AddPostComponent implements OnInit {
   form: FormGroup;
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef | undefined;
   myfilename = 'Select File';
-  showText:boolean=false;
-  showImage:boolean=false;
-  showLink:boolean=false;
-  textStyle:string='';
-  imageStyle:string='';
-  linkStyle:string='';
-  imageDropifyStyle:string='';
+  showText: boolean = false;
+  showImage: boolean = false;
+  showLink: boolean = false;
+  textStyle: string = '';
+  imageStyle: string = '';
+  imageDropifyStyle: string = '';
+  newPost: NewPost = {
+    userId: '',
+    text: '',
+    dateTimeOfPublishing: new Date()
+  }
+  userId: any;
   constructor(private formBuilder: FormBuilder,
+    private jwtService: JwtService,
+    private postService:PostService,
     private dialogRef: MatDialogRef<AddPostComponent>,
   ) {
-    this. textStyle = 'text-default';
-    this. imageStyle = 'text-default';
-    this. linkStyle = 'text-default';
-    this. imageDropifyStyle = 'image-default';
+    this.userId = this.jwtService.getUserId();
+    this.textStyle = 'text-default';
+    this.imageStyle = 'text-default';
+    this.imageDropifyStyle = 'image-default';
     this.form = this.formBuilder.group({
       text: [''],
       image: [''],
-      link: ['']
     });
   }
   imageSrc: any;
@@ -40,6 +49,7 @@ export class AddPostComponent implements OnInit {
     });
   }
   get buttons(): { [key: string]: AbstractControl; } { return this.form.controls; }
+
   logoUpdate(event: any): void {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -47,41 +57,45 @@ export class AddPostComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  toggleText(){
-    this.showText=!this.showText;
-    if(this.showText){
-      this.textStyle='text-checked';
+  toggleText() {
+    this.showText = !this.showText;
+    if (this.showText) {
+      this.textStyle = 'text-checked';
     }
-    else{
+    else {
       this.textStyle = 'text-default';
     }
-    
+
   }
-  toggleImage(){
-    this.showImage=!this.showImage;
-    if(this.showImage){
-      this.imageDropifyStyle='image-checked';
+  toggleImage() {
+    this.showImage = !this.showImage;
+    if (this.showImage) {
+      this.imageDropifyStyle = 'image-checked';
     }
-    else{
-      this.imageDropifyStyle ='image-default';
+    else {
+      this.imageDropifyStyle = 'image-default';
     }
-    if(this.showImage){
-      this.imageStyle='text-checked';
+    if (this.showImage) {
+      this.imageStyle = 'text-checked';
     }
-    else{
-      this.imageStyle ='text-default';
-    }
-  }
-  toggleLink(){
-    this.showLink=!this.showLink;
-    if(this.showLink){
-      this.linkStyle='text-checked';
-    }
-    else{
-      this.linkStyle = 'text-default';
+    else {
+      this.imageStyle = 'text-default';
     }
   }
 
+  addPost() {
+    this.newPost.userId=this.userId;
+    if(this.showText){
+      this.newPost.text=this.form.value.text;
+    }
+    this.newPost.dateTimeOfPublishing=new Date();
+    console.log(this.newPost)
+    this.postService.addNewPost(this.newPost).subscribe(data=>{
+      alert('Sucessfully added new post')
+    },error=>{
+      alert('Error! Try again!')
+    })
+  }
   fileChangeEvent(fileInput: any) {
 
     if (fileInput.target.files && fileInput.target.files[0]) {
