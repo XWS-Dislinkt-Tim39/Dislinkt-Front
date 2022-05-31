@@ -24,7 +24,7 @@ export class ProfileDetailsComponent implements OnInit {
     this.getAllInterests()
   }
   getAllInterests() {
-    this.profileService.getAllInterests().subscribe(data => {
+    this.profileService.getUserInterests(this.selectedProfile.id).subscribe(data => {
       this.interests = data;
     },
       error => {

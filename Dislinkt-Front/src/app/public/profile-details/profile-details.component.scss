@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 
 .container {
@@ -77,11 +77,14 @@
 }
 
 .interest {
+    position: absolute;
+    left: 5px;
     display: flex;
+    flex-direction: row;
+    gap: 5px;
     align-items: center;
-    color: base.$dark-grey;
-    gap: 10px;
 }
+
 
 .interest .mat-icon {
     color: base.$primary-color
@@ -104,6 +107,7 @@
     font-weight: 500;
     font-size: 16px;
     color: base.$dark-grey;
+
 }
 
 

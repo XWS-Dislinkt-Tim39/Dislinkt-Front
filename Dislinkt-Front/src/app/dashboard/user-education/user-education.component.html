@@ -15,24 +15,24 @@
       <div class="right-content">
         <app-user-navigation   [selectedUser]="selectedUser"></app-user-navigation>
         <div class="private-content"  *ngIf="selectedUser.status==0">
-          This profile is private! Send request to make connection!
-        </div>
-        <div class="tab-content" *ngIf="selectedUser.status==1">
-          <div class="main" *ngFor="let item of experience">
-            <div class="head">
-              <div class="info">
-                <div class="mat-h2">{{item.fieldOfWork}}</div>
-                <div class="mat-h3">{{item.nameOfCompany}}</div>
-              </div>
-              <div class="mat-h4 date">{{item.startDate | date:'mediumDate' }} -{{item.endDate | date:'mediumDate' }}
-              </div>
-            </div>
-            <div class="mat-body-1">
-              {{item.description}}
-            </div>
-            <div class="line"></div>
+            This profile is private! Send request to make connection!
           </div>
-        </div>
+          <div class="tab-content" *ngIf="selectedUser.status==1">
+            <div class="main" *ngFor="let item of educations">
+              <div class="head">
+                <div class="info">
+                  <div class="mat-h2">{{item.fieldOfStudy}}</div>
+                  <div class="mat-h3">{{item.nameOfSchool}}</div>
+                </div>
+                <div class="mat-h4 date">{{item.startDate | date:'mediumDate' }} -{{item.endDate | date:'mediumDate' }}
+                </div>
+              </div>
+              <div class="mat-body-1">
+                {{item.description}}
+              </div>
+              <div class="line"></div>
+            </div>
+          </div>
       </div>
 
     </div>

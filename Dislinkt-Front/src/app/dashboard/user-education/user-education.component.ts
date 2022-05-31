@@ -2,25 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-education',
-  templateUrl: './profile-education.component.html',
-  styleUrls: ['./profile-education.component.scss']
+  selector: 'app-user-education',
+  templateUrl: './user-education.component.html',
+  styleUrls: ['./user-education.component.scss']
 })
-export class ProfileEducationComponent implements OnInit {
+export class UserEducationComponent implements OnInit {
   routeState: any;
-  selectedProfile:any;
+  selectedUser:any;
   educations:any[]=[];
   constructor( private router: Router) { 
     this.routeState = this.router.getCurrentNavigation()?.extras.state;
-    this.selectedProfile = this.routeState;
+    this.selectedUser = this.routeState;
   }
 
   ngOnInit(): void {
     this.getEducation()
   }
   getEducation(){
-    this.educations=this.selectedProfile.educations;
+    this.educations=this.selectedUser.educations;
   }
-  
 
 }

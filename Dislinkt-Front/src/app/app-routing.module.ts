@@ -26,6 +26,7 @@ import { EducationComponent } from './profile-settings/education/education.compo
 import { InterestsComponent } from './profile-settings/interests/interests.component';
 import { ProfileEducationComponent } from './public/profile-education/profile-education.component';
 import { RegistrationConfirmComponent } from './shared/registration-confirm/registration-confirm.component';
+import { UserEducationComponent } from './dashboard/user-education/user-education.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'user-experience',
     component: UserExperienceComponent
+  },
+  {
+    path: 'user-education',
+    component: UserEducationComponent
   },
   {
     path: 'user-skills',
