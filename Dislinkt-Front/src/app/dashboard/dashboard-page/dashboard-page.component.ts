@@ -40,6 +40,9 @@ user:any;
   getPosts(){
     this.postService.getUserPosts(this.user.id).subscribe(data=>{
       this.posts=data;
+      this.posts.forEach((value,i: any)=>{
+        value.showComments=false;
+    });
     },error=>{
       alert('Error! Try again!')
     })
@@ -53,7 +56,8 @@ user:any;
   }
 
   addLike(index:any){
-    this.posts[index].likes.push(this.user.id)
+    this.posts[index].likes.push(this.user.id);
+    
   }
   removeLike(index:any){
     this.posts[index].likes.forEach((value: { id: any; },i: any)=>{
@@ -84,14 +88,13 @@ user:any;
     }
     return false
   }
-  toggleComment() {
-    this.isComment = !this.isComment;
-    if (this.isComment) {
-      this.commentStyle = 'comment-button';
+  isCommented(index:any):boolean{
+    if(this.posts[index].comments.userId.indexOf(this.user.id) !== -1) {
+      return true
     }
-    else {
-      this.commentStyle = 'reaction-button';
-    }
+    return false
   }
-
+  showComments(index:any){
+    this.posts[index].showComments=!this.posts[index].showComments;
+  }
 }

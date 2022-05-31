@@ -39,11 +39,11 @@
               <button  class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(i)">
                 <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
               </button>
-              <button [ngClass]="[commentStyle]" (click)="toggleComment()">
+              <button [ngClass]="[commentStyle]" (click)="showComments(i)">
                 <mat-icon> comment</mat-icon>{{post.comments.length}}
               </button>
             </div>
-            <div class="comments" *ngIf="isComment">
+            <div class="comments" *ngIf="post.showComments==true">
               <div class="comment">
                 <div class="new-comment-image">
                   <img
@@ -57,27 +57,16 @@
                   <button class="accept-button">Post</button>
                 </div>
               </div>
-              <div class="comment">
+              <div class="comment" *ngFor="let item of post.comments">
                 <div class="comment-image">
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
                 </div>
                 <div class="message">
-                  <div class="author">Maja Maric</div>
-                  <div>hadjhfksjdhfkjshdkfjhsdkj</div>
+                  <div class="author">{{item.userId}}</div>
+                  <div>{{item.text}}</div>
                 </div>
               </div>
-              <div class="comment">
-                <div class="comment-image">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                </div>
-                <div class="message">
-                  <div class="author">Maja Maric</div>
-                  <div>hadjhfksjdhfk  jshdkfjh  sdkj sdsfdf sedfs  dddddddddddddddddddas</div>
-                </div>
-              </div>
-            
             </div>
           </div>
          
