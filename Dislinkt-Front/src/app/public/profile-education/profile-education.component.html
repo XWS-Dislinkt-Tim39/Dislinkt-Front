@@ -13,17 +13,16 @@
         <app-account-navigation  [selectedProfile]="selectedProfile"></app-account-navigation>
 
         <div class="tab-content">
-          <div class="main">
+          <div class="main" *ngFor="let item of educations">
             <div class="head">
               <div class="info">
-                <div class="mat-h2">Data Science</div>
-                <div class="mat-h3">Tecnical School</div>
+                <div class="mat-h2">{{item.fieldOfStudy}}</div>
+                <div class="mat-h3">{{item.nameOfSchool}}</div>
               </div>
-              <div class="mat-h4 date">maj 2018 - dec 2020</div>
+              <div class="mat-h4 date">{{item.startDate  | date:'mediumDate' }} -{{item.endDate | date:'mediumDate' }}</div>
             </div>
             <div class="mat-body-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+             {{item.description}}
           
             </div>
           </div>
