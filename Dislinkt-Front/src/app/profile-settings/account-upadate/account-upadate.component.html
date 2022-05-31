@@ -64,10 +64,7 @@
 
             </form>
             <div class="update">
-              <div class="profile-circle"><img
-                  src="https://qph.cf2.quoracdn.net/main-thumb-1278318002-200-ydzfegagslcexelzgsnplcklfkienzfr.jpeg">
-              </div>
-              <button class="primary-button" >Edit profile image</button>
+             
               <button class="primary-button" *ngIf="!isEdit" (click)="editProfile()">Edit about info</button>
               <button class="save-button" (click)="saveProfile()" *ngIf="isEdit">Save changes</button>
             </div>

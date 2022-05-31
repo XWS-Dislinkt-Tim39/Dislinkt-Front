@@ -77,6 +77,7 @@ export class InterestsComponent implements OnInit {
     }
     this.profileService.addNewInterest(this.newInterest).subscribe(data => {
       alert('Successfully added new interest');
+      window.location.reload();
     }, error => {
       alert('Error! Try again!')
     })

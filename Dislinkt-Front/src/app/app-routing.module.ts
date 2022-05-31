@@ -25,6 +25,7 @@ import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 import { EducationComponent } from './profile-settings/education/education.component';
 import { InterestsComponent } from './profile-settings/interests/interests.component';
 import { ProfileEducationComponent } from './public/profile-education/profile-education.component';
+import { RegistrationConfirmComponent } from './shared/registration-confirm/registration-confirm.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent
+  },
+  {
+    path: 'registration-confirm/:id',
+    component: RegistrationConfirmComponent
   },
   {
     path: 'search-profiles',
