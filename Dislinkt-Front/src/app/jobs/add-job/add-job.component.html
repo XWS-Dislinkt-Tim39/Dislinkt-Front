@@ -2,7 +2,7 @@
     <div class="mat-h2" mat-dialog-title>Post new job</div>
     <div mat-dialog-content>
       <form [formGroup]="form">
-        <div class="row">
+        <!-- <div class="row">
             <mat-form-field appearance="outline">
               <mat-label>Post start date</mat-label>
               <input matInput [matDatepicker]="picker">
@@ -17,17 +17,17 @@
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-        </div>
+        </div> -->
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Position name*</mat-label>
-            <input formControlName="text" matInput placeholder="Enter text">
+            <input formControlName="positionName" matInput placeholder="Enter text">
           </mat-form-field>
         </div>
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Job description*</mat-label>
-            <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
+            <textarea formControlName="description" matInput placeholder="Enter text"></textarea>
           </mat-form-field>
         </div>
         <div class="list">
@@ -49,7 +49,7 @@
            <div class="add-list">
             <mat-form-field appearance="outline">
               <mat-label>Daily activity</mat-label>
-              <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
+              <textarea formControlName="dailyActivities" matInput placeholder="Enter text"></textarea>
             </mat-form-field>
             <div class="add-button">
               <button class="primary-button connect">Add</button>
@@ -75,40 +75,13 @@
            <div class="add-list">
             <mat-form-field appearance="outline">
               <mat-label>Exepetation</mat-label>
-              <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
+              <textarea formControlName="requirements" matInput placeholder="Enter text"></textarea>
             </mat-form-field>
             <div class="add-button">
               <button class="primary-button connect">Add</button>
             </div>
           </div>
-        </div>
-        <div class="list">
-          <div>What do we offer?</div>
-          <mat-grid-list cols="1" rowHeight="15:1">
-            <mat-grid-tile>
-              <div class="interest">
-                <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
-              </div>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <div class="interest">
-                <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
-              </div>
-            </mat-grid-tile>
-          </mat-grid-list>
-           <div class="add-list">
-            <mat-form-field appearance="outline">
-              <mat-label>Offer</mat-label>
-              <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
-            </mat-form-field>
-            <div class="add-button">
-              <button class="primary-button connect">Add</button>
-            </div>
-          </div>
-        </div>
-      
+        </div>      
       </form>
   
     </div>
