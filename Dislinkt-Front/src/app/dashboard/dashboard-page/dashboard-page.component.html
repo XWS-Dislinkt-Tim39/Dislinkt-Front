@@ -27,16 +27,16 @@
               {{post.text}}
             </div>
             <div class="reactions">
-              <button class="like-button" *ngIf="isLiked(i)==true" (click)="removeLike(i)">
+              <button class="like-button" *ngIf="isLiked(i)==true" (click)="removeLike(post,i)">
                 <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
               <button class="reaction-button" *ngIf="!isLiked(i)"  (click)="addLike(post,i)">
                 <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
-              <button class="dislike-button" *ngIf="isDisliked(i)==true" (click)="removeDislike(i)">
+              <button class="dislike-button" *ngIf="isDisliked(i)==true" (click)="removeDislike(post,i)">
                 <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
               </button>
-              <button  class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(i)">
+              <button  class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(post,i)">
                 <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
               </button>
               <button [ngClass]="[commentStyle]" (click)="showComments(i)">

@@ -62,8 +62,11 @@ user:any;
   }
 
   addLike(post:any,index:any){
+    if(this.posts[index].dislikes.indexOf(this.user.id) !== -1) {
+      this.removeDislike(post,index);
+    }
     this.posts[index].likes.push(this.user.id);
-    this.postService.addNewPost1({userId:this.user.id,postId:post.id}).subscribe((data: any) => {
+    this.postService.addLikePost(this.user.id,post.id).subscribe((data: any) => {
      console.log(post.id)
 
     },
@@ -72,12 +75,18 @@ user:any;
       });
     
   }
-  removeLike(index:any){
+
+  removeLike(post:any,index:any){
     this.posts[index].likes.forEach((value: { id: any; },i: any)=>{
       if(value==this.user.id) {
         this.posts[index].likes.splice(i,1);
-      }
+      }  
   });
+  this.postService.removeLikePost(this.user.id,post.id).subscribe((data: any) => {
+    console.log(post.id) },
+     error => {
+       console.log(error.error.message);
+     });
   }
   isLiked(index:any):boolean{
     if(this.posts[index].likes.indexOf(this.user.id) !== -1) {
@@ -85,15 +94,30 @@ user:any;
     }
     return false
   }
-  addDislike(index:any){
-    this.posts[index].dislikes.push(this.user.id)
+  addDislike(post:any,index:any){
+    if(this.posts[index].likes.indexOf(this.user.id) !== -1) {
+     this.removeLike(post,index);
+    }
+    this.posts[index].dislikes.push(this.user.id);
+    this.postService.addDislikePost(this.user.id,post.id).subscribe((data: any) => {
+     console.log(post.id)
+    },
+      error => {
+        console.log(error.error.message);
+      });
+    
   }
-  removeDislike(index:any){
+  removeDislike(post:any,index:any){
     this.posts[index].dislikes.forEach((value: { id: any; },i: any)=>{
       if(value==this.user.id) {
         this.posts[index].dislikes.splice(i,1);
-      }
+      }  
   });
+  this.postService.removeDislikePost(this.user.id,post.id).subscribe((data: any) => {
+    console.log(post.id) },
+     error => {
+       console.log(error.error.message);
+     });
   }
   isDisliked(index:any):boolean{
     if(this.posts[index].dislikes.indexOf(this.user.id) !== -1) {
