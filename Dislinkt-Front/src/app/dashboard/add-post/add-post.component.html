@@ -3,7 +3,6 @@
   <div mat-dialog-content>
     <div class="buttons">
       <button class="post-element" [ngClass]="[textStyle]" (click)="toggleText()">Text<mat-icon> notes</mat-icon></button>
-      <button class="post-element" [ngClass]="[linkStyle]" (click)="toggleLink()">Link<mat-icon>link</mat-icon></button>
       <button class="post-element"  [ngClass]="[imageStyle]"  (click)="toggleImage()">Image<mat-icon>image</mat-icon></button>
     </div>
     <form [formGroup]="form">
@@ -11,20 +10,16 @@
         <mat-label>Text*</mat-label>
         <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
       </mat-form-field>
-      <mat-form-field *ngIf="showLink" appearance="outline">
-        <mat-label>Link*</mat-label>
-        <input formControlName="text" matInput placeholder="Enter link">
-      </mat-form-field>
     </form>
     <div class="row1" [ngClass]="[imageDropifyStyle]" >
       <label>Select image</label>
       <input id="image" type="file" class="dropify" (change)="logoUpdate($event)"
-            data-show-remove="true" style="margin-top: 20px" data-height="200"
+            data-show-remove="true" style="margin-top: 20px" data-height="150"
             data-allowed-file-extensions="jpg jpeg png svg" data-default-file="" />
     </div>
   </div>
   <div mat-dialog-actions class="dialog-actions">
-    <button class="yes-button" mat-raised-button mat-dialog-close >Add</button>
+    <button class="yes-button" mat-raised-button mat-dialog-close (click)="addPost()">Add</button>
     <button class="cancel-button" mat-raised-button mat-dialog-close raised>Close</button>
   </div>
 </div>
