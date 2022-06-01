@@ -91,7 +91,8 @@ export class AddPostComponent implements OnInit {
     this.newPost.dateTimeOfPublishing=new Date();
     console.log(this.newPost)
     this.postService.addNewPost(this.newPost).subscribe(data=>{
-      alert('Sucessfully added new post')
+      alert('Sucessfully added new post');
+      window.location.reload();
     },error=>{
       alert('Error! Try again!')
     })

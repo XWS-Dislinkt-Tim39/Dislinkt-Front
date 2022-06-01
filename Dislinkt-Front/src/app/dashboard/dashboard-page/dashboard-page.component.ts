@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { PostService } from 'src/app/core/services/post.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -60,8 +61,15 @@ user:any;
     });
   }
 
-  addLike(index:any){
+  addLike(post:any,index:any){
     this.posts[index].likes.push(this.user.id);
+    this.postService.addNewPost1({userId:this.user.id,postId:post.id}).subscribe((data: any) => {
+     console.log(post.id)
+
+    },
+      error => {
+        console.log(error.error.message);
+      });
     
   }
   removeLike(index:any){

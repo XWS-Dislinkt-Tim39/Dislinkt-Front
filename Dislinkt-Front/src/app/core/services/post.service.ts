@@ -27,6 +27,15 @@ export class PostService {
     addNewPost(post: NewPost): Observable<any> {
       return this.http.post(`${environment.post_url}add-post`, post, { headers: this.headers, responseType: 'json' });
     }
+    addNewPost1(post: {userId:'',postId:''}): Observable<any> {
+      return this.http.post(`${environment.post_url}add-like`, post, { headers: this.headers, responseType: 'json' });
+    }
+    addLikePost(userid:string,postId: string): Observable<any> {
+      return this.http.post(`${environment.post_url}add-like`, { params: {
+        userId:userid,
+        postId: postId
+      },headers: this.headers, responseType: 'json' });
+    }
     getUserPosts(userId: string): Observable<any> {
       return this.http.get(`${environment.post_url}user-posts`, { params: {
         id: userId
