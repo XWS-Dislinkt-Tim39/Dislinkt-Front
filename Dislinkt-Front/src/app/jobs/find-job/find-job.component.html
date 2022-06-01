@@ -12,11 +12,11 @@
                 </div>
 
                 <div class="tab-content">
-                    <form class="search">
+                    <form [formGroup]="searchForm" class="search">
                         <mat-form-field appearance="outline">
-                          <input matInput placeholder="Search">
-                          <mat-icon matSuffix>search</mat-icon>
-                        </mat-form-field>
+                            <input matInput placeholder="Search" formControlName="inputUser">
+                            <mat-icon matSuffix (click)="searchJob()">search</mat-icon>
+                          </mat-form-field>
                       </form>
                     <div class="main">
                         <div class="card" *ngFor="let job of jobs">

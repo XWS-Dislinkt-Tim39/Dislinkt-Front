@@ -29,5 +29,11 @@ export class JobService {
     { 
     params: {userId: userId},
     headers: this.headers, responseType: 'json' });
-    }
+  }
+
+  searchPost(positionName: string): Observable<any> {
+    return this.http.get(`${environment.job_url}search-job`, {
+        params: { searchParameter: positionName }, headers: this.headers, responseType: 'json'
+  });
+}
 }
