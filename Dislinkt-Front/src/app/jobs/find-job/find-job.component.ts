@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobService } from 'src/app/core/services/job.service';
 
 @Component({
   selector: 'app-find-job',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./find-job.component.scss']
 })
 export class FindJobComponent implements OnInit {
-
-  constructor() { }
+jobs: any[] = [];
+  constructor(private jobService:JobService) { }
 
   ngOnInit(): void {
+    this.findAll();
   }
+
+  findAll(){this.jobService.getAll().subscribe(data => {
+    this.jobs=data;
+  }, 
+  error => {
+    console.log(error.error);
+    alert('Error! Try again');
+  });
+}
 
 }
