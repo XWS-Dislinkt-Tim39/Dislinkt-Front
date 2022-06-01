@@ -4,6 +4,7 @@
 
 export const environment = {
   api_url: 'https://localhost:44348/',
+  job_url: 'https://localhost:44386/',
   post_url: 'https://localhost:44315/',
   production: false
 };
