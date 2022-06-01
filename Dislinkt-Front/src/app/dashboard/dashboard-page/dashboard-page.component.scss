@@ -95,7 +95,7 @@
 
 .head {
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr 10fr 1.5fr;
 }
 
 .head .image {
@@ -214,6 +214,7 @@
 .mat-body-1 {
     font-weight: 500;
     font-size: 16px;
+    margin: 10px 0px;
     color: base.$dark-grey;
 }
 

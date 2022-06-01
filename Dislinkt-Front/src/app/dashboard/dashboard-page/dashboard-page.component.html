@@ -12,37 +12,38 @@
           </button>
         </div>
         <div class="tab-content">
-          <div class="post">
+          <div class="post" *ngFor="let post of sortedPosts; let i=index">
             <div class="head">
               <div class="image">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
               </div>
               <div class="info">
-                <div class="mat-h2">IT Company</div>
-                <div class="mat-h3">Software developer</div>
+                <div class="mat-h2">{{user.firstName}} {{user.lastName}}</div>
               </div>
-              <div class="mat-h4">10.02.2022</div>
+              <div class="mat-h4">{{post.dateTimeOfPublishing | date:'mediumDate'}}</div>
             </div>
             <div class="mat-body-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              {{post.text}}
             </div>
             <div class="reactions">
-              <button [ngClass]="[likeStyle]" (click)="toggleLike()">
-                <mat-icon>thumb_up</mat-icon>30
+              <button class="like-button" *ngIf="isLiked(i)==true" (click)="removeLike(i)">
+                <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
-              <button [ngClass]="[dislikeStyle]" (click)="toggleDislike()">
-                <mat-icon>thumb_down</mat-icon>2
+              <button class="reaction-button" *ngIf="!isLiked(i)"  (click)="addLike(post,i)">
+                <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
-              <button [ngClass]="[commentStyle]" (click)="toggleComment()">
-                <mat-icon> comment</mat-icon>5
+              <button class="dislike-button" *ngIf="isDisliked(i)==true" (click)="removeDislike(i)">
+                <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
+              </button>
+              <button  class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(i)">
+                <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
+              </button>
+              <button [ngClass]="[commentStyle]" (click)="showComments(i)">
+                <mat-icon> comment</mat-icon>{{post.comments.length}}
               </button>
             </div>
-            <div class="comments" *ngIf="isComment">
+            <div class="comments" *ngIf="post.showComments==true">
               <div class="comment">
                 <div class="new-comment-image">
                   <img
@@ -56,59 +57,19 @@
                   <button class="accept-button">Post</button>
                 </div>
               </div>
-              <div class="comment">
+              <div class="comment" *ngFor="let item of post.comments">
                 <div class="comment-image">
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
                 </div>
                 <div class="message">
-                  <div class="author">Maja Maric</div>
-                  <div>hadjhfksjdhfkjshdkfjhsdkj</div>
+                  <div class="author">{{item.userId}}</div>
+                  <div>{{item.text}}</div>
                 </div>
               </div>
-              <div class="comment">
-                <div class="comment-image">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                </div>
-                <div class="message">
-                  <div class="author">Maja Maric</div>
-                  <div>hadjhfksjdhfk  jshdkfjh  sdkj sdsfdf sedfs  dddddddddddddddddddas</div>
-                </div>
-              </div>
-            
             </div>
           </div>
-          <div class="post">
-            <div class="head">
-              <div class="image">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-              </div>
-              <div class="info">
-                <div class="mat-h2">Sara Savanovic</div>
-                <div class="mat-h3">Software developer</div>
-              </div>
-              <div class="mat-h4">10.02.2022</div>
-            </div>
-            <div class="body mat-body-1">
-              <div> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et
-                dolore magna aliqua.</div>
-              <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014__340.jpg">
-            </div>
-            <div class="reactions">
-              <button class="reaction-button">
-                <mat-icon>thumb_up</mat-icon>25
-              </button>
-              <button class="reaction-button">
-                <mat-icon>thumb_down</mat-icon>10
-              </button>
-              <button class="reaction-button">
-                <mat-icon> comment</mat-icon>3
-              </button>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
