@@ -59,7 +59,12 @@ export class ProfileService {
     addNewSkill(skill:NewSkill): Observable<any> {
         return this.http.post(`${environment.api_url}add-new-skill`,skill, { headers: this.headers, responseType: 'json' });
     }
-
+    removeSkill(userId:string,skillId:string): Observable<any> {
+        return this.http.delete(`${environment.api_url}remove-skill`, { params: {
+            userId: userId,
+            skillId:skillId
+          },headers: this.headers, responseType: 'json' });
+    }
     getAllInterests(): Observable<any> {
         return this.http.get(`${environment.api_url}get-all-interests`,{ headers: this.headers, responseType: 'json' });
     }
@@ -72,7 +77,7 @@ export class ProfileService {
         return this.http.post(`${environment.api_url}add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
     }
     removeInterest(userId:string,interestId:string): Observable<any> {
-        return this.http.get(`${environment.api_url}remove-interest`, { params: {
+        return this.http.delete(`${environment.api_url}remove-interest`, { params: {
             userId: userId,
             interestId:interestId
           },headers: this.headers, responseType: 'json' });

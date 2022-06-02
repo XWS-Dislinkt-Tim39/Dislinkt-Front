@@ -19,7 +19,7 @@ export class SkillsComponent implements OnInit {
 userId:any;
   skills: NewSkill[] = [];
   distinctSkills:NewSkill[] = [];
-  userSkills: NewSkill[] = [];
+  userSkills: any[] = [];
   newSkill:NewSkill={
     name:'',
     userId:''
@@ -74,6 +74,14 @@ userId:any;
     }
     this.profileService.addNewSkill(this.newSkill).subscribe(data=>{
       alert('Successfully added new skill');
+      window.location.reload();
+    },error=>{
+      alert('Error! Try again!')
+    })
+   }
+
+   removeSkill(skillId:string){
+    this.profileService.removeSkill(this.userId,skillId).subscribe(data=>{
       window.location.reload();
     },error=>{
       alert('Error! Try again!')

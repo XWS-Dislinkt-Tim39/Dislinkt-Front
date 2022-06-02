@@ -115,6 +115,11 @@
 .skill .mat-icon{
     color: base.$danger;
 }
+.skill .mat-icon:hover{
+    cursor: pointer;
+    color:rgb(140, 21, 21)
+}
+
 
 .card {
     display: flex;

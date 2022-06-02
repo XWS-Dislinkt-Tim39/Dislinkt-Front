@@ -20,7 +20,7 @@
                   <div class="skill">
                     <div>{{skill.name}}</div>
                    <!-- <mat-icon>edit</mat-icon>-->
-                    <mat-icon>cancel</mat-icon>
+                    <mat-icon (click)="removeSkill(skill.id)">cancel</mat-icon>
                   </div>
                 </mat-grid-tile>
               </mat-grid-list>
