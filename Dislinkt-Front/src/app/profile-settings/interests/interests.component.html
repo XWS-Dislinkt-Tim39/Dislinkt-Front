@@ -20,7 +20,7 @@
                   <div class="skill">
                     <div>{{interest.name}}</div>
                     <!--<mat-icon>edit</mat-icon>-->
-                    <mat-icon>cancel</mat-icon>
+                    <mat-icon (click)="removeInterest(interest.id)">cancel</mat-icon>
                   </div>
                 </mat-grid-tile>
               </mat-grid-list>

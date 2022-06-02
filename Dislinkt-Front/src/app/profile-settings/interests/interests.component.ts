@@ -14,7 +14,7 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 export class InterestsComponent implements OnInit {
   isIconPress: boolean = false;
   distinctInterests: NewSkill[] = [];
-  userInterests: NewSkill[] = [];
+  userInterests: any[] = [];
   addForm: FormGroup;
   addInterestForm: FormGroup;
   @ViewChild('addSkillCategory') addDialog!: any;
@@ -80,6 +80,14 @@ export class InterestsComponent implements OnInit {
       window.location.reload();
     }, error => {
       alert('Error! Try again!')
+    })
+  }
+
+  removeInterest(interestId:string){
+    this.profileService.removeInterest(this.userId,interestId).subscribe(data=>{
+      window.location.reload();
+    },error=>{
+      alert('Error!Try again!')
     })
   }
 

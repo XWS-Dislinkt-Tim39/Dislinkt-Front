@@ -71,6 +71,12 @@ export class ProfileService {
     addNewInterest(interest:NewInterest): Observable<any> {
         return this.http.post(`${environment.api_url}add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
     }
+    removeInterest(userId:string,interestId:string): Observable<any> {
+        return this.http.get(`${environment.api_url}remove-interest`, { params: {
+            userId: userId,
+            interestId:interestId
+          },headers: this.headers, responseType: 'json' });
+    }
 
 
 
