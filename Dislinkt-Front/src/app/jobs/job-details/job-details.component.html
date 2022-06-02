@@ -35,16 +35,10 @@
                             <div class="list">
                                 <div class="job-subtitle">Your daily activities:</div>
                                 <mat-grid-list cols="1" rowHeight="30:1">
-                                  <mat-grid-tile>
+                                  <mat-grid-tile *ngFor="let item of selectedJob.dailyActivities">
                                     <div class="interest">
                                       <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
-                                    </div>
-                                  </mat-grid-tile>
-                                  <mat-grid-tile>
-                                    <div class="interest">
-                                      <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
+                                      <div>{{item}}</div>
                                     </div>
                                   </mat-grid-tile>
                                 </mat-grid-list>
@@ -53,16 +47,10 @@
                               <div class="list">
                                 <div class="job-subtitle">What do we expect from you?</div>
                                 <mat-grid-list cols="1" rowHeight="30:1">
-                                  <mat-grid-tile>
+                                  <mat-grid-tile  *ngFor="let item of selectedJob.requirements">
                                     <div class="interest">
                                       <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
-                                    </div>
-                                  </mat-grid-tile>
-                                  <mat-grid-tile>
-                                    <div class="interest">
-                                      <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
+                                      <div>{{item}}</div>
                                     </div>
                                   </mat-grid-tile>
                                 </mat-grid-list>
