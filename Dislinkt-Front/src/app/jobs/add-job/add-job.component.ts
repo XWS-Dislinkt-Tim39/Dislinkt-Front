@@ -47,7 +47,7 @@ export class AddJobComponent implements OnInit {
     this.newJobOffer.dailyActivities = this.form.value.dailyActivities;
     this.newJobOffer.requirements = this.form.value.requirements;
     this.jobService.addJobOffer(this.newJobOffer).subscribe(data => {
-      alert('Sucessfully added new education');
+      alert('Sucessfully added new job offer');
       window.location.reload();
     }, error => {
       console.log(error.error);
