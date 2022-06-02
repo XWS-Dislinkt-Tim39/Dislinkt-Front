@@ -30,7 +30,7 @@ export class ProfilePostsComponent implements OnInit {
       this.posts.forEach((value,i: any)=>{
         value.showComments=false;
         value.newCommentText='';
-        //this.getCommentUser(value);
+        this.getCommentUser(value);
     });
     this.sortedPosts = this.posts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
@@ -40,14 +40,14 @@ export class ProfilePostsComponent implements OnInit {
     })
   }
 
-  /*getCommentUser(post:any){
+  getCommentUser(post:any){
     post.comments.forEach((value:any,i: any)=>{
       this.profileService.getAboutInfo(value.userId).subscribe(data=>{
         value.userFirstName=data.firstName;
         value.userLastName=data.lastName;
       })
   });
-  }*/
+  }
 
   isLiked(index:any):boolean{
     if(this.posts[index].likes.indexOf(this.selectedProfile.id) !== -1) {

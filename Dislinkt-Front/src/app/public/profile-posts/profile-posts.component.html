@@ -29,8 +29,6 @@
             </div>
             <div class="reactions">
               
-                
-              
               <button class="reaction-button" >
                 <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
@@ -42,19 +40,8 @@
                 <mat-icon> comment</mat-icon>{{post.comments.length}}
               </button>
             </div>
+          
             <div class="comments" *ngIf="post.showComments==true">
-              <div class="comment">
-                <div class="new-comment-image">
-                  <div class="avatar-girl-small" *ngIf="selectedProfile.gender=='1'">
-                    {{selectedProfile.firstName[0]}} {{selectedProfile.lastName[0]}}
-                  </div>
-                  <div class="avatar-boy-small"  *ngIf="selectedProfile.gender=='0'">
-                    {{selectedProfile.firstName[0]}} {{selectedProfile.lastName[0]}}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="comments" *ngIf="post.showComments==true"></div>
               <div class="comment" *ngFor="let item of post.comments">
                 <div class="comment-image">
                   <div class="avatar-girl-small" *ngIf="selectedProfile.gender=='1'">

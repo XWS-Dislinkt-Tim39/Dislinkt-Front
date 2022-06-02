@@ -70,7 +70,7 @@
 
 .head {
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr 10fr 1.2fr;
 }
 
 .head .image {
@@ -187,6 +187,25 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+
+.avatar-boy-small,.avatar-girl-small {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy-small{
+    background-color: #1d9bc9
+}
+.avatar-girl-small{
+    background-color: palevioletred;
 }
 
 @media (pointer: coarse) {
