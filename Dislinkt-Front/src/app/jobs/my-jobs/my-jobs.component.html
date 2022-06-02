@@ -19,15 +19,20 @@
                       </div>
                       <div class="main">
                         <div class="card" *ngFor="let job of jobs">
-                            <div class="card-image"><img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                            </div>
+                            <div class="card-image">
+                                <div class="avatar-girl" *ngIf="job.gender=='1'">
+                                  {{job.userFirstName[0]}} {{job.userLastName[0]}}
+                                </div>
+                                <div class="avatar-boy"  *ngIf="job.gender=='0'">
+                                  {{job.userFirstName[0]}} {{job.userLastName[0]}}
+                                </div>
+                              </div>
                             <div class="name ">
                                 <div class="public">
                                     <div class="mat-h2">{{job.positionName}}</div>
                                 </div>
-                                <div class="mat-h3">IT Company</div>
-                                <div class="mat-h3">Novi Sad, Srbija</div>
+                                <div class="mat-h3">{{job.userFirstName}}  {{job.userLastName}}</div>
+                                <div class="mat-h3">{{job.city}},{{job.country}}</div>
                             </div>
                             <div class="view">
                                 <div class="mat-h4">25.05.2022.</div>
