@@ -20,17 +20,17 @@
                                 </div>
                                 <div class="name ">
                                     <div class="public">
-                                        <div class="mat-h2">Junior .NET Developer</div>
+                                        <div class="mat-h2">{{selectedJob.positionName}}</div>
                                     </div>
-                                    <div class="mat-h3">IT COmpany</div>
-                                    <div class="mat-h3">Novi Sad, Srbija</div>
+                                    <div class="mat-h3">{{selectedJob.userFirstName}} {{selectedJob.userLastName}}</div>
+                                    <div class="mat-h3">{{selectedJob.address}}, {{selectedJob.city}}, {{selectedJob.country}}</div>
                                 </div>
                             </div>
                             <div class="decsription">
                                 <div class="job-subtitle">Job description:</div>
                                 <div class="description-content">
-                                    We are looking for experienced Software Development Engineers to work in our Software Product Development teams. Software Development Engineers are responsible for the technical development of our software products. Ideally, you will be a full stack software developer who work within our product development and platform teams. You will work on all aspects of development of a cloud-based, SaaS platform which supports a range of applications. You will be expected to be comfortable working with both server-side and front-end technologies. You will work within a high-performing Agile team delivering exciting new products. Our teams are highly self-organising, and you will be expected to fit in to our self-starting, highly motivated team ethos. You will be responsible to your fellow team members, and report progress to the scrum master and the product owner.
-                                </div>
+                                  {{selectedJob.description}}
+                                   </div>
                             </div>
                             <div class="list">
                                 <div class="job-subtitle">Your daily activities:</div>
@@ -49,23 +49,7 @@
                                   </mat-grid-tile>
                                 </mat-grid-list>
                               </div>
-                            <div class="list">
-                                <div class="job-subtitle">What do we offer?</div>
-                                <mat-grid-list cols="1" rowHeight="30:1">
-                                  <mat-grid-tile>
-                                    <div class="interest">
-                                      <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
-                                    </div>
-                                  </mat-grid-tile>
-                                  <mat-grid-tile>
-                                    <div class="interest">
-                                      <mat-icon>check_circle</mat-icon>
-                                      <div>Lorem ipsum dolor sit amet</div>
-                                    </div>
-                                  </mat-grid-tile>
-                                </mat-grid-list>
-                              </div>
+                           
                               <div class="list">
                                 <div class="job-subtitle">What do we expect from you?</div>
                                 <mat-grid-list cols="1" rowHeight="30:1">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { JobService } from 'src/app/core/services/job.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
@@ -13,9 +14,15 @@ import { AddJobComponent } from '../add-job/add-job.component';
 })
 export class MyJobsComponent implements OnInit {
   dilogRef: any;
+  routeState: any;
+  selectedJob:any;
   userId: string = "";
   jobs: any[] = [];
-  constructor(public dialog: MatDialog, private jobService: JobService, private jwtService: JwtService,private profileService:ProfileService) { }
+  constructor(public dialog: MatDialog, 
+    private jobService: JobService, 
+    private jwtService: JwtService,
+    private profileService:ProfileService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
@@ -43,6 +50,12 @@ export class MyJobsComponent implements OnInit {
   error => {
     console.log(error.error);
     alert('Error! Try again');
+  });
+}
+
+viewJob(selectedJob:any){
+  this.router.navigate(['/job-details'], {
+    state: selectedJob,
   });
 }
 
