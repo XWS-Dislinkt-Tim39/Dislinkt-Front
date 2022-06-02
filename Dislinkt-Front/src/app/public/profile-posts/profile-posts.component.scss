@@ -114,6 +114,80 @@
     color: base.$dark-grey;
 }
 
+.reactions {
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.reaction-button,.like-button,.dislike-button,.comment-button {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid base.$medium-grey-letters;
+    display: flex;
+    color: base.$medium-grey-letters;
+    align-items: center;
+    gap: 5px;
+}
+
+.reaction-button:hover,.like-button:hover,.dislike-button:hover,.comment-button:hover{
+    box-shadow: base.$box-shadow;
+    cursor: pointer;
+}
+.like-button{
+    background-color: base.$success;
+    border: 2px solid base.$success;
+    color: white;
+}
+.dislike-button{
+    background-color: base.$danger;
+    border: 2px solid base.$danger;
+    color: white;
+}
+.comment-button{
+    background-color: base.$medium-grey-letters;
+    border: 2px solid base.$medium-grey-letters;
+    color: white;
+}
+.comments{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.comment{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.new-message{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.author{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.new-comment-image{
+    display: flex;
+    align-items: center;
+}
+.new-comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
 @media (pointer: coarse) {
     .container {
