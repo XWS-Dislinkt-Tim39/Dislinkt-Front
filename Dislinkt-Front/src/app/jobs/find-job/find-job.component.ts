@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { JobService } from 'src/app/core/services/job.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
@@ -13,7 +14,8 @@ export class FindJobComponent implements OnInit {
   searchForm: FormGroup;
   constructor(private jobService: JobService,
     private formBuilder: FormBuilder,
-    private profileService: ProfileService) {
+    private profileService: ProfileService,
+    private router: Router) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
     });
@@ -69,6 +71,12 @@ export class FindJobComponent implements OnInit {
         });
     }
 
+  }
+
+  viewJob(selectedJob:any){
+    this.router.navigate(['/job-details'], {
+      state: selectedJob,
+    });
   }
 }
 
