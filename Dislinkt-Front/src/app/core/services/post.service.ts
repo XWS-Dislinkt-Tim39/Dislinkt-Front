@@ -13,6 +13,7 @@ import { UpdateUserEducation } from '../models/update-user-education.model';
 import { NewSkill } from '../models/new-skill.model';
 import { NewInterest } from '../models/new-interest.model';
 import { NewPost } from '../models/new-post.model';
+import { NewComment } from '../models/new-comment.model';
 
 @Injectable({
     providedIn: 'root'
@@ -55,6 +56,9 @@ export class PostService {
       return this.http.get(`${environment.post_url}user-posts`, { params: {
         id: userId
       },headers: this.headers, responseType: 'json' });
+    }
+    addComment(comment: NewComment): Observable<any> {
+      return this.http.post(`${environment.post_url}add-comment`, comment, { headers: this.headers, responseType: 'json' });
     }
 
 

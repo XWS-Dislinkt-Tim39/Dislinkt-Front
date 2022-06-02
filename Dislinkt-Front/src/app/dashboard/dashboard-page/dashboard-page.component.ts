@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { PostService } from 'src/app/core/services/post.service';
 import { identifierModuleUrl } from '@angular/compiler';
+import { NewComment } from 'src/app/core/models/new-comment.model';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -19,7 +20,12 @@ export class DashboardPageComponent implements OnInit {
   dislikeStyle: string = '';
   commentStyle: string = '';
   posts:any[]=[]
-  sortedPosts:any[]=[]
+  sortedPosts:any[]=[];
+  newComment:NewComment={
+    text:'',
+    publisherId:'',
+    postId:''
+  }
 userDetails:any;
 user:any;
   constructor(
@@ -44,7 +50,7 @@ user:any;
       this.posts=data;
       this.posts.forEach((value,i: any)=>{
         value.showComments=false;
-    
+        value.newCommentText='';
     });
     this.sortedPosts = this.posts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
@@ -133,5 +139,19 @@ user:any;
   }
   showComments(index:any){
     this.posts[index].showComments=!this.posts[index].showComments;
+  }
+  addComment(post:any,index:any){
+    this.newComment.postId=post.id;
+    this.newComment.publisherId=this.user.id;
+    this.newComment.text=this.posts[index].newCommentText;
+    console.log(this.newComment);
+
+    this.postService.addComment(this.newComment).subscribe(data=>{
+      this.posts[index].comments.push(this.newComment);
+      this.posts[index].newCommentText='';
+    },error=>{
+      alert('Error!Try again!')
+    })
+
   }
 }

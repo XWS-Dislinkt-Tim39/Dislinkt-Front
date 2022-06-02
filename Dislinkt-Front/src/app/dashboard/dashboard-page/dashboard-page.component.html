@@ -52,9 +52,9 @@
                 <div class="new-message">
                   <mat-form-field  appearance="outline">
                     <mat-label>Comment*</mat-label>
-                    <textarea matInput placeholder="Enter comment"></textarea>
+                    <textarea matInput placeholder="Enter comment" [(ngModel)]='post.newCommentText' [name]='post.newCommentText'></textarea>
                   </mat-form-field>
-                  <button class="accept-button">Post</button>
+                  <button class="accept-button" (click)="addComment(post,i)">Post</button>
                 </div>
               </div>
               <div class="comment" *ngFor="let item of post.comments">
