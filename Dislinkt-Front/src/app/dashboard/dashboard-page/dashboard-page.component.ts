@@ -5,6 +5,7 @@ import { JwtService } from 'src/app/core/services/jwt.service';
 import { PostService } from 'src/app/core/services/post.service';
 import { identifierModuleUrl } from '@angular/compiler';
 import { NewComment } from 'src/app/core/models/new-comment.model';
+import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -31,7 +32,8 @@ user:any;
   constructor(
     public dialog: MatDialog,
     private jwtService: JwtService,
-    private postService:PostService) {
+    private postService:PostService,
+    private profileService:ProfileService) {
 
     this.likeStyle = 'reaction-button';
     this.dislikeStyle = 'reaction-button';
@@ -51,6 +53,7 @@ user:any;
       this.posts.forEach((value,i: any)=>{
         value.showComments=false;
         value.newCommentText='';
+        this.getCommentUser(value);
     });
     this.sortedPosts = this.posts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
@@ -58,6 +61,15 @@ user:any;
     },error=>{
       alert('Error! Try again!')
     })
+  }
+
+  getCommentUser(post:any){
+    post.comments.forEach((value:any,i: any)=>{
+      this.profileService.getAboutInfo(value.userId).subscribe(data=>{
+        value.userFirstName=data.firstName;
+        value.userLastName=data.lastName;
+      })
+  });
   }
 
   openAddDialog(event: { stopPropagation: () => void; }) {
@@ -147,7 +159,10 @@ user:any;
     console.log(this.newComment);
 
     this.postService.addComment(this.newComment).subscribe(data=>{
-      this.posts[index].comments.push(this.newComment);
+      let comment:any=this.newComment;
+      comment.userFirstName=this.user.firstName;
+      comment.userLastName=this.user.lastName;
+      this.posts[index].comments.push(comment);
       this.posts[index].newCommentText='';
     },error=>{
       alert('Error!Try again!')

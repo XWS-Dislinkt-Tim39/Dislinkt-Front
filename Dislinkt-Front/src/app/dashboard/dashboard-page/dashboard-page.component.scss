@@ -112,8 +112,8 @@
     border-radius: 50%;
 }
 .comment-image img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 .new-comment-image{
@@ -121,8 +121,8 @@
     align-items: center;
 }
 .new-comment-image img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 .mat-form-field{
@@ -180,7 +180,7 @@
 .comment{
     display: flex;
     flex-direction: row;
-    gap:5px;
+    gap:10px;
 }
 .new-message{
     display: flex;
@@ -221,6 +221,48 @@
 .head-connection {
     display: grid;
     grid-template-columns: 2fr 6fr
+}
+
+.card-image {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+ .avatar-boy,.avatar-girl {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy{
+    background-color: #1d9bc9
+}
+.avatar-girl{
+    background-color: palevioletred;
+}
+.avatar-boy-small,.avatar-girl-small {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy-small{
+    background-color: #1d9bc9
+}
+.avatar-girl-small{
+    background-color: palevioletred;
 }
 
 .accept {
