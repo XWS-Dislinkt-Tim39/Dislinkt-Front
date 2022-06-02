@@ -33,16 +33,10 @@
         <div class="list">
           <div>Your daily activities:</div>
           <mat-grid-list cols="1" rowHeight="15:1">
-            <mat-grid-tile>
+            <mat-grid-tile  *ngFor="let item of activities" >
               <div class="interest">
                 <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
-              </div>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <div class="interest">
-                <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
+                <div>{{item}}</div>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
@@ -52,23 +46,17 @@
               <textarea formControlName="dailyActivities" matInput placeholder="Enter text"></textarea>
             </mat-form-field>
             <div class="add-button">
-              <button class="primary-button connect">Add</button>
+              <button class="primary-button connect" (click)="addActivity()">Add</button>
             </div>
           </div>
         </div>
         <div class="list">
           <div>What do we expect from you?</div>
           <mat-grid-list cols="1" rowHeight="15:1">
-            <mat-grid-tile>
+            <mat-grid-tile  *ngFor="let item of requirements">
               <div class="interest">
                 <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
-              </div>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <div class="interest">
-                <mat-icon>check_circle</mat-icon>
-                <div>Lorem ipsum dolor sit amet</div>
+                <div>{{item}}</div>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
@@ -78,7 +66,7 @@
               <textarea formControlName="requirements" matInput placeholder="Enter text"></textarea>
             </mat-form-field>
             <div class="add-button">
-              <button class="primary-button connect">Add</button>
+              <button class="primary-button connect" (click)="addRequirements()">Add</button>
             </div>
           </div>
         </div>      
@@ -86,7 +74,7 @@
   
     </div>
     <div mat-dialog-actions class="dialog-actions">
-      <button class="yes-button" mat-raised-button mat-dialog-close (click)="addWorkExperience()">Post</button>
+      <button class="yes-button" mat-raised-button mat-dialog-close (click)="addJobOffer()">Post</button>
       <button class="cancel-button" mat-raised-button mat-dialog-close raised>Close</button>
     </div>
   </div>
