@@ -30,7 +30,7 @@ export class FindJobComponent implements OnInit {
   findAll() {
     this.jobService.getAll().subscribe(data => {
       this.jobs = data;
-      this.jobs.forEach((value,i: any)=>{
+      this.jobs.forEach((value, i: any) => {
         this.profileService.getAboutInfo(value.publisherId).subscribe(data => {
           value.userFirstName = data.firstName;
           value.userLastName = data.lastName;
@@ -38,8 +38,7 @@ export class FindJobComponent implements OnInit {
           value.country = data.country;
           value.gender = data.gender;
         })
-      
-    });
+      });
     },
       error => {
         console.log(error.error);
@@ -48,14 +47,28 @@ export class FindJobComponent implements OnInit {
   }
 
   searchJob() {
-    let positionName = this.searchForm.value.inputUser;
-    this.jobService.searchPost(positionName).subscribe((data: any) => {
-      this.jobs = data;
+    if (this.searchForm.value.inputUser == '') {
+      this.findAll();
+    }
+    else {
+      let positionName = this.searchForm.value.inputUser;
+      this.jobService.searchPost(positionName).subscribe((data: any) => {
+        this.jobs = data;
+        this.jobs.forEach((value, i: any) => {
+          this.profileService.getAboutInfo(value.publisherId).subscribe(data => {
+            value.userFirstName = data.firstName;
+            value.userLastName = data.lastName;
+            value.city = data.city;
+            value.country = data.country;
+            value.gender = data.gender;
+          })
+        });
+      },
+        error => {
+          console.log(error.error.message);
+        });
+    }
 
-    },
-      error => {
-        console.log(error.error.message);
-      });
   }
 }
 
