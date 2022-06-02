@@ -13,7 +13,11 @@ import { JwtService } from 'src/app/core/services/jwt.service';
 export class AddJobComponent implements OnInit {
   form: FormGroup;
   userId: string = "";
+  startDateTime:Date=new Date();
+  endDateTime:Date=new Date();
   newJobOffer: NewJobOffer= {
+    startDateTime:new Date(),
+    endDateTime:new Date(),
     publisherId: "",
     positionName: "",
     description: "",
@@ -29,6 +33,8 @@ export class AddJobComponent implements OnInit {
     private dialogRef: MatDialogRef<AddJobComponent>) 
     { 
     this.form = this.formBuilder.group({
+      startDateTime:[''],
+      endDateTime:[''],
       positionName: [''],
       description: [''],
       dailyActivities: [''],
@@ -53,6 +59,8 @@ export class AddJobComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.newJobOffer.startDateTime=this.startDateTime;
+    this.newJobOffer.endDateTime=this.endDateTime;
     this.newJobOffer.publisherId = this.userId;
     this.newJobOffer.positionName = this.form.value.positionName;
     this.newJobOffer.description = this.form.value.description;

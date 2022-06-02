@@ -2,22 +2,22 @@
     <div class="mat-h2" mat-dialog-title>Post new job</div>
     <div mat-dialog-content>
       <form [formGroup]="form">
-        <!-- <div class="row">
+         <div class="row">
             <mat-form-field appearance="outline">
               <mat-label>Post start date</mat-label>
-              <input matInput [matDatepicker]="picker">
+              <input matInput formControlName="startDateTime" [matDatepicker]="picker"  [(ngModel)]="startDateTime">
               <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Post end date</mat-label>
-              <input matInput [matDatepicker]="picker">
+              <input matInput formControlName="endDateTime" [matDatepicker]="picker1" [(ngModel)]="endDateTime">
               <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-        </div> -->
+        </div> 
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Position name*</mat-label>
