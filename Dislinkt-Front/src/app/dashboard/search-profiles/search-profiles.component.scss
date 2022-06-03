@@ -190,12 +190,33 @@ margin:0px;
     margin: 5px 20px;
     width: 170px;
 }
+.follow-button {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+}
+.follow-button:hover {
+   box-shadow: base.$box-shadow;
+   cursor: pointer;
+}
 
 .connect {
     @extend %primary-button;
     margin: 5px 20px;
     width: 170px;
+    background-color: base.$success;
+}
+.request {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
     background-color: base.$primary-color-dark;
+}
+.following {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+    background-color: base.$danger;
 }
 
 .view {
