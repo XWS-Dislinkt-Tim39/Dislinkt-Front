@@ -12,18 +12,18 @@
           </button>
         </div>
         <div class="tab-content">
-          <div class="post" *ngFor="let post of sortedPosts; let i=index">
+          <div class="post" *ngFor="let post of allPosts; let i=index">
             <div class="head">
               <div class="card-image">
-                <div class="avatar-girl" *ngIf="user.gender=='1'">
-                  {{user.firstName[0]}} {{user.lastName[0]}}
+                <div class="avatar-girl" *ngIf="post.gender=='1'">
+                  {{post.userFirstName[0]}} {{post.userLastName[0]}}
                 </div>
-                <div class="avatar-boy"  *ngIf="user.gender=='0'">
-                  {{user.firstName[0]}} {{user.lastName[0]}}
+                <div class="avatar-boy"  *ngIf="post.gender=='0'">
+                  {{post.userFirstName[0]}} {{post.userLastName[0]}}
                 </div>
             </div>
               <div class="info">
-                <div class="mat-h2">{{user.firstName}} {{user.lastName}}</div>
+                <div class="mat-h2">{{post.userFirstName}} {{post.userLastName}}</div>
               </div>
               <div class="mat-h4">{{post.dateTimeOfPublishing | date:'mediumDate'}}</div>
             </div>
@@ -67,10 +67,10 @@
               </div>
               <div class="comment" *ngFor="let item of post.comments">
                 <div class="comment-image">
-                  <div class="avatar-girl-small" *ngIf="user.gender=='1'">
+                  <div class="avatar-girl-small" *ngIf="item.gender=='1'">
                     {{item.userFirstName[0]}} {{item.userLastName[0]}}
                   </div>
-                  <div class="avatar-boy-small"  *ngIf="user.gender=='0'">
+                  <div class="avatar-boy-small"  *ngIf="item.gender=='0'">
                     {{item.userFirstName[0]}} {{item.userLastName[0]}}
                   </div>
                 </div>

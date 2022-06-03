@@ -2,6 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from '../core/models/message.model';
+import { ConnectionService } from '../core/services/connection.service';
+import { JwtService } from '../core/services/jwt.service';
+import { ProfileService } from '../core/services/profile.service';
 
 @Component({
   selector: 'app-messages',
@@ -9,7 +12,8 @@ import { Message } from '../core/models/message.model';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-
+  connections:any[]=[];
+  connectionData:any[]=[];
   messages1:Message[]=[{
     'name':'Ana',
     'lastName':'Anic',
@@ -67,15 +71,21 @@ export class MessagesComponent implements OnInit {
   messagesList:any[]=[this.messages1,this.messages2]
   myMessage:any='';
   sendForm!: FormGroup;
-  constructor(    private formBuilder: FormBuilder,) { 
+  userId:any;
+  constructor(    private formBuilder: FormBuilder,
+    private connectionService:ConnectionService,
+    private jwtService:JwtService,
+    private profileService:ProfileService) { 
     
   }
 
   ngOnInit(): void {
+    this.userId=this.jwtService.getUserId();
     this.selectedChat=this.messages1;
     this.sendForm = this.formBuilder.group({
       message: []
     });
+    this.getConnections()
   }
 
   get sendFormControl() {
@@ -83,6 +93,28 @@ export class MessagesComponent implements OnInit {
   }
   showChat(row:Message[]){
   this.selectedChat=row;
+  }
+  getConnections(){
+    this.connectionService.getConnections(this.userId).subscribe(data=>{
+      this.connections=data;
+      this.getConnectionsData();
+    },error=>{
+      alert('Error!')
+    })
+  }
+
+  getConnectionsData(){
+    if(this.connections!=null){
+      this.connections.forEach((value: any, i: any) => {
+        this.profileService.getAboutInfo(value).subscribe(data => {
+         this.connectionData.push({
+           userFirstName:data.firstName,
+           userLastName:data.lastName
+         })
+        })
+      });
+    }
+   
   }
 
   sendMessage(){
