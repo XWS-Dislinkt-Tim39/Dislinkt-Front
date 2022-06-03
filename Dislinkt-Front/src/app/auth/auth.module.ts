@@ -16,6 +16,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NoAuthGuard } from './guards/no-auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpTokenInterceptor } from '../core/interceptor/http.interceptor';
 
 
 @NgModule({
@@ -43,6 +46,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   exports: [
     SignUpComponent, SignInComponent
-  ]
+  ],
+  providers: [ NoAuthGuard, { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }]
 })
 export class AuthModule { }

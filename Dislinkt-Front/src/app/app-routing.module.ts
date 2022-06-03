@@ -27,6 +27,8 @@ import { InterestsComponent } from './profile-settings/interests/interests.compo
 import { ProfileEducationComponent } from './public/profile-education/profile-education.component';
 import { RegistrationConfirmComponent } from './shared/registration-confirm/registration-confirm.component';
 import { UserEducationComponent } from './dashboard/user-education/user-education.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NoAuthGuard } from './auth/guards/no-auth.guard';
 
 const routes: Routes = [
   {
@@ -71,11 +73,13 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardPageComponent
+    component: DashboardPageComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'dashboard-search-profiles',
-    component: SearchProfilesComponent
+    component: SearchProfilesComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'user-profile',
@@ -99,39 +103,52 @@ const routes: Routes = [
   },
   {
     path: 'account-update',
-    component: AccountUpadateComponent
+    component: AccountUpadateComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'account-experience',
-    component: ExperienceComponent
+    component: ExperienceComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'account-education',
-    component: EducationComponent
+    component: EducationComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'account-skills',
-    component: SkillsComponent
+    component: SkillsComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'account-interests',
-    component: InterestsComponent
+    component: InterestsComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'messages',
-    component: MessagesComponent
+    component: MessagesComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'find-job',
-    component: FindJobComponent
+    component: FindJobComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'my-jobs',
-    component: MyJobsComponent
+    component: MyJobsComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'job-details',
-    component: JobDetailsComponent
+    component: JobDetailsComponent,
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

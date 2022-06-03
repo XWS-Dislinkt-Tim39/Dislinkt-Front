@@ -7,6 +7,7 @@ import { NavbarNotRegisteredComponent } from './navbar-not-registered/navbar-not
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RegistrationConfirmComponent } from './registration-confirm/registration-confirm.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -16,6 +17,7 @@ import { RegistrationConfirmComponent } from './registration-confirm/registratio
     NavbarNotRegisteredComponent,
     SidebarComponent,
     RegistrationConfirmComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
