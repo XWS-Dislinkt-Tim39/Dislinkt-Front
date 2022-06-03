@@ -100,7 +100,7 @@
 
 .head {
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr 10fr 3fr;
 }
 
 .head .image {
@@ -136,13 +136,167 @@
 .mat-h4 {
     font-size: 16px;
     color: base.$light-grey-letters;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .mat-body-1 {
+    margin:10px 0px;
     font-weight: 500;
     font-size: 16px;
     color: base.$dark-grey;
 }
+
+
+.reactions {
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.avatar-boy,.avatar-girl {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy{
+    background-color: #1d9bc9
+}
+.avatar-girl{
+    background-color: palevioletred;
+}
+.card-image {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+
+.reaction-button,.like-button,.dislike-button,.comment-button {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid base.$medium-grey-letters;
+    display: flex;
+    color: base.$medium-grey-letters;
+    align-items: center;
+    gap: 5px;
+}
+
+.reaction-button:hover,.like-button:hover,.dislike-button:hover,.comment-button:hover{
+    box-shadow: base.$box-shadow;
+    cursor: pointer;
+}
+.like-button{
+    background-color: base.$success;
+    border: 2px solid base.$success;
+    color: white;
+}
+.dislike-button{
+    background-color: base.$danger;
+    border: 2px solid base.$danger;
+    color: white;
+}
+.comment-button{
+    background-color: base.$medium-grey-letters;
+    border: 2px solid base.$medium-grey-letters;
+    color: white;
+}
+.comments{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.comment{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.new-message{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.author{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.new-comment-image{
+    display: flex;
+    align-items: center;
+}
+.new-comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+.avatar-boy-small,.avatar-girl-small {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy-small{
+    background-color: #1d9bc9
+}
+.avatar-girl-small{
+    background-color: palevioletred;
+}
+
+.comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.new-comment-image{
+    display: flex;
+    align-items: center;
+}
+.new-comment-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.mat-form-field{
+    margin-top: 20px;
+    width: 100%;
+}
+.accept-button {
+    @extend %primary-button;
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.accept-button:hover {
+    @extend %primary-button-hover;
+}
+
+
 
 @media (pointer: coarse) {
     .container {
