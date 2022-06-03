@@ -41,7 +41,7 @@
             <div class="card-profile"><button (click)="viewProfile(profile)" class="primary-button">Profile</button>
             </div>
             <div class="card-connect">
-               <button *ngIf="profile.status=='1'"   class="primary-button connect">Connect</button>
+               <button *ngIf="profile.status=='1'"   class="primary-button connect" (click)="follow(profile.id)">Connect</button>
               <button *ngIf="profile.status=='0'" class="primary-button connect">Send Request</button>
             </div>
           </div>

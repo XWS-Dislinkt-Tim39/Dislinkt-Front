@@ -1,5 +1,5 @@
 export interface Connection {
    sourceId:string;
-   targetID:string;
+   targetId:string;
    connectionName:string;
 }
