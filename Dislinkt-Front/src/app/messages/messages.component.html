@@ -9,12 +9,12 @@
             <div class="people">
                
                 <div class="friends">
-                    <div class="friend" *ngFor="let item of messagesList" (click)="showChat(item)">
+                    <div class="friend" *ngFor="let item of connectionData" (click)="showChat(item)">
                         <div class="friend-image"><img
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
                         </div>
-                        <div class="name">{{item[0].name}}</div>
-                        <div class="name">{{item[0].lastName}}</div>
+                        <div class="name">{{item.userFirstName}}</div>
+                        <div class="name">{{item.userLastName}}</div>
                     </div>
                 </div>
             </div>
