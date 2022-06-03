@@ -88,41 +88,27 @@
     <div class="right">
       <div class="right-content">
         <div class="subtitle">Connection requests</div>
-        <div class="connection">
+        <div class="connection" *ngFor="let item of followRequests">
           <div class="head-connection">
             <div class="image">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
             </div>
             <div class="info-connection">
-              <div class="mat-h2">Sara Savanovic</div>
-              <div class="mat-h3">Software developer</div>
+              <div class="mat-h2">{{item.userFirstName}} {{item.userLastName}}</div>
+              <div class="mat-h3">{{item.username}}</div>
             </div>
           </div>
           <div class="accept">
             <button class="accept-button">Accept</button>
             <button class="decline-button">Decline</button>
           </div>
+          <div class="line"></div>
         </div>
 
-        <div class="line"></div>
+       
 
-        <div class="connection">
-          <div class="head-connection">
-            <div class="image">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-            </div>
-            <div class="info-connection">
-              <div class="mat-h2">Sara Savanovic</div>
-              <div class="mat-h3">Software developer</div>
-            </div>
-          </div>
-          <div class="accept">
-            <button class="accept-button">Accept</button>
-            <button class="decline-button">Decline</button>
-          </div>
-        </div>
+        
       </div>
 
       <div class="right-content">
@@ -142,6 +128,7 @@
             <button class="accept-button">Connect</button>
           </div>
         </div>
+        
 
         <div class="line"></div>
 

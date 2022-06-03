@@ -6,6 +6,7 @@ import { PostService } from 'src/app/core/services/post.service';
 import { identifierModuleUrl } from '@angular/compiler';
 import { NewComment } from 'src/app/core/models/new-comment.model';
 import { ProfileService } from 'src/app/core/services/profile.service';
+import { ConnectionService } from 'src/app/core/services/connection.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -29,11 +30,15 @@ export class DashboardPageComponent implements OnInit {
   }
 userDetails:any;
 user:any;
+requests:any[]=[];
+followRequests:any[]=[];
+
   constructor(
     public dialog: MatDialog,
     private jwtService: JwtService,
     private postService:PostService,
-    private profileService:ProfileService) {
+    private profileService:ProfileService,
+    private connectionService:ConnectionService) {
 
     this.likeStyle = 'reaction-button';
     this.dislikeStyle = 'reaction-button';
@@ -44,6 +49,20 @@ user:any;
     this.userDetails=JSON.parse(localStorage.getItem('userDetails') || '');
     this.user=this.userDetails.user;
     this.getPosts();
+    this.getFollowRequests();
+  }
+  getFollorRequestUser(){
+    this.requests.forEach((value:any,i: any)=>{
+      this.profileService.getAboutInfo(value).subscribe(data=>{
+        this.followRequests.push({
+          userId:value,
+          userFirstName:data.firstName,
+          userLastName:data.lastName,
+          username:data.username
+        });
+        
+      })
+  });
   }
 
   
@@ -70,6 +89,14 @@ user:any;
         value.userLastName=data.lastName;
       })
   });
+  }
+  getFollowRequests(){
+    this.connectionService.getFollowRequests(this.user.id).subscribe(data=>{
+      this.requests=data;
+      this.getFollorRequestUser();
+    },error=>{
+      alert('Error!Try again!')
+    })
   }
 
   openAddDialog(event: { stopPropagation: () => void; }) {

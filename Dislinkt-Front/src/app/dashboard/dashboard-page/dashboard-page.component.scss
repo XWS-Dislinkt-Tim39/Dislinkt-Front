@@ -43,6 +43,8 @@
     background-color: white;
     padding: 20px;
     width: 80%;
+    max-height:35vh;
+    overflow: auto;
     border-radius: base.$border-radius;
     box-shadow: base.$box-shadow;
 }
