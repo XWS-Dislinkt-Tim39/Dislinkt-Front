@@ -46,6 +46,12 @@ export class SearchProfilesComponent implements OnInit {
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
       this.profiles = data;
+      this.profiles.forEach((value,i: any)=>{
+        if(this.profiles[i].id==this.userId) {
+          this.profiles.splice(i,1);
+        }
+        
+    });
     },
       error => {
         console.log(error.error.message);
@@ -58,6 +64,8 @@ export class SearchProfilesComponent implements OnInit {
     })
   }
   isConnected(targetId:any):boolean{
+    if(this.connections==null)
+      return false;
     if(this.connections.indexOf(targetId) !== -1) {
       return true
     }
