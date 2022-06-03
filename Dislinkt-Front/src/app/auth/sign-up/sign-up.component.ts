@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
+import { ConnectionService } from 'src/app/core/services/connection.service';
+import { NewUserNode } from 'src/app/core/models/new-user-node.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,11 +15,17 @@ export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   hidePassword = true;
+  newNode:NewUserNode={
+    id:'',
+    userName:'',
+    status:1
+  }
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private connectionService:ConnectionService
   ) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -70,6 +78,8 @@ export class SignUpComponent implements OnInit {
         alert('Error! Try again!');
       });
   }
+
+  
 
   checkPassword(): boolean {
     if (this.registerForm.value.password === this.registerForm.value.confirmPassword)

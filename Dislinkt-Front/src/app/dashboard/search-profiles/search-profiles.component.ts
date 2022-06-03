@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Connection } from 'src/app/core/models/connection.model';
+import { ConnectionService } from 'src/app/core/services/connection.service';
+import { JwtService } from 'src/app/core/services/jwt.service';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -18,11 +21,16 @@ export class SearchProfilesComponent implements OnInit {
   experienceList: string[] = ['No experience', 'One year', 'Two year', 'More than 2 years'];
   industryList: string[] = ['IT', 'Doctor', 'Economist', 'Architect', 'Menager', 'Lawyer'];
   ageList: string[] = ['<18', '18-25', '25-35', '>35']
-  noExperienceList: any[] = []
+  noExperienceList: any[] = [];
+  userId:any;
+  isFollowing:boolean=false;
+  connections:any[]=[];
   constructor(
     private publicProfilesService:PublicProfilesService,
     private router: Router,
     private formBuilder: FormBuilder,
+    private connectionService:ConnectionService,
+    private jwtService:JwtService
   ) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
@@ -30,7 +38,10 @@ export class SearchProfilesComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userId=this.jwtService.getUserId();
     this.getAllProfiles();
+    this.getUserConnections();
+
   }
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
@@ -39,6 +50,18 @@ export class SearchProfilesComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+  }
+
+  getUserConnections(){
+    this.connectionService.getConnections(this.userId).subscribe(data=>{
+      this.connections=data;
+    })
+  }
+  isConnected(targetId:any):boolean{
+    if(this.connections.indexOf(targetId) !== -1) {
+      return true
+    }
+    return false
   }
 
 
@@ -68,6 +91,47 @@ export class SearchProfilesComponent implements OnInit {
     this.router.navigate(['/user-profile'], {
       state: profile,
     });
+  }
+
+  follow(profileId:string){
+    let connection:Connection={
+      sourceId:this.userId,
+      targetId:profileId,
+      connectionName:''
+    }
+    this.connectionService.followPublicUser(connection).subscribe(data=>{
+      alert('Successfully followed!');
+      window.location.reload()
+    },error=>{
+      alert('Error!Try again!')
+    })
+  }
+  sendRequest(profileId:string){
+    let connection:Connection={
+      sourceId:profileId,
+      targetId:this.userId,
+      connectionName:''
+    }
+    this.connectionService.sendRequest(connection).subscribe(data=>{
+      alert('Successfully send!');
+      window.location.reload()
+    },error=>{
+      alert('Error!Try again!')
+    })
+  }
+  unfollow(profileId:string){
+    let connection:Connection={
+      sourceId:this.userId,
+      targetId:profileId,
+      connectionName:'FOLLOWS'
+    }
+    this.connectionService.unfollowUser(connection).subscribe(data=>{
+      alert('Successfully unfollowed!');
+      window.location.reload()
+    },error=>{
+      alert('Error!Try again!')
+    })
+
   }
 
 }
