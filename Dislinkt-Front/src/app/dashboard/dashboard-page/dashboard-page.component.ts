@@ -70,10 +70,12 @@ followRequests:any[]=[];
   getPosts(){
     this.postService.getUserPosts(this.user.id).subscribe(data=>{
       this.posts=data;
+     
       this.posts.forEach((value,i: any)=>{
         value.showComments=false;
         value.newCommentText='';
         this.getCommentUser(value);
+        
     });
     this.sortedPosts = this.posts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
@@ -101,6 +103,7 @@ followRequests:any[]=[];
   }
 
   acceptFollowRequest(id:any){
+    alert(id)
     let connection:Connection={
       sourceId:id,
       targetId:this.user.id,
