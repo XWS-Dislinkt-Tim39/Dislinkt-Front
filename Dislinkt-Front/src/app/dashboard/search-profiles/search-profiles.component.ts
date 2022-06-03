@@ -58,6 +58,8 @@ export class SearchProfilesComponent implements OnInit {
     })
   }
   isConnected(targetId:any):boolean{
+    if(this.connections==null)
+      return false;
     if(this.connections.indexOf(targetId) !== -1) {
       return true
     }

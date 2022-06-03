@@ -7,6 +7,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { NewComment } from 'src/app/core/models/new-comment.model';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import { ConnectionService } from 'src/app/core/services/connection.service';
+import { Connection } from 'src/app/core/models/connection.model';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -94,6 +95,19 @@ followRequests:any[]=[];
     this.connectionService.getFollowRequests(this.user.id).subscribe(data=>{
       this.requests=data;
       this.getFollorRequestUser();
+    },error=>{
+      alert('Error!Try again!')
+    })
+  }
+
+  acceptFollowRequest(id:any){
+    let connection:Connection={
+      sourceId:id,
+      targetId:this.user.id,
+      connectionName:'FOLLOWS'
+    }
+    this.connectionService.approveFollow(connection).subscribe(data=>{
+      alert('approved');
     },error=>{
       alert('Error!Try again!')
     })
