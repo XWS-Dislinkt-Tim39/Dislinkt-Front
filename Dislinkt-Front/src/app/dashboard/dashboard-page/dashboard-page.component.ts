@@ -143,11 +143,14 @@ export class DashboardPageComponent implements OnInit {
 
   getMyConnections() {
     this.connectionService.getConnections(this.user.id).subscribe(data => {
-      this.myConnections = data;
-      this.myConnections.push(this.user.id);
-      this.myConnections.forEach((value: { id: any; }, i: any) => {
-        this.getPosts(value);
-      });
+      if(data!=null){
+        this.myConnections = data;
+        this.myConnections.push(this.user.id);
+        this.myConnections.forEach((value: { id: any; }, i: any) => {
+          this.getPosts(value);
+        });
+      }
+     
     })
   }
 
