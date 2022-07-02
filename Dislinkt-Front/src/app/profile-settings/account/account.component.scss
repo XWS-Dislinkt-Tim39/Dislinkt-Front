@@ -22,6 +22,14 @@
     background-color: base.$background-color;
     border-radius: base.$border-radius;
 }
+.secondary-button{
+    @extend %secondary-button;
+    width: 170px;
+}
+.secondary-button:hover{
+    @extend %secondary-button-hover;
+    width: 170px;
+}
 
 .left {
     flex-grow: 1;
@@ -35,6 +43,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.new-content{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.two-content{
+    display: flex;
+    width: 100%;
+    gap: 20px;
 }
 
 .left-content {
@@ -86,6 +105,18 @@
     gap: 10px;
     width: 400px;
 }
+.right-tab-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+
 .subtitle {
     font-weight: 600;
     font-size: 20px;
@@ -170,12 +201,12 @@ form {
 
 .mat-h2 {
     margin-top: 10px;
-    font-weight: 500;
+    font-weight: 350;
     color: base.$dark-grey;
 }
 
 .mat-h3 {
-    font-weight: 600;
+    font-weight: 350;
     margin-top: -20px;
     font-size: 17px;
     color: base.$primary-color-dark;
@@ -218,7 +249,7 @@ textarea:disabled{
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 6fr 2fr;
-    column-gap: 20px;
+    column-gap: 0px;
     justify-items: start;
     box-shadow: base.$box-shadow;
 }

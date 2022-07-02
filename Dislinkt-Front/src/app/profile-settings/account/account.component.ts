@@ -15,6 +15,7 @@ export class AccountComponent implements OnInit {
   userId:any;
   profiles: any[] = [];
   searchForm: FormGroup;
+  profilePrivacy: any;
   constructor(private publicProfilesService:PublicProfilesService,
     private router: Router,
     private formBuilder: FormBuilder,
