@@ -12,6 +12,7 @@ import { UserEducation } from '../models/user-education.model';
 import { UpdateUserEducation } from '../models/update-user-education.model';
 import { NewSkill } from '../models/new-skill.model';
 import { NewInterest } from '../models/new-interest.model';
+import { Skill } from '../models/skill.model';
 
 @Injectable({
     providedIn: 'root'
@@ -25,59 +26,65 @@ export class ProfileService {
 
 
     getAboutInfo(userId:string): Observable<any> {
-        return this.http.get(`${environment.api_url}get-user`, { params: {
+        return this.http.get(`${environment.url}Profile/user`, { params: {
             id: userId
           }, headers: this.headers, responseType: 'json' });
     }
     editAboutInfo(editedUser: UpdateUser): Observable<any> {
-      return this.http.post(`${environment.api_url}update-user`, editedUser, { headers: this.headers, responseType: 'json' });
+      return this.http.put(`${environment.url}Profile/user`, editedUser, { headers: this.headers, responseType: 'json' });
     }
 
     addWorkExperience(experience:UserExperience): Observable<any> {
-        return this.http.post(`${environment.api_url}add-work-experience`,experience, { headers: this.headers, responseType: 'json' });
+        return this.http.post(`${environment.url}Profile/work-experience`,experience, { headers: this.headers, responseType: 'json' });
     }
     editWorkExperience(experience:UpdateUserExperience): Observable<any> {
-        return this.http.post(`${environment.api_url}update-work-experience`,experience, { headers: this.headers, responseType: 'json' });
+        return this.http.put(`${environment.url}Profile/work-experience`,experience, { headers: this.headers, responseType: 'json' });
     }
 
     addEducation(education:UserEducation): Observable<any> {
-        return this.http.post(`${environment.api_url}add-education`,education, { headers: this.headers, responseType: 'json' });
+        return this.http.post(`${environment.url}Profile/education`,education, { headers: this.headers, responseType: 'json' });
     }
     editEducation(education:UpdateUserEducation): Observable<any> {
-        return this.http.post(`${environment.api_url}update-education`,education, { headers: this.headers, responseType: 'json' });
+        return this.http.put(`${environment.url}Profile/education`,education, { headers: this.headers, responseType: 'json' });
     }
  
 
     getAllSkills(): Observable<any> {
-        return this.http.get(`${environment.api_url}get-all-skills`,{ headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.url}Profile/get-all-skills`,{ headers: this.headers, responseType: 'json' });
     }
     getUserSkills(userId:string): Observable<any> {
-        return this.http.get(`${environment.api_url}get-user-skills`,{ params: {
+        return this.http.get(`${environment.url}Profile/get-user-skills`,{ params: {
             id: userId
           },headers: this.headers, responseType: 'json' });
     }
     addNewSkill(skill:NewSkill): Observable<any> {
-        return this.http.post(`${environment.api_url}add-new-skill`,skill, { headers: this.headers, responseType: 'json' });
+        return this.http.post(`${environment.url}Profile/add-new-skill`,skill, { headers: this.headers, responseType: 'json' });
+    }
+    addSkill(skill:Skill): Observable<any> {
+        return this.http.post(`${environment.url}Profile/skill`,skill, { headers: this.headers, responseType: 'json' });
     }
     removeSkill(userId:string,skillId:string): Observable<any> {
-        return this.http.delete(`${environment.api_url}remove-skill`, { params: {
+        return this.http.delete(`${environment.url}Profile/skill`, { params: {
             userId: userId,
             skillId:skillId
           },headers: this.headers, responseType: 'json' });
     }
     getAllInterests(): Observable<any> {
-        return this.http.get(`${environment.api_url}get-all-interests`,{ headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.url}Profile/get-all-interests`,{ headers: this.headers, responseType: 'json' });
     }
     getUserInterests(userId:string): Observable<any> {
-        return this.http.get(`${environment.api_url}get-user-interests`,{ params: {
+        return this.http.get(`${environment.url}Profile/get-user-interests`,{ params: {
             id: userId
           },headers: this.headers, responseType: 'json' });
     }
     addNewInterest(interest:NewInterest): Observable<any> {
-        return this.http.post(`${environment.api_url}add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
+        return this.http.post(`${environment.url}Profile/add-new-interest`,interest, { headers: this.headers, responseType: 'json' });
+    }
+    addInterest(skill:Skill): Observable<any> {
+        return this.http.post(`${environment.url}Profile/interest`,skill, { headers: this.headers, responseType: 'json' });
     }
     removeInterest(userId:string,interestId:string): Observable<any> {
-        return this.http.delete(`${environment.api_url}remove-interest`, { params: {
+        return this.http.delete(`${environment.url}Profile/interest`, { params: {
             userId: userId,
             interestId:interestId
           },headers: this.headers, responseType: 'json' });

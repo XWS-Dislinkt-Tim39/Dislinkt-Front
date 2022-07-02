@@ -18,13 +18,13 @@ export class PublicProfilesService {
 
 
     getAllUsers(): Observable<any> {
-        return this.http.get(`${environment.api_url}get-all-users`, { headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.url}Profile/get-all-users`, { headers: this.headers, responseType: 'json' });
     }
     getAllPublicUsers(): Observable<any> {
-        return this.http.get(`${environment.api_url}get-public-users`, { headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.url}Profile/get-public-users`, { headers: this.headers, responseType: 'json' });
     }
     searchUser(username: string): Observable<any> {
-        return this.http.get(`${environment.api_url}search-users`, {
+        return this.http.get(`${environment.url}Profile/search-users`, {
             params: { username: username }, headers: this.headers, responseType: 'json'
         });
     }

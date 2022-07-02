@@ -26,39 +26,39 @@ export class PostService {
     ) { }
    
     addNewPost(post: NewPost): Observable<any> {
-      return this.http.post(`${environment.post_url}add-post`, post, { headers: this.headers, responseType: 'json' });
+      return this.http.post(`${environment.url}Posts/post`, post, { headers: this.headers, responseType: 'json' });
     }
     addLikePost(userid:string,postId: string): Observable<any> {
-      return this.http.get(`${environment.post_url}add-like`, { params: {
+      return this.http.get(`${environment.url}Posts/add-like`, { params: {
         userId:userid,
         postId: postId
       },headers: this.headers, responseType: 'json' });
     }
     removeLikePost(userid:string,postId: string): Observable<any> {
-      return this.http.get(`${environment.post_url}remove-like`, { params: {
+      return this.http.get(`${environment.url}Posts/remove-like`, { params: {
         userId:userid,
         postId: postId
       },headers: this.headers, responseType: 'json' });
     }
     addDislikePost(userid:string,postId: string): Observable<any> {
-      return this.http.get(`${environment.post_url}add-dislike`, { params: {
+      return this.http.get(`${environment.url}Posts/add-dislike`, { params: {
         userId:userid,
         postId: postId
       },headers: this.headers, responseType: 'json' });
     }
     removeDislikePost(userid:string,postId: string): Observable<any> {
-      return this.http.get(`${environment.post_url}remove-dislike`, { params: {
+      return this.http.get(`${environment.url}Posts/remove-dislike`, { params: {
         userId:userid,
         postId: postId
       },headers: this.headers, responseType: 'json' });
     }
     getUserPosts(userId: string): Observable<any> {
-      return this.http.get(`${environment.post_url}user-posts`, { params: {
+      return this.http.get(`${environment.url}Posts/post`, { params: {
         id: userId
       },headers: this.headers, responseType: 'json' });
     }
     addComment(comment: NewComment): Observable<any> {
-      return this.http.post(`${environment.post_url}add-comment`, comment, { headers: this.headers, responseType: 'json' });
+      return this.http.post(`${environment.url}Posts/add-comment`, comment, { headers: this.headers, responseType: 'json' });
     }
 
 

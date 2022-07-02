@@ -15,24 +15,24 @@ export class JobService {
   ) { }
 
   addJobOffer(newJob:NewJobOffer): Observable<any> {
-      return this.http.post(`${environment.job_url}add-job-offer`,newJob, 
+      return this.http.post(`${environment.url}Jobs/add-job-offer`,newJob, 
       { headers: this.headers, responseType: 'json' });
   }
 
   getAll(): Observable<any> {
-    return this.http.get(`${environment.job_url}get-all-jobs`, 
+    return this.http.get(`${environment.url}Jobs/get-all-jobs`, 
     { headers: this.headers, responseType: 'json' });
   }
 
   getAllByUser(userId: string): Observable<any> {
-    return this.http.get(`${environment.job_url}get-user-jobs`, 
+    return this.http.get(`${environment.url}Jobs/get-user-jobs`, 
     { 
     params: {userId: userId},
     headers: this.headers, responseType: 'json' });
   }
 
   searchPost(positionName: string): Observable<any> {
-    return this.http.get(`${environment.job_url}search-job`, {
+    return this.http.get(`${environment.url}Jobs/search-job`, {
         params: { searchParameter: positionName }, headers: this.headers, responseType: 'json'
   });
 }
