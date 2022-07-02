@@ -25,6 +25,8 @@ import { SkillsComponent } from './skills/skills.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EducationComponent } from './education/education.component';
 import { InterestsComponent } from './interests/interests.component';
+import { AccountComponent } from './account/account.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
@@ -32,7 +34,8 @@ import { InterestsComponent } from './interests/interests.component';
         ExperienceComponent,
         SkillsComponent,
         EducationComponent,
-        InterestsComponent
+        InterestsComponent,
+        AccountComponent
     ],
     entryComponents: [],
     imports: [
@@ -58,7 +61,8 @@ import { InterestsComponent } from './interests/interests.component';
         MatTabsModule,
         MatButtonToggleModule,
         MatGridListModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatSlideToggleModule
     ],
     exports: [
         ProfileNavigationComponent,

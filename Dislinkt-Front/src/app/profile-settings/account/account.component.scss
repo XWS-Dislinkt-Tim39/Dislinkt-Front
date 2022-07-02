@@ -1,0 +1,338 @@
+@use '../../../base-style'as base;
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color: base.$background-color;
+}
+
+.wrapper {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 80%;
+    gap: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: base.$background-color;
+    border-radius: base.$border-radius;
+}
+.secondary-button{
+    @extend %secondary-button;
+    width: 170px;
+}
+.secondary-button:hover{
+    @extend %secondary-button-hover;
+    width: 170px;
+}
+
+.left {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.new-content{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.two-content{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.left-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-content {
+    width: 100%;
+    border-radius: base.$border-radius;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.primary-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+.save-button {
+    @extend %primary-button;
+    background-color: base.$success;
+    width: 200px;
+}
+
+.save-button:hover {
+    @extend %primary-button-hover;
+    background-color: base.$success;
+}
+
+
+.tab-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+.right-tab-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+
+.subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.text {
+    font-weight: 600;
+    font-size: 17px;
+    color: gray;
+
+}
+.space {
+    width: 40px;
+    height: auto;
+    display: inline-block;
+  }
+.line {
+    border-bottom: 2px solid base.$light-grey-letters;
+    margin: 10px 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.update {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+   align-items: center
+}
+.profile-circle img {
+    border-radius: 50%;
+    position: relative
+  }
+
+.primary-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+    width: 70%;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+.mat-form-field {
+    width: 90%;
+}
+
+.biography {
+    width: 95%;
+}
+
+.mat-h2 {
+    margin-top: 10px;
+    font-weight: 350;
+    color: base.$dark-grey;
+}
+
+.mat-h3 {
+    font-weight: 350;
+    margin-top: -20px;
+    font-size: 17px;
+    color: base.$primary-color-dark;
+}
+.mat-h4 {
+    color: base.$light-grey-letters;
+    margin:0px;
+}
+
+.mat-body-1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
+input:disabled{
+    color:base.$dark-grey
+}
+textarea:disabled{
+    color:base.$dark-grey
+}
+.search {
+    display: flex;
+    margin-top: 60px;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+}
+
+.search .mat-form-field {
+    width: 90%;
+}
+.search .mat-icon:hover{
+    cursor: pointer;
+    }
+.card {
+    background-color: white;
+    width: 90%;
+    border-radius: base.$border-radius;
+    padding: 20px 20px 10px 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 6fr 2fr;
+    column-gap: 0px;
+    justify-items: start;
+    box-shadow: base.$box-shadow;
+}
+
+.card-image {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+ .avatar-boy,.avatar-girl {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+.avatar-boy{
+    background-color: #1d9bc9
+}
+.avatar-girl{
+    background-color: palevioletred;
+}
+
+.card-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.follow-butto {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+    align-items: center;
+    justify-content: center;
+}
+.follow-button:hover {
+   box-shadow: base.$box-shadow;
+   cursor: pointer;
+}
+.following {
+    @extend %primary-button;
+    margin: 5px 20px;
+    width: 170px;
+    background-color: base.$danger;
+    align-items: center;
+    justify-content: center;
+}
+.public {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin:0px;
+    padding: 0px;
+
+}
+
+.isPublic {
+    display: flex;
+    align-items: center;
+    gap:5px;
+    color: base.$light-grey-letters;
+    font-size: 14px;
+}
+
+@media (pointer: coarse) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .mat-h1 {
+        width: 100%;
+        margin: 0px 0px;
+        text-align: center;
+    }
+
+}

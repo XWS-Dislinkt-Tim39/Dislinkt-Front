@@ -29,6 +29,7 @@ import { RegistrationConfirmComponent } from './shared/registration-confirm/regi
 import { UserEducationComponent } from './dashboard/user-education/user-education.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NoAuthGuard } from './auth/guards/no-auth.guard';
+import { AccountComponent } from './profile-settings/account/account.component';
 
 const routes: Routes = [
   {
@@ -104,6 +105,11 @@ const routes: Routes = [
   {
     path: 'account-update',
     component: AccountUpadateComponent,
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
     canActivate: [NoAuthGuard],
   },
   {
