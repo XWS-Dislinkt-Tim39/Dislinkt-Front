@@ -131,7 +131,7 @@ export class EducationComponent implements OnInit {
     this.education.endDate = this.addForm.value.endDate;
     this.education.description = this.addForm.value.description;
     this.profileService.addEducation(this.education).subscribe(data => {
-      alert('Sucessfully added new education');
+      alert('Sucessfully added new sdfsf education');
       window.location.reload();
     }, error => {
       console.log(error.error);

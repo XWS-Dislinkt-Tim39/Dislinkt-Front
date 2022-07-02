@@ -48,7 +48,8 @@ export class SignInComponent implements OnInit {
         this.loginForm.reset();
       }
       else{
-        this.jwtService.saveUserDetails(data);
+        //console.log(data)
+       this.jwtService.saveUserDetails(data);
         this.router.navigate(['/dashboard']);  
       }
     },

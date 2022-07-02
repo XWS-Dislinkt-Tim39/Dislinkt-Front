@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NewSkill } from 'src/app/core/models/new-skill.model';
+import { Skill } from 'src/app/core/models/skill.model';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
@@ -16,20 +17,24 @@ export class SkillsComponent implements OnInit {
   addSkillForm: FormGroup;
   @ViewChild('addSkillCategory') addDialog!: any;
   @ViewChild('addSkill') addSkillDialog!: any;
-userId:any;
+  userId: any;
   skills: NewSkill[] = [];
-  distinctSkills:NewSkill[] = [];
+  distinctSkills: NewSkill[] = [];
   userSkills: any[] = [];
-  newSkill:NewSkill={
-    name:'',
-    userId:''
+  newSkill: NewSkill = {
+    name: '',
+    userId: ''
   }
-  selected:any;
+  skill: Skill = {
+    id: '',
+    userId: ''
+  }
+  selected: any;
 
   constructor(private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private profileService: ProfileService,
-    private jwtService:JwtService
+    private jwtService: JwtService
   ) {
     this.userId = this.jwtService.getUserId();
     this.addForm = this.formBuilder.group({
@@ -56,37 +61,48 @@ userId:any;
         alert('Error!')
       })
   }
-  getSkills(){
-    this.profileService.getUserSkills(this.userId).subscribe(data=>{
-      this.userSkills=data;
-    },error=>{
+  getSkills() {
+    this.profileService.getUserSkills(this.userId).subscribe(data => {
+      this.userSkills = data;
+    }, error => {
       alert('Error! Try again!')
     }
     )
   }
   addNewSkill() {
-    this.newSkill.userId=this.userId;
-    if(this.addSkillForm.value.skill==""){
-      this.newSkill.name=this.selected.name;
-     
-    }else{
-      this.newSkill.name=this.addSkillForm.value.skill;
+    this.newSkill.userId = this.userId;
+    if (this.addSkillForm.value.skill == "") {
+      this.newSkill.name = this.selected.name;
+
+    } else {
+      this.newSkill.name = this.addSkillForm.value.skill;
     }
-    this.profileService.addNewSkill(this.newSkill).subscribe(data=>{
+    this.profileService.addNewSkill(this.newSkill).subscribe(data => {
       alert('Successfully added new skill');
       window.location.reload();
-    },error=>{
+    }, error => {
       alert('Error! Try again!')
     })
-   }
+  }
 
-   removeSkill(skillId:string){
-    this.profileService.removeSkill(this.userId,skillId).subscribe(data=>{
+  addskill() {
+    this.skill.id = this.selected.id;
+    this.skill.userId = this.userId;
+    this.profileService.addSkill(this.skill).subscribe(data => {
+      alert('Successfully added new skill');
       window.location.reload();
-    },error=>{
+    }, error => {
       alert('Error! Try again!')
     })
-   }
+  }
+
+  removeSkill(skillId: string) {
+    this.profileService.removeSkill(this.userId, skillId).subscribe(data => {
+      window.location.reload();
+    }, error => {
+      alert('Error! Try again!')
+    })
+  }
 
   opetAddCategoryDialog(event: any) {
     event?.stopPropagation();

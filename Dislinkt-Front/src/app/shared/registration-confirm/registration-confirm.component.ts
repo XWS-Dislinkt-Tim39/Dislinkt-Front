@@ -46,7 +46,7 @@ export class RegistrationConfirmComponent implements OnInit {
   getUserData(){
     this.profileService.getAboutInfo(this.id).subscribe(data=>{
       this.user=data;
-      this.createNode();
+      //this.createNode();
     })
   }
 

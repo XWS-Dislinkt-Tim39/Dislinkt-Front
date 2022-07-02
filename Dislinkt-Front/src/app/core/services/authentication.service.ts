@@ -19,7 +19,7 @@ export class AuthenticationService {
   ) { }
 
   signUp(user: UserSignIn): Observable<any> {
-    return this.http.get(`${environment.api_url}sign-up`, {
+    return this.http.get(`https://localhost:44343/api/Profile/sign-up`, {
       params: {
         username: user.username,
         password: user.password
@@ -28,10 +28,10 @@ export class AuthenticationService {
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${environment.api_url}register-user`, user, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`${environment.url}Profile/register-user`, user, { headers: this.headers, responseType: 'json' });
   }
   approve(id: string): Observable<any> {
-    return this.http.post(`${environment.api_url}approve-user/${id}`, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`${environment.url}Profile/approve-user/${id}`, { headers: this.headers, responseType: 'json' });
   }
 
   logout(): void {
