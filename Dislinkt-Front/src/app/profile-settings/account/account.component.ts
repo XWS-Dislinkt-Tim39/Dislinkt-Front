@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UpdatePrivacyData } from 'src/app/core/models/update-privacy-data';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
+import { ProfileService } from 'src/app/core/services/profile.service';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -15,11 +17,16 @@ export class AccountComponent implements OnInit {
   userId:any;
   profiles: any[] = [];
   searchForm: FormGroup;
-  profilePrivacy: any;
+  profilePrivacy: boolean=true;
+  updatePrivacyData: UpdatePrivacyData = {
+    userId: "",
+    isPublic : this.profilePrivacy
+  }
   constructor(private publicProfilesService:PublicProfilesService,
     private router: Router,
     private formBuilder: FormBuilder,
     private connectionService:ConnectionService,
+    private profileService: ProfileService,
     private jwtService:JwtService) { 
       this.searchForm = this.formBuilder.group({
         inputUser: [''],
@@ -30,6 +37,15 @@ export class AccountComponent implements OnInit {
     this.userId=this.jwtService.getUserId();
     this.getAllProfiles();
     this.getUserConnections();
+    
+  }
+  changePrivacy(){
+    if(this.profilePrivacy=true){
+      this.profileService.changePrivacy(this.jwtService.getUserId(), this.profilePrivacy)
+    }
+    else {
+      this.updatePrivacyData.isPublic=false;
+    }
   }
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {

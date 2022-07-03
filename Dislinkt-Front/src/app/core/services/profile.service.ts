@@ -83,7 +83,13 @@ export class ProfileService {
           },headers: this.headers, responseType: 'json' });
     }
 
-
+    changePrivacy(userId:string, isPublic:boolean): Observable<any> {
+        return this.http.post(`${environment.api_url}change-privacy`,
+        { params: {
+            userId: userId,
+            isPublic:isPublic
+          },headers: this.headers, responseType: 'json' });
+    }
 
 
 
