@@ -10,7 +10,8 @@
         <app-profile-navigation></app-profile-navigation>
         <div class="subtitle">Make profile public?
             <div class="space"></div>
-            <mat-slide-toggle ngModel name="profilePrivacy" class="text">(Other profile can view your profile and posts)</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="profilePrivacy" class="text">(Other profile can view your profile and posts)</mat-slide-toggle>
+            <button class="primary-button" (click)="changePrivacy()">Confirm</button>
         </div>
         <div class="two-content">
         <div class="tab-content">
