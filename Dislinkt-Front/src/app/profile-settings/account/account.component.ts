@@ -18,10 +18,6 @@ export class AccountComponent implements OnInit {
   profiles: any[] = [];
   searchForm: FormGroup;
   profilePrivacy: boolean=true;
-  updatePrivacyData: UpdatePrivacyData = {
-    userId: "",
-    isPublic : this.profilePrivacy
-  }
   constructor(private publicProfilesService:PublicProfilesService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -37,15 +33,25 @@ export class AccountComponent implements OnInit {
     this.userId=this.jwtService.getUserId();
     this.getAllProfiles();
     this.getUserConnections();
-    
+    this.profileService.getAboutInfo(this.userId).subscribe((data: any) => {
+      if(data.status==0){
+        this.profilePrivacy=false;
+      } else {
+        this.profilePrivacy=true;
+      }
+    },
+      error => {
+        console.log(error.error.message);
+      });
   }
   changePrivacy(){
-    if(this.profilePrivacy=true){
-      this.profileService.changePrivacy(this.jwtService.getUserId(), this.profilePrivacy)
-    }
-    else {
-      this.updatePrivacyData.isPublic=false;
-    }
+    alert(this.userId + this.profilePrivacy)
+    this.profileService.changePrivacy(this.userId, this.profilePrivacy).subscribe((data: any) => {
+      alert("Sucessfully changed privacy");
+    },
+      error => {
+        console.log(error.error.message);
+      });
   }
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
