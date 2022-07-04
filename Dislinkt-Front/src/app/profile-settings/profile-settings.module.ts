@@ -27,6 +27,7 @@ import { EducationComponent } from './education/education.component';
 import { InterestsComponent } from './interests/interests.component';
 import { AccountComponent } from './account/account.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NotificationsComponent } from './notifications/notifications.component';
 @NgModule({
     declarations: [
         AccountUpadateComponent,
@@ -35,7 +36,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         SkillsComponent,
         EducationComponent,
         InterestsComponent,
-        AccountComponent
+        AccountComponent,
+        NotificationsComponent
     ],
     entryComponents: [],
     imports: [
