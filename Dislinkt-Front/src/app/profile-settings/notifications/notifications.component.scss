@@ -1,0 +1,148 @@
+@use '../../../base-style'as base;
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color: base.$background-color;
+}
+
+.wrapper {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 80%;
+    gap: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: base.$background-color;
+    border-radius: base.$border-radius;
+}
+.subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.tab-content {
+    background-color: white;
+    border-radius: base.$border-radius;
+    box-shadow: base.$box-shadow;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+}
+.right {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tab-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.left {
+    margin-top: 80px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.left-content {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+.text {
+    font-weight: 600;
+    font-size: 17px;
+    color: gray;
+
+}
+.mat-icon {
+    color: base.$primary-color
+}
+.items {
+    position: absolute;
+    left: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+.mat-body-1 {
+    font-weight: 550;
+    font-size: 16px;
+    color: base.$dark-grey;
+}
+.space {
+    width: 10px;
+    height: auto;
+    display: inline-block;
+}
+.space2 {
+    width: 250px;
+    height: auto;
+    display: inline-block;
+}
+.space3 {
+    width: 90px;
+    height: auto;
+    display: inline-block;
+}
+.space4 {
+    width: 338px;
+    height: auto;
+    display: inline-block;
+}
+.space5 {
+    width: 145px;
+    height: auto;
+    display: inline-block;
+}
+.space6 {
+    width: 335px;
+    height: auto;
+    display: inline-block;
+}
+.primary-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+    width: 15%;
+    margin: auto;
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+}
+
+@media (pointer: coarse) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .mat-h1 {
+        width: 100%;
+        margin: 0px 0px;
+        text-align: center;
+    }
+
+}
