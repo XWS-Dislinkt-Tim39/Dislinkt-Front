@@ -24,8 +24,10 @@ export class MessagesComponent implements OnInit {
   newMessage: Message = {
     chatId: '',
     sender: '',
-    text: ''
+    text: '',
+    time:new Date()
   }
+  user:any;
   @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
   selectedChat: any = {};
   messagesList: any[] = []
@@ -44,6 +46,8 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
+    this.user=this.jwtService.getUserDetails().user;
+  console.log(this.user)
     this.sendForm = this.formBuilder.group({
       message: []
     });
@@ -85,6 +89,7 @@ export class MessagesComponent implements OnInit {
         this.selectedChat = data;
         this.selectedChat.firstName = row.userFirstName;
         this.selectedChat.lastName = row.userLastName;
+        this.selectedChat.gender = row.gender;
         if(data.messages.length>count1 || this.selectedChat.firstName!=name){
           this.scrollToBottom();
         }
@@ -94,6 +99,7 @@ export class MessagesComponent implements OnInit {
         this.selectedChat.messages = [];
         this.selectedChat.firstName = row.userFirstName;
         this.selectedChat.lastName = row.userLastName;
+        this.selectedChat.gender = row.gender;
       }
     }, erorr => {
       alert('Error!')
@@ -123,7 +129,8 @@ export class MessagesComponent implements OnInit {
           this.connectionData.push({
             id: value,
             userFirstName: data.firstName,
-            userLastName: data.lastName
+            userLastName: data.lastName,
+            gender: data.gender
           })
         })
       });
@@ -136,6 +143,7 @@ export class MessagesComponent implements OnInit {
     this.newMessage.chatId = this.selectedChat.id;
     this.newMessage.sender = this.userId;
     this.newMessage.text = this.myMessage;
+    this.newMessage.time=new Date();
     this.sendForm.reset();
     this.chatService.addMessage(this.newMessage).subscribe(data => {
       this.selectedChat.messages.push(this.newMessage)

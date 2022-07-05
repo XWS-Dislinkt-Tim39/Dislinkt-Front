@@ -17,6 +17,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MessagesComponent } from './messages.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
     declarations: [
         MessagesComponent
@@ -46,6 +48,9 @@ import { MessagesComponent } from './messages.component';
         MatTabsModule,
         MatButtonToggleModule,
         MatGridListModule,
+        
+    BrowserAnimationsModule,
+    MatTooltipModule,
     ],
     exports: [
     ]

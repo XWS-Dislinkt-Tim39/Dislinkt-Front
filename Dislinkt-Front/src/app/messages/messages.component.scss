@@ -129,6 +129,7 @@
     display: flex;
     flex-direction: row;
     gap:10px;
+    align-items: center;
     padding:10px 20px;
 }
 .message-body-left{
@@ -149,6 +150,9 @@
     align-items: center;
     padding:10px 20px;
     color:white
+}
+.time{
+    color:base.$light-grey-letters;
 }
 
 .chat-image{
@@ -179,6 +183,42 @@
     @extend %primary-button-hover;
 }
 
+.avatar-boy,.avatar-girl ,.avatar-boy2,.avatar-girl2{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    background-color: white;
+    font-weight: 500;;
+}
+.avatar-boy1,.avatar-girl1 {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    background-color: white;
+    font-weight: 500;;
+}
+.avatar-boy{
+    color:#1d9bc9
+}
+.avatar-girl{
+    color:palevioletred;
+}
+.avatar-boy1,.avatar-boy2{
+    background-color:#1d9bc9
+}
+.avatar-girl1,.avatar-girl2{
+    background-color:palevioletred;
+}
 
 @media (pointer: coarse) {
     .container {

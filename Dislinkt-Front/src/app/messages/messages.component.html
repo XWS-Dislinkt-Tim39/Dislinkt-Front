@@ -7,50 +7,77 @@
 
         <div class="chatbox">
             <div class="people">
-               
+
                 <div class="friends">
                     <div class="friend" *ngFor="let item of connectionData" (click)="showChat(item)">
-                        <div class="friend-image"><img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                        <div class="friend-image">
+                            <div class="avatar-girl" *ngIf="item.gender=='1'">
+                                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+                            </div>
+                            <div class="avatar-boy" *ngIf="item.gender=='0'">
+                                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+                            </div>
                         </div>
                         <div class="name">{{item.userFirstName}}</div>
                         <div class="name">{{item.userLastName}}</div>
                     </div>
                 </div>
             </div>
-            <div class="messages" *ngIf="selectedChat.firstName!=undefined" >
+            <div class="messages" *ngIf="selectedChat.firstName!=undefined">
                 <div class="title">
-                    <div class="title-image" ><img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                    <div class="title-image">
+                        <div class="avatar-girl1" *ngIf="selectedChat.gender=='1'">
+                            {{selectedChat.firstName[0]}} {{selectedChat.lastName[0]}}
+                        </div>
+                        <div class="avatar-boy1" *ngIf="selectedChat.gender=='0'">
+                            {{selectedChat.firstName[0]}} {{selectedChat.lastName[0]}}
+                        </div>
                     </div>
                     <div class="title-name">{{selectedChat.firstName}}</div>
                     <div class="title-name">{{selectedChat.lastName}}</div>
                 </div>
-                <div class="messages-list"  #scrollMe style="overflow: scroll;">
+                <div class="messages-list" #scrollMe style="overflow: scroll;">
                     <div *ngFor="let item of selectedChat?.messages">
-                    <div class="message-left" *ngIf="item.sender!=userId" >
-                        <div class="friend-image"><img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                        <div class="message-left" *ngIf="item.sender!=userId">
+                            <div class="friend-image">
+                                <div class="avatar-girl2" *ngIf="selectedChat.gender=='1'">
+                                    {{selectedChat.firstName[0]}} {{selectedChat.lastName[0]}}
+                                </div>
+                                <div class="avatar-boy2" *ngIf="selectedChat.gender=='0'">
+                                    {{selectedChat.firstName[0]}} {{selectedChat.lastName[0]}}
+                                </div>
+                            </div>
+                            <div class="message-body-left">
+                                {{item.text}}
+                            </div>
+                            <div class="time">
+                                {{item.time | date:'short'}}
+                            </div>
                         </div>
-                        <div class="message-body-left">
-                            {{item.text}}
+                        <div class="message-right" *ngIf="item.sender==userId">
+                            <div class="time">
+                                {{item.time | date:'short'}}
+                            </div>
+                            <div class="message-body-right">
+                                {{item.text}}
+                            </div>
+                            <div class="friend-image">
+                                <div class="avatar-girl2" *ngIf="user.gender=='1'">
+                                    {{user.firstName[0]}} {{user.lastName[0]}}
+                                </div>
+                                <div class="avatar-boy2" *ngIf="user.gender=='0'">
+                                    {{user.firstName[0]}} {{user.lastName[0]}}
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="message-right" *ngIf="item.sender==userId">
-                        <div class="message-body-right">
-                            {{item.text}}
-                        </div>
-                        <div class="friend-image"><img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                        </div>
-                       
-                    </div>
-                </div>
                 </div>
                 <div class="send-box">
                     <form [formGroup]="sendForm" class="send-message">
-                        <mat-form-field appearance="outline" >
-                            <input formControlName="message" matInput (keyup.enter)="sendMessage()" placeholder="Enter message">
+                        <mat-form-field appearance="outline">
+                            <input formControlName="message" matInput (keyup.enter)="sendMessage()"
+                                placeholder="Enter message">
                             <mat-icon matSuffix type="button" (click)="sendMessage()">send</mat-icon>
                         </mat-form-field>
                     </form>
