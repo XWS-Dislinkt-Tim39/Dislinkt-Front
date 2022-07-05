@@ -44,12 +44,7 @@
     flex-direction: column;
     align-items: center;
 }
-.new-content{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .two-content{
     display: flex;
     width: 100%;
@@ -70,7 +65,8 @@
     width: 100%;
     border-radius: base.$border-radius;
     display: flex;
-    gap: 30px;
+    gap: 20px;
+    height: fit-content;
     flex-direction: column;
 }
 
@@ -82,7 +78,6 @@
 
 .primary-button:hover {
     @extend %primary-button-hover;
-    width: 170px;
 }
 .save-button {
     @extend %primary-button;
@@ -100,23 +95,23 @@
     background-color: white;
     border-radius: base.$border-radius;
     box-shadow: base.$box-shadow;
-    height: 100%;
+    height: fit-content;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 400px;
+    width: 50%;
 }
 .right-tab-content {
     background-color: white;
     border-radius: base.$border-radius;
     box-shadow: base.$box-shadow;
-    height: 100%;
+    height: fit-content;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 400px;
+    width:50%;
 }
 
 .subtitle {
@@ -194,7 +189,7 @@ form {
 }
 
 .mat-form-field {
-    width: 90%;
+    width: 100%;
 }
 
 .biography {
@@ -205,6 +200,7 @@ form {
     margin-top: 10px;
     font-weight: 350;
     color: base.$dark-grey;
+    font-size: 17px;
 }
 
 .mat-h3 {
@@ -230,8 +226,8 @@ textarea:disabled{
     color:base.$dark-grey
 }
 .search {
+
     display: flex;
-    margin-top: 60px;
     width: 95%;
     justify-content: center;
     align-items: center;
@@ -248,11 +244,10 @@ textarea:disabled{
     width: 90%;
     border-radius: base.$border-radius;
     padding: 20px 20px 10px 20px;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 6fr 2fr;
-    column-gap: 0px;
-    justify-items: start;
+ display: flex;
+ flex-direction: row;
+ gap:10px;
+ justify-content: space-between;
     box-shadow: base.$box-shadow;
 }
 
@@ -265,12 +260,12 @@ textarea:disabled{
 }
  .avatar-boy,.avatar-girl {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-weight: 500;
 }
@@ -285,14 +280,8 @@ textarea:disabled{
     border-radius: 50%;
     width: 100px;
     height: 100px;
-}
-.follow-butto {
-    @extend %primary-button;
-    margin: 5px 20px;
-    width: 170px;
-    align-items: center;
-    justify-content: center;
-}
+}  
+
 .follow-button:hover {
    box-shadow: base.$box-shadow;
    cursor: pointer;
@@ -300,7 +289,7 @@ textarea:disabled{
 .following {
     @extend %primary-button;
     margin: 5px 20px;
-    width: 170px;
+    width: 130px;
     background-color: base.$danger;
     align-items: center;
     justify-content: center;
@@ -309,7 +298,7 @@ textarea:disabled{
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin:0px;
+    margin-left:10px;
     padding: 0px;
 
 }
