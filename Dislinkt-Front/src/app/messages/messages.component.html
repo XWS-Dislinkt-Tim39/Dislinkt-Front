@@ -35,9 +35,15 @@
                         <div class="message-body-left">
                             {{item.text}}
                         </div>
+                        <div class="time">
+                            {{item.time | date:'short'}}
+                        </div>
                     </div>
                     <div class="message-right" *ngIf="item.sender==userId">
-                        <div class="message-body-right">
+                        <div class="time">
+                            {{item.time | date:'short'}}
+                        </div>
+                        <div class="message-body-right" >
                             {{item.text}}
                         </div>
                         <div class="friend-image"><img

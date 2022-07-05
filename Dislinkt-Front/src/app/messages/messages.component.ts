@@ -24,7 +24,8 @@ export class MessagesComponent implements OnInit {
   newMessage: Message = {
     chatId: '',
     sender: '',
-    text: ''
+    text: '',
+    time:new Date()
   }
   @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
   selectedChat: any = {};
@@ -136,6 +137,7 @@ export class MessagesComponent implements OnInit {
     this.newMessage.chatId = this.selectedChat.id;
     this.newMessage.sender = this.userId;
     this.newMessage.text = this.myMessage;
+    this.newMessage.time=new Date();
     this.sendForm.reset();
     this.chatService.addMessage(this.newMessage).subscribe(data => {
       this.selectedChat.messages.push(this.newMessage)

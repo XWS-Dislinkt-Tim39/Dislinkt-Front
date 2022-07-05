@@ -26,6 +26,7 @@ import { JobsModule } from './jobs/jobs.module';
 import { CoreModule } from './core/core.module';
 import { ChatComponent } from './chat/chat.component';
 import { HttpClient } from '@microsoft/signalr';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { HttpClient } from '@microsoft/signalr';
     JobsModule,
     CoreModule,
     FormsModule   ,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
