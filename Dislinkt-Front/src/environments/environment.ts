@@ -8,6 +8,7 @@ export const environment = {
   job_url: 'https://localhost:44386/',
   post_url: 'https://localhost:44315/',
   connect_url: 'https://localhost:44357/',
+  chat_url:'https://localhost:44379/',
   production: false
 };
 

@@ -30,6 +30,7 @@ import { UserEducationComponent } from './dashboard/user-education/user-educatio
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NoAuthGuard } from './auth/guards/no-auth.guard';
 import { AccountComponent } from './profile-settings/account/account.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
@@ -151,6 +152,10 @@ const routes: Routes = [
     path: 'job-details',
     component: JobDetailsComponent,
     canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
   },
   {
     path: '**',

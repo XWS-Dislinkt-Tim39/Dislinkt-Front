@@ -24,10 +24,14 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessagesModule } from './messages/messages.module';
 import { JobsModule } from './jobs/jobs.module';
 import { CoreModule } from './core/core.module';
+import { ChatComponent } from './chat/chat.component';
+import { HttpClient } from '@microsoft/signalr';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChatComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -41,9 +45,11 @@ import { CoreModule } from './core/core.module';
     ProfileSettingsModule,
     MessagesModule,
     JobsModule,
-    CoreModule
+    CoreModule,
+    FormsModule   ,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,27 +18,27 @@
                     </div>
                 </div>
             </div>
-            <div class="messages">
+            <div class="messages" *ngIf="selectedChat.firstName!=undefined" >
                 <div class="title">
-                    <div class="title-image"><img
+                    <div class="title-image" ><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
                     </div>
-                    <div class="title-name">{{selectedChat[0].name}}</div>
-                    <div class="title-name">{{selectedChat[0].lastName}}</div>
+                    <div class="title-name">{{selectedChat.firstName}}</div>
+                    <div class="title-name">{{selectedChat.lastName}}</div>
                 </div>
-                <div class="messages-list" >
-                    <div *ngFor="let item of selectedChat">
-                    <div class="message-left" *ngIf="item.name!='Ja'" >
+                <div class="messages-list"  #scrollMe style="overflow: scroll;">
+                    <div *ngFor="let item of selectedChat?.messages">
+                    <div class="message-left" *ngIf="item.sender!=userId" >
                         <div class="friend-image"><img
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
                         </div>
                         <div class="message-body-left">
-                            {{item.message}}
+                            {{item.text}}
                         </div>
                     </div>
-                    <div class="message-right" *ngIf="item.name=='Ja'">
+                    <div class="message-right" *ngIf="item.sender==userId">
                         <div class="message-body-right">
-                            {{item.message}}
+                            {{item.text}}
                         </div>
                         <div class="friend-image"><img
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
@@ -56,5 +56,6 @@
                     </form>
                 </div>
             </div>
+            <div class="chat-image" *ngIf="selectedChat.firstName==undefined"><img src="./assets/chat.png"></div>
         </div>
     </div>

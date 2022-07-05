@@ -53,6 +53,7 @@ export class JwtService {
     let userDetailsString = localStorage.getItem('userDetails');
     if (userDetailsString) {
       let userDetails= JSON.parse(userDetailsString || '');
+      console.log(userDetails)
       return userDetails.user.id;
     }
     return '';

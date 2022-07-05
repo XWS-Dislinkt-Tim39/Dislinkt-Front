@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@microsoft/signalr": "^6.0.6",
+    "@microsoft/signalr-protocol-msgpack": "^6.0.6",
     "dropify": "^0.2.2",
     "ngx-material-file-input": "^3.0.0",
     "rxjs": "~6.6.0",
