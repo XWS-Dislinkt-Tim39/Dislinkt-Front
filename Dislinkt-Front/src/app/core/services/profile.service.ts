@@ -91,7 +91,7 @@ export class ProfileService {
     }
 
     changePrivacy(userId:string, isPublic:boolean): Observable<any> {
-        return this.http.post(`${environment.api_url}change-privacy`,
+        return this.http.get(`${environment.url}Profile/change-privacy`,
         { params: {
             userId: userId,
             isPublic:isPublic

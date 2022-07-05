@@ -31,6 +31,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NoAuthGuard } from './auth/guards/no-auth.guard';
 import { AccountComponent } from './profile-settings/account/account.component';
 import { ChatComponent } from './chat/chat.component';
+import { NotificationsComponent } from './profile-settings/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,10 @@ const routes: Routes = [
   {
     path: 'user-skills',
     component: UserSkillsComponent
+  },
+  {
+    path: 'notificaations',
+    component: NotificationsComponent
   },
   {
     path: 'account-update',
