@@ -4,61 +4,55 @@
 
   <div class="wrapper">
     <app-sidebar></app-sidebar>
-  
+
     <div class="right">
       <div class="right-content">
         <app-profile-navigation></app-profile-navigation>
         <div class="subtitle">Make profile public?
-            <div class="space"></div>
-            <mat-slide-toggle [(ngModel)]="profilePrivacy" class="text">(Other profile can view your profile and posts)</mat-slide-toggle>
-            <button class="primary-button" (click)="changePrivacy()">Confirm</button>
+          <div class="space"></div>
+          <mat-slide-toggle [(ngModel)]="profilePrivacy" class="text">(Other profile can view your profile and posts)
+          </mat-slide-toggle>
+          <button class="primary-button" (click)="changePrivacy()">Confirm</button>
         </div>
         <div class="two-content">
-        <div class="tab-content">
+          <div class="tab-content">
             <form [formGroup]="searchForm" class="search">
-                <mat-form-field appearance="outline">
-                  <input matInput placeholder="Search"  formControlName="inputUser">
-                  <mat-icon matSuffix (click)="sarchUserByUsername()">search</mat-icon>
-                </mat-form-field>
-              </form>
-      
-              <div class="card" *ngFor="let profile of profiles;let i = index">
-                <div class="card-image">
-                    <div class="avatar-girl" *ngIf="profile.gender=='1'">
-                      {{profile.firstName[0]}} {{profile.lastName[0]}}
-                    </div>
-                    <div class="avatar-boy"  *ngIf="profile.gender=='0'">
-                      {{profile.firstName[0]}} {{profile.lastName[0]}}
-                    </div>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Search" formControlName="inputUser">
+                <mat-icon matSuffix (click)="sarchUserByUsername()">search</mat-icon>
+              </mat-form-field>
+            </form>
+
+            <div class="card" *ngFor="let profile of profiles;let i = index">
+              <div class="card-image">
+                <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                  {{profile.firstName[0]}} {{profile.lastName[0]}}
                 </div>
-                <div class="name ">
-                  <div class="public">
-                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
-                    <div class="isPublic" *ngIf="profile.status=='1'">
-                      <mat-icon>visibility</mat-icon>Public
-                    </div>
-                    <div class="isPublic" *ngIf="profile.status=='0'">
-                      <mat-icon>visibility_off</mat-icon>Private
-                    </div>
-                  </div>
-                  <div class="mat-h3">{{profile.username}}</div>
-                </div>
-                <p></p>
-                <div class="view">
-                  <div class="card-connect">
-                     <button *ngIf="profile.status=='1' && isConnected(profile.id)"   class="follow-button following" (click)="block(profile.id)" >Block</button>
-                    <button *ngIf="profile.status=='0'  && isConnected(profile.id)" class="follow-button following" (click)="block(profile.id)">Block</button>
-                  </div>
+                <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                  {{profile.firstName[0]}} {{profile.lastName[0]}}
                 </div>
               </div>
+              <div class="name ">
+                <div class="public">
+                  <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+                </div>
+               
+              </div>
+              <p></p>
+              <div class="view">
+                <div class="card-connect">
+                  <button  class="follow-button following"
+                    (click)="block(profile.id)">Block</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="right-tab-content">
+              <div class="subtitle">Blocked profiles</div>
+              <button class="secondary-button">Unblock</button>
+            </div>
+       
         </div>
-      <div class="new-content">
-        <div class="right-tab-content">
-          <div class="subtitle">Blocked profiles</div>
-          <button class="secondary-button">Unblock</button>
-        </div>
-      </div>
-    </div>
       </div>
     </div>
   </div>
