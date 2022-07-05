@@ -30,6 +30,10 @@ export class ChatService {
     return this.http.post(`${environment.chat_url}create-chat`, { from: from, to: to },
       { headers: this.headers, responseType: 'json' });
   }
+  deleteChat(from: string, to: string): Observable<any> {
+    return this.http.post(`${environment.chat_url}delete-chat`, { from: from, to: to },
+      { headers: this.headers, responseType: 'json' });
+  }
 
 
 }

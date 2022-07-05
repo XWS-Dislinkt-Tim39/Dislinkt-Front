@@ -154,6 +154,11 @@ export class SearchProfilesComponent implements OnInit {
     }
     this.connectionService.unfollowUser(connection).subscribe(data => {
       alert('Successfully unfollowed!');
+      this.chatService.deleteChat(connection.sourceId, connection.targetId).subscribe(data => {
+        window.location.reload()
+      }, error => {
+
+      })
       window.location.reload()
     }, error => {
       alert('Error!Try again!')
