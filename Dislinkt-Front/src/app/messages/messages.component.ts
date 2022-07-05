@@ -27,6 +27,7 @@ export class MessagesComponent implements OnInit {
     text: '',
     time:new Date()
   }
+  user:any;
   @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
   selectedChat: any = {};
   messagesList: any[] = []
@@ -45,6 +46,8 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
+    this.user=this.jwtService.getUserDetails().user;
+  console.log(this.user)
     this.sendForm = this.formBuilder.group({
       message: []
     });
@@ -86,6 +89,7 @@ export class MessagesComponent implements OnInit {
         this.selectedChat = data;
         this.selectedChat.firstName = row.userFirstName;
         this.selectedChat.lastName = row.userLastName;
+        this.selectedChat.gender = row.gender;
         if(data.messages.length>count1 || this.selectedChat.firstName!=name){
           this.scrollToBottom();
         }
@@ -95,6 +99,7 @@ export class MessagesComponent implements OnInit {
         this.selectedChat.messages = [];
         this.selectedChat.firstName = row.userFirstName;
         this.selectedChat.lastName = row.userLastName;
+        this.selectedChat.gender = row.gender;
       }
     }, erorr => {
       alert('Error!')
@@ -124,7 +129,8 @@ export class MessagesComponent implements OnInit {
           this.connectionData.push({
             id: value,
             userFirstName: data.firstName,
-            userLastName: data.lastName
+            userLastName: data.lastName,
+            gender: data.gender
           })
         })
       });
