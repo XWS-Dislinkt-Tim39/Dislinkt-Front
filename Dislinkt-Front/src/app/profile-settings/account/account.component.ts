@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Connection } from 'src/app/core/models/connection.model';
 import { UpdatePrivacyData } from 'src/app/core/models/update-privacy-data';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
@@ -43,9 +44,9 @@ export class AccountComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+    this.getBlockedProfiles();
   }
   changePrivacy(){
-    alert(this.userId + this.profilePrivacy)
     this.profileService.changePrivacy(this.userId, this.profilePrivacy).subscribe((data: any) => {
       alert("Sucessfully changed privacy");
     },
@@ -95,6 +96,27 @@ export class AccountComponent implements OnInit {
         });
     }
   }
-  block(profileId:string){}
+  block(profileId:string){
+    let connection: Connection = {
+      sourceId: this.userId,
+      targetId: profileId,
+      connectionName: 'BLOCKS'
+    }
+    this.connectionService.followPublicUser(connection).subscribe(data => {
+      alert('User is successfully blocked!');
+      //this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
+        window.location.reload()
+      //}, error => {
 
+      //})
+
+    }, error => {
+      alert('Error!Try again!')
+    });
+  }
+  getBlockedProfiles(){
+    this.connectionService.getBlocked(this.userId).subscribe(data=>{
+      this.connections=data;
+    })
+  }
 }

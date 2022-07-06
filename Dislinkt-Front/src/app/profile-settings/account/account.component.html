@@ -49,9 +49,29 @@
           </div>
             <div class="right-tab-content">
               <div class="subtitle">Blocked profiles</div>
-              <button class="secondary-button">Unblock</button>
-            </div>
-       
+              <div class="card" *ngFor="let profile of profiles;let i = index">
+                <div class="card-image">
+                  <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                    {{profile.firstName[0]}} {{profile.lastName[0]}}
+                  </div>
+                  <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                    {{profile.firstName[0]}} {{profile.lastName[0]}}
+                  </div>
+                </div>
+                <div class="name ">
+                  <div class="public">
+                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+                  </div>
+                 
+                </div>
+                <p></p>
+                <div class="view">
+                  <div class="card-connect">
+                    <button class="secondary-button">Unblock</button>
+                  </div>
+                </div>
+              </div>
+            </div>       
         </div>
       </div>
     </div>

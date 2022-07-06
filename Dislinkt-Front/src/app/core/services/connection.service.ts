@@ -44,4 +44,19 @@ export class ConnectionService {
     return this.http.get(`${environment.connect_url}getFollowRequests`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
   }
+
+  blockUser(connection: Connection): Observable<any> {
+    return this.http.post(`${environment.connect_url}block`, connection,
+      { headers: this.headers, responseType: 'json' });
+  }
+
+  unblockUser(connection: Connection): Observable<any> {
+    return this.http.post(`${environment.connect_url}unblock`, connection,
+      { headers: this.headers, responseType: 'json' });
+  }
+
+  getBlocked(souceId: string): Observable<any> {
+    return this.http.get(`${environment.connect_url}getBlocked`,
+      { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
+  }
 }
