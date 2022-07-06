@@ -24,11 +24,11 @@
 }
 .secondary-button{
     @extend %secondary-button;
-    width: 170px;
+    width: 130px;
 }
 .secondary-button:hover{
     @extend %secondary-button-hover;
-    width: 170px;
+    width: 130px;
 }
 
 .left {

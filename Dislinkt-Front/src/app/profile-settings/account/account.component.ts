@@ -16,6 +16,7 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 export class AccountComponent implements OnInit {
   connections:any[]=[];
   userId:any;
+  blocked:any[]=[];
   profiles: any[] = [];
   searchForm: FormGroup;
   profilePrivacy: boolean=true;
@@ -102,7 +103,7 @@ export class AccountComponent implements OnInit {
       targetId: profileId,
       connectionName: 'BLOCKS'
     }
-    this.connectionService.followPublicUser(connection).subscribe(data => {
+    this.connectionService.blockUser(connection).subscribe(data => {
       alert('User is successfully blocked!');
       //this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
@@ -116,7 +117,17 @@ export class AccountComponent implements OnInit {
   }
   getBlockedProfiles(){
     this.connectionService.getBlocked(this.userId).subscribe(data=>{
-      this.connections=data;
+ 
+      data.forEach((element: string) => {
+        this.profileService.getAboutInfo(element).subscribe(data1=>{
+          this.blocked.push({
+            firstName:data1.firstName,
+            lastName:data1.lastName,
+            gender:data1.gender
+          })
+         
+        })
+      });
     })
   }
 }

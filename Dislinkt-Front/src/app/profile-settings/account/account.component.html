@@ -49,7 +49,7 @@
           </div>
             <div class="right-tab-content">
               <div class="subtitle">Blocked profiles</div>
-              <div class="card" *ngFor="let profile of profiles;let i = index">
+              <div class="card" *ngFor="let profile of blocked;let i = index">
                 <div class="card-image">
                   <div class="avatar-girl" *ngIf="profile.gender=='1'">
                     {{profile.firstName[0]}} {{profile.lastName[0]}}
