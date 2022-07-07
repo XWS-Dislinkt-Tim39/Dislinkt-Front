@@ -9,6 +9,7 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 })
 export class SidebarComponent implements OnInit {
 userId:any;
+hidden=false;
 firstName:string='';
 lastName:string='';
 gender:any;

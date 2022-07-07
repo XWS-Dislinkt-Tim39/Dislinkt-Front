@@ -2,40 +2,40 @@
 
 <div class="container">
 
-  <div class="wrapper">
-    <app-sidebar></app-sidebar>
-    
-    <div class="left">
-        <div class="left-content">
-            <div class="tab-content">
-                <div class="subtitle">Notifications settings</div>
-                <div class="text">Profiles</div>
-                <div class="mat-body-1">
-                    <mat-grid-list cols="5" >
-                        <div class="items">
-                            <mat-icon>check_circle</mat-icon>
-                            <div class="space"></div>
-                            <div>New connection requests</div>
-                            <div class="space2"></div>
-                            <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
-                        </div>
-                    </mat-grid-list>
-                </div>
-                <div class="mat-body-1">
-                    <mat-grid-list cols="5" >
-                        <div class="items">
-                            <mat-icon>check_circle</mat-icon>
-                            <div class="space"></div>
-                            <div>New accepted or rejected connection requests</div>
-                            <div class="space3"></div>
-                            <mat-slide-toggle [(ngModel)]="acceptedRejected" class="text"></mat-slide-toggle>
-                        </div>
-                    </mat-grid-list>
-                </div>
-                <p></p>
-                <div class="text">Posts</div>
+    <div class="wrapper">
+        <app-sidebar></app-sidebar>
+
+        <div class="left">
+            <div class="left-content">
+                <div class="tab-content">
+                    <div class="subtitle">Notifications settings</div>
+                    <div class="text">Profiles</div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5" >
+                        <mat-grid-list cols="5">
+                            <div class="items">
+                                <mat-icon>check_circle</mat-icon>
+                                <div class="space"></div>
+                                <div>New connection requests</div>
+                                <div class="space2"></div>
+                                <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
+                            </div>
+                        </mat-grid-list>
+                    </div>
+                    <div class="mat-body-1">
+                        <mat-grid-list cols="5">
+                            <div class="items">
+                                <mat-icon>check_circle</mat-icon>
+                                <div class="space"></div>
+                                <div>New accepted or rejected connection requests</div>
+                                <div class="space3"></div>
+                                <mat-slide-toggle [(ngModel)]="acceptedRejected" class="text"></mat-slide-toggle>
+                            </div>
+                        </mat-grid-list>
+                    </div>
+                    <p></p>
+                    <div class="text">Posts</div>
+                    <div class="mat-body-1">
+                        <mat-grid-list cols="5">
                             <div class="items">
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
@@ -46,7 +46,7 @@
                         </mat-grid-list>
                     </div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5" >
+                        <mat-grid-list cols="5">
                             <div class="items">
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
@@ -57,9 +57,9 @@
                         </mat-grid-list>
                     </div>
                     <p></p>
-                <div class="text">Messages</div>
+                    <div class="text">Messages</div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5" >
+                        <mat-grid-list cols="5">
                             <div class="items">
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
@@ -70,8 +70,40 @@
                         </mat-grid-list>
                     </div>
                     <button class="primary-button" (click)="confirm()">Confirm</button>
+                </div>
+            </div>
+            <div class="left-content">
+                <div class="tab-content">
+
+                    <div class="subtitle">Notifications</div>
+                    <div class="notifications">
+                        <div class="card" *ngFor="let profile of profiles;let i = index">
+                            <div class="card-image">
+                                <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                                    {{profile.firstName[0]}} {{profile.lastName[0]}}
+                                </div>
+                                <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                                    {{profile.firstName[0]}} {{profile.lastName[0]}}
+                                </div>
+                            </div>
+                            <div class="name ">
+                                <div class="info">
+                                    <div class="label">
+                                        Post
+                                    </div>
+                                    <div>23 min ago</div>
+                                </div>
+                               
+                                <div class="public">
+                                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}} posted new job offer</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-  </div>
 </div>

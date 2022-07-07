@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 .container {
     min-height: 100vh;
@@ -22,11 +22,13 @@
     background-color: base.$background-color;
     border-radius: base.$border-radius;
 }
+
 .subtitle {
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 30px;
 }
+
 .tab-content {
     background-color: white;
     border-radius: base.$border-radius;
@@ -37,45 +39,59 @@
     flex-direction: column;
     gap: 10px;
 }
+
 .main {
     display: flex;
     flex-direction: row;
 }
+
 .right {
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .tab-content {
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
 .left {
-    margin-top: 80px;
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+
 }
+
 .left-content {
-    width: 100%;
+    width: 50%;
     display: flex;
     gap: 30px;
     flex-direction: column;
 }
+
 .text {
     font-weight: 600;
     font-size: 17px;
     color: gray;
 
 }
+
+.notifications {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .mat-icon {
     color: base.$primary-color
 }
+
 .items {
     position: absolute;
     left: 5px;
@@ -84,41 +100,49 @@
     gap: 5px;
     align-items: center;
 }
+
 .mat-body-1 {
     font-weight: 550;
     font-size: 16px;
     color: base.$dark-grey;
 }
+
 .space {
     width: 10px;
     height: auto;
     display: inline-block;
 }
+
 .space2 {
     width: 250px;
     height: auto;
     display: inline-block;
 }
+
 .space3 {
     width: 90px;
     height: auto;
     display: inline-block;
 }
+
 .space4 {
     width: 338px;
     height: auto;
     display: inline-block;
 }
+
 .space5 {
     width: 145px;
     height: auto;
     display: inline-block;
 }
+
 .space6 {
     width: 335px;
     height: auto;
     display: inline-block;
 }
+
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
@@ -126,8 +150,77 @@
     margin: auto;
 }
 
+.card {
+    background-color: white;
+    width: 90%;
+    border-radius: base.$border-radius;
+    padding: 20px 20px 0px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+    box-shadow: base.$box-shadow;
+}
+
+.card-image {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.avatar-boy,
+.avatar-girl {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+
+.avatar-boy {
+    background-color: #1d9bc9
+}
+
+.avatar-girl {
+    background-color: palevioletred;
+}
+
+.card-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 .primary-button:hover {
     @extend %primary-button-hover;
+}
+.mat-h2 {
+    font-weight: 350;
+    color: base.$dark-grey;
+    font-size: 17px;
+}
+.label{
+    background-color: aquamarine;
+    padding:5px 15px;
+    border-radius:10px;
+    width: fit-content;
+
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+.name{
+    display: flex;
+    flex-direction: column;
 }
 
 @media (pointer: coarse) {

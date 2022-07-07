@@ -8,7 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RegistrationConfirmComponent } from './registration-confirm/registration-confirm.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatMenuModule,
     MatIconModule,
     AppRoutingModule,
+    MatBadgeModule
   ],
   exports: [
     NavbarComponent,
