@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $dislinkt-primary: mat.define-palette(mat.$cyan-palette, 600, 100, 800);
-$dislinkt-accent: mat.define-palette(mat.$cyan-palette, 800, A100, A400);
+$dislinkt-accent: mat.define-palette(mat.$cyan-palette, 600, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $dislinkt-warn: mat.define-palette(mat.$red-palette, 600);

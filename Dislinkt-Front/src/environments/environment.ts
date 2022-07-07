@@ -9,7 +9,8 @@ export const environment = {
   post_url: 'https://localhost:44315/',
   connect_url: 'https://localhost:44357/',
   chat_url:'https://localhost:44379/',
-  notification_url: 'https://localhost:44378/',
+  notification_url:'https://localhost:44378/',
+
   production: false
 };
 

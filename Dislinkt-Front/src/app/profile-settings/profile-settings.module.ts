@@ -28,6 +28,9 @@ import { InterestsComponent } from './interests/interests.component';
 import { AccountComponent } from './account/account.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NotificationsComponent } from './notifications/notifications.component';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 @NgModule({
     declarations: [
         AccountUpadateComponent,
@@ -64,7 +67,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
         MatButtonToggleModule,
         MatGridListModule,
         MatDatepickerModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatBadgeModule
     ],
     exports: [
         ProfileNavigationComponent,
