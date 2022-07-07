@@ -13,6 +13,7 @@ import { UpdateUserEducation } from '../models/update-user-education.model';
 import { NewSkill } from '../models/new-skill.model';
 import { NewInterest } from '../models/new-interest.model';
 import { Skill } from '../models/skill.model';
+import { NewNotificationSettingsData } from '../models/new-notification-settings-data';
 
 @Injectable({
     providedIn: 'root'
@@ -98,6 +99,8 @@ export class ProfileService {
           },headers: this.headers, responseType: 'json' });
     }
 
-
+    updateNotificationSettings(settings:NewNotificationSettingsData): Observable<any> {
+        return this.http.post(`${environment.notification_url}update-notification-settings`,settings, { headers: this.headers, responseType: 'json' });
+    }
 
 }
