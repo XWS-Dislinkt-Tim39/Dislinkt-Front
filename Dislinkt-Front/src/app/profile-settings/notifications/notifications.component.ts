@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
@@ -19,6 +20,7 @@ export class NotificationsComponent implements OnInit {
   allNotifications: any[] = [];
   notifications:any[]=[];
   notificationCount:any=0;
+  not:any[]=[];
   userId: any;
   constructor(
     private publicProfilesService: PublicProfilesService,
@@ -30,22 +32,44 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
     this.getAllProfiles();
-    this.getAllNotifications();
+    interval(1000).subscribe(x => {
+      this.getAllNotifications();
+  
+  });
   }
   confirm() { }
 
 
   getAllNotifications() {
+   
     this.notificationService.getUserNotifications(this.userId).subscribe(data => {
-     data.notifications.forEach((el:any) => {
-        if(el.type!=0 && el.seen==false){
-          this.notifications.push(el);
-        }
-     });
-      this.formatView();
+      if(!this.areEqual(this.notifications,data.notifications)){
+        this.notifications=[];
+        data.notifications.forEach((el:any) => {
+          if(el.type!=0 && el.seen==false){
+            this.notifications.push(el);
+          }
+       });
+        this.formatView();
+      }
+   
     }, error => {
       alert('Error!')
     })
+  }
+
+  areEqual(array1:any[], array2:any[]) {
+    if (array1.length === array2.length) {
+      return array1.every((element, index) => {
+        if (element.from === array2[index].from) {
+          return true;
+        }
+  
+        return false;
+      });
+    }
+  
+    return false;
   }
 
   formatView() {
@@ -67,6 +91,7 @@ export class NotificationsComponent implements OnInit {
         }
       })
     });
+    this.not=this.notifications;
   }
 
   getAllProfiles() {
