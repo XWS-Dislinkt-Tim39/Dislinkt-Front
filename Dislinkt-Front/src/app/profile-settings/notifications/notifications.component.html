@@ -3,109 +3,107 @@
 <div class="container">
 
 
-  <div class="wrapper">
-    <app-sidebar></app-sidebar>
-    
-    <div class="left">
-        <div class="left-content">
-            <div class="tab-content">
-                <div class="subtitle">Notifications settings</div>
-                <div class="text">Profiles</div>
-                <div class="mat-body-1">
-                    <mat-grid-list cols="5" >
-                        <div class="items">
-                            <mat-icon>check_circle</mat-icon>
-                            <div class="space"></div>
-                            <div>New connection requests</div>
-                            <div class="space2"></div>
-                            <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
-                        </div>
-                    </mat-grid-list>
-                </div>
-                <p></p>
-                <div class="text">Posts</div>
+    <div class="wrapper">
+        <app-sidebar></app-sidebar>
 
+        <div class="left">
+            <div class="left-content">
+                <div class="tab-content">
+                    <div class="subtitle">Notifications settings</div>
+                    <div class="text">Profiles</div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5">
-                            <div class="items">
+                        <div class="items">
+                            <div class="noti-left">
                                 <mat-icon>check_circle</mat-icon>
-                                <div class="space"></div>
+                                <div>New connection requests</div>
+                            </div>
+                            <div class="noti-right">
+                                <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text">Posts</div>
+                    <div class="mat-body-1">
+                        <div class="items">
+                            <div class="noti-left">
+                                <mat-icon>check_circle</mat-icon>
                                 <div>New posts</div>
-                                <div class="space4"></div>
+                            </div>
+                            <div class="noti-right">
                                 <mat-slide-toggle [(ngModel)]="posts" class="text"></mat-slide-toggle>
                             </div>
-                        </mat-grid-list>
+                        </div>
                     </div>
-                    <p></p>
                     <div class="text">Jobs</div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5">
-                            <div class="items">
+                        <div class="items">
+                            <div class="noti-left">
                                 <mat-icon>check_circle</mat-icon>
-                                <div class="space"></div>
                                 <div>New jobs</div>
-                                <div class="space6"></div>
+                            </div>
+                            <div class="noti-right">
                                 <mat-slide-toggle [(ngModel)]="jobs" class="text"></mat-slide-toggle>
                             </div>
-                        </mat-grid-list>
+
+                        </div>
                     </div>
-                    <p></p>
                     <div class="text">Messages</div>
                     <div class="mat-body-1">
-                        <mat-grid-list cols="5">
-                            <div class="items">
+                        <div class="items">
+                            <div class="noti-left">
                                 <mat-icon>check_circle</mat-icon>
-                                <div class="space"></div>
                                 <div>New messages</div>
-                                <div class="space8"></div>
-                                <mat-slide-toggle [(ngModel)]="messages" class="text"></mat-slide-toggle>
                             </div>
-                        </mat-grid-list>
+                            <div class="noti-right">
+                                <mat-slide-toggle [(ngModel)]="messages" class="text"></mat-slide-toggle>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <p></p>
                     <button class="primary-button" (click)="confirm()">Confirm</button>
                 </div>
             </div>
-            <div class="left-content">
-                <div class="tab-content">
+                <div class="left-content">
+                    <div class="tab-content">
 
-                    <div class="subtitle">Notifications</div>
-                    <div class="mat-body-1" *ngIf="profiles.length==0">No new notifications :(</div>
-                    <div class="notifications" *ngIf="profiles.length!=0">
-                       
-                        <div class="card"  *ngFor="let profile of notifications;let i = index">
-                            <div class="card-image" >
-                                <div class="avatar-girl" *ngIf="profile.gender=='1'">
-                                    {{profile.firstName[0]}} {{profile.lastName[0]}}
-                                </div>
-                                <div class="avatar-boy" *ngIf="profile.gender=='0'">
-                                    {{profile.firstName[0]}} {{profile.lastName[0]}}
-                                </div>
-                            </div>
-                            <div class="name ">
-                                <div class="info">
-                                    <div class="label-post" *ngIf="profile.type==1">
-                                        Post
-                                    </div>
-                                    <div class="label-job" *ngIf="profile.type==2">
-                                        Job
-                                    </div>
-                                    <div class="label-request"  *ngIf="profile.type==3">
-                                        Connection request
-                                    </div>
-                                    
-                                </div>
-                               
-                                <div class="public">
-                                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}} {{profile.message}}</div>
-                                </div>
+                        <div class="subtitle">Notifications</div>
+                        <div class="mat-body-1" *ngIf="profiles.length==0">No new notifications :(</div>
+                        <div class="notifications" *ngIf="profiles.length!=0">
 
+                            <div class="card" *ngFor="let profile of notifications;let i = index">
+                                <div class="card-image">
+                                    <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                                        {{profile.firstName[0]}} {{profile.lastName[0]}}
+                                    </div>
+                                    <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                                        {{profile.firstName[0]}} {{profile.lastName[0]}}
+                                    </div>
+                                </div>
+                                <div class="name ">
+                                    <div class="info">
+                                        <div class="label-post" *ngIf="profile.type==1">
+                                            Post
+                                        </div>
+                                        <div class="label-job" *ngIf="profile.type==2">
+                                            Job
+                                        </div>
+                                        <div class="label-request" *ngIf="profile.type==3">
+                                            Connection request
+                                        </div>
+
+                                    </div>
+
+                                    <div class="public">
+                                        <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}
+                                            {{profile.message}}</div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
