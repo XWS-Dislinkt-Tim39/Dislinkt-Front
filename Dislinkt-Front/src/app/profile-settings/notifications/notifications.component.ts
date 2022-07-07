@@ -18,6 +18,7 @@ export class NotificationsComponent implements OnInit {
   profiles: any[] = [];
   allNotifications: any[] = [];
   notifications:any[]=[];
+  notificationCount:any=0;
   userId: any;
   constructor(
     private publicProfilesService: PublicProfilesService,
@@ -37,7 +38,7 @@ export class NotificationsComponent implements OnInit {
   getAllNotifications() {
     this.notificationService.getUserNotifications(this.userId).subscribe(data => {
      data.notifications.forEach((el:any) => {
-        if(el.type!=0){
+        if(el.type!=0 && el.seen==false){
           this.notifications.push(el);
         }
      });
@@ -48,6 +49,8 @@ export class NotificationsComponent implements OnInit {
   }
 
   formatView() {
+    this.notificationCount=this.notifications.length;
+    localStorage.setItem('notificationCount',this.notificationCount)
     this.notifications.forEach(element => {
       this.profileService.getAboutInfo(element.from).subscribe(data => {
         element.firstName = data.firstName;

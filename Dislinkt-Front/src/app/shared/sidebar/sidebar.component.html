@@ -31,7 +31,7 @@
     <li>
       <a [routerLink]="['/notificaations']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
       class="dropdown-toggle">
-        <mat-icon matBadge="3"  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="hidden" >notifications</mat-icon>Notifications
+        <mat-icon matBadge={{notificationCount}}  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="hidden" >notifications</mat-icon>Notifications
       </a>
     </li>
     <li>
