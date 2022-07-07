@@ -76,9 +76,11 @@
                 <div class="tab-content">
 
                     <div class="subtitle">Notifications</div>
-                    <div class="notifications">
-                        <div class="card" *ngFor="let profile of profiles;let i = index">
-                            <div class="card-image">
+                    <div class="mat-body-1" *ngIf="profiles.length==0">No new notifications :(</div>
+                    <div class="notifications" *ngIf="profiles.length!=0">
+                       
+                        <div class="card"  *ngFor="let profile of notifications;let i = index">
+                            <div class="card-image" >
                                 <div class="avatar-girl" *ngIf="profile.gender=='1'">
                                     {{profile.firstName[0]}} {{profile.lastName[0]}}
                                 </div>
@@ -88,14 +90,20 @@
                             </div>
                             <div class="name ">
                                 <div class="info">
-                                    <div class="label">
+                                    <div class="label-post" *ngIf="profile.type==1">
                                         Post
                                     </div>
-                                    <div>23 min ago</div>
+                                    <div class="label-job" *ngIf="profile.type==2">
+                                        Job
+                                    </div>
+                                    <div class="label-request"  *ngIf="profile.type==3">
+                                        Connection request
+                                    </div>
+                                    
                                 </div>
                                
                                 <div class="public">
-                                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}} posted new job offer</div>
+                                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}} {{profile.message}}</div>
                                 </div>
 
                             </div>

@@ -53,7 +53,7 @@
 }
 
 .tab-content {
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -146,8 +146,9 @@
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
-    width: 15%;
-    margin: auto;
+    width: 130px;
+    margin:auto;
+    margin-top:30px;
 }
 
 .card {
@@ -205,13 +206,23 @@
     color: base.$dark-grey;
     font-size: 17px;
 }
-.label{
-    background-color: aquamarine;
+.label-post,.label-job,.label-request{
     padding:5px 15px;
     border-radius:10px;
     width: fit-content;
-
+    color:white;
+    font-size:14px;
 }
+.label-post{
+    background-color: rgb(154, 125, 226);
+}
+.label-job{
+    background-color: rgb(54, 222, 132);
+}
+.label-request{
+    background-color: rgb(255, 193, 77);
+}
+
 .info{
     display: flex;
     flex-direction: row;
