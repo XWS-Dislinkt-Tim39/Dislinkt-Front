@@ -26,6 +26,7 @@
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 30px;
+    text-align: center;
 }
 .tab-content {
     background-color: white;
@@ -62,7 +63,7 @@
     align-items: center;
 }
 .left-content {
-    width: 100%;
+    width: 45%;
     display: flex;
     gap: 30px;
     flex-direction: column;
@@ -95,34 +96,29 @@
     display: inline-block;
 }
 .space2 {
-    width: 250px;
-    height: auto;
-    display: inline-block;
-}
-.space3 {
-    width: 90px;
+    width: 150px;
     height: auto;
     display: inline-block;
 }
 .space4 {
-    width: 338px;
-    height: auto;
-    display: inline-block;
-}
-.space5 {
-    width: 145px;
+    width: 265px;
     height: auto;
     display: inline-block;
 }
 .space6 {
-    width: 335px;
+    width: 275px;
+    height: auto;
+    display: inline-block;
+}
+.space8 {
+    width: 230px;
     height: auto;
     display: inline-block;
 }
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
-    width: 15%;
+    width: 30%;
     margin: auto;
 }
 
