@@ -16,8 +16,11 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 export class AccountComponent implements OnInit {
   connections:any[]=[];
   userId:any;
+  firstName: any;
+  lastName: any;
   blocked:any[]=[];
   profiles: any[] = [];
+  blockedProfiles: any[] = [];
   searchForm: FormGroup;
   profilePrivacy: boolean=true;
   constructor(private publicProfilesService:PublicProfilesService,
@@ -33,6 +36,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId=this.jwtService.getUserId();
+    this.firstName=this.jwtService.getUserDetails();
+    this.lastName=this.jwtService.getUserDetails();
     this.getAllProfiles();
     this.getUserConnections();
     this.profileService.getAboutInfo(this.userId).subscribe((data: any) => {
@@ -60,9 +65,12 @@ export class AccountComponent implements OnInit {
       this.profiles = data;
       this.profiles.forEach((value,i: any)=>{
         if(this.profiles[i].id==this.userId) {
-          this.profiles.splice(i,1);
+          this.blocked.forEach((value,j: any) => {
+            if(this.blocked[j].firstName==this.profiles[i].firstName && this.blocked[j].lastName==this.profiles[i].lastName) {
+              this.blockedProfiles.splice(j,1);
+            }
+        });
         }
-        
     });
     },
       error => {

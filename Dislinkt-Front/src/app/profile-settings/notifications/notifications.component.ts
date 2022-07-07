@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { interval } from 'rxjs';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
+
+import { NewNotificationSettingsData } from 'src/app/core/models/new-notification-settings-data';
+
 
 @Component({
   selector: 'app-notifications',
@@ -11,6 +15,17 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
+
+
+  posts: boolean=true;
+  jobs: boolean=true;
+  settings: NewNotificationSettingsData = {
+    userId: '',
+    messageOn: true,
+    postOn: true,
+    jobOn: true,
+    friendRequestOn: true
+  }
   connectionRequest: boolean = true;
   acceptedRejected: boolean = true;
   jobPosts: boolean = true;
@@ -103,6 +118,16 @@ export class NotificationsComponent implements OnInit {
         }
 
       });
+}
+}
+  confirm() {
+    this.settings.messageOn = this.acceptedRejected;
+    this.settings.postOn = this.posts;
+    this.settings.jobOn = this.jobs;
+    this.settings.friendRequestOn = this.connectionRequest;
+    this.profileService.updateNotificationSettings(this.settings).subscribe((data: any) => {
+      alert("Sucessfully saved changes!");
+
     },
       error => {
         console.log(error.error.message);

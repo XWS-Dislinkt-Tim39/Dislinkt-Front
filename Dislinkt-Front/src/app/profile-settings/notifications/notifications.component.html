@@ -2,57 +2,50 @@
 
 <div class="container">
 
-    <div class="wrapper">
-        <app-sidebar></app-sidebar>
 
-        <div class="left">
-            <div class="left-content">
-                <div class="tab-content">
-                    <div class="subtitle">Notifications settings</div>
-                    <div class="text">Profiles</div>
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="left">
+        <div class="left-content">
+            <div class="tab-content">
+                <div class="subtitle">Notifications settings</div>
+                <div class="text">Profiles</div>
+                <div class="mat-body-1">
+                    <mat-grid-list cols="5" >
+                        <div class="items">
+                            <mat-icon>check_circle</mat-icon>
+                            <div class="space"></div>
+                            <div>New connection requests</div>
+                            <div class="space2"></div>
+                            <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
+                        </div>
+                    </mat-grid-list>
+                </div>
+                <p></p>
+                <div class="text">Posts</div>
+
                     <div class="mat-body-1">
                         <mat-grid-list cols="5">
                             <div class="items">
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
-                                <div>New connection requests</div>
-                                <div class="space2"></div>
-                                <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
-                            </div>
-                        </mat-grid-list>
-                    </div>
-                    <div class="mat-body-1">
-                        <mat-grid-list cols="5">
-                            <div class="items">
-                                <mat-icon>check_circle</mat-icon>
-                                <div class="space"></div>
-                                <div>New accepted or rejected connection requests</div>
-                                <div class="space3"></div>
-                                <mat-slide-toggle [(ngModel)]="acceptedRejected" class="text"></mat-slide-toggle>
+                                <div>New posts</div>
+                                <div class="space4"></div>
+                                <mat-slide-toggle [(ngModel)]="posts" class="text"></mat-slide-toggle>
                             </div>
                         </mat-grid-list>
                     </div>
                     <p></p>
-                    <div class="text">Posts</div>
+                    <div class="text">Jobs</div>
                     <div class="mat-body-1">
                         <mat-grid-list cols="5">
                             <div class="items">
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
-                                <div>New job posts</div>
-                                <div class="space4"></div>
-                                <mat-slide-toggle [(ngModel)]="jobPosts" class="text"></mat-slide-toggle>
-                            </div>
-                        </mat-grid-list>
-                    </div>
-                    <div class="mat-body-1">
-                        <mat-grid-list cols="5">
-                            <div class="items">
-                                <mat-icon>check_circle</mat-icon>
-                                <div class="space"></div>
-                                <div>New posts on connected profiles pages</div>
-                                <div class="space5"></div>
-                                <mat-slide-toggle [(ngModel)]="profilePosts" class="text"></mat-slide-toggle>
+                                <div>New jobs</div>
+                                <div class="space6"></div>
+                                <mat-slide-toggle [(ngModel)]="jobs" class="text"></mat-slide-toggle>
                             </div>
                         </mat-grid-list>
                     </div>
@@ -64,11 +57,12 @@
                                 <mat-icon>check_circle</mat-icon>
                                 <div class="space"></div>
                                 <div>New messages</div>
-                                <div class="space6"></div>
+                                <div class="space8"></div>
                                 <mat-slide-toggle [(ngModel)]="messages" class="text"></mat-slide-toggle>
                             </div>
                         </mat-grid-list>
                     </div>
+                    <p></p>
                     <button class="primary-button" (click)="confirm()">Confirm</button>
                 </div>
             </div>
