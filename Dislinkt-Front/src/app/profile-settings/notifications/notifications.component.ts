@@ -17,8 +17,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-
-
   posts: boolean = true;
   jobs: boolean = true;
   settings: NewNotificationSettingsData = {
@@ -28,16 +26,11 @@ export class NotificationsComponent implements OnInit {
     jobOn: true,
     friendRequestOn: true
   }
-  connectionRequest: boolean = true;
-  acceptedRejected: boolean = true;
-  jobPosts: boolean = true;
-  profilePosts: boolean = true;
   messages: boolean = true;
+  requests:boolean=true;
   profiles: any[] = [];
-  allNotifications: any[] = [];
   notifications: any[] = [];
   notificationCount: any = 0;
-  not: any[] = [];
   notificationSeen:NotificationSeen={
     userId:'',
     notificationId:'',
@@ -55,10 +48,19 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
     this.getAllProfiles();
+    this.getInitialSettings();
     interval(1000).subscribe(x => {
       this.getAllNotifications();
-
     });
+  }
+
+  getInitialSettings(){
+    this.notificationService.getUserNotifications(this.userId).subscribe(data=>{
+      this.posts=data.postOn;
+      this.jobs=data.jobOn;
+      this.messages=data.messageOn;
+      this.requests=data.friendRequestOn;
+    })
   }
 
 
@@ -79,7 +81,6 @@ export class NotificationsComponent implements OnInit {
           this.formatView();
         }
       }
-
     }, error => {
       alert('Error!')
     })
@@ -91,7 +92,6 @@ export class NotificationsComponent implements OnInit {
         if (element.from === array2[index].from) {
           return true;
         }
-
         return false;
       });
     }
@@ -118,7 +118,6 @@ export class NotificationsComponent implements OnInit {
         }
       })
     });
-  //  this.seenNotifications();
   }
 
   getAllProfiles() {
@@ -136,10 +135,12 @@ export class NotificationsComponent implements OnInit {
   }
 
   confirm() {
-    this.settings.messageOn = this.acceptedRejected;
+    this.settings.userId=this.userId;
+    this.settings.messageOn = this.messages;
     this.settings.postOn = this.posts;
     this.settings.jobOn = this.jobs;
-    this.settings.friendRequestOn = this.connectionRequest;
+    this.settings.friendRequestOn = this.requests;
+    console.log(this.settings)
     this.profileService.updateNotificationSettings(this.settings).subscribe((data: any) => {
       alert("Sucessfully saved changes!");
 
