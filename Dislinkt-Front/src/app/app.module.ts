@@ -50,7 +50,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule   ,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

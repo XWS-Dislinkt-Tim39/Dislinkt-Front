@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="cards">
+      <div class="card">
+        <div class="subtitle">
+        Number of posts:
+        </div>
+        <div class="card-body">
+          <p class="text">{{posts}}</p>
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="card">
+        <div class="subtitle">
+        Number of jobs:
+        </div>
+        <div class="card-body">
+          <p class="text">{{jobs}}</p>
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="card">
+        <div class="subtitle">
+        Number of connections:
+        </div>
+        <div class="card-body">
+          <p class="text">{{connections}}</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <button class="primary-button" [routerLink]="['/jobs']">Jobs diagram</button>
+</div>
