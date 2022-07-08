@@ -9,17 +9,17 @@
             <div class="people">
 
                 <div class="friends">
-                    <div class="friend" *ngFor="let item of connectionData" (click)="showChat(item)">
-                        <div class="friend-image">
-                            <div class="avatar-girl" *ngIf="item.gender=='1'">
-                                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+                    <div class="friend"   *ngFor="let item of connectionData"   (click)="showChat(item)"  >
+                        <div class="friend-image" >
+                            <div class="avatar-girl" *ngIf="item.gender=='1'"  [matBadgeHidden]="item.newMessagesCount==0" matBadge={{item.newMessagesCount}} matBadgePosition="before" matBadgeColor="warn" >
+                                {{item.userFirstName[0]}} {{item.userLastName[0]}} 
                             </div>
-                            <div class="avatar-boy" *ngIf="item.gender=='0'">
-                                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+                            <div class="avatar-boy" *ngIf="item.gender=='0'" >
+                                {{item.userFirstName[0]}} {{item.userLastName[0]}} 
                             </div>
                         </div>
-                        <div class="name">{{item.userFirstName}}</div>
-                        <div class="name">{{item.userLastName}}</div>
+                        <div class="name" >{{item.userFirstName}}</div>
+                        <div class="name" >{{item.userLastName}}</div>
                     </div>
                 </div>
             </div>
@@ -61,14 +61,7 @@
                             <div class="message-body-right">
                                 {{item.text}}
                             </div>
-                            <div class="friend-image">
-                                <div class="avatar-girl2" *ngIf="user.gender=='1'">
-                                    {{user.firstName[0]}} {{user.lastName[0]}}
-                                </div>
-                                <div class="avatar-boy2" *ngIf="user.gender=='0'">
-                                    {{user.firstName[0]}} {{user.lastName[0]}}
-                                </div>
-                            </div>
+                           
 
                         </div>
                     </div>

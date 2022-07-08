@@ -19,6 +19,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MessagesComponent } from './messages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 @NgModule({
     declarations: [
         MessagesComponent
@@ -48,6 +51,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatTabsModule,
         MatButtonToggleModule,
         MatGridListModule,
+        MatBadgeModule,
         
     BrowserAnimationsModule,
     MatTooltipModule,

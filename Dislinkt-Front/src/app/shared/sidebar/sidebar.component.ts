@@ -11,13 +11,16 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 })
 export class SidebarComponent implements OnInit {
  notificationCount:any=0;
+ messageNotificationCount:any=0;
   userId: any;
   hidden = true;
+  messageHidden = true;
   firstName: string = '';
   lastName: string = '';
   notifications:any[]=[];
   gender: any;
   count=0;
+  messageCount=0;
   posts:any[]=[];
   jobs:any[]=[];
   requests:any[]=[];
@@ -34,6 +37,7 @@ export class SidebarComponent implements OnInit {
     this.getInfo();
     interval(100).subscribe(x => {
       this.getAllNotifications();
+      this.getMessageNotification();
       
     });
   }
@@ -67,7 +71,6 @@ export class SidebarComponent implements OnInit {
     if (this.requests) {
       this.onValues.push(3)
     }
-    console.log(this.onValues)
   }
 
 
@@ -98,6 +101,33 @@ export class SidebarComponent implements OnInit {
       }
       else{
         this.hidden=false;
+      }
+    }, error => {
+      alert('Error!')
+    })
+  }
+
+  getMessageNotification(){
+    this.messageNotificationCount=0;
+    this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
+      if(data!=null){
+          data.notifications.forEach((el: any) => {
+            if (el.type == 0 && el.seen == false) {
+             
+                  this.messageNotificationCount++;
+                
+              
+            }
+          });
+      
+      }
+      localStorage.setItem('messageNotificationCount', this.messageNotificationCount);
+      this.messageCount=this.messageNotificationCount;
+      if(this.messageNotificationCount==0){
+        this.messageHidden=true;
+      }
+      else{
+        this.messageHidden=false;
       }
     }, error => {
       alert('Error!')
