@@ -6,6 +6,7 @@ import { Message } from '../core/models/message.model';
 import { ChatService } from '../core/services/chat.service';
 import { ConnectionService } from '../core/services/connection.service';
 import { JwtService } from '../core/services/jwt.service';
+import { NotificationService } from '../core/services/notification.service';
 import { ProfileService } from '../core/services/profile.service';
 
 
@@ -35,10 +36,13 @@ export class MessagesComponent implements OnInit {
   isChanged:boolean=true;
   sendForm!: FormGroup;
   userId: any;
+  messageNotificationCount:any=0;
+  notifications:any[]=[];
   constructor(private formBuilder: FormBuilder,
     private connectionService: ConnectionService,
     private jwtService: JwtService,
     private profileService: ProfileService,
+    private notificationService:NotificationService,
     private chatService: ChatService) {
 
 
@@ -54,6 +58,7 @@ export class MessagesComponent implements OnInit {
 
     this.getConnections();
     interval(100).subscribe(x => {
+      this.getMessageNotification();
       if (this.row.id != '') {
         this.getSelectedChat(this.row);
       }
@@ -79,7 +84,6 @@ export class MessagesComponent implements OnInit {
       this.scrollToBottom();
       this.isChanged=false;
     }
-   
     this.chatService.getChatByFromTo(this.userId, row.id).subscribe(data => {
       if (data != null) {
         if(this.selectedChat.messages!=undefined){
@@ -110,7 +114,33 @@ export class MessagesComponent implements OnInit {
   showChat(row: any) {
     this.row = row;
   this.isChanged=true;
+  }
 
+  getMessageNotification(){
+    this.messageNotificationCount=0;
+    this.notifications=[];
+    this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
+      if(data!=null){
+          data.notifications.forEach((el: any) => {
+            if (el.type == 0 && el.seen == false) {
+                  this.messageNotificationCount++;
+                  this.notifications.push(el);
+            }
+          });
+      }
+      localStorage.setItem('messageNotificationCount', this.messageNotificationCount);
+      this.connectionData.forEach(element => {
+        let count=0;
+        this.notifications.forEach(el => {
+          if(element.id==el.from){
+            count++;
+          }
+        });
+        element.newMessagesCount=count;
+      });
+    }, error => {
+      alert('Error!')
+    })
   }
   getConnections() {
     this.connectionService.getConnections(this.userId).subscribe(data => {

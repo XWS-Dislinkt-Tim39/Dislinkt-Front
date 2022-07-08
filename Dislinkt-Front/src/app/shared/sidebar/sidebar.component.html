@@ -25,13 +25,13 @@
     <li>
       <a [routerLink]="['/messages']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
       class="dropdown-toggle">
-        <mat-icon> message</mat-icon>Messages
+        <mat-icon  matBadge={{messageCount}}  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="messageHidden"> message</mat-icon>Messages
       </a>
     </li>
     <li>
       <a [routerLink]="['/notificaations']" routerLinkActive="active" data-toggle="collapse" aria-expanded="false"
       class="dropdown-toggle">
-        <mat-icon matBadge={{count}}  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="hidden" >notifications</mat-icon>Notifications
+        <mat-icon matBadge={{count}}  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="hidden">notifications</mat-icon>Notifications
       </a>
     </li>
     <li>
