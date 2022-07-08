@@ -8,6 +8,7 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 
 import { NewNotificationSettingsData } from 'src/app/core/models/new-notification-settings-data';
 import { NotificationSeen } from 'src/app/core/models/notification-seen.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -47,7 +48,8 @@ export class NotificationsComponent implements OnInit {
     private publicProfilesService: PublicProfilesService,
     private profileService: ProfileService,
     private jwtService: JwtService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -116,7 +118,7 @@ export class NotificationsComponent implements OnInit {
         }
       })
     });
-    this.seenNotifications();
+  //  this.seenNotifications();
   }
 
   getAllProfiles() {
@@ -154,11 +156,28 @@ export class NotificationsComponent implements OnInit {
         this.notificationSeen.notificationId=element.id;
         this.notificationSeen.seen=true;
         this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data=>{
+          window.location.reload();
         },error=>{
           alert('Error')
         })
       });
     }
   }
+
+  viewNotification(row:any){
+    this.notificationSeen.userId=this.userId;
+    this.notificationSeen.notificationId=row.id;
+    this.notificationSeen.seen=true;
+    this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data=>{
+      if(row.type==2){
+        this.router.navigate(['/find-job'])
+      }else{
+        this.router.navigate(['/dashboard'])
+      }
+    },error=>{
+      alert('Error')
+    }) 
+  }
+
 
 }

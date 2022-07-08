@@ -54,7 +54,6 @@
 }
 
 .tab-content {
-    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -157,6 +156,13 @@
     margin-top:30px;
 }
 
+.seen-button {
+    @extend %primary-button;
+    background-color: base.$primary-color-dark;
+    width: 130px;
+    margin:-10px auto;
+}
+
 .card {
     background-color: white;
     border-radius: base.$border-radius;
@@ -166,6 +172,9 @@
     gap: 10px;
     align-items: flex-start;
     box-shadow: base.$box-shadow;
+}
+.card:hover{
+    cursor: pointer;
 }
 
 .card-image {
@@ -206,7 +215,7 @@
 
 }
 
-.primary-button:hover {
+.primary-button:hover,.seen-button:hover {
     @extend %primary-button-hover;
 }
 .mat-h2 {
