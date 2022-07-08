@@ -29,6 +29,9 @@ import { AccountComponent } from './account/account.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NotificationsComponent } from './notifications/notifications.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { AdminReportComponent } from './admin-report/admin-report.component';
+import { JobsChartComponent } from './jobs-chart/jobs-chart.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import {MatBadgeModule} from '@angular/material/badge';
         EducationComponent,
         InterestsComponent,
         AccountComponent,
-        NotificationsComponent
+        NotificationsComponent,
+        AdminReportComponent,
+        JobsChartComponent,
+        JobsComponent
     ],
     entryComponents: [],
     imports: [

@@ -181,7 +181,7 @@ form {
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
-    width: 15%;
+    width: 20%;
 }
 
 .primary-button:hover {
@@ -324,7 +324,6 @@ textarea:disabled{
 .cards {
     display: flex;
 }
-
 
 @media (pointer: coarse) {
     .container {
