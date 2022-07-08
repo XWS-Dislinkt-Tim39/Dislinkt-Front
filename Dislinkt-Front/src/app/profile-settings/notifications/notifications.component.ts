@@ -7,6 +7,7 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 import { NewNotificationSettingsData } from 'src/app/core/models/new-notification-settings-data';
+import { NotificationSeen } from 'src/app/core/models/notification-seen.model';
 
 
 @Component({
@@ -36,6 +37,11 @@ export class NotificationsComponent implements OnInit {
   notifications: any[] = [];
   notificationCount: any = 0;
   not: any[] = [];
+  notificationSeen:NotificationSeen={
+    userId:'',
+    notificationId:'',
+    seen:false
+  }
   userId: any;
   constructor(
     private publicProfilesService: PublicProfilesService,
@@ -55,16 +61,21 @@ export class NotificationsComponent implements OnInit {
 
 
   getAllNotifications() {
-
+    this.notificationCount=0;
     this.notificationService.getUserNotifications(this.userId).subscribe(data => {
-      if (!this.areEqual(this.notifications, data.notifications)) {
-        this.notifications = [];
-        data.notifications.forEach((el: any) => {
-          if (el.type != 0 && el.seen == false) {
-            this.notifications.push(el);
-          }
-        });
-        this.formatView();
+      if(data!=null){
+        if (!this.areEqual(this.notifications, data.notifications)) {
+          this.notifications = [];
+          data.notifications.forEach((el: any) => {
+            if (el.type != 0 ) {
+              this.notifications.push(el);
+              if(el.seen==false){
+                this.notificationCount++;
+              }
+            }
+          });
+          this.formatView();
+        }
       }
 
     }, error => {
@@ -87,7 +98,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   formatView() {
-    this.notificationCount = this.notifications.length;
+    this.notifications.reverse(); 
     localStorage.setItem('notificationCount', this.notificationCount)
     this.notifications.forEach(element => {
       this.profileService.getAboutInfo(element.from).subscribe(data => {
@@ -105,7 +116,7 @@ export class NotificationsComponent implements OnInit {
         }
       })
     });
-    this.not = this.notifications;
+    this.seenNotifications();
   }
 
   getAllProfiles() {
@@ -134,6 +145,20 @@ export class NotificationsComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+  }
+
+  seenNotifications(){
+    if(this.notifications.length!=0){
+      this.notifications.forEach(element => {
+        this.notificationSeen.userId=this.userId;
+        this.notificationSeen.notificationId=element.id;
+        this.notificationSeen.seen=true;
+        this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data=>{
+        },error=>{
+          alert('Error')
+        })
+      });
+    }
   }
 
 }

@@ -38,6 +38,7 @@ export class JwtService {
 
   destroyUserDetails(): void {
     localStorage.removeItem('userDetails');
+    localStorage.removeItem('notificationCount');
   }
 
   getRole(): string {

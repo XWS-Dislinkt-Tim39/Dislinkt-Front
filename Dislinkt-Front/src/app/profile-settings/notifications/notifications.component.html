@@ -70,7 +70,7 @@
                         <div class="mat-body-1" *ngIf="profiles.length==0">No new notifications :(</div>
                         <div class="notifications" *ngIf="profiles.length!=0">
 
-                            <div class="card" *ngFor="let profile of notifications;let i = index">
+                            <div class="card" *ngFor="let profile of notifications;let i = index"  matBadge="1"  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="profile.seen">
                                 <div class="card-image">
                                     <div class="avatar-girl" *ngIf="profile.gender=='1'">
                                         {{profile.firstName[0]}} {{profile.lastName[0]}}
