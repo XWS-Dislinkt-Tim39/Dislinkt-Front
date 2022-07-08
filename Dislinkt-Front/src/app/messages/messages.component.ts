@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { interval, Observable } from 'rxjs';
 import { Message } from '../core/models/message.model';
+import { NotificationSeen } from '../core/models/notification-seen.model';
 import { ChatService } from '../core/services/chat.service';
 import { ConnectionService } from '../core/services/connection.service';
 import { JwtService } from '../core/services/jwt.service';
@@ -35,6 +36,11 @@ export class MessagesComponent implements OnInit {
   myMessage: any = '';
   isChanged:boolean=true;
   sendForm!: FormGroup;
+  notificationSeen:NotificationSeen={
+    userId:'',
+    notificationId:'',
+    seen:false
+  };
   userId: any;
   messageNotificationCount:any=0;
   notifications:any[]=[];
@@ -78,6 +84,7 @@ export class MessagesComponent implements OnInit {
   }
 
   getSelectedChat(row: any) {
+   
     this.row = row;
     let count1=0;
     if(this.isChanged){
@@ -112,6 +119,18 @@ export class MessagesComponent implements OnInit {
 
 
   showChat(row: any) {
+    this.notifications.forEach(element => {
+      console.log(row)
+      if(element.from==row.id){
+        this.notificationSeen.userId = this.userId;
+        this.notificationSeen.notificationId = element.id;
+        this.notificationSeen.seen = true;
+        this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data => {
+        }, error => {
+          alert('Error')
+        })
+      }
+    });
     this.row = row;
   this.isChanged=true;
   }
@@ -167,6 +186,8 @@ export class MessagesComponent implements OnInit {
     }
 
   }
+
+
 
   sendMessage() {
     this.myMessage = this.sendForm.value.message;
