@@ -77,10 +77,6 @@ export class DashboardPageComponent implements OnInit {
         });
       }
     
-     
-      /*this.sortedPosts = this.posts.sort(
-        (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
-      );*/
     }, error => {
       alert('Error! Try again!')
     })

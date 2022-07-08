@@ -1,8 +1,8 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
 import { NewPost } from 'src/app/core/models/new-post.model';
+import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
 import { PostService } from 'src/app/core/services/post.service';
 
@@ -25,13 +25,16 @@ export class AddPostComponent implements OnInit {
   newPost: NewPost = {
     userId: '',
     text: '',
-    dateTimeOfPublishing: new Date()
+    dateTimeOfPublishing: new Date(),
+    followersId:[]
   }
+  connections:any[]=[];
   userId: any;
   constructor(private formBuilder: FormBuilder,
     private jwtService: JwtService,
     private postService:PostService,
     private dialogRef: MatDialogRef<AddPostComponent>,
+    private connectionService:ConnectionService
   ) {
     this.userId = this.jwtService.getUserId();
     this.textStyle = 'text-default';
@@ -43,11 +46,14 @@ export class AddPostComponent implements OnInit {
     });
   }
   imageSrc: any;
+
   ngOnInit(): void {
+    this.getMyConnections();
     $(() => {
       $('.dropify').dropify();
     });
   }
+
   get buttons(): { [key: string]: AbstractControl; } { return this.form.controls; }
 
   logoUpdate(event: any): void {
@@ -65,8 +71,16 @@ export class AddPostComponent implements OnInit {
     else {
       this.textStyle = 'text-default';
     }
-
   }
+
+  getMyConnections() {
+    this.connectionService.getConnections(this.userId).subscribe(data => {
+      if(data!=null){
+        this.connections = data;
+      }
+    })
+  }
+
   toggleImage() {
     this.showImage = !this.showImage;
     if (this.showImage) {
@@ -89,6 +103,7 @@ export class AddPostComponent implements OnInit {
       this.newPost.text=this.form.value.text;
     }
     this.newPost.dateTimeOfPublishing=new Date();
+    this.newPost.followersId=this.connections;
     console.log(this.newPost)
     this.postService.addNewPost(this.newPost).subscribe(data=>{
       alert('Sucessfully added new post');

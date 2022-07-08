@@ -28,7 +28,7 @@ export class ConnectionService {
       { headers: this.headers, responseType: 'json' });
   }
   unfollowUser(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}removeConnection`, connection,
+    return this.http.post(`${environment.connect_url}unfollow`, connection,
       { headers: this.headers, responseType: 'json' });
   }
   approveFollow(follow: Connection): Observable<any> {
