@@ -14,8 +14,13 @@ export class NotificationService {
       private http: HttpClient
   ) { }
 
-  getUserNotifications(userId: string): Observable<any> {
-    return this.http.get(`${environment.notification_url}get-by-userId`, { params: {
+  getAllUserNotifications(userId: string): Observable<any> {
+    return this.http.get(`${environment.notification_url}get-all-by-userId`, { params: {
+      userId: userId
+    },headers: this.headers, responseType: 'json' });
+  }
+  getWitoutMessagesUserNotifications(userId: string): Observable<any> {
+    return this.http.get(`${environment.notification_url}get-witout-messages-by-userId`, { params: {
       userId: userId
     },headers: this.headers, responseType: 'json' });
   }

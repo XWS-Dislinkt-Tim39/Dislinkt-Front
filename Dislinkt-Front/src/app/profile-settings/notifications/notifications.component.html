@@ -18,7 +18,7 @@
                                 <div>New connection requests</div>
                             </div>
                             <div class="noti-right">
-                                <mat-slide-toggle [(ngModel)]="connectionRequest" class="text"></mat-slide-toggle>
+                                <mat-slide-toggle [(ngModel)]="requests" class="text"></mat-slide-toggle>
                             </div>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                     <div class="tab-content">
 
                         <div class="subtitle">Notifications</div>
-                        <div class="mat-body-1" *ngIf="notifications.length==0">No new notifications :(</div>
+                        <button class="seen-button" (click)="seenNotifications()">Seen all</button>
                         <div class="notifications" *ngIf="notifications.length!=0">
 
-                            <div class="card" *ngFor="let profile of notifications;let i = index"  matBadge="1"  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="profile.seen">
+                            <div class="card" *ngFor="let profile of notifications;let i = index" (click)="viewNotification(profile)"  matBadge="!"  matBadgePosition="before" matBadgeColor="warn" [matBadgeHidden]="profile.seen">
                                 <div class="card-image">
                                     <div class="avatar-girl" *ngIf="profile.gender=='1'">
                                         {{profile.firstName[0]}} {{profile.lastName[0]}}

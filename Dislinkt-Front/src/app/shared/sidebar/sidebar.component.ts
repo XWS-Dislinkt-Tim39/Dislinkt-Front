@@ -18,6 +18,10 @@ export class SidebarComponent implements OnInit {
   notifications:any[]=[];
   gender: any;
   count=0;
+  posts:any[]=[];
+  jobs:any[]=[];
+  requests:any[]=[];
+  onValues:any[]=[]
   constructor(
     private profileService: ProfileService,
     private jwtService: JwtService,
@@ -53,16 +57,36 @@ export class SidebarComponent implements OnInit {
       this.hidden=false;
     }
   }
+  getOnValues() {
+    if (this.posts) {
+      this.onValues.push(1)
+    }
+    if (this.jobs) {
+      this.onValues.push(2)
+    }
+    if (this.requests) {
+      this.onValues.push(3)
+    }
+    console.log(this.onValues)
+  }
+
 
   
   getAllNotifications() {
     this.notificationCount=0;
-    this.notificationService.getUserNotifications(this.userId).subscribe(data => {
+    this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
+      this.posts=data.postOn;
+      this.jobs=data.jobOn;
+      this.requests=data.friendRequestOn;
+      this.getOnValues();
       if(data!=null){
         if (!this.areEqual(this.notifications, data.notifications)) {
           data.notifications.forEach((el: any) => {
             if (el.type != 0 && el.seen == false) {
-              this.notificationCount++;
+              if(this.onValues.indexOf(el.type) !== -1) {
+                  this.notificationCount++;
+                
+              }
             }
           });
         }

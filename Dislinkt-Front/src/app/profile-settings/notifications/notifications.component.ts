@@ -8,6 +8,7 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
 
 import { NewNotificationSettingsData } from 'src/app/core/models/new-notification-settings-data';
 import { NotificationSeen } from 'src/app/core/models/notification-seen.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,8 +17,6 @@ import { NotificationSeen } from 'src/app/core/models/notification-seen.model';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-
-
   posts: boolean = true;
   jobs: boolean = true;
   settings: NewNotificationSettingsData = {
@@ -27,69 +26,98 @@ export class NotificationsComponent implements OnInit {
     jobOn: true,
     friendRequestOn: true
   }
-  connectionRequest: boolean = true;
-  acceptedRejected: boolean = true;
-  jobPosts: boolean = true;
-  profilePosts: boolean = true;
+  allNoti: any[] = []
   messages: boolean = true;
+  requests: boolean = true;
   profiles: any[] = [];
-  allNotifications: any[] = [];
   notifications: any[] = [];
   notificationCount: any = 0;
-  not: any[] = [];
-  notificationSeen:NotificationSeen={
-    userId:'',
-    notificationId:'',
-    seen:false
+  onValues: any[] = [];
+  notificationSeen: NotificationSeen = {
+    userId: '',
+    notificationId: '',
+    seen: false
   }
   userId: any;
   constructor(
     private publicProfilesService: PublicProfilesService,
     private profileService: ProfileService,
     private jwtService: JwtService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
     this.getAllProfiles();
+    this.getInitialSettings();
     interval(1000).subscribe(x => {
       this.getAllNotifications();
-
     });
+  }
+
+  getInitialSettings() {
+    this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
+      this.posts = data.postOn;
+      this.jobs = data.jobOn;
+      this.messages = data.messageOn;
+      this.requests = data.friendRequestOn;
+      this.getOnValues();
+    })
+
   }
 
 
   getAllNotifications() {
-    this.notificationCount=0;
-    this.notificationService.getUserNotifications(this.userId).subscribe(data => {
-      if(data!=null){
-        if (!this.areEqual(this.notifications, data.notifications)) {
-          this.notifications = [];
-          data.notifications.forEach((el: any) => {
-            if (el.type != 0 ) {
-              this.notifications.push(el);
-              if(el.seen==false){
-                this.notificationCount++;
-              }
+    this.notificationCount = 0;
+    this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
+      if (data != null) {
+        this.allNoti=[];
+        data.notifications.forEach((c: any) => {
+          if (c.type != 0) {
+            if(this.onValues.indexOf(c.type) !== -1) {
+              this.allNoti.push(c)
             }
+          }
+        });
+        if (!this.areEqual(this.notifications, this.allNoti)) {
+        this.notifications = [];
+         this.allNoti.forEach((el: any) => {
+          if(this.onValues.indexOf(el.type) !== -1) {
+            this.notifications.push(el);
+            if (el.seen == false) {
+              this.notificationCount++;
+            }
+          } 
           });
           this.formatView();
         }
       }
-
     }, error => {
       alert('Error!')
     })
+  }
+
+  getOnValues() {
+    if (this.posts) {
+      this.onValues.push(1)
+    }
+    if (this.jobs) {
+      this.onValues.push(2)
+    }
+    if (this.requests) {
+      this.onValues.push(3)
+    }
+    console.log(this.onValues)
   }
 
   areEqual(array1: any[], array2: any[]) {
     if (array1.length === array2.length) {
       return array1.every((element, index) => {
         if (element.from === array2[index].from) {
+
           return true;
         }
-
         return false;
       });
     }
@@ -98,7 +126,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   formatView() {
-    this.notifications.reverse(); 
+    this.notifications.reverse();
     localStorage.setItem('notificationCount', this.notificationCount)
     this.notifications.forEach(element => {
       this.profileService.getAboutInfo(element.from).subscribe(data => {
@@ -116,7 +144,6 @@ export class NotificationsComponent implements OnInit {
         }
       })
     });
-    this.seenNotifications();
   }
 
   getAllProfiles() {
@@ -128,18 +155,21 @@ export class NotificationsComponent implements OnInit {
         }
 
       });
-    },error=>{
+    }, error => {
 
     })
   }
 
   confirm() {
-    this.settings.messageOn = this.acceptedRejected;
+    this.settings.userId = this.userId;
+    this.settings.messageOn = this.messages;
     this.settings.postOn = this.posts;
     this.settings.jobOn = this.jobs;
-    this.settings.friendRequestOn = this.connectionRequest;
+    this.settings.friendRequestOn = this.requests;
+    console.log(this.settings)
     this.profileService.updateNotificationSettings(this.settings).subscribe((data: any) => {
       alert("Sucessfully saved changes!");
+      window.location.reload();
 
     },
       error => {
@@ -147,18 +177,35 @@ export class NotificationsComponent implements OnInit {
       });
   }
 
-  seenNotifications(){
-    if(this.notifications.length!=0){
+  seenNotifications() {
+    if (this.notifications.length != 0) {
       this.notifications.forEach(element => {
-        this.notificationSeen.userId=this.userId;
-        this.notificationSeen.notificationId=element.id;
-        this.notificationSeen.seen=true;
-        this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data=>{
-        },error=>{
+        this.notificationSeen.userId = this.userId;
+        this.notificationSeen.notificationId = element.id;
+        this.notificationSeen.seen = true;
+        this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data => {
+          window.location.reload();
+        }, error => {
           alert('Error')
         })
       });
     }
   }
+
+  viewNotification(row: any) {
+    this.notificationSeen.userId = this.userId;
+    this.notificationSeen.notificationId = row.id;
+    this.notificationSeen.seen = true;
+    this.notificationService.updateNotificationSeen(this.notificationSeen).subscribe(data => {
+      if (row.type == 2) {
+        this.router.navigate(['/find-job'])
+      } else {
+        this.router.navigate(['/dashboard'])
+      }
+    }, error => {
+      alert('Error')
+    })
+  }
+
 
 }
