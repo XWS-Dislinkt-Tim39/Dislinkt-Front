@@ -1,15 +1,6 @@
 <div class="content">
     <div class="cards">
-      <div class="card">
-        <div class="subtitle">
-        Number of posts:
-        </div>
-        <div class="card-body">
-          <p class="text">{{posts}}</p>
-        </div>
-      </div>
-      <div class="space"></div>
-      <div class="card">
+      <div class="card1">
         <div class="subtitle">
         Number of jobs:
         </div>
@@ -18,7 +9,16 @@
         </div>
       </div>
       <div class="space"></div>
-      <div class="card">
+      <div class="card2">
+        <div class="subtitle">
+        Number of posts:
+        </div>
+        <div class="card-body">
+          <p class="text">{{posts}}</p>
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="card3">
         <div class="subtitle">
         Number of connections:
         </div>
@@ -29,5 +29,21 @@
     </div>
     <br>
     <br>
-    <button class="primary-button" [routerLink]="['/jobs']">Jobs diagram</button>
+    <div class="left">
+      <div class="diagram-content">
+        <div class="job-card">
+          <app-jobs-chart></app-jobs-chart>
+        </div>
+      </div>
+      <div class="diagram-content">
+        <div class="job-card">
+          <app-posts-chart></app-posts-chart>
+        </div>
+      </div>
+      <div class="diagram-content">
+        <div class="job-card">
+          <app-connections-chart></app-connections-chart>
+        </div>
+      </div>
+    </div>
 </div>
