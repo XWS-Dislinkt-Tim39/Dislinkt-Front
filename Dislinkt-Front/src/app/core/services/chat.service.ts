@@ -14,7 +14,7 @@ export class ChatService {
     private http: HttpClient
   ) { }
   getChatByFromTo(fromId: string, toId: string): Observable<any> {
-    return this.http.get(`${environment.chat_url}get-by-from-to`, {
+    return this.http.get(`${environment.url}Chat/get-by-from-to`, {
       params: {
         from: fromId,
         to: toId
@@ -23,15 +23,15 @@ export class ChatService {
   }
 
   addMessage(message: Message): Observable<any> {
-    return this.http.post(`${environment.chat_url}add-new-message`, message,
+    return this.http.post(`${environment.url}Chat/add-new-message`, message,
       { headers: this.headers, responseType: 'json' });
   }
   createChat(from: string, to: string): Observable<any> {
-    return this.http.post(`${environment.chat_url}create-chat`, { from: from, to: to },
+    return this.http.post(`${environment.url}Chat/create-chat`, { from: from, to: to },
       { headers: this.headers, responseType: 'json' });
   }
   deleteChat(from: string, to: string): Observable<any> {
-    return this.http.post(`${environment.chat_url}delete-chat`, { from: from, to: to },
+    return this.http.post(`${environment.url}Chat/delete-chat`, { from: from, to: to },
       { headers: this.headers, responseType: 'json' });
   }
 
