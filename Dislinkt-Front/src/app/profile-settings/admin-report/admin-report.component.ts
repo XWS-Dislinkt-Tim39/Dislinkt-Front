@@ -9,7 +9,7 @@ export interface PeriodicElement {
 const ELEMENT_DATA: PeriodicElement[] = [
   {date: "22 Jun 2022 15:32", user:"Sara Saric",text:"created post",type:"Post"},
   {date: "22 Jun 2022 15:32", user:"Nikola Nikolic",text:"created job",type:"Job"},
-  {date: "22 Jun 2022 15:32", user:"Marko Markovic",text:"created post",type:"FriendRequest"},
+  {date: "22 Jun 2022 15:32", user:"Marko Markovic",text:"created connection",type:"Connection"},
 ];
 
 @Component({
