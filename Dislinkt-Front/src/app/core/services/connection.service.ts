@@ -15,48 +15,45 @@ export class ConnectionService {
     private http: HttpClient
   ) { }
 
-  registerUser(user: NewUserNode): Observable<any> {
-    return this.http.post(`${environment.connect_url}registerUser`, user,
-      { headers: this.headers, responseType: 'json' });
-  }
+  
   followPublicUser(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}follow`, connection,
+    return this.http.post(`${environment.url}Connections/follow`, connection,
       { headers: this.headers, responseType: 'json' });
   }
   sendRequest(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}createFollowRequest`, connection,
+    return this.http.post(`${environment.url}Connections/createFollowRequest`, connection,
       { headers: this.headers, responseType: 'json' });
   }
   unfollowUser(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}unfollow`, connection,
+    return this.http.post(`${environment.url}Connections/unfollow`, connection,
       { headers: this.headers, responseType: 'json' });
   }
   approveFollow(follow: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}approveFollow`, follow,
+    return this.http.post(`${environment.url}Connections/approveFollow`, follow,
       { headers: this.headers, responseType: 'json' });
   }
   getConnections(souceId: string): Observable<any> {
-    return this.http.get(`${environment.connect_url}getFollowing`,
+    return this.http.get(`${environment.url}Connections/getFollowing`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
   }
 
   getFollowRequests(souceId: string): Observable<any> {
-    return this.http.get(`${environment.connect_url}getFollowRequests`,
+    return this.http.get(`${environment.url}Connections/getFollowRequests`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
   }
 
   blockUser(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}block`, connection,
+    return this.http.post(`${environment.url}Connections/block`, connection,
       { headers: this.headers, responseType: 'json' });
   }
 
   unblockUser(connection: Connection): Observable<any> {
-    return this.http.post(`${environment.connect_url}unblock`, connection,
+    return this.http.post(`${environment.url}Connections/unblock`, connection,
       { headers: this.headers, responseType: 'json' });
   }
 
   getBlocked(souceId: string): Observable<any> {
-    return this.http.get(`${environment.connect_url}getBlocked`,
+    return this.http.get(`${environment.url}Connections/getBlocked`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
   }
 }

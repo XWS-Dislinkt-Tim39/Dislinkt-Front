@@ -157,7 +157,7 @@ export class SearchProfilesComponent implements OnInit {
       this.chatService.deleteChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
       }, error => {
-
+          alert('Error')
       })
       window.location.reload()
     }, error => {

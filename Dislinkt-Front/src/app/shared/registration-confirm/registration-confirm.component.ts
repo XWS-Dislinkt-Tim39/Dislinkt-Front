@@ -50,15 +50,5 @@ export class RegistrationConfirmComponent implements OnInit {
     })
   }
 
-  createNode(){
-    this.newNode.id=this.id;
-    this.newNode.userName=this.user.username;
-    this.newNode.status=this.user.status;
-    this.connectionService.registerUser(this.newNode).subscribe(data=>{
-      alert('Succesfully');
-    },error=>{
-      alert('Error!Try again!');
-    })
-  }
 
 }
