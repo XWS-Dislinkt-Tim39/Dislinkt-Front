@@ -14,7 +14,7 @@
                             <div class="avatar-girl" *ngIf="item.gender=='1'"  [matBadgeHidden]="item.newMessagesCount==0" matBadge={{item.newMessagesCount}} matBadgePosition="before" matBadgeColor="warn" >
                                 {{item.userFirstName[0]}} {{item.userLastName[0]}} 
                             </div>
-                            <div class="avatar-boy" *ngIf="item.gender=='0'" >
+                            <div class="avatar-boy" *ngIf="item.gender=='0'" [matBadgeHidden]="item.newMessagesCount==0" matBadge={{item.newMessagesCount}} matBadgePosition="before" matBadgeColor="warn" >
                                 {{item.userFirstName[0]}} {{item.userLastName[0]}} 
                             </div>
                         </div>

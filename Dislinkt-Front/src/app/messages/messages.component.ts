@@ -24,7 +24,7 @@ export class MessagesComponent implements OnInit {
     id: ""
   };
   newMessage: Message = {
-    chatId: '',
+    to: '',
     sender: '',
     text: '',
     time:new Date()
@@ -98,6 +98,7 @@ export class MessagesComponent implements OnInit {
         }
         let name=this.selectedChat.firstName
         this.selectedChat = data;
+        this.selectedChat.to=row.id;
         this.selectedChat.firstName = row.userFirstName;
         this.selectedChat.lastName = row.userLastName;
         this.selectedChat.gender = row.gender;
@@ -140,12 +141,15 @@ export class MessagesComponent implements OnInit {
     this.notifications=[];
     this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
       if(data!=null){
+        if(data.messageOn){
           data.notifications.forEach((el: any) => {
             if (el.type == 0 && el.seen == false) {
                   this.messageNotificationCount++;
                   this.notifications.push(el);
             }
           });
+        }
+        
       }
       localStorage.setItem('messageNotificationCount', this.messageNotificationCount);
       this.connectionData.forEach(element => {
@@ -173,7 +177,6 @@ export class MessagesComponent implements OnInit {
   getConnectionsData() {
     if (this.connections != null) {
       this.connections.forEach((value: any, i: any) => {
-
         this.profileService.getAboutInfo(value).subscribe(data => {
           this.connectionData.push({
             id: value,
@@ -184,14 +187,11 @@ export class MessagesComponent implements OnInit {
         })
       });
     }
-
   }
-
-
 
   sendMessage() {
     this.myMessage = this.sendForm.value.message;
-    this.newMessage.chatId = this.selectedChat.id;
+    this.newMessage.to = this.selectedChat.to;
     this.newMessage.sender = this.userId;
     this.newMessage.text = this.myMessage;
     this.newMessage.time=new Date();

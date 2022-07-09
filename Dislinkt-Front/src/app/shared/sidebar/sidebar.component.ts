@@ -111,15 +111,14 @@ export class SidebarComponent implements OnInit {
     this.messageNotificationCount=0;
     this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
       if(data!=null){
+        if(data.messageOn){
           data.notifications.forEach((el: any) => {
             if (el.type == 0 && el.seen == false) {
-             
                   this.messageNotificationCount++;
-                
-              
             }
           });
-      
+        }
+        
       }
       localStorage.setItem('messageNotificationCount', this.messageNotificationCount);
       this.messageCount=this.messageNotificationCount;
