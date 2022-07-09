@@ -32,7 +32,6 @@ import { NoAuthGuard } from './auth/guards/no-auth.guard';
 import { AccountComponent } from './profile-settings/account/account.component';
 import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './profile-settings/notifications/notifications.component';
-import { BusinessReportComponent } from './admin/business-report/business-report.component';
 import { AdminReportComponent } from './profile-settings/admin-report/admin-report.component';
 import { JobsComponent } from './profile-settings/jobs/jobs.component';
 

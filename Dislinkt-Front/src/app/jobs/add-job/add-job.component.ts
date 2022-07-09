@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NewJobOffer } from 'src/app/core/models/new-job-offer.model';
+import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JobService } from 'src/app/core/services/job.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
 
@@ -22,14 +23,21 @@ export class AddJobComponent implements OnInit {
     positionName: "",
     description: "",
     dailyActivities: [''],
-    requirements: ['']
+    requirements: [''],
+    seniority:'',
+    followersId:['']
   }
+  seniority:any='';
   activities:any[]=[];
   requirements:any[]=[];
+  connections:any[]=[];
+  seniorityList:any[]=['Junior','Medior','Senior'];
+
   constructor(  
     private formBuilder: FormBuilder,
     private jobService: JobService,
     private jwtService : JwtService,
+    private connectionService:ConnectionService,
     private dialogRef: MatDialogRef<AddJobComponent>) 
     { 
     this.form = this.formBuilder.group({
@@ -45,6 +53,7 @@ export class AddJobComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId()
+    this.getMyConnections();
   }
 
   addActivity(){
@@ -54,6 +63,13 @@ export class AddJobComponent implements OnInit {
   addRequirements(){
     this.requirements.push(this.form.value.requirements);
     this.form.get('requirements')?.setValue('');
+  }
+  getMyConnections() {
+    this.connectionService.getConnections(this.userId).subscribe(data => {
+      if(data!=null){
+        this.connections = data;
+      }
+    })
   }
   addJobOffer() {
     if (this.form.invalid) {
@@ -66,6 +82,9 @@ export class AddJobComponent implements OnInit {
     this.newJobOffer.description = this.form.value.description;
     this.newJobOffer.dailyActivities = this.activities;
     this.newJobOffer.requirements = this.requirements;
+    this.newJobOffer.followersId=this.connections;
+    this.newJobOffer.seniority=this.seniority;
+    console.log(this.newJobOffer)
     this.jobService.addJobOffer(this.newJobOffer).subscribe(data => {
       alert('Sucessfully added new job offer');
       window.location.reload();

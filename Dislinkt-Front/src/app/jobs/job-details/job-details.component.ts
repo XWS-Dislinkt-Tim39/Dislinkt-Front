@@ -20,6 +20,13 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileService.getAboutInfo(this.selectedJob.publisherId).subscribe(data=>{
+      if(this.selectedJob.seniority==0){
+        this.selectedJob.seniority="Junior"
+      }else if(this.selectedJob.seniority==1){
+        this.selectedJob.seniority="Medior"
+      }else if(this.selectedJob.seniority==2){
+        this.selectedJob.seniority="Senior"
+      }
       this.selectedJob.userFirstName=data.firstName;
       this.selectedJob.userLastName=data.lastName;
       this.selectedJob.address=data.address;

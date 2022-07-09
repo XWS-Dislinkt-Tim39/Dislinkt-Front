@@ -27,7 +27,11 @@
    flex-direction: column;
     box-shadow: base.$box-shadow;
 }
-
+.public{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
 .card-image {
     grid-column: 1;
 }

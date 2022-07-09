@@ -24,6 +24,14 @@
             <input formControlName="positionName" matInput placeholder="Enter text">
           </mat-form-field>
         </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Position seniority*</mat-label>
+          <mat-select [(value)]="seniority">
+            <mat-option *ngFor="let item of seniorityList" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Job description*</mat-label>
