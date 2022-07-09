@@ -4,21 +4,21 @@ import { Chart, registerables} from 'node_modules/chart.js';
 Chart.register(...registerables);
 
 @Component({
-  selector: 'app-jobs-chart',
-  templateUrl: './jobs-chart.component.html',
-  styleUrls: ['./jobs-chart.component.scss']
+  selector: 'app-posts-chart',
+  templateUrl: './posts-chart.component.html',
+  styleUrls: ['./posts-chart.component.scss']
 })
-export class JobsChartComponent implements OnInit {
+export class PostsChartComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
-    const myChart = new Chart("jobsChart", {
+    const myChart = new Chart("postsChart", {
       type: 'bar',
       data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [{
-              label: 'Number of jobs for every month',
+              label: 'Number of posts for every month',
               data: [12, 19, 3, 5, 2, 3, 30, 50, 15, 24, 38, 14],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',

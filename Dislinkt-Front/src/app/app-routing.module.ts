@@ -33,7 +33,6 @@ import { AccountComponent } from './profile-settings/account/account.component';
 import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './profile-settings/notifications/notifications.component';
 import { AdminReportComponent } from './profile-settings/admin-report/admin-report.component';
-import { JobsComponent } from './profile-settings/jobs/jobs.component';
 
 const routes: Routes = [
   {
@@ -113,10 +112,6 @@ const routes: Routes = [
   {
     path: 'report',
     component: AdminReportComponent
-  },
-  {
-    path: 'jobs',
-    component: JobsComponent
   },
   {
     path: 'account-update',
