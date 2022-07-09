@@ -13,7 +13,9 @@ import { NewUserNode } from 'src/app/core/models/new-user-node.model';
 })
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
+  seniority:any=0;
   submitted = false;
+  seniorityList:any[]=['Junior','Medior','Senior']
   hidePassword = true;
   newNode:NewUserNode={
     id:'',
@@ -56,7 +58,7 @@ export class SignUpComponent implements OnInit {
       alert('Password and confirm password are not the same! Please try again!');
       return;
     }
-    const newUser: User = { username: '', firstName: '', lastName: '', emailAddress: '', password: '', address: '', city: '', country: '', phoneNumber: '', dateOfBirth: new Date(), gender: '' };
+    const newUser: User = { username: '', firstName: '', lastName: '', emailAddress: '', password: '', address: '', city: '', country: '', phoneNumber: '', dateOfBirth: new Date(), gender: '',seniority:'' };
     newUser.username = this.registerForm.value.username;
     newUser.firstName = this.registerForm.value.firstName;
     newUser.lastName = this.registerForm.value.lastName;
@@ -68,6 +70,9 @@ export class SignUpComponent implements OnInit {
     newUser.dateOfBirth = this.registerForm.value.date;
     newUser.phoneNumber = this.registerForm.value.phoneNumber;
     newUser.gender = this.registerForm.value.gender;
+    newUser.seniority=this.seniority;
+    console.log(newUser)
+  
     this.authenticationService.register(newUser).subscribe((res: any) => {
       console.log(res);
       alert('Sucessfully registered! Please check your e-mail to confirm your registration!')

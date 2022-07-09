@@ -10,4 +10,5 @@ export interface User {
     phoneNumber: string;
     dateOfBirth: Date;
     gender: string;
+    seniority:string;
 }

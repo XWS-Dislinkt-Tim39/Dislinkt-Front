@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from '../core/interceptor/http.interceptor';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HttpTokenInterceptor } from '../core/interceptor/http.interceptor';
     SharedModule,
     MatDatepickerModule,
     FormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     SignUpComponent, SignInComponent

@@ -25,8 +25,11 @@ export class AccountUpadateComponent implements OnInit {
     phoneNumber: "0654125478",
     dateOfBirth: new Date(),
     biography: "biografija",
-    gender:""
+    gender:"",
+    seniority:''
   }
+  seniorityList:any[]=['Junior','Medior','Senior'];
+  seniority:any='Junior';
   editedProfile:UpdateUser={
     id:"",
     firstName: "",
@@ -38,7 +41,8 @@ export class AccountUpadateComponent implements OnInit {
     phoneNumber: "",
     dateOfBirth: new Date(),
     biography: "",
-    gender:""
+    gender:"",
+    seniority:""
   }
   isEdit:boolean=false;
   user:any;
@@ -57,7 +61,8 @@ export class AccountUpadateComponent implements OnInit {
       email: [''],
       phoneNumber: [''],
       dateOfBirth: [''],
-      biography:['']
+      biography:[''],
+      seniority:['']
     });
 
   }
@@ -81,6 +86,17 @@ export class AccountUpadateComponent implements OnInit {
     this.profileForm.get('phoneNumber')?.setValue(userDetails.user.phoneNumber);
     this.profileForm.get('dateOfBirth')?.setValue(userDetails.user.dateOfBirth);
     this.profileForm.get('biography')?.setValue(userDetails.user.biography);
+    if(userDetails.user.seniority==0){
+      this.seniority='Junior';
+      this.profileForm.get('seniority')?.setValue('Junior');
+    }
+    else if(userDetails.user.seniority==1){
+      this.seniority='Medior';
+      this.profileForm.get('seniority')?.setValue('Medior');
+    }else{
+      this.seniority='Senior';
+      this.profileForm.get('seniority')?.setValue('Senior');
+    }
     this.date1=new FormControl(userDetails.user.dateOfBirth);
     this.profileForm.disable();
   }
@@ -109,6 +125,7 @@ export class AccountUpadateComponent implements OnInit {
     this.editedProfile.biography = this.profileForm.value.biography;
     this.editedProfile.gender =userDetails.user.gender;
     this.editedProfile.dateOfBirth =this.dateOfBirth;
+    this.editedProfile.seniority=this.seniority;
     this.profileService.editAboutInfo(this.editedProfile).subscribe(
       (data: any) => {
           this.oldUserInfo = data;

@@ -9,5 +9,6 @@ export interface UpdateUser {
     country: string;
     phoneNumber: string;
     dateOfBirth: Date;
-    gender:string
+    gender:string;
+    seniority:string;
 }
