@@ -99,8 +99,5 @@ export class ProfileService {
           },headers: this.headers, responseType: 'json' });
     }
 
-    updateNotificationSettings(settings:NewNotificationSettingsData): Observable<any> {
-        return this.http.post(`${environment.notification_url}update-notification-settings`,settings, { headers: this.headers, responseType: 'json' });
-    }
 
 }

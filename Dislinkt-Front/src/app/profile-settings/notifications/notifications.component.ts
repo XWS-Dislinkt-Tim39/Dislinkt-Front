@@ -166,7 +166,7 @@ export class NotificationsComponent implements OnInit {
     this.settings.postOn = this.posts;
     this.settings.jobOn = this.jobs;
     this.settings.friendRequestOn = this.requests;
-    this.profileService.updateNotificationSettings(this.settings).subscribe((data: any) => {
+    this.notificationService.updateNotificationSettings(this.settings).subscribe((data: any) => {
       alert("Sucessfully saved changes!");
       window.location.reload();
 

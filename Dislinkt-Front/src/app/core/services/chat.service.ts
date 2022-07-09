@@ -14,7 +14,7 @@ export class ChatService {
     private http: HttpClient
   ) { }
   getChatByFromTo(fromId: string, toId: string): Observable<any> {
-    return this.http.get(`${environment.chat_url}get-by-from-to`, {
+    return this.http.get(`${environment.url}Chat/get-by-from-to`, {
       params: {
         from: fromId,
         to: toId
