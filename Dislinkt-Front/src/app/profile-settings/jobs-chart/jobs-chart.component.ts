@@ -18,7 +18,7 @@ export class JobsChartComponent implements OnInit {
       data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [{
-              label: 'Number of jobs for every month',
+              //label: 'Number of jobs for every month',
               data: [12, 19, 3, 5, 2, 3, 30, 50, 15, 24, 38, 14],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -45,7 +45,20 @@ export class JobsChartComponent implements OnInit {
                   beginAtZero: true
                   
               }
-          }
+          },
+          plugins: {
+            title: {
+                display: true,
+                text: 'Number of jobs for every month',
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            },
+            legend: {
+                display: false
+            }
+        }
       }
   });
   }

@@ -34,6 +34,8 @@ import { JobsChartComponent } from './jobs-chart/jobs-chart.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { PostsChartComponent } from './posts-chart/posts-chart.component';
 import { ConnectionsChartComponent } from './connections-chart/connections-chart.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -78,7 +80,10 @@ import { ConnectionsChartComponent } from './connections-chart/connections-chart
         MatGridListModule,
         MatDatepickerModule,
         MatSlideToggleModule,
-        MatBadgeModule
+        MatBadgeModule,
+        MatSelectModule,
+        MatTableModule,
+        MatMenuModule
     ],
     exports: [
         ProfileNavigationComponent,

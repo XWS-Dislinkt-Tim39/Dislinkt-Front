@@ -45,7 +45,20 @@ export class ConnectionsChartComponent implements OnInit {
                   beginAtZero: true
                   
               }
-          }
+          },
+          plugins: {
+            title: {
+                display: true,
+                text: 'Number of connections for every month',
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            },
+            legend: {
+                display: false
+            }
+        }
       }
   });
   }

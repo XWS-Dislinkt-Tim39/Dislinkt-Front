@@ -241,7 +241,7 @@ textarea:disabled{
     }
 
     .card1 {
-        background-color: rgba(255, 206, 86, 0.2);
+        background-color: #b48ead;
         width: 100%;
         border-radius: base.$border-radius;
         padding: 20px 20px 0px 20px;
@@ -252,7 +252,7 @@ textarea:disabled{
         box-shadow: base.$box-shadow;
     }
     .card2 {
-        background-color: rgba(75, 192, 192, 0.2);
+        background-color: #e9f059;
         width: 100%;
         border-radius: base.$border-radius;
         padding: 20px 20px 0px 20px;
@@ -263,7 +263,7 @@ textarea:disabled{
         box-shadow: base.$box-shadow;
     }
     .card3 {
-        background-color: rgba(255, 159, 64, 0.2);
+        background-color: #99b2aa;
         width: 100%;
         border-radius: base.$border-radius;
         padding: 20px 20px 0px 20px;
@@ -370,6 +370,73 @@ textarea:disabled{
     flex-direction: row;
     gap: 20px;
 
+}
+.jobs{
+    padding: 12px 15px;
+    background-color: #b48ead;
+    font-size: 16px;
+    color: white;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius:15px;
+    margin: 5px;
+}
+.jobs:hover{
+    background-color: #d2bdce;
+}
+.posts{
+    padding: 12px 15px;
+    background-color: #e9f059;
+    font-size: 16px;
+    color: white;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius:15px;
+}
+.posts:hover{
+    background-color: #f4f8ad;
+}
+.connections{
+    padding: 12px 15px;
+    background-color: #99b2aa;
+    font-size: 16px;
+    color: white;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius:15px;
+}
+.connections:hover{
+    background-color: #d3fff1;
+}
+
+.mat-table
+{
+  background-color:transparent!important;  
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 15px;
+}
+table tr:last-child td /*To remove the last border*/
+{
+  border-bottom:0 solid
+}
+.mat-header-cell{
+    color:base.$primary-color;
+    font-size: 16px;
+}
+tr.mat-row{
+    background-color: base.$background-color;
 }
 
 @media (pointer: coarse) {
