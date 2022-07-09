@@ -113,12 +113,7 @@ export class AccountComponent implements OnInit {
     }
     this.connectionService.blockUser(connection).subscribe(data => {
       alert('User is successfully blocked!');
-      //this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
-      //}, error => {
-
-      //})
-
     }, error => {
       alert('Error!Try again!')
     });
@@ -137,5 +132,19 @@ export class AccountComponent implements OnInit {
         })
       });
     })
+  }
+
+  unblock(profileId:string){
+    let connection: Connection = {
+      sourceId: this.userId,
+      targetId: profileId,
+      connectionName: 'BLOCKS'
+    }
+    this.connectionService.unblockUser(connection).subscribe(data => {
+      alert('User is successfully unblocked!');
+        window.location.reload()
+    }, error => {
+      alert('Error!Try again!')
+    });
   }
 }
