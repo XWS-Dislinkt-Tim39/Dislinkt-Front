@@ -32,6 +32,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { AdminReportComponent } from './admin-report/admin-report.component';
 import { JobsChartComponent } from './jobs-chart/jobs-chart.component';
 import { JobsComponent } from './jobs/jobs.component';
+import { PostsChartComponent } from './posts-chart/posts-chart.component';
+import { ConnectionsChartComponent } from './connections-chart/connections-chart.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { JobsComponent } from './jobs/jobs.component';
         NotificationsComponent,
         AdminReportComponent,
         JobsChartComponent,
-        JobsComponent
+        JobsComponent,
+        PostsChartComponent,
+        ConnectionsChartComponent
     ],
     entryComponents: [],
     imports: [
