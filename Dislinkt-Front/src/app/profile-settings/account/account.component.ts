@@ -136,8 +136,8 @@ export class AccountComponent implements OnInit {
 
   unblock(profileId:string){
     let connection: Connection = {
-      sourceId: this.userId,
-      targetId: profileId,
+      sourceId:profileId,
+      targetId: this.userId,
       connectionName: 'BLOCKS'
     }
     this.connectionService.unblockUser(connection).subscribe(data => {
