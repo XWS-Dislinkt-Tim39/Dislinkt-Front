@@ -342,6 +342,13 @@ textarea:disabled{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    
+}
+
+.table{
+    height: 500px;
+  max-width: 100%;
+  overflow: auto;
 }
   
 .cards {
@@ -416,6 +423,7 @@ textarea:disabled{
 
 .mat-table
 {
+   
   background-color:transparent!important;  
 }
 table {
@@ -433,6 +441,7 @@ table tr:last-child td /*To remove the last border*/
 }
 tr.mat-row{
     background-color: base.$background-color;
+    height: 50px;
 }
 
 @media (pointer: coarse) {
