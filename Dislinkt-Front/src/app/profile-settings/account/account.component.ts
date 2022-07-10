@@ -33,12 +33,15 @@ export class AccountComponent implements OnInit {
       inputUser: [''],
     });
   }
-
-  ngOnInit(): void {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+  async ngOnInit(): Promise<void> {
     this.userId = this.jwtService.getUserId();
     this.firstName = this.jwtService.getUserDetails();
     this.lastName = this.jwtService.getUserDetails();
-    this.getAllProfiles();
+  
+    this.getBlockedProfiles();
     this.getUserConnections();
     this.profileService.getAboutInfo(this.userId).subscribe((data: any) => {
       if (data.status == 0) {
@@ -50,7 +53,8 @@ export class AccountComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
-    this.getBlockedProfiles();
+      await this.delay(500);
+      this.getAllProfiles();
   }
   changePrivacy() {
     this.profileService.changePrivacy(this.userId, this.profilePrivacy).subscribe((data: any) => {
@@ -63,15 +67,17 @@ export class AccountComponent implements OnInit {
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
       this.profiles = data;
-      this.profiles.forEach((value, i: any) => {
-        if (this.profiles[i].id == this.userId) {
+      this.profiles.forEach(async (value, i: any) => {
+        if (value.id == this.userId) {
           this.profiles.splice(i,1);
-          this.blocked.forEach((value, j: any) => {
-            if (this.blocked[j].firstName == this.profiles[i].firstName && this.blocked[j].lastName == this.profiles[i].lastName) {
-              this.blockedProfiles.splice(j, 1);
-            }
-          });
         }
+        await this.delay(200);
+        this.blocked.forEach((value1, j: any) => {
+          if (value.firstName==value1.firstName && value.lastName==value1.lastName) {
+            this.profiles.splice(i, 1);
+          }
+        });
+       
       });
     },
       error => {
@@ -125,6 +131,7 @@ export class AccountComponent implements OnInit {
         data.forEach((element: string) => {
           this.profileService.getAboutInfo(element).subscribe(data1 => {
             this.blocked.push({
+              id:data1.id,
               firstName: data1.firstName,
               lastName: data1.lastName,
               gender: data1.gender
@@ -138,8 +145,8 @@ export class AccountComponent implements OnInit {
 
   unblock(profileId: string) {
     let connection: Connection = {
-      sourceId: profileId,
-      targetId: this.userId,
+      sourceId: this.userId,
+      targetId: profileId,
       connectionName: 'BLOCKS'
     }
     this.connectionService.unblockUser(connection).subscribe(data => {
