@@ -113,7 +113,29 @@
 
       <div class="right-content">
         <div class="subtitle">Suggestion connections</div>
-        <div class="connection">
+        <div class="card" *ngFor="let profile of profiles;let i = index">
+          <div class="card-image">
+            <div class="avatar-girl" *ngIf="profile.gender=='1'">
+              {{profile.firstName[0]}} {{profile.lastName[0]}}
+            </div>
+            <div class="avatar-boy" *ngIf="profile.gender=='0'">
+              {{profile.firstName[0]}} {{profile.lastName[0]}}
+            </div>
+          </div>
+          <div class="name ">
+            <div class="public">
+              <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+            </div>
+           
+          </div>
+          <p></p>
+          <div class="view">
+            <div class="accept">
+              <button class="accept-button" (click)="connect(profile.id)">Connect</button>
+            </div>
+          </div>
+        </div>
+        <!--<div class="connection">
           <div class="head-connection">
             <div class="image">
               <img
@@ -146,7 +168,7 @@
           <div class="accept">
             <button class="accept-button">Connect</button>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
