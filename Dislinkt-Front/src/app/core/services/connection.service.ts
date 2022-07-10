@@ -56,4 +56,9 @@ export class ConnectionService {
     return this.http.get(`${environment.url}Connections/getBlocked`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
   }
+
+  getFollowRecommendations(souceId: string): Observable<any> {
+    return this.http.get(`${environment.url}Connections/getFollowRecommendations`,
+      { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });
+  }
 }

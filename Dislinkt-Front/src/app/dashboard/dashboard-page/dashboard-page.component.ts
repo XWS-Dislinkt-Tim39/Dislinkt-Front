@@ -8,6 +8,7 @@ import { NewComment } from 'src/app/core/models/new-comment.model';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { Connection } from 'src/app/core/models/connection.model';
+import { ChatService } from 'src/app/core/services/chat.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -24,6 +25,7 @@ export class DashboardPageComponent implements OnInit {
   commentStyle: string = '';
   posts: any[] = []
   sortedPosts: any[] = [];
+  profiles: any[]=[];
   newComment: NewComment = {
     text: '',
     publisherId: '',
@@ -34,14 +36,17 @@ export class DashboardPageComponent implements OnInit {
   requests: any[] = [];
   followRequests: any[] = [];
   myConnections: any[] = [];
-  allPosts:any[]=[]
+  allPosts:any[]=[];
+  userId:any;
+  recommendation: any[]=[];
 
   constructor(
     public dialog: MatDialog,
     private jwtService: JwtService,
     private postService: PostService,
     private profileService: ProfileService,
-    private connectionService: ConnectionService) {
+    private connectionService: ConnectionService,
+    private chatService: ChatService) {
 
     this.likeStyle = 'reaction-button';
     this.dislikeStyle = 'reaction-button';
@@ -51,11 +56,23 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.userDetails = JSON.parse(localStorage.getItem('userDetails') || '');
     this.user = this.userDetails.user;
+    this.userId=this.jwtService.getUserId();
     this.getMyConnections()
     this.getFollowRequests();
     this.sortedPosts = this.allPosts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
     );
+    this.connectionService.getFollowRecommendations(this.userId).subscribe(data=>{
+      data.forEach((element: string) => {
+        this.profileService.getAboutInfo(element).subscribe(data1=>{
+          this.recommendation.push({
+            firstName:data1.firstName,
+            lastName:data1.lastName,
+            gender:data1.gender
+          })
+        })
+      });
+    })
   }
 
 
@@ -244,5 +261,24 @@ export class DashboardPageComponent implements OnInit {
       alert('Error!Try again!')
     })
 
+  }
+
+  connect(profileId:string){
+    let connection: Connection = {
+      sourceId: this.userId,
+      targetId: profileId,
+      connectionName: ''
+    }
+    this.connectionService.followPublicUser(connection).subscribe(data => {
+      alert('Successfully followed!');
+      this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
+        window.location.reload()
+      }, error => {
+
+      })
+
+    }, error => {
+      alert('Error!Try again!')
+    });
   }
 }
