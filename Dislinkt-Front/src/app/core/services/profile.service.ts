@@ -102,7 +102,7 @@ export class ProfileService {
 
     //admin
     getAllActivities(): Observable<any> {
-        return this.http.get(`${environment.admin_url}get-all`,{ headers: this.headers, responseType: 'json' });
+        return this.http.get(`${environment.url}AdminDashboard/get-all`,{ headers: this.headers, responseType: 'json' });
     }
 
 

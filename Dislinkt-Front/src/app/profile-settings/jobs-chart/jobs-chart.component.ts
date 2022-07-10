@@ -21,7 +21,7 @@ months:number[]=[0,0,0,0,0,0,0,0,0,0,0,0];
 }
   async ngOnInit(): Promise<void> {
     this.getAllActivities();
-    await this.delay(200);
+    await this.delay(500);
     this.getMonthsValues();
     await this.delay(200);
     const myChart = new Chart("jobsChart", {

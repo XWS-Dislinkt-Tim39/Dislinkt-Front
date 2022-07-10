@@ -18,7 +18,7 @@ export class PostsChartComponent implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     this.getAllActivities();
-    await this.delay(200);
+    await this.delay(500);
     this.getMonthsValues();
     await this.delay(200);
     const myChart = new Chart("postsChart", {
@@ -83,6 +83,7 @@ export class PostsChartComponent implements OnInit {
 
   getMonthsValues(){
     this.posts.forEach((element: any) => {
+    
         let i=new Date(element.date).getMonth();
         this.months[i]=this.months[i]+1;
     });
