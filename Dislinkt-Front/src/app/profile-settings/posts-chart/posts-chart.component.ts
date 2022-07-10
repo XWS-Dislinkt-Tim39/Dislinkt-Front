@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables} from 'node_modules/chart.js';
+import { ProfileService } from 'src/app/core/services/profile.service';
 
 Chart.register(...registerables);
 
@@ -9,17 +10,23 @@ Chart.register(...registerables);
   styleUrls: ['./posts-chart.component.scss']
 })
 export class PostsChartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  posts:any=[];
+  months:number[]=[0,0,0,0,0,0,0,0,0,0,0,0];
+  constructor(private profileService: ProfileService) { }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  async ngOnInit(): Promise<void> {
+    this.getAllActivities();
+    await this.delay(200);
+    this.getMonthsValues();
+    await this.delay(200);
     const myChart = new Chart("postsChart", {
       type: 'bar',
       data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [{
-              label: 'Number of posts for every month',
-              data: [12, 19, 3, 5, 2, 3, 30, 50, 15, 24, 38, 14],
+              data:this.months,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -43,7 +50,6 @@ export class PostsChartComponent implements OnInit {
           scales: {
               y: {
                   beginAtZero: true
-                  
               }
           },
           plugins: {
@@ -61,6 +67,24 @@ export class PostsChartComponent implements OnInit {
         }
       }
   });
+ 
   }
 
+  getAllActivities(){
+    this.profileService.getAllActivities().subscribe(data=>{
+       data.forEach((element :any)=> {
+        if(element.type==1){
+            this.posts.push(element);
+            console.log(this.posts)
+        }
+       });
+    })
+  }
+
+  getMonthsValues(){
+    this.posts.forEach((element: any) => {
+        let i=new Date(element.date).getMonth();
+        this.months[i]=this.months[i]+1;
+    });
+  }
 }
