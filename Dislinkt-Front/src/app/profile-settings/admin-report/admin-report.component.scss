@@ -3,11 +3,11 @@
 .container {
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     flex-wrap: wrap;
     padding: 30px;
+    
     background-color: base.$background-color;
+    
 }
 
 .wrapper {
@@ -349,10 +349,15 @@ textarea:disabled{
     height: 500px;
   max-width: 100%;
   overflow: auto;
+  background-color: white;
 }
   
 .cards {
     display: flex;
+    margin-top:50px;
+}
+.mat-cell{
+    background-color: white;
 }
 .job-card {
     background-color: white;

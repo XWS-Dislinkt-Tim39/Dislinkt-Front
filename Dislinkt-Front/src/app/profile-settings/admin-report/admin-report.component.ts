@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Activity } from 'src/app/core/models/activity.model';
+import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
 export interface PeriodicElement {
@@ -29,10 +31,17 @@ export class AdminReportComponent implements OnInit {
   jobsCount:number=0;
   postCount:number=0;
   registrationCount:number=0;
+  user:any;
 
-  constructor(private profileService:ProfileService) { }
+  constructor(private profileService:ProfileService,
+    private jwtService:JwtService,
+    private router:Router) { }
 
   ngOnInit(): void {
+    this.user=this.jwtService.getUserDetails().user;
+    if(this.user.role==1){
+      this.router.navigate(['**'])
+    }
     this.getAllActivities();
   }
   delay(ms: number) {

@@ -18,6 +18,7 @@ export class SignInComponent implements OnInit {
   hidePassword = true;
   token:string='';
   matcher: ErrorMatcher = new ErrorMatcher();
+  user:any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -31,6 +32,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
   get login(): { [key: string]: AbstractControl; } { return this.loginForm.controls; }
 
@@ -50,7 +52,12 @@ export class SignInComponent implements OnInit {
       else{
         //console.log(data)
        this.jwtService.saveUserDetails(data);
-        this.router.navigate(['/dashboard']);  
+    if(data.user.role==0){
+      this.router.navigate(['report']);
+    }else{
+      this.router.navigate(['/dashboard']);  
+    }
+       
       }
     },
       error => {

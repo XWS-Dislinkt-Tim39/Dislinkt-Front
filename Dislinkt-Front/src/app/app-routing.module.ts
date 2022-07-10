@@ -111,7 +111,8 @@ const routes: Routes = [
   },
   {
     path: 'report',
-    component: AdminReportComponent
+    component: AdminReportComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: 'account-update',
@@ -165,7 +166,8 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    canActivate: [NoAuthGuard],
   },
   {
     path: '**',

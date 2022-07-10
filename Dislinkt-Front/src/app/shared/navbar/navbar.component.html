@@ -11,6 +11,7 @@ Search profiles
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>View profile</button>
+    <button mat-menu-item [routerLink]="['/report']" *ngIf="admin"> Report</button>
     <button mat-menu-item (click)="logOut()">Log Out</button>
   </mat-menu>
 </div>
