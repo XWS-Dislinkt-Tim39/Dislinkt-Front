@@ -75,8 +75,8 @@ export class SignUpComponent implements OnInit {
   
     this.authenticationService.register(newUser).subscribe((res: any) => {
       console.log(res);
-      alert('Sucessfully registered! Please check your e-mail to confirm your registration!')
-      // this.router.navigate(['/registration-success']);
+      alert('Sucessfully registered! ')
+     this.router.navigate(['/sign-in']);
     },
       error => {
         console.log(error.error);
