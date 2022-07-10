@@ -88,6 +88,7 @@
     <div class="right">
       <div class="right-content">
         <div class="subtitle">Connection requests</div>
+        <div class="mat-h3" *ngIf="followRequests.length==0">No connection request :(</div>
         <div class="connection" *ngFor="let item of followRequests">
           <div class="head-connection">
             <div class="image">
@@ -113,7 +114,7 @@
 
       <div class="right-content">
         <div class="subtitle">Suggestion connections</div>
-     
+        <div class="mat-h3" *ngIf="recommendation.length==0">No suggestion connections :(</div>
         <div class="connection" *ngFor="let profile of recommendation;let i = index">
           <div class="head-connection">
            <div class="card-image">

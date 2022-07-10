@@ -14,37 +14,37 @@ import { PublicProfilesService } from 'src/app/core/services/public-profiles.ser
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  connections:any[]=[];
-  userId:any;
+  connections: any[] = [];
+  userId: any;
   firstName: any;
   lastName: any;
-  blocked:any[]=[];
+  blocked: any[] = [];
   profiles: any[] = [];
   blockedProfiles: any[] = [];
   searchForm: FormGroup;
-  profilePrivacy: boolean=true;
-  constructor(private publicProfilesService:PublicProfilesService,
+  profilePrivacy: boolean = true;
+  constructor(private publicProfilesService: PublicProfilesService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private connectionService:ConnectionService,
+    private connectionService: ConnectionService,
     private profileService: ProfileService,
-    private jwtService:JwtService) { 
-      this.searchForm = this.formBuilder.group({
-        inputUser: [''],
-      });
-    }
+    private jwtService: JwtService) {
+    this.searchForm = this.formBuilder.group({
+      inputUser: [''],
+    });
+  }
 
   ngOnInit(): void {
-    this.userId=this.jwtService.getUserId();
-    this.firstName=this.jwtService.getUserDetails();
-    this.lastName=this.jwtService.getUserDetails();
+    this.userId = this.jwtService.getUserId();
+    this.firstName = this.jwtService.getUserDetails();
+    this.lastName = this.jwtService.getUserDetails();
     this.getAllProfiles();
     this.getUserConnections();
     this.profileService.getAboutInfo(this.userId).subscribe((data: any) => {
-      if(data.status==0){
-        this.profilePrivacy=false;
+      if (data.status == 0) {
+        this.profilePrivacy = false;
       } else {
-        this.profilePrivacy=true;
+        this.profilePrivacy = true;
       }
     },
       error => {
@@ -52,7 +52,7 @@ export class AccountComponent implements OnInit {
       });
     this.getBlockedProfiles();
   }
-  changePrivacy(){
+  changePrivacy() {
     this.profileService.changePrivacy(this.userId, this.profilePrivacy).subscribe((data: any) => {
       alert("Sucessfully changed privacy");
     },
@@ -63,49 +63,50 @@ export class AccountComponent implements OnInit {
   getAllProfiles() {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
       this.profiles = data;
-      this.profiles.forEach((value,i: any)=>{
-        if(this.profiles[i].id==this.userId) {
-          this.blocked.forEach((value,j: any) => {
-            if(this.blocked[j].firstName==this.profiles[i].firstName && this.blocked[j].lastName==this.profiles[i].lastName) {
-              this.blockedProfiles.splice(j,1);
+      this.profiles.forEach((value, i: any) => {
+        if (this.profiles[i].id == this.userId) {
+          this.profiles.splice(i,1);
+          this.blocked.forEach((value, j: any) => {
+            if (this.blocked[j].firstName == this.profiles[i].firstName && this.blocked[j].lastName == this.profiles[i].lastName) {
+              this.blockedProfiles.splice(j, 1);
             }
-        });
+          });
         }
-    });
+      });
     },
       error => {
         console.log(error.error.message);
       });
   }
-  getUserConnections(){
-    this.connectionService.getConnections(this.userId).subscribe(data=>{
-      this.connections=data;
+  getUserConnections() {
+    this.connectionService.getConnections(this.userId).subscribe(data => {
+      this.connections = data;
     })
   }
-  isConnected(targetId:any):boolean{
-    if(this.connections==null)
+  isConnected(targetId: any): boolean {
+    if (this.connections == null)
       return false;
-    if(this.connections.indexOf(targetId) !== -1) {
+    if (this.connections.indexOf(targetId) !== -1) {
       return true
     }
     return false
   }
   sarchUserByUsername() {
-    let username=this.searchForm.value.inputUser;
-    if(username==''){
+    let username = this.searchForm.value.inputUser;
+    if (username == '') {
       this.getAllProfiles();
     }
-    else{
+    else {
       this.publicProfilesService.searchUser(username).subscribe((data: any) => {
         this.profiles = data;
-  
+
       },
         error => {
           console.log(error.error.message);
         });
     }
   }
-  block(profileId:string){
+  block(profileId: string) {
     let connection: Connection = {
       sourceId: this.userId,
       targetId: profileId,
@@ -113,36 +114,37 @@ export class AccountComponent implements OnInit {
     }
     this.connectionService.blockUser(connection).subscribe(data => {
       alert('User is successfully blocked!');
-        window.location.reload()
+      window.location.reload()
     }, error => {
       alert('Error!Try again!')
     });
   }
-  getBlockedProfiles(){
-    this.connectionService.getBlocked(this.userId).subscribe(data=>{
- 
-      data.forEach((element: string) => {
-        this.profileService.getAboutInfo(element).subscribe(data1=>{
-          this.blocked.push({
-            firstName:data1.firstName,
-            lastName:data1.lastName,
-            gender:data1.gender
+  getBlockedProfiles() {
+    this.connectionService.getBlocked(this.userId).subscribe(data => {
+      if (data != null) {
+        data.forEach((element: string) => {
+          this.profileService.getAboutInfo(element).subscribe(data1 => {
+            this.blocked.push({
+              firstName: data1.firstName,
+              lastName: data1.lastName,
+              gender: data1.gender
+            })
+
           })
-         
-        })
-      });
+        });
+      }
     })
   }
 
-  unblock(profileId:string){
+  unblock(profileId: string) {
     let connection: Connection = {
-      sourceId:profileId,
+      sourceId: profileId,
       targetId: this.userId,
       connectionName: 'BLOCKS'
     }
     this.connectionService.unblockUser(connection).subscribe(data => {
       alert('User is successfully unblocked!');
-        window.location.reload()
+      window.location.reload()
     }, error => {
       alert('Error!Try again!')
     });

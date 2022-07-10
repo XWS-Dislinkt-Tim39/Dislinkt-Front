@@ -63,16 +63,18 @@ export class DashboardPageComponent implements OnInit {
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
     );
     this.connectionService.getFollowRecommendations(this.userId).subscribe(data=>{
-      data.forEach((element: string) => {
-        this.profileService.getAboutInfo(element).subscribe(data1=>{
-          this.recommendation.push({
-            firstName:data1.firstName,
-            lastName:data1.lastName,
-            gender:data1.gender,
-            userName:data1.username
+      if(data!=null){
+        data.forEach((element: string) => {
+          this.profileService.getAboutInfo(element).subscribe(data1=>{
+            this.recommendation.push({
+              firstName:data1.firstName,
+              lastName:data1.lastName,
+              gender:data1.gender,
+              userName:data1.username
+            })
           })
-        })
-      });
+        });
+      }
     })
   }
 
