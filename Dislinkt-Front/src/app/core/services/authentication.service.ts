@@ -28,7 +28,7 @@ export class AuthenticationService {
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${environment.url}Profile/register-user`, user, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`https://localhost:44319/register`, user, { headers: this.headers, responseType: 'json' });
   }
   approve(id: string): Observable<any> {
     return this.http.post(`${environment.url}Profile/approve-user/${id}`, { headers: this.headers, responseType: 'json' });
