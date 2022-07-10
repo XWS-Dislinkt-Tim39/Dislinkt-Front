@@ -18,9 +18,7 @@ const activities_table: Activity[] = [
   styleUrls: ['./admin-report.component.scss']
 })
 export class AdminReportComponent implements OnInit {
-  posts: any=0;
-  jobs: any=0;
-  connections: any=0;
+ 
   activities:any[]=[];
   yearView: boolean = true;
   monthView: boolean = false;
@@ -28,6 +26,9 @@ export class AdminReportComponent implements OnInit {
   activitiesShow:Activity[]=[];
   displayedColumns: string[] = ['date','user','text','type'];
   dataSource = activities_table;
+  jobsCount:number=0;
+  postCount:number=0;
+  registrationCount:number=0;
 
   constructor(private profileService:ProfileService) { }
 
@@ -63,10 +64,13 @@ export class AdminReportComponent implements OnInit {
 
   getType(type:any):string{
     if(type==0){
+      this.registrationCount++;
       return "Registration"
     }else if(type==1){
+      this.postCount++;
       return "Post"
     }else if(type==2){
+      this.jobsCount++;
       return "Job"
     }else{
       return "Connection"

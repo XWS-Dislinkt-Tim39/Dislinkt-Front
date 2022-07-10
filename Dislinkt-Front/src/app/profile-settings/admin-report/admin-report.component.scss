@@ -406,9 +406,23 @@ textarea:disabled{
     margin: 10px 0;
     width: 130px;
 }
-.connections{
+.registration{
     padding: 12px 15px;
     background-color:rgb(255, 193, 77);
+    font-size: 16px;
+    color: white;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius:15px;
+    margin: 10px 0;
+    width: 130px;
+}
+.connections{
+    padding: 12px 15px;
+    background-color:rgb(243, 108, 166);
     font-size: 16px;
     color: white;
     border: 0px solid white;
