@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables} from 'node_modules/chart.js';
+import { ProfileService } from 'src/app/core/services/profile.service';
 
 Chart.register(...registerables);
 
@@ -9,17 +10,26 @@ Chart.register(...registerables);
   styleUrls: ['./jobs-chart.component.scss']
 })
 export class JobsChartComponent implements OnInit {
+jobs:any=[];
+months:number[]=[0,0,0,0,0,0,0,0,0,0,0,0];
+  constructor(
+    private profileService:ProfileService
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+  async ngOnInit(): Promise<void> {
+    this.getAllActivities();
+    await this.delay(200);
+    this.getMonthsValues();
+    await this.delay(200);
     const myChart = new Chart("jobsChart", {
       type: 'bar',
       data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [{
-              //label: 'Number of jobs for every month',
-              data: [12, 19, 3, 5, 2, 3, 30, 50, 15, 24, 38, 14],
+              data:this.months,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -61,6 +71,25 @@ export class JobsChartComponent implements OnInit {
         }
       }
   });
+ 
+  }
+
+  getAllActivities(){
+    this.profileService.getAllActivities().subscribe(data=>{
+       data.forEach((element :any)=> {
+        if(element.type==2){
+            this.jobs.push(element);
+            console.log(this.jobs)
+        }
+       });
+    })
+  }
+
+  getMonthsValues(){
+    this.jobs.forEach((element: any) => {
+        let i=new Date(element.date).getMonth();
+        this.months[i]=this.months[i]+1;
+    });
   }
 
 }
