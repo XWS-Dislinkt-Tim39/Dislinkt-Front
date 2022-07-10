@@ -67,6 +67,7 @@ export class DashboardPageComponent implements OnInit {
         data.forEach((element: string) => {
           this.profileService.getAboutInfo(element).subscribe(data1=>{
             this.recommendation.push({
+              id:data1.id,
               firstName:data1.firstName,
               lastName:data1.lastName,
               gender:data1.gender,
