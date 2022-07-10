@@ -232,6 +232,10 @@
     align-items: center;
     gap:5px;
 }
+.card{
+display: flex;
+flex-direction: row;
+}
  .avatar-boy,.avatar-girl {
     border-radius: 50%;
     width: 50px;

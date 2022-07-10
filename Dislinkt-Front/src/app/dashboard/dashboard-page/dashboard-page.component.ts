@@ -68,7 +68,8 @@ export class DashboardPageComponent implements OnInit {
           this.recommendation.push({
             firstName:data1.firstName,
             lastName:data1.lastName,
-            gender:data1.gender
+            gender:data1.gender,
+            userName:data1.username
           })
         })
       });

@@ -113,8 +113,10 @@
 
       <div class="right-content">
         <div class="subtitle">Suggestion connections</div>
-        <div class="card" *ngFor="let profile of profiles;let i = index">
-          <div class="card-image">
+     
+        <div class="connection" *ngFor="let profile of recommendation;let i = index">
+          <div class="head-connection">
+           <div class="card-image">
             <div class="avatar-girl" *ngIf="profile.gender=='1'">
               {{profile.firstName[0]}} {{profile.lastName[0]}}
             </div>
@@ -122,54 +124,17 @@
               {{profile.firstName[0]}} {{profile.lastName[0]}}
             </div>
           </div>
-          <div class="name ">
-            <div class="public">
+            <div class="info-connection">
               <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
-            </div>
-           
-          </div>
-          <p></p>
-          <div class="view">
-            <div class="accept">
-              <button class="accept-button" (click)="connect(profile.id)">Connect</button>
-            </div>
-          </div>
-        </div>
-        <!--<div class="connection">
-          <div class="head-connection">
-            <div class="image">
-              <img
-                src="https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg">
-            </div>
-            <div class="info-connection">
-              <div class="mat-h2">Marko Markovic</div>
-              <div class="mat-h3">Software developer</div>
+         
             </div>
           </div>
           <div class="accept">
-            <button class="accept-button">Connect</button>
+            <button class="accept-button" (click)="connect(profile.id)">Connect</button>
           </div>
+          <div class="line"></div>
         </div>
-        
-
-        <div class="line"></div>
-
-        <div class="connection">
-          <div class="head-connection">
-            <div class="image">
-              <img
-                src="https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201001384/157765614-profile-picture-of-smiling-indian-female-isolated-on-grey-studio-background-show-optimism-and-positi.jpg?ver=6">
-            </div>
-            <div class="info-connection">
-              <div class="mat-h2">Ana Malinovic</div>
-              <div class="mat-h3">Software developer</div>
-            </div>
-          </div>
-          <div class="accept">
-            <button class="accept-button">Connect</button>
-          </div>
-        </div>-->
-      </div>
+       </div>
     </div>
   </div>
 </div>

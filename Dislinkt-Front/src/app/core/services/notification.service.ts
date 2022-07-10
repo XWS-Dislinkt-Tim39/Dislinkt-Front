@@ -16,21 +16,21 @@ export class NotificationService {
   ) { }
 
   getAllUserNotifications(userId: string): Observable<any> {
-    return this.http.get(`${environment.notification_url}get-all-by-userId`, { params: {
+    return this.http.get(`${environment.url}Notifications/get-all-by-userId`, { params: {
       userId: userId
     },headers: this.headers, responseType: 'json' });
   }
   getWitoutMessagesUserNotifications(userId: string): Observable<any> {
-    return this.http.get(`${environment.notification_url}get-without-messages-by-userId`, { params: {
+    return this.http.get(`${environment.url}Notifications/get-without-messages-by-userId`, { params: {
       userId: userId
     },headers: this.headers, responseType: 'json' });
   }
 
   updateNotificationSeen(comment: NotificationSeen): Observable<any> {
-    return this.http.post(`${environment.notification_url}update-notification-seen`, comment, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`${environment.url}Notifications/update-notification-seen`, comment, { headers: this.headers, responseType: 'json' });
   }
   updateNotificationSettings(settings:NewNotificationSettingsData): Observable<any> {
-    return this.http.post(`${environment.notification_url}update-notification-settings`,settings, { headers: this.headers, responseType: 'json' });
+    return this.http.post(`${environment.url}Notifications/update-notification-settings`,settings, { headers: this.headers, responseType: 'json' });
 }
 
 }
