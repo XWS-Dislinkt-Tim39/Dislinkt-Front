@@ -145,9 +145,16 @@ export class DashboardPageComponent implements OnInit {
     }
     this.connectionService.approveFollow(connection).subscribe(data => {
       alert('Successfully approved!');
+      this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
+        window.location.reload()
+      }, error => {
+      })
+      window.location.reload()
     }, error => {
       alert('Error!Try again!')
-    })
+    });
+    
+
   }
 
   openAddDialog(event: { stopPropagation: () => void; }) {

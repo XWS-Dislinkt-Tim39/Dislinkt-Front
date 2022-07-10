@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInfo();
-    interval(1000).subscribe(x => {
+    interval(100).subscribe(x => {
       this.getAllNotifications();
       this.getMessageNotification();
       

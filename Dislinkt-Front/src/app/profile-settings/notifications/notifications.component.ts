@@ -51,7 +51,7 @@ export class NotificationsComponent implements OnInit {
     this.userId = this.jwtService.getUserId();
     this.getAllProfiles();
     this.getInitialSettings();
-    interval(1000).subscribe(x => {
+    interval(500).subscribe(x => {
       this.getAllNotifications();
     });
   }

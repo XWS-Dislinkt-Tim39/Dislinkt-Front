@@ -63,7 +63,7 @@ export class MessagesComponent implements OnInit {
     });
 
     this.getConnections();
-    interval(100).subscribe(x => {
+    interval(500).subscribe(x => {
       this.getMessageNotification();
       if (this.row.id != '') {
         this.getSelectedChat(this.row);

@@ -15,7 +15,8 @@
           </mat-form-field>
         </form>
 
-        <div class="card" *ngFor="let profile of profiles;let i = index">
+        <div  *ngFor="let profile of profiles;let i = index">
+          <div class="card" *ngIf="!isInBlocked(profile.id)">
           <div class="card-image">
               <div class="avatar-girl" *ngIf="profile.gender=='1'">
                 {{profile.firstName[0]}} {{profile.lastName[0]}}
@@ -47,6 +48,7 @@
               <button *ngIf="profile.status=='0'  && isConnected(profile.id)" class="follow-button following" (click)="unfollow(profile.id)">Unfollow</button>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { Connection } from 'src/app/core/models/connection.model';
 import { ChatService } from 'src/app/core/services/chat.service';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
+import { ProfileService } from 'src/app/core/services/profile.service';
 import { PublicProfilesService } from 'src/app/core/services/public-profiles.service';
 
 @Component({
@@ -26,6 +27,7 @@ export class SearchProfilesComponent implements OnInit {
   userId: any;
   isFollowing: boolean = false;
   connections: any[] = [];
+  blocked:any[]=[];
   public circleColor: string | undefined;
   private colors = [
     '#EB71810',
@@ -42,7 +44,8 @@ export class SearchProfilesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private connectionService: ConnectionService,
     private jwtService: JwtService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private profileService:ProfileService
   ) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
@@ -51,6 +54,7 @@ export class SearchProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
+    this.getBlockedProfiles();
     this.getAllProfiles();
     this.getUserConnections();
 
@@ -60,7 +64,6 @@ export class SearchProfilesComponent implements OnInit {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
       this.profiles = data;
       this.profiles.forEach((value, i: any) => {
-        
         if (this.profiles[i].id == this.userId) {
           this.profiles.splice(i, 1);
         }
@@ -69,6 +72,21 @@ export class SearchProfilesComponent implements OnInit {
       error => {
         console.log(error.error.message);
       });
+  }
+
+  getBlockedProfiles() {
+    this.connectionService.getBlocked(this.userId).subscribe(data => {
+      if (data != null) {
+        this.blocked=data;
+      }
+    })
+  }
+
+  isInBlocked(id:string):boolean{
+    if(this.blocked.indexOf(id) !== -1) {
+      return true;
+    }
+    return false;
   }
 
   getUserConnections() {
@@ -84,7 +102,6 @@ export class SearchProfilesComponent implements OnInit {
     }
     return false
   }
-
 
   showExperienceFilter() {
     this.profiles.forEach(profile => {
@@ -125,9 +142,7 @@ export class SearchProfilesComponent implements OnInit {
       this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
       }, error => {
-
       })
-
     }, error => {
       alert('Error!Try again!')
     });

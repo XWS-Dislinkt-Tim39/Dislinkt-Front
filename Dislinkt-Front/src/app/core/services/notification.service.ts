@@ -16,7 +16,7 @@ export class NotificationService {
   ) { }
 
   getAllUserNotifications(userId: string): Observable<any> {
-    return this.http.get(`${environment.url}Notifications/get-all-by-userId`, { params: {
+    return this.http.get(`${environment.notification_url}get-all-by-userId`, { params: {
       userId: userId
     },headers: this.headers, responseType: 'json' });
   }
