@@ -5,7 +5,7 @@
         Number of jobs:
         </div>
         <div class="card-body">
-          <p class="subtitle">{{jobs}}</p>
+          <p class="subtitle">{{jobsCount}}</p>
         </div>
       </div>
       <div class="space"></div>
@@ -14,16 +14,16 @@
         Number of posts:
         </div>
         <div class="card-body">
-          <p class="subtitle">{{posts}}</p>
+          <p class="subtitle">{{postCount}}</p>
         </div>
       </div>
       <div class="space"></div>
       <div class="card3">
         <div class="subtitle">
-        Number of connections:
+        Number of registrations:
         </div>
         <div class="card-body">
-          <p class="subtitle">{{connections}}</p>
+          <p class="subtitle">{{registrationCount}}</p>
         </div>
       </div>
     </div>
@@ -47,18 +47,19 @@
       </div>
     </div>
     <div class="content">
+      <div class="table">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
           <!-- Name Column -->
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef>Date of activity</th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.date | date:'medium'}} </td>
           </ng-container>
         
           <!-- Weight Column -->
           <ng-container matColumnDef="user">
             <th mat-header-cell *matHeaderCellDef>Username</th>
-            <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
           </ng-container>
           <ng-container matColumnDef="text">
             <th mat-header-cell *matHeaderCellDef>Activity</th>
@@ -72,13 +73,15 @@
               <td mat-cell *matCellDef="let element"> <button  [ngClass]="{
                 'posts': element.type=='Post',
                 'jobs':  element.type=='Job',
-                'connections': element.type=='Connection'
+                'connections': element.type=='Connection',
+                'registrations': element.type=='Registration'
             }" mat-button >{{element.type}}</button></td>
             </ng-container>\
            
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+      </div>
      
   </div>
 </div>

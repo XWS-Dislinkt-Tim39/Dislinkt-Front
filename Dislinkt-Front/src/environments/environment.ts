@@ -5,6 +5,7 @@
 export const environment = {
   url: 'https://localhost:44343/api/',
   notification_url:'https://localhost:44378/',
+  admin_url:'https://localhost:44318/',
 
   production: false
 };
