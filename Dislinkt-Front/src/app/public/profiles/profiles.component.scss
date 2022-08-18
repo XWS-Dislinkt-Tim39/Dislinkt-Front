@@ -5,10 +5,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-image: url(../../../assets/background1.png);
+    background-image: url(../../../assets/background6.jpg);
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -23,11 +22,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: base.$background-color;
+    justify-content: center;
     border-radius: base.$border-radius;
+    gap:20px;
+    background-color: base.$background-color;
+    box-shadow: base.$box-shadow;
 }
 
 .left {
+    border-radius: base.$border-radius;
     margin-top: 30px;
     margin-bottom: 30px;
     height: 100%;
@@ -41,7 +44,6 @@
 
 .right {
     height: 90%;
-    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,6 +52,7 @@
 .right-content {
     box-shadow: base.$box-shadow;
     height: 100%;
+    width: 80%;
     border-radius: base.$border-radius;
     padding: 20px;
     display: flex;
@@ -100,7 +103,6 @@ cursor: pointer;
 
 .card {
     background-color: white;
-    width: 90%;
     border-radius: base.$border-radius;
     padding: 20px 20px 10px 20px;
     display: grid;
