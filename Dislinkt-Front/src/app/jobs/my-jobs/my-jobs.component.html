@@ -18,6 +18,9 @@
                         </button>
                       </div>
                       <div class="main">
+                        <div class="no-data" *ngIf="jobsCount===0">
+                            <img src="../../assets/no-data.png">
+                        </div>
                         <div class="card" *ngFor="let job of jobs">
                             <div class="card-image">
                                 <div class="avatar-girl" *ngIf="job.gender=='1'">

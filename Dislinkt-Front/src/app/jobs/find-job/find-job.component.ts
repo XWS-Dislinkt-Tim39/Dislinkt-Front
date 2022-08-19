@@ -12,6 +12,7 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 export class FindJobComponent implements OnInit {
   jobs: any[] = [];
   searchForm: FormGroup;
+  jobsCount:any=1;
   constructor(private jobService: JobService,
     private formBuilder: FormBuilder,
     private profileService: ProfileService,
@@ -32,6 +33,7 @@ export class FindJobComponent implements OnInit {
   findAll() {
     this.jobService.getAll().subscribe(data => {
       this.jobs = data;
+      this.jobsCount=this.jobs.length;
       this.jobs.forEach((value, i: any) => {
         this.profileService.getAboutInfo(value.publisherId).subscribe(data => {
           value.userFirstName = data.firstName;

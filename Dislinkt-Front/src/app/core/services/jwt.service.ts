@@ -34,6 +34,7 @@ export class JwtService {
 
   saveUserDetails(userToken: string): void {
     localStorage.setItem('userDetails', JSON.stringify(userToken));
+    console.log(userToken);
   }
 
   destroyUserDetails(): void {
@@ -59,5 +60,7 @@ export class JwtService {
     }
     return '';
   }
+
+ 
 
 }

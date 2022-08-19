@@ -53,6 +53,14 @@
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+.no-data{
+    display: flex;
+    justify-content: center;
+}
+.no-data img{
+    width: 400px;
+    height: 400px;
+}
 .avatar-boy,.avatar-girl {
     border-radius: 50%;
     width: 100px;
