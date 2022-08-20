@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 .container {
     min-height: 100vh;
@@ -22,11 +22,13 @@
     background-color: base.$background-color;
     border-radius: base.$border-radius;
 }
-.secondary-button{
+
+.secondary-button {
     @extend %secondary-button;
     width: 130px;
 }
-.secondary-button:hover{
+
+.secondary-button:hover {
     @extend %secondary-button-hover;
     width: 130px;
 }
@@ -45,7 +47,7 @@
     align-items: center;
 }
 
-.two-content{
+.two-content {
     display: flex;
     width: 100%;
     gap: 20px;
@@ -70,6 +72,16 @@
     flex-direction: column;
 }
 
+.no-data {
+    display: flex;
+    justify-content: center;
+}
+
+.no-data img {
+    width: 250px;
+    height: 250px;
+}
+
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
@@ -79,6 +91,7 @@
 .primary-button:hover {
     @extend %primary-button-hover;
 }
+
 .save-button {
     @extend %primary-button;
     background-color: base.$success;
@@ -102,6 +115,7 @@
     gap: 10px;
     width: 50%;
 }
+
 .right-tab-content {
     background-color: white;
     border-radius: base.$border-radius;
@@ -111,7 +125,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width:50%;
+    width: 50%;
 }
 
 .subtitle {
@@ -119,17 +133,20 @@
     font-size: 20px;
     margin-bottom: 30px;
 }
+
 .text {
     font-weight: 600;
     font-size: 17px;
     color: gray;
 
 }
+
 .space {
     width: 40px;
     height: auto;
     display: inline-block;
-  }
+}
+
 .line {
     border-bottom: 2px solid base.$light-grey-letters;
     margin: 10px 0;
@@ -171,12 +188,13 @@ form {
     display: flex;
     width: 30%;
     flex-direction: column;
-   align-items: center
+    align-items: center
 }
+
 .profile-circle img {
     border-radius: 50%;
     position: relative
-  }
+}
 
 .primary-button {
     @extend %primary-button;
@@ -209,9 +227,10 @@ form {
     font-size: 17px;
     color: base.$primary-color-dark;
 }
+
 .mat-h4 {
     color: base.$light-grey-letters;
-    margin:0px;
+    margin: 0px;
 }
 
 .mat-body-1 {
@@ -219,12 +238,15 @@ form {
     font-size: 16px;
     color: base.$dark-grey;
 }
-input:disabled{
-    color:base.$dark-grey
+
+input:disabled {
+    color: base.$dark-grey
 }
-textarea:disabled{
-    color:base.$dark-grey
+
+textarea:disabled {
+    color: base.$dark-grey
 }
+
 .search {
 
     display: flex;
@@ -236,18 +258,20 @@ textarea:disabled{
 .search .mat-form-field {
     width: 90%;
 }
-.search .mat-icon:hover{
+
+.search .mat-icon:hover {
     cursor: pointer;
-    }
+}
+
 .card {
     background-color: white;
     width: 90%;
     border-radius: base.$border-radius;
     padding: 20px 20px 10px 20px;
- display: flex;
- flex-direction: row;
- gap:10px;
- justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
     box-shadow: base.$box-shadow;
 }
 
@@ -256,9 +280,11 @@ textarea:disabled{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:5px;
+    gap: 5px;
 }
- .avatar-boy,.avatar-girl {
+
+.avatar-boy,
+.avatar-girl {
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -269,10 +295,12 @@ textarea:disabled{
     color: white;
     font-weight: 500;
 }
-.avatar-boy{
+
+.avatar-boy {
     background-color: #1d9bc9
 }
-.avatar-girl{
+
+.avatar-girl {
     background-color: palevioletred;
 }
 
@@ -280,12 +308,13 @@ textarea:disabled{
     border-radius: 50%;
     width: 100px;
     height: 100px;
-}  
+}
 
 .follow-button:hover {
-   box-shadow: base.$box-shadow;
-   cursor: pointer;
+    box-shadow: base.$box-shadow;
+    cursor: pointer;
 }
+
 .following {
     @extend %primary-button;
     margin: 5px 20px;
@@ -294,11 +323,12 @@ textarea:disabled{
     align-items: center;
     justify-content: center;
 }
+
 .public {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-left:10px;
+    margin-left: 10px;
     padding: 0px;
 
 }
@@ -306,7 +336,7 @@ textarea:disabled{
 .isPublic {
     display: flex;
     align-items: center;
-    gap:5px;
+    gap: 5px;
     color: base.$light-grey-letters;
     font-size: 14px;
 }

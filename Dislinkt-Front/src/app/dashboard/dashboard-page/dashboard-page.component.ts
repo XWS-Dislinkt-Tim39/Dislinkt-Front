@@ -23,9 +23,10 @@ export class DashboardPageComponent implements OnInit {
   likeStyle: string = '';
   dislikeStyle: string = '';
   commentStyle: string = '';
+  postsCount: any = 1;
   posts: any[] = []
   sortedPosts: any[] = [];
-  profiles: any[]=[];
+  profiles: any[] = [];
   newComment: NewComment = {
     text: '',
     publisherId: '',
@@ -36,9 +37,9 @@ export class DashboardPageComponent implements OnInit {
   requests: any[] = [];
   followRequests: any[] = [];
   myConnections: any[] = [];
-  allPosts:any[]=[];
-  userId:any;
-  recommendation: any[]=[];
+  allPosts: any[] = [];
+  userId: any;
+  recommendation: any[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -56,22 +57,22 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.userDetails = JSON.parse(localStorage.getItem('userDetails') || '');
     this.user = this.userDetails.user;
-    this.userId=this.jwtService.getUserId();
+    this.userId = this.jwtService.getUserId();
     this.getMyConnections()
     this.getFollowRequests();
     this.sortedPosts = this.allPosts.sort(
       (objA, objB) => new Date(objB.dateTimeOfPublishing).getTime() - new Date(objA.dateTimeOfPublishing).getTime(),
     );
-    this.connectionService.getFollowRecommendations(this.userId).subscribe(data=>{
-      if(data!=null){
+    this.connectionService.getFollowRecommendations(this.userId).subscribe(data => {
+      if (data != null) {
         data.forEach((element: string) => {
-          this.profileService.getAboutInfo(element).subscribe(data1=>{
+          this.profileService.getAboutInfo(element).subscribe(data1 => {
             this.recommendation.push({
-              id:data1.id,
-              firstName:data1.firstName,
-              lastName:data1.lastName,
-              gender:data1.gender,
-              userName:data1.username
+              id: data1.id,
+              firstName: data1.firstName,
+              lastName: data1.lastName,
+              gender: data1.gender,
+              userName: data1.username
             })
           })
         });
@@ -79,12 +80,10 @@ export class DashboardPageComponent implements OnInit {
     })
   }
 
-
-
-  getPosts(id:any) {
+  getPosts(id: any) {
     this.postService.getUserPosts(id).subscribe(data => {
       this.posts = data;
-      if(this.posts!=null){
+      if (this.posts != null) {
         this.posts.forEach((value, i: any) => {
           value.showComments = false;
           value.newCommentText = '';
@@ -94,15 +93,12 @@ export class DashboardPageComponent implements OnInit {
             value.gender = data.gender;
           });
           this.getCommentUser(value);
-          
         });
       }
-    
     }, error => {
       alert('Error! Try again!')
     })
   }
-
 
   getCommentUser(post: any) {
     post.comments.forEach((value: any, i: any) => {
@@ -114,17 +110,19 @@ export class DashboardPageComponent implements OnInit {
     });
     this.allPosts.push(post)
   }
+
   getFollowRequests() {
     this.connectionService.getFollowRequests(this.user.id).subscribe(data => {
       this.requests = data;
-      if(this.requests!=null){
+      if (this.requests != null) {
         this.getFollowRequestUser();
       }
-    
-    },error => {
+
+    }, error => {
       alert('Error!Try again!')
     })
   }
+
   getFollowRequestUser() {
     this.requests.forEach((value: any, i: any) => {
       this.profileService.getAboutInfo(value).subscribe(data => {
@@ -154,8 +152,6 @@ export class DashboardPageComponent implements OnInit {
     }, error => {
       alert('Error!Try again!')
     });
-    
-
   }
 
   openAddDialog(event: { stopPropagation: () => void; }) {
@@ -167,14 +163,13 @@ export class DashboardPageComponent implements OnInit {
 
   getMyConnections() {
     this.connectionService.getConnections(this.user.id).subscribe(data => {
-      if(data!=null){
+      if (data != null) {
         this.myConnections = data;
         this.myConnections.push(this.user.id);
         this.myConnections.forEach((value: { id: any; }, i: any) => {
           this.getPosts(value);
         });
       }
-     
     })
   }
 
@@ -185,12 +180,10 @@ export class DashboardPageComponent implements OnInit {
     this.allPosts[index].likes.push(this.user.id);
     this.postService.addLikePost(this.user.id, post.id).subscribe((data: any) => {
       console.log(post.id)
-
     },
       error => {
         console.log(error.error.message);
       });
-
   }
 
   removeLike(post: any, index: any) {
@@ -206,14 +199,16 @@ export class DashboardPageComponent implements OnInit {
         console.log(error.error.message);
       });
   }
+
   isLiked(index: any): boolean {
-    if(this.allPosts[index].likes==null)
+    if (this.allPosts[index].likes == null)
       return false;
     if (this.allPosts[index].likes.indexOf(this.user.id) !== -1) {
       return true
     }
     return false
   }
+
   addDislike(post: any, index: any) {
     if (this.allPosts[index].likes.indexOf(this.user.id) !== -1) {
       this.removeLike(post, index);
@@ -227,6 +222,7 @@ export class DashboardPageComponent implements OnInit {
       });
 
   }
+
   removeDislike(post: any, index: any) {
     this.allPosts[index].dislikes.forEach((value: { id: any; }, i: any) => {
       if (value == this.user.id) {
@@ -240,27 +236,30 @@ export class DashboardPageComponent implements OnInit {
         console.log(error.error.message);
       });
   }
+
   isDisliked(index: any): boolean {
     if (this.allPosts[index].dislikes.indexOf(this.user.id) !== -1) {
       return true
     }
     return false
   }
+
   isCommented(index: any): boolean {
     if (this.allPosts[index].comments.userId.indexOf(this.user.id) !== -1) {
       return true
     }
     return false
   }
+
   showComments(index: any) {
     this.allPosts[index].showComments = !this.allPosts[index].showComments;
   }
+
   addComment(post: any, index: any) {
     this.newComment.postId = post.id;
     this.newComment.publisherId = this.user.id;
     this.newComment.text = this.allPosts[index].newCommentText;
     console.log(this.newComment);
-
     this.postService.addComment(this.newComment).subscribe(data => {
       let comment: any = this.newComment;
       comment.userFirstName = this.user.firstName;
@@ -271,10 +270,9 @@ export class DashboardPageComponent implements OnInit {
     }, error => {
       alert('Error!Try again!')
     })
-
   }
 
-  connect(profileId:string){
+  connect(profileId: string) {
     let connection: Connection = {
       sourceId: this.userId,
       targetId: profileId,
@@ -285,9 +283,7 @@ export class DashboardPageComponent implements OnInit {
       this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
       }, error => {
-
       })
-
     }, error => {
       alert('Error!Try again!')
     });

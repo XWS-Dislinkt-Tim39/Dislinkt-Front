@@ -61,6 +61,7 @@ export class SkillsComponent implements OnInit {
         alert('Error!')
       })
   }
+
   getSkills() {
     this.profileService.getUserSkills(this.userId).subscribe(data => {
       this.userSkills = data;
@@ -69,6 +70,7 @@ export class SkillsComponent implements OnInit {
     }
     )
   }
+  
   addNewSkill() {
     this.newSkill.userId = this.userId;
     if (this.addSkillForm.value.skill == "") {

@@ -15,6 +15,9 @@
         <div class="tab-content">
           <div class="main">
             <div class="left-main">
+              <div class="no-data" *ngIf="userInterests.length==0">
+                <img src="../../assets/no-data.png">
+              </div>
               <mat-grid-list cols="5" rowHeight="8:1">
                 <mat-grid-tile *ngFor="let interest of userInterests">
                   <div class="skill">
@@ -58,8 +61,9 @@
     </form>
   </div>
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button"  mat-dialog-close (click)="addNewInterest()">Save</button>
-    <button mat-raised-button mat-dialog-close raised class="cancel-button" > Close</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close
+      (click)="addNewInterest()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button"> Close</button>
   </div>
 </ng-template>
 

@@ -53,6 +53,16 @@
     flex-direction: column;
 }
 
+.no-data {
+    display: flex;
+    justify-content: center;
+}
+
+.no-data img {
+    width: 350px;
+    height: 350px;
+}
+
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;
@@ -115,6 +125,7 @@
 .skill .mat-icon{
     color: base.$danger;
 }
+
 .skill .mat-icon:hover{
     cursor: pointer;
     color:rgb(140, 21, 21)
@@ -203,6 +214,7 @@
     background-color: base.$primary-color-dark;
     color: white;
 }
+
 .dialog-actions {
     padding:20px;
     margin-top: 20px;
@@ -219,6 +231,7 @@
     align-items: center;
     gap: 10px;
 }
+
 .yes-button {
     background-color: base.$primary-color;
     color: white;
@@ -226,9 +239,11 @@
     font-size: 16px;
     padding:5px 20px;
 }
+
 .yes-button:hover{
    box-shadow: base.$box-shadow;
 }
+
 .cancel-button {
     background-color: base.$light-grey-letters;
     color: white;
@@ -236,9 +251,11 @@
     font-size: 16px;
     padding:5px 20px;
 }
+
 .cancel-button:hover{
    box-shadow: base.$box-shadow;
 }
+
 .mat-form-field {
     width: 100%;
 }
@@ -292,9 +309,11 @@
 .mat-dialog-content{
     padding:50px;
 }
+
 .mat-dialog-title{
     padding:30px 50px 0px 50px;
 }
+
 .dialog{
     width: 600px;
 }

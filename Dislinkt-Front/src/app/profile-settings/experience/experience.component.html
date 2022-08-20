@@ -13,8 +13,11 @@
             <mat-icon>add_circle</mat-icon>Add new experience
           </button>
         </div>
-        <div class="tab-content" >
-          <div class="main"  *ngFor="let item of experiences">
+        <div class="tab-content">
+          <div class="no-data" *ngIf="experiences.length==0">
+            <img src="../../assets/no-data.png">
+          </div>
+          <div class="main" *ngFor="let item of experiences">
             <div class="card" style="text-align: center;">
               <div class="row">
                 <div class="left-column">
@@ -43,17 +46,17 @@
                   <div class="field-title">Description</div>
                   <div class="field-value">{{item.description}}</div>
                 </div>
-               
+
               </div>
             </div>
-           
+
             <div class="update">
               <button class="primary-button" (click)="opetEditDialog($event,item)">Edit</button>
-              
-             <!-- <button class="delete-button">Delete</button>-->
+
+              <!-- <button class="delete-button">Delete</button>-->
             </div>
           </div>
-         
+
 
         </div>
       </div>
@@ -77,26 +80,26 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Start Date*</mat-label>
-            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDate">
+            <input formControlName="startDate" matInput [matDatepicker]="picker" [(ngModel)]="startDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+          </mat-form-field>
         </div>
         <div class="column">
           <mat-form-field appearance="outline">
             <mat-label>Job name-Role*</mat-label>
             <input formControlName="fieldOfWork" matInput placeholder="role">
             <mat-error *ngIf="addFormControl.fieldOfWork.errors?.required">Role required</mat-error>
-        
+
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>End Date*</mat-label>
-            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDate">
+            <input formControlName="endDate" matInput [matDatepicker]="picker1" [(ngModel)]="endDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
-           </mat-form-field>
+          </mat-form-field>
         </div>
       </div>
       <div class="row">
@@ -109,7 +112,8 @@
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="addWorkExperience()">Save</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close
+      (click)="addWorkExperience()">Save</button>
     <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
   </div>
 </ng-template>
@@ -127,26 +131,26 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Start Date*</mat-label>
-            <input formControlName="startDate" matInput [matDatepicker]="picker"  [(ngModel)]="startDateEdit">
+            <input formControlName="startDate" matInput [matDatepicker]="picker" [(ngModel)]="startDateEdit">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+          </mat-form-field>
         </div>
         <div class="column">
           <mat-form-field appearance="outline">
             <mat-label>Job name-Role*</mat-label>
             <input formControlName="fieldOfWork" matInput placeholder="role">
             <mat-error *ngIf="editFormControl.fieldOfWork.errors?.required">Role required</mat-error>
-        
+
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>End Date*</mat-label>
-            <input formControlName="endDate" matInput [matDatepicker]="picker1"  [(ngModel)]="endDateEdit">
+            <input formControlName="endDate" matInput [matDatepicker]="picker1" [(ngModel)]="endDateEdit">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
-           </mat-form-field>
+          </mat-form-field>
         </div>
       </div>
       <div class="row">
@@ -159,7 +163,8 @@
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="editWorkExperience()">Save</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close
+      (click)="editWorkExperience()">Save</button>
     <button mat-raised-button mat-dialog-close raised class="cancel-button">Close</button>
   </div>
 </ng-template>
