@@ -15,11 +15,13 @@
         <div class="tab-content">
           <div class="main">
             <div class="left-main">
+              <div class="no-data" *ngIf="userSkills.length==0">
+                <img src="../../assets/no-data.png">
+              </div>
               <mat-grid-list cols="5" rowHeight="8:1">
                 <mat-grid-tile *ngFor="let skill of userSkills">
                   <div class="skill">
                     <div>{{skill.name}}</div>
-                   <!-- <mat-icon>edit</mat-icon>-->
                     <mat-icon (click)="removeSkill(skill.id)">cancel</mat-icon>
                   </div>
                 </mat-grid-tile>
@@ -28,12 +30,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
-
 
 <ng-template #addSkill let-mydata class="dialog">
   <div class="dialog-title" mat-dialog-title>Add new skill</div>
@@ -60,8 +59,8 @@
     </form>
   </div>
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" class="yes-button"  mat-dialog-close (click)="addskill()">Save</button>
-    <button mat-raised-button mat-dialog-close raised class="cancel-button" > Close</button>
+    <button mat-raised-button color="primary" class="yes-button" mat-dialog-close (click)="addskill()">Save</button>
+    <button mat-raised-button mat-dialog-close raised class="cancel-button"> Close</button>
   </div>
 </ng-template>
 

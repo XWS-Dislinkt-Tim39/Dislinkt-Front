@@ -30,6 +30,15 @@
     text-align: center;
 }
 
+.no-data{
+    display: flex;
+    justify-content: center;
+}
+.no-data img{
+    width: 400px;
+    height: 400px;
+}
+
 .tab-content {
     background-color: white;
     border-radius: base.$border-radius;

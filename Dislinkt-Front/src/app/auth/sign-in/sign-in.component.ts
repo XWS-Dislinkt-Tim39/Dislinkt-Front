@@ -52,6 +52,9 @@ export class SignInComponent implements OnInit {
       else{
         //console.log(data)
        this.jwtService.saveUserDetails(data);
+       localStorage.setItem('firstName',data.user.firstName);
+       localStorage.setItem('lastName',data.user.lastName);
+       localStorage.setItem('gender',data.user.gender);
     if(data.user.role==0){
       this.router.navigate(['report']);
     }else{

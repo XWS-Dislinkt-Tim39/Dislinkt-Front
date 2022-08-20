@@ -18,6 +18,15 @@
     gap:20px;
     background-color: base.$background-color;
 }
+
+.no-data{
+    display: flex;
+    justify-content: center;
+}
+.no-data img{
+    width: 400px;
+    height: 400px;
+}
 .card {
     background-color: white;
     border-radius: base.$border-radius;

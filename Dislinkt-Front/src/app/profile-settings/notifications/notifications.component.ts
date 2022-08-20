@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
+
 export class NotificationsComponent implements OnInit {
   posts: boolean = true;
   jobs: boolean = true;
@@ -51,7 +52,7 @@ export class NotificationsComponent implements OnInit {
     this.userId = this.jwtService.getUserId();
     this.getAllProfiles();
     this.getInitialSettings();
-    interval(500).subscribe(x => {
+    interval(2000).subscribe(x => {
       this.getAllNotifications();
     });
   }
@@ -64,31 +65,27 @@ export class NotificationsComponent implements OnInit {
       this.requests = data.friendRequestOn;
       this.getOnValues();
     })
-
   }
-
 
   getAllNotifications() {
     this.notificationCount = 0;
     this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
       if (data != null) {
-        this.allNoti=[];
+        this.allNoti = [];
         data.notifications.forEach((c: any) => {
           if (c.type != 0) {
-            if(this.onValues.indexOf(c.type) !== -1) {
+            if (this.onValues.indexOf(c.type) !== -1)
               this.allNoti.push(c)
-            }
           }
         });
         if (!this.areEqual(this.notifications, this.allNoti)) {
-        this.notifications = [];
-         this.allNoti.forEach((el: any) => {
-          if(this.onValues.indexOf(el.type) !== -1) {
-            this.notifications.push(el);
-            if (el.seen == false) {
-              this.notificationCount++;
+          this.notifications = [];
+          this.allNoti.forEach((el: any) => {
+            if (this.onValues.indexOf(el.type) !== -1) {
+              this.notifications.push(el);
+              if (el.seen == false)
+                this.notificationCount++;
             }
-          } 
           });
           this.formatView();
         }
@@ -121,7 +118,6 @@ export class NotificationsComponent implements OnInit {
         return false;
       });
     }
-
     return false;
   }
 
@@ -150,13 +146,9 @@ export class NotificationsComponent implements OnInit {
     this.publicProfilesService.getAllUsers().subscribe((data: any) => {
       this.profiles = data;
       this.profiles.forEach((value, i: any) => {
-        if (this.profiles[i].id == this.userId) {
+        if (this.profiles[i].id == this.userId)
           this.profiles.splice(i, 1);
-        }
-
       });
-    }, error => {
-
     })
   }
 
@@ -169,7 +161,6 @@ export class NotificationsComponent implements OnInit {
     this.notificationService.updateNotificationSettings(this.settings).subscribe((data: any) => {
       alert("Sucessfully saved changes!");
       window.location.reload();
-
     },
       error => {
         console.log(error.error.message);
@@ -205,6 +196,5 @@ export class NotificationsComponent implements OnInit {
       alert('Error')
     })
   }
-
 
 }

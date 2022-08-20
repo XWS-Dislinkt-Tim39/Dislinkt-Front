@@ -12,6 +12,9 @@
           </button>
         </div>
         <div class="tab-content">
+          <div class="no-data" *ngIf="allPosts.length==0">
+            <img src="../../assets/no-data.png">
+        </div>
           <div class="post" *ngFor="let post of allPosts; let i=index">
             <div class="head">
               <div class="card-image">

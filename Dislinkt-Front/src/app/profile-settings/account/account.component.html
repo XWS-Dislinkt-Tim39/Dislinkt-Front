@@ -36,42 +36,43 @@
                 <div class="public">
                   <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
                 </div>
-               
               </div>
               <p></p>
               <div class="view">
                 <div class="card-connect">
-                  <button  class="follow-button following"
-                    (click)="block(profile.id)">Block</button>
+                  <button class="follow-button following" (click)="block(profile.id)">Block</button>
                 </div>
               </div>
             </div>
           </div>
-            <div class="right-tab-content">
-              <div class="subtitle">Blocked profiles</div>
-              <div class="card" *ngFor="let profile of blocked;let i = index">
-                <div class="card-image">
-                  <div class="avatar-girl" *ngIf="profile.gender=='1'">
-                    {{profile.firstName[0]}} {{profile.lastName[0]}}
-                  </div>
-                  <div class="avatar-boy" *ngIf="profile.gender=='0'">
-                    {{profile.firstName[0]}} {{profile.lastName[0]}}
-                  </div>
+
+          <div class="right-tab-content">
+            <div class="subtitle">Blocked profiles</div>
+            <div class="no-data" *ngIf="blocked.length==0">
+              <img src="../../assets/no-data.png">
+            </div>
+            <div class="card" *ngFor="let profile of blocked;let i = index">
+              <div class="card-image">
+                <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                  {{profile.firstName[0]}} {{profile.lastName[0]}}
                 </div>
-                <div class="name ">
-                  <div class="public">
-                    <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
-                  </div>
-                 
-                </div>
-                <p></p>
-                <div class="view">
-                  <div class="card-connect">
-                    <button class="secondary-button" (click)="unblock(profile.id)">Unblock</button>
-                  </div>
+                <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                  {{profile.firstName[0]}} {{profile.lastName[0]}}
                 </div>
               </div>
-            </div>       
+              <div class="name ">
+                <div class="public">
+                  <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
+                </div>
+              </div>
+              <p></p>
+              <div class="view">
+                <div class="card-connect">
+                  <button class="secondary-button" (click)="unblock(profile.id)">Unblock</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

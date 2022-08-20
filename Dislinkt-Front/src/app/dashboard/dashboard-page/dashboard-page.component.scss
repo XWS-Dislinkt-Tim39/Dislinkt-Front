@@ -69,6 +69,14 @@
     flex-direction: column;
     gap: 30px;
 }
+.no-data{
+    display: flex;
+    justify-content: center;
+}
+.no-data img{
+    width: 400px;
+    height: 400px;
+}
 
 .add-post {
     display: flex;

@@ -15,8 +15,8 @@ export class SidebarComponent implements OnInit {
   userId: any;
   hidden = true;
   messageHidden = true;
-  firstName: string = '';
-  lastName: string = '';
+  firstName: any = '';
+  lastName: any = '';
   notifications:any[]=[];
   gender: any;
   count=0;
@@ -34,8 +34,11 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getInfo();
-    interval(100).subscribe(x => {
+    //this.getInfo();
+    this.firstName = localStorage.getItem('firstName')?.toString();
+    this.lastName = localStorage.getItem('lastName')?.toString();
+    this.gender = localStorage.getItem('gender')?.toString();
+    interval(2000).subscribe(x => {
       this.getAllNotifications();
       this.getMessageNotification();
       

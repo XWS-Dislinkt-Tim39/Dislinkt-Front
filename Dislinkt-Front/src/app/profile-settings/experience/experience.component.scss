@@ -54,6 +54,16 @@
     flex-direction: column;
 }
 
+.no-data {
+    display: flex;
+    justify-content: center;
+}
+
+.no-data img {
+    width: 350px;
+    height: 350px;
+}
+
 .primary-button {
     @extend %primary-button;
     background-color: base.$primary-color-dark;

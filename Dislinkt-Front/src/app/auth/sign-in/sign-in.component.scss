@@ -2,7 +2,7 @@
 
 .container {
     background-color: base.$background-color;
-    background-image: url(../../../assets/background1.png);
+    background-image: url(../../../assets/background6.jpg);
     min-height: 100vh;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -25,6 +25,8 @@
     padding-bottom: 60px;
     align-items: center;
     flex-direction: column;
+    
+  box-shadow: base.$box-shadow;
 }
 
 #logo {

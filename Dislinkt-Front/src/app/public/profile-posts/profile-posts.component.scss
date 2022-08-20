@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-image: url(../../../assets/background1.png);
+    background-image: url(../../../assets/background6.jpg);
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -131,10 +131,7 @@
     gap: 5px;
 }
 
-.reaction-button:hover,.like-button:hover,.dislike-button:hover,.comment-button:hover{
-    box-shadow: base.$box-shadow;
-    cursor: pointer;
-}
+
 .like-button{
     background-color: base.$success;
     border: 2px solid base.$success;

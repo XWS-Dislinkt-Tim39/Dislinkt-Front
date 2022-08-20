@@ -16,6 +16,7 @@ export class MyJobsComponent implements OnInit {
   dilogRef: any;
   routeState: any;
   selectedJob:any;
+  jobsCount:any=1;
   userId: string = "";
   jobs: any[] = [];
   constructor(public dialog: MatDialog, 
@@ -37,6 +38,7 @@ export class MyJobsComponent implements OnInit {
   }
   findAllByUser(){this.jobService.getAllByUser(this.userId).subscribe(data => {
     this.jobs=data;
+    this.jobsCount=this.jobs.length;
     this.jobs.forEach((value, i: any) => {
     this.profileService.getAboutInfo(value.publisherId).subscribe(data => {
       value.userFirstName = data.firstName;
