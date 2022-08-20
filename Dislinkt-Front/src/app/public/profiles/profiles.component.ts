@@ -12,57 +12,89 @@ export class ProfilesComponent implements OnInit {
   profiles: any[] = [];
   resultProfile: any;
   searchForm: FormGroup;
-  constructor( 
+  seniority = new FormControl();
+  industry = new FormControl();
+  age = new FormControl();
+  seniorityList: string[] = ['Junior', 'Medior', 'Senior'];
+  ageList: string[] = ['<18', '18-25', '25-35', '>35']
+  noExperienceList: any[] = []
+
+  constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private publicProfilesService: PublicProfilesService) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
     });
-   }
+  }
 
   ngOnInit(): void {
     this.getAllProfiles();
   }
+
   get searchF(): { [key: string]: AbstractControl } {
     return this.searchForm.controls;
   }
-  experience = new FormControl();
-  industry = new FormControl();
-  age = new FormControl();
-  experienceList: string[] = ['No experience', 'One year', 'Two year', 'More than 2 years'];
-  ageList: string[] = ['<18', '18-25', '25-35', '>35']
-  noExperienceList: any[] = []
-
 
   getAllProfiles() {
     this.publicProfilesService.getAllPublicUsers().subscribe((data: any) => {
       this.profiles = data;
+      this.profiles.forEach(element => {
+        if (element.seniority == 0) {
+          element.seniority = "Junior"
+        } else if (element.seniority == 1) {
+          element.seniority = "Medior"
+        } else {
+          element.seniority = "Senior"
+        }
+        var date = new Date(element.dateOfBirth)
+        var timeDiff = Math.abs(Date.now() - Number(date));
+        element.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+      });
+      console.log(this.profiles)
     },
       error => {
         console.log(error.error.message);
       });
   }
 
-
-  showExperienceFilter() {
-    this.profiles.forEach(profile => {
-
+  filter() {
+    let filterList: any[] = [];
+    this.profiles.forEach(element => {
+      if (element.seniority == this.seniority.value) {
+        alert("seniority")
+        if (this.age.value == "<18") {
+          if (element.age < 18)
+            filterList.push(element)
+        }else if(this.age.value=="18-25"){
+          if(element.age<=25 && element.age>=18)
+            filterList.push(element);
+        }else if(this.age.value=="25-35"){
+          if(element.age<=35 && element.age>=25)
+            filterList.push(element)
+        }
+        else if(this.age.value==">35"){
+          if(element.age>35)
+            filterList.push(element)
+        }
+      }
+      this.profiles=filterList;
+      console.log(filterList)
     });
+
   }
 
   sarchUserByUsername() {
-    let username=this.searchForm.value.inputUser;
+    let username = this.searchForm.value.inputUser;
     this.publicProfilesService.searchUser(username).subscribe((data: any) => {
       this.profiles = data;
-
     },
       error => {
         console.log(error.error.message);
       });
   }
 
-  viewProfile(profile:any){
+  viewProfile(profile: any) {
     this.router.navigate(['/profile-posts'], {
       state: profile,
     });
