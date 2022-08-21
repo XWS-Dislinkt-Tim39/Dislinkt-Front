@@ -1,26 +1,25 @@
 <div class="container">
   <div class="mat-h2" mat-dialog-title>Add post</div>
   <div mat-dialog-content>
-    <div class="buttons">
+   <!-- <div class="buttons">
       <button class="post-element" [ngClass]="[textStyle]" (click)="toggleText()">Text<mat-icon> notes</mat-icon>
         </button>
       <button class="post-element" [ngClass]="[imageStyle]" (click)="toggleImage()">Image<mat-icon>image</mat-icon>
         </button>
-    </div>
+    </div>-->
     <form [formGroup]="form" enctype="multipart/form-data">
-      <mat-form-field *ngIf="showText" appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>Text*</mat-label>
         <textarea formControlName="text" matInput placeholder="Enter text"></textarea>
       </mat-form-field>
-      <input type="file" id="file" accept="image/*" width="300" height="300"   (change)="onFileSelected($event)" #fileUpload  />
-
-
+     <!-- <input type="file" id="file" accept="image/*" width="300" height="300"   (change)="onFileSelected($event)" #fileUpload  />-->
+    
       <img id="preview"/>
     </form>
-    <div class="row1" [ngClass]="[imageDropifyStyle]">
+    <div class="row1" class="image-checked">
       <label>Select image</label>
-      <input id="image" type="file" class="dropify" (change)="logoUpdate($event)" data-show-remove="true"
-        style="margin-top: 20px" data-height="150" data-allowed-file-extensions="jpg jpeg png svg"
+      <input id="image" type="file" class="dropify"  (change)="onFileSelected($event)"  #fileUpload data-show-remove="true"
+        style="margin-top: 20px"  data-height="150" data-allowed-file-extensions="jpg jpeg png svg"
         data-default-file="" />
     </div>
   </div>
