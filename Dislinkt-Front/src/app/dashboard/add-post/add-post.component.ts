@@ -1,6 +1,7 @@
+import { ConditionalExpr } from '@angular/compiler';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NewPost } from 'src/app/core/models/new-post.model';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
@@ -26,15 +27,16 @@ export class AddPostComponent implements OnInit {
     userId: '',
     text: '',
     dateTimeOfPublishing: new Date(),
-    followersId:[]
+    followersId: []
   }
-  connections:any[]=[];
+  fileName: any;
+  connections: any[] = [];
   userId: any;
   constructor(private formBuilder: FormBuilder,
     private jwtService: JwtService,
-    private postService:PostService,
+    private postService: PostService,
     private dialogRef: MatDialogRef<AddPostComponent>,
-    private connectionService:ConnectionService
+    private connectionService: ConnectionService
   ) {
     this.userId = this.jwtService.getUserId();
     this.textStyle = 'text-default';
@@ -46,6 +48,7 @@ export class AddPostComponent implements OnInit {
     });
   }
   imageSrc: any;
+  imageData: any;
 
   ngOnInit(): void {
     this.getMyConnections();
@@ -75,7 +78,7 @@ export class AddPostComponent implements OnInit {
 
   getMyConnections() {
     this.connectionService.getConnections(this.userId).subscribe(data => {
-      if(data!=null){
+      if (data != null) {
         this.connections = data;
       }
     })
@@ -98,49 +101,46 @@ export class AddPostComponent implements OnInit {
   }
 
   addPost() {
-    this.newPost.userId=this.userId;
-    if(this.showText){
-      this.newPost.text=this.form.value.text;
+    this.newPost.userId = this.userId;
+    if (this.showText) {
+      this.newPost.text = this.form.value.text;
     }
-    this.newPost.dateTimeOfPublishing=new Date();
-    this.newPost.followersId=this.connections;
-    console.log(this.newPost)
-    this.postService.addNewPost(this.newPost).subscribe(data=>{
+    this.newPost.dateTimeOfPublishing = new Date();
+    this.newPost.followersId = this.connections;
+    // this.newPost.image=this.imageData!;
+    this.postService.addNewPost(this.newPost).subscribe(data => {
       alert('Sucessfully added new post');
-      window.location.reload();
-    },error=>{
+      console.log(data)
+      this.addImage(data.id);
+      //window.location.reload();
+    }, error => {
       alert('Error! Try again!')
     })
   }
-  fileChangeEvent(fileInput: any) {
-
-    if (fileInput.target.files && fileInput.target.files[0]) {
 
 
-      this.myfilename = '';
-      Array.from(fileInput.target.files).forEach((file: any) => {
-        console.log(file);
-        this.myfilename += file.name + ',';
-      });
+  onFileSelected(event: any) {
 
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
+    const file: File = event.target.files[0];
+    console.log(file);
 
-          // Return Base64 Data URL
-          const imgBase64Path = e.target.result;
+    if (file) {
 
-        };
-      };
-      reader.readAsDataURL(fileInput.target.files[0]);
-
-      // Reset File Input to Selct Same file again
-      this.uploadFileInput!.nativeElement.value = "";
-    } else {
-      this.myfilename = 'Select File';
+      this.fileName = file.name;
+      console.log(this.fileName);
+      const formData = new FormData();
+      formData.append("image", file, file.name);
+      this.imageData = formData;
     }
   }
-}
 
+  addImage(postId:number){
+    console.log('ss')
+   this.postService.saveImage(this.imageData,postId).subscribe(data=>{
+    alert('uhuu')
+   })
+  }
+
+
+
+}

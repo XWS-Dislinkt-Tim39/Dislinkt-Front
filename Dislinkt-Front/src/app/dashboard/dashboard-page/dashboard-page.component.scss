@@ -84,6 +84,18 @@
     padding: 0
 }
 
+.post-image{
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+.post-image img{
+    width:80%;
+    height: 400px;
+    object-fit: cover;
+    border-radius:10px;;
+}
+
 .add-button {
     @extend %grey-button;
     margin: 0;
