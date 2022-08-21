@@ -20,13 +20,20 @@ import { NewComment } from '../models/new-comment.model';
 })
 export class PostService {
     private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    
+    private headers1 = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+    url= 'https://localhost:44315/';
 
     constructor(
         private http: HttpClient
     ) { }
    
     addNewPost(post: NewPost): Observable<any> {
-      return this.http.post(`${environment.url}Posts/post`, post, { headers: this.headers, responseType: 'json' });
+      return this.http.post(`${environment.url}Posts/post`, post, {headers: this.headers, responseType: 'json'} );
+    }
+
+    saveImage(image: FormData,postId:number): Observable<any> {
+      return this.http.post(this.url+`save-image/${postId}`, image);
     }
     addLikePost(userid:string,postId: string): Observable<any> {
       return this.http.get(`${environment.url}Posts/add-like`, { params: {

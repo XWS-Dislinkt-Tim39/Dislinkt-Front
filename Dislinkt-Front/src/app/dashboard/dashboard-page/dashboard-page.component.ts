@@ -9,6 +9,7 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { Connection } from 'src/app/core/models/connection.model';
 import { ChatService } from 'src/app/core/services/chat.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -47,7 +48,8 @@ export class DashboardPageComponent implements OnInit {
     private postService: PostService,
     private profileService: ProfileService,
     private connectionService: ConnectionService,
-    private chatService: ChatService) {
+    private chatService: ChatService,
+    private _sanitizer: DomSanitizer) {
 
     this.likeStyle = 'reaction-button';
     this.dislikeStyle = 'reaction-button';
@@ -83,8 +85,16 @@ export class DashboardPageComponent implements OnInit {
   getPosts(id: any) {
     this.postService.getUserPosts(id).subscribe(data => {
       this.posts = data;
+      console.log(this.posts)
       if (this.posts != null) {
         this.posts.forEach((value, i: any) => {
+          if(value.image!=null && value.image!=""){
+            value.image = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+            + value.image);
+          }
+          else{
+            value.image=null;
+          }
           value.showComments = false;
           value.newCommentText = '';
           this.profileService.getAboutInfo(id).subscribe(data => {

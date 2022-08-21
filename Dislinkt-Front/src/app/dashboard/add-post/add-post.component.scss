@@ -1,4 +1,4 @@
-@use '../../../base-style'as base;
+@use '../../../base-style' as base;
 
 .container {
     display: flex;
@@ -7,14 +7,51 @@
     justify-content: center;
     align-items: center;
     width: 500px;
-
 }
-.row1{
+
+.row1 {
     width: 90%;
     display: flex;
     justify-items: center;
     align-items: center;
     flex-direction: column;
+}
+
+.custom-file-input {
+    color: transparent;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Select some files';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
+.custom-file-input:hover::before {
+    border-color: black;
+}
+
+.custom-file-input:active {
+    outline: 0;
+}
+
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 .post-element {
@@ -23,24 +60,28 @@
     justify-content: center;
     align-items: center;
     padding: 10px 10px;
-    width:80px;
+    width: 80px;
     gap: 10px;
     background-color: white;
     border-radius: base.$border-radius;
     border: 2px solid base.$medium-grey-letters;
     color: base.$medium-grey-letters
 }
-.text-checked{
+
+.text-checked {
     background-color: base.$primary-color-dark;
     border: 2px solid white;
-    color:white;
+    color: white;
 }
-.image-default{
-    visibility: hidden;
-  }
-.image-checked{
-  visibility: visible;
+
+.image-checked {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    justify-self: center;
 }
+
 .post-element:hover {
     cursor: pointer;
     box-shadow: base.$box-shadow;
@@ -70,8 +111,9 @@ form {
     display: flex;
     gap: 10px;
 }
+
 .dialog-actions {
-    padding:20px;
+    padding: 20px;
     margin-top: 20px;
     display: flex;
     gap: 20px;
@@ -84,18 +126,21 @@ form {
     color: white;
     border-radius: 10px;
     font-size: 16px;
-    padding:5px 20px;
+    padding: 5px 20px;
 }
-.yes-button:hover{
-   box-shadow: base.$box-shadow;
+
+.yes-button:hover {
+    box-shadow: base.$box-shadow;
 }
+
 .cancel-button {
     background-color: base.$light-grey-letters;
     color: white;
     border-radius: 10px;
     font-size: 16px;
-    padding:5px 20px;
+    padding: 5px 20px;
 }
-.cancel-button:hover{
-   box-shadow: base.$box-shadow;
+
+.cancel-button:hover {
+    box-shadow: base.$box-shadow;
 }
