@@ -88,8 +88,13 @@ export class DashboardPageComponent implements OnInit {
       console.log(this.posts)
       if (this.posts != null) {
         this.posts.forEach((value, i: any) => {
-          value.image = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-                 + value.image);
+          if(value.image!=null && value.image!=""){
+            value.image = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+            + value.image);
+          }
+          else{
+            value.image=null;
+          }
           value.showComments = false;
           value.newCommentText = '';
           this.profileService.getAboutInfo(id).subscribe(data => {

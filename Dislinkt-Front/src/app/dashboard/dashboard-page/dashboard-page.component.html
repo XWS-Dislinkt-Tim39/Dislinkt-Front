@@ -34,7 +34,7 @@
             <div class="mat-body-1">
               {{post.text}}
             </div>
-            <div class="post-image">
+            <div class="post-image" *ngIf="post.image!=null">
               <img  [src]="post.image">
             </div>
           
