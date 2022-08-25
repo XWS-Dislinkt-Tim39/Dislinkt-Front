@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
     this.firstName = localStorage.getItem('firstName')?.toString();
     this.lastName = localStorage.getItem('lastName')?.toString();
     this.gender = localStorage.getItem('gender')?.toString();
-    interval(2000).subscribe(x => {
+    interval(500).subscribe(x => {
       this.getAllNotifications();
       this.getMessageNotification();
       

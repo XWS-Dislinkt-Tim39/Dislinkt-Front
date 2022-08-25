@@ -71,21 +71,6 @@ export class SkillsComponent implements OnInit {
     )
   }
   
-  addNewSkill() {
-    this.newSkill.userId = this.userId;
-    if (this.addSkillForm.value.skill == "") {
-      this.newSkill.name = this.selected.name;
-
-    } else {
-      this.newSkill.name = this.addSkillForm.value.skill;
-    }
-    this.profileService.addNewSkill(this.newSkill).subscribe(data => {
-      alert('Successfully added new skill');
-      window.location.reload();
-    }, error => {
-      alert('Error! Try again!')
-    })
-  }
 
   addskill() {
     this.skill.id = this.selected.id;

@@ -75,8 +75,13 @@ export class SignUpComponent implements OnInit {
   
     this.authenticationService.register(newUser).subscribe((res: any) => {
       console.log(res);
-      alert('Sucessfully registered! ')
-     this.router.navigate(['/sign-in']);
+      if(res==false){
+        alert('Error! Try again!');
+      }
+      else{
+        alert('Sucessfully registered! ')
+        this.router.navigate(['/sign-in']);
+      }
     },
       error => {
         console.log(error.error);

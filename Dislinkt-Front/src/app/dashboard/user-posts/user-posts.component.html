@@ -15,8 +15,8 @@
         <div class="private-content"  *ngIf="selectedUser.status==0">
           This profile is private! Send request to make connection!
         </div>
-        <div class="tab-content">
-          <div class="post" *ngFor="let post of sortedPosts; let i=index">
+        <div class="tab-content" *ngIf="selectedUser.status!=0">
+          <div class="post"  *ngFor="let post of sortedPosts; let i=index">
             <div class="head">
               <div class="card-image">
                 <div class="avatar-girl" *ngIf="selectedUser.gender=='1'">

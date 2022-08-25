@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="content">
+        <div class="new-skill">
+            <div>Enter new skill</div>
+            <form [formGroup]="addSkillForm">
+                <mat-form-field appearance="outline">
+                    <input formControlName="skill" matInput>
+                </mat-form-field>
+            </form>
+            <button class="primary-button" (click)="addNewSkill()">Add</button>
+        </div>
+        <div class="title">
+            Available skills:
+        </div>
+        <mat-grid-list cols="3" rowHeight="8:2">
+            <mat-grid-tile *ngFor="let skill of allSkills">
+                <div class="skill">
+                    <mat-icon>circle</mat-icon>
+                    <div>{{skill.name}}</div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

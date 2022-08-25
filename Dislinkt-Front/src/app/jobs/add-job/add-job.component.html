@@ -64,14 +64,18 @@
             <mat-grid-tile  *ngFor="let item of requirements">
               <div class="interest">
                 <mat-icon>check_circle</mat-icon>
-                <div>{{item}}</div>
+                <div>{{item.name}}</div>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
            <div class="add-list">
             <mat-form-field appearance="outline">
-              <mat-label>Exepetation</mat-label>
-              <textarea formControlName="requirements" matInput placeholder="Enter text"></textarea>
+              <mat-label>requirements*</mat-label>
+              <mat-select [(value)]="skill">
+                <mat-option *ngFor="let item of skills" [value]="item">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
             <div class="add-button">
               <button class="primary-button connect" (click)="addRequirements()">Add</button>

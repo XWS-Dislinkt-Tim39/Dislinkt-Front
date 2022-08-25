@@ -1,3 +1,5 @@
+import { AppSkill } from "./app-skill.model";
+
 export interface NewJobOffer {
   startDateTime:Date,
   endDateTime:Date,
@@ -5,7 +7,7 @@ export interface NewJobOffer {
   positionName: string,
   description: string,
   dailyActivities: string[],
-  requirements: string[],
+  requirements: AppSkill[],
   seniority:string,
   followersId:string[]
 }

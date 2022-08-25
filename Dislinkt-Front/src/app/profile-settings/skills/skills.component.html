@@ -18,7 +18,7 @@
               <div class="no-data" *ngIf="userSkills.length==0">
                 <img src="../../assets/no-data.png">
               </div>
-              <mat-grid-list cols="5" rowHeight="8:1">
+              <mat-grid-list cols="5" rowHeight="8:2">
                 <mat-grid-tile *ngFor="let skill of userSkills">
                   <div class="skill">
                     <div>{{skill.name}}</div>

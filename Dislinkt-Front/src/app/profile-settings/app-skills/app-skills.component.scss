@@ -1,0 +1,79 @@
+@use '../../../base-style'as base;
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    
+    background-color: base.$background-color;
+    
+}
+
+.wrapper {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 80%;
+    gap: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: base.$background-color;
+    border-radius: base.$border-radius;
+}
+
+.content {
+    margin: auto;
+    width: 50%;
+    padding: 30px;
+    color: #0B2545;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size:22px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.skill{
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    justify-content: flex-start;
+    margin-left: 100px;
+}
+
+.new-skill{
+    margin:20px 0px;
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-form-field{
+    width:100%;
+}
+
+form{
+    width: 70%;
+}
+
+.primary-button {
+    @extend %primary-button;
+    margin-top:-10px;  
+}
+
+.primary-button:hover {
+    @extend %primary-button-hover;
+    margin-top:-10px;  
+}

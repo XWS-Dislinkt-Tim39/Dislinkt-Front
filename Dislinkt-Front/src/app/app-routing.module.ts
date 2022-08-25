@@ -33,6 +33,7 @@ import { AccountComponent } from './profile-settings/account/account.component';
 import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './profile-settings/notifications/notifications.component';
 import { AdminReportComponent } from './profile-settings/admin-report/admin-report.component';
+import { AppSkillsComponent } from './profile-settings/app-skills/app-skills.component';
 
 const routes: Routes = [
   {
@@ -112,6 +113,11 @@ const routes: Routes = [
   {
     path: 'report',
     component: AdminReportComponent,
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'app-skills',
+    component: AppSkillsComponent,
     canActivate: [NoAuthGuard],
   },
   {

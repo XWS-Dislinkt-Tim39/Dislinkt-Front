@@ -36,6 +36,7 @@ import { PostsChartComponent } from './posts-chart/posts-chart.component';
 import { ConnectionsChartComponent } from './connections-chart/connections-chart.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { AppSkillsComponent } from './app-skills/app-skills.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { MatTableModule } from '@angular/material/table';
         JobsChartComponent,
         JobsComponent,
         PostsChartComponent,
-        ConnectionsChartComponent
+        ConnectionsChartComponent,
+        AppSkillsComponent
     ],
     entryComponents: [],
     imports: [

@@ -136,7 +136,7 @@ export class MessagesComponent implements OnInit {
   this.isChanged=true;
   }
 
-  getMessageNotification(){
+ getMessageNotification(){
     this.messageNotificationCount=0;
     this.notifications=[];
     this.notificationService.getAllUserNotifications(this.userId).subscribe(data => {
