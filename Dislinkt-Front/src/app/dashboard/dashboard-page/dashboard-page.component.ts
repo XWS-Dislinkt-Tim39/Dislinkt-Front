@@ -74,7 +74,8 @@ export class DashboardPageComponent implements OnInit {
               firstName: data1.firstName,
               lastName: data1.lastName,
               gender: data1.gender,
-              userName: data1.username
+              userName: data1.username,
+              status:data1.status
             })
           })
         });
@@ -140,7 +141,8 @@ export class DashboardPageComponent implements OnInit {
           userId: value,
           userFirstName: data.firstName,
           userLastName: data.lastName,
-          username: data.username
+          username: data.username,
+          gender: data.gender,
         });
       })
     });
@@ -154,6 +156,24 @@ export class DashboardPageComponent implements OnInit {
     }
     this.connectionService.approveFollow(connection).subscribe(data => {
       alert('Successfully approved!');
+      this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
+        window.location.reload()
+      }, error => {
+      })
+      window.location.reload()
+    }, error => {
+      alert('Error!Try again!')
+    });
+  }
+
+  rejectFollowRequest(id: any) {
+    let connection: Connection = {
+      sourceId: id,
+      targetId: this.user.id,
+      connectionName: 'FOLLOWS'
+    }
+    this.connectionService.rejectFollow(connection).subscribe(data => {
+      alert('Successfully rejected!');
       this.chatService.createChat(connection.sourceId, connection.targetId).subscribe(data => {
         window.location.reload()
       }, error => {
@@ -297,5 +317,19 @@ export class DashboardPageComponent implements OnInit {
     }, error => {
       alert('Error!Try again!')
     });
+  }
+
+  sendRequest(profileId: string) {
+    let connection: Connection = {
+      sourceId: profileId,
+      targetId: this.userId,
+      connectionName: ''
+    }
+    this.connectionService.sendRequest(connection).subscribe(data => {
+      alert('Successfully send!');
+      window.location.reload()
+    }, error => {
+      alert('Error!Try again!')
+    })
   }
 }

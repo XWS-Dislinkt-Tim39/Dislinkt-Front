@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JobService } from 'src/app/core/services/job.service';
+import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
@@ -13,9 +14,12 @@ export class FindJobComponent implements OnInit {
   jobs: any[] = [];
   searchForm: FormGroup;
   jobsCount:any=1;
+  userId:any;
+  recommendedJobs:any[]=[];
   constructor(private jobService: JobService,
     private formBuilder: FormBuilder,
     private profileService: ProfileService,
+    private jwtService:JwtService,
     private router: Router) {
     this.searchForm = this.formBuilder.group({
       inputUser: [''],
@@ -23,7 +27,9 @@ export class FindJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.jwtService.getUserId();
     this.findAll();
+    this.getRecommendedJobs();
   }
 
   get searchF(): { [key: string]: AbstractControl } {
@@ -73,6 +79,17 @@ export class FindJobComponent implements OnInit {
         });
     }
 
+  }
+
+  getRecommendedJobs(){
+    this.jobService.getRecommendedJobs(this.userId).subscribe(data=>{
+      data.forEach((el:any) => {
+        if(el.publisherId!=this.userId)
+            this.recommendedJobs.push(el);
+      });
+      console.log(data)
+    },error=>{
+    })
   }
 
   viewJob(selectedJob:any){

@@ -26,7 +26,7 @@ export class AddJobComponent implements OnInit {
     positionName: "",
     description: "",
     dailyActivities: [''],
-    requirements: [],
+    requirements: [''],
     seniority: '',
     followersId: ['']
   }
@@ -36,10 +36,11 @@ export class AddJobComponent implements OnInit {
   }
   seniority: any = '';
   activities: any[] = [];
-  requirements: any[] = [];
+  requirements: any[]=[];
   connections: any[] = [];
   seniorityList: any[] = ['Junior', 'Medior', 'Senior'];
   skills:any=[];
+  requirementObjects:any[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -79,7 +80,9 @@ export class AddJobComponent implements OnInit {
   }
 
   addRequirements() {
-    this.requirements.push(this.skill);
+    this.requirements.push(this.skill.id);
+    this.requirementObjects.push(this.skill);
+    console.log(this.requirements)
     this.form.get('requirements')?.setValue('');
   }
 
@@ -102,6 +105,7 @@ export class AddJobComponent implements OnInit {
     this.newJobOffer.description = this.form.value.description;
     this.newJobOffer.dailyActivities = this.activities;
     this.newJobOffer.requirements = this.requirements;
+    alert(this.newJobOffer.requirements.length+' '+this.requirements.length)
     this.newJobOffer.followersId = this.connections;
     this.newJobOffer.seniority = this.seniority;
     console.log(this.newJobOffer)

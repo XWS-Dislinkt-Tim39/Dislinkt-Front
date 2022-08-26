@@ -16,32 +16,36 @@
                         <mat-form-field appearance="outline">
                             <input matInput placeholder="Search" formControlName="inputUser">
                             <mat-icon matSuffix (click)="searchJob()">search</mat-icon>
-                          </mat-form-field>
-                      </form>
+                        </mat-form-field>
+                    </form>
                     <div class="main">
                         <div class="no-data" *ngIf="jobsCount==0">
                             <img src="../../assets/no-data.png">
                         </div>
                         <div class="card" *ngFor="let job of jobs">
                             <div class="card-image">
-                                <div class="avatar-girl" *ngIf="job.gender=='1'">
-                                  {{job.userFirstName[0]}} {{job.userLastName[0]}}
+                                <div class="junior" *ngIf="job.seniority=='0'">
+                                   J
                                 </div>
-                                <div class="avatar-boy"  *ngIf="job.gender=='0'">
-                                  {{job.userFirstName[0]}} {{job.userLastName[0]}}
+                                <div class="medior" *ngIf="job.seniority=='1'">
+                                    M
                                 </div>
-                              </div>
+                                <div class="senior" *ngIf="job.seniority=='2'">
+                                   S
+                                </div>
+                            </div>
                             <div class="name ">
                                 <div class="public">
                                     <div class="mat-h2">{{job.positionName}}</div>
                                 </div>
-                                <div class="mat-h3">{{job.userFirstName}}  {{job.userLastName}}</div>
+                                <div class="mat-h3">{{job.userFirstName}} {{job.userLastName}}</div>
                                 <div class="mat-h3">{{job.city}},{{job.country}}</div>
                             </div>
                             <div class="view">
-                                <div class="mat-h4">{{job.startDateTime | date:'mediumDate'}} - {{job.endDateTime | date:'mediumDate'}}</div>
-                                <div class="card-profile"><button [routerLink]="['/job-details']"
-                                        class="primary-button" (click)="viewJob(job)">View</button>
+                                <div class="mat-h4">{{job.startDateTime | date:'mediumDate'}} - {{job.endDateTime |
+                                    date:'mediumDate'}}</div>
+                                <div class="card-profile"><button [routerLink]="['/job-details']" class="primary-button"
+                                        (click)="viewJob(job)">View</button>
                                 </div>
                             </div>
                         </div>
@@ -52,39 +56,31 @@
         <div class="right">
             <div class="right-content">
                 <div class="subtitle">Suggested jobs</div>
-                <div class="connection">
+                <div class="connection" *ngFor="let item of recommendedJobs">
                     <div class="head-connection">
-                        <div class="image">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                        <div class="card-image">
+                            <div class="junior" style="width:50px;height:50px" *ngIf="item.seniority=='0'">
+                               J
+                            </div>
+                            <div class="medior" style="width:50px;height:50px"  *ngIf="item.seniority=='1'">
+                                M
+                            </div>
+                            <div class="senior" style="width:50px;height:50px"  *ngIf="item.seniority=='2'">
+                               S
+                            </div>
                         </div>
                         <div class="info-connection">
-                            <div class="mat-h2">Data Scientist</div>
-                            <div class="mat-h3">IT company</div>
+                            <div class="mat-h2">{{item.positionName}}</div>
                         </div>
                     </div>
                     <div class="accept">
-                        <button class="accept-button">View</button>
+                        <button class="accept-button" (click)="viewJob(item)">View</button>
                     </div>
+                    <div class="line"></div>
+
                 </div>
 
-                <div class="line"></div>
 
-                <div class="connection">
-                    <div class="head-connection">
-                        <div class="image">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                        </div>
-                        <div class="info-connection">
-                            <div class="mat-h2">Web developer</div>
-                            <div class="mat-h3">IT company</div>
-                        </div>
-                    </div>
-                    <div class="accept">
-                        <button class="accept-button">View</button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

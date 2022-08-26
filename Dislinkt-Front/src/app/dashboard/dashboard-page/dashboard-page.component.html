@@ -14,17 +14,17 @@
         <div class="tab-content">
           <div class="no-data" *ngIf="allPosts.length==0">
             <img src="../../assets/no-data.png">
-        </div>
+          </div>
           <div class="post" *ngFor="let post of allPosts; let i=index">
             <div class="head">
               <div class="card-image">
                 <div class="avatar-girl" *ngIf="post.gender=='1'">
                   {{post.userFirstName[0]}} {{post.userLastName[0]}}
                 </div>
-                <div class="avatar-boy"  *ngIf="post.gender=='0'">
+                <div class="avatar-boy" *ngIf="post.gender=='0'">
                   {{post.userFirstName[0]}} {{post.userLastName[0]}}
                 </div>
-            </div>
+              </div>
 
               <div class="info">
                 <div class="mat-h2">{{post.userFirstName}} {{post.userLastName}}</div>
@@ -35,20 +35,20 @@
               {{post.text}}
             </div>
             <div class="post-image" *ngIf="post.image!=null">
-              <img  [src]="post.image">
+              <img [src]="post.image">
             </div>
-          
+
             <div class="reactions">
               <button class="like-button" *ngIf="isLiked(i)==true" (click)="removeLike(post,i)">
                 <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
-              <button class="reaction-button" *ngIf="!isLiked(i)"  (click)="addLike(post,i)">
+              <button class="reaction-button" *ngIf="!isLiked(i)" (click)="addLike(post,i)">
                 <mat-icon>thumb_up</mat-icon>{{post.likes.length}}
               </button>
               <button class="dislike-button" *ngIf="isDisliked(i)==true" (click)="removeDislike(post,i)">
                 <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
               </button>
-              <button  class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(post,i)">
+              <button class="reaction-button" *ngIf="!isDisliked(i)" (click)="addDislike(post,i)">
                 <mat-icon>thumb_down</mat-icon>{{post.dislikes.length}}
               </button>
               <button [ngClass]="[commentStyle]" (click)="showComments(i)">
@@ -61,14 +61,15 @@
                   <div class="avatar-girl-small" *ngIf="user.gender=='1'">
                     {{user.firstName[0]}} {{user.lastName[0]}}
                   </div>
-                  <div class="avatar-boy-small"  *ngIf="user.gender=='0'">
+                  <div class="avatar-boy-small" *ngIf="user.gender=='0'">
                     {{user.firstName[0]}} {{user.lastName[0]}}
                   </div>
-              </div>
+                </div>
                 <div class="new-message">
-                  <mat-form-field  appearance="outline">
+                  <mat-form-field appearance="outline">
                     <mat-label>Comment*</mat-label>
-                    <textarea matInput placeholder="Enter comment" [(ngModel)]='post.newCommentText' [name]='post.newCommentText'></textarea>
+                    <textarea matInput placeholder="Enter comment" [(ngModel)]='post.newCommentText'
+                      [name]='post.newCommentText'></textarea>
                   </mat-form-field>
                   <button class="accept-button" (click)="addComment(post,i)">Post</button>
                 </div>
@@ -78,7 +79,7 @@
                   <div class="avatar-girl-small" *ngIf="item.gender=='1'">
                     {{item.userFirstName[0]}} {{item.userLastName[0]}}
                   </div>
-                  <div class="avatar-boy-small"  *ngIf="item.gender=='0'">
+                  <div class="avatar-boy-small" *ngIf="item.gender=='0'">
                     {{item.userFirstName[0]}} {{item.userLastName[0]}}
                   </div>
                 </div>
@@ -89,19 +90,22 @@
               </div>
             </div>
           </div>
-         
         </div>
       </div>
     </div>
     <div class="right">
-      <div class="right-content">
+      <div class="right-content" *ngIf="user.status=='0'">
         <div class="subtitle">Connection requests</div>
         <div class="mat-h3" *ngIf="followRequests.length==0">No connection request :(</div>
         <div class="connection" *ngFor="let item of followRequests">
           <div class="head-connection">
-            <div class="image">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+            <div class="card-image">
+              <div class="avatar-girl" *ngIf="item.gender=='1'">
+                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+              </div>
+              <div class="avatar-boy" *ngIf="item.gender=='0'">
+                {{item.userFirstName[0]}} {{item.userLastName[0]}}
+              </div>
             </div>
             <div class="info-connection">
               <div class="mat-h2">{{item.userFirstName}} {{item.userLastName}}</div>
@@ -110,14 +114,10 @@
           </div>
           <div class="accept">
             <button class="accept-button" (click)="acceptFollowRequest(item.userId)">Accept</button>
-           
+            <button class="decline-button" (click)="rejectFollowRequest(item.userId)">Reject</button>
           </div>
           <div class="line"></div>
         </div>
-
-       
-
-        
       </div>
 
       <div class="right-content">
@@ -125,25 +125,25 @@
         <div class="mat-h3" *ngIf="recommendation.length==0">No suggestion connections :(</div>
         <div class="connection" *ngFor="let profile of recommendation;let i = index">
           <div class="head-connection">
-           <div class="card-image">
-            <div class="avatar-girl" *ngIf="profile.gender=='1'">
-              {{profile.firstName[0]}} {{profile.lastName[0]}}
+            <div class="card-image">
+              <div class="avatar-girl" *ngIf="profile.gender=='1'">
+                {{profile.firstName[0]}} {{profile.lastName[0]}}
+              </div>
+              <div class="avatar-boy" *ngIf="profile.gender=='0'">
+                {{profile.firstName[0]}} {{profile.lastName[0]}}
+              </div>
             </div>
-            <div class="avatar-boy" *ngIf="profile.gender=='0'">
-              {{profile.firstName[0]}} {{profile.lastName[0]}}
-            </div>
-          </div>
             <div class="info-connection">
               <div class="mat-h2">{{profile.firstName}} {{profile.lastName}}</div>
-         
             </div>
           </div>
           <div class="accept">
-            <button class="accept-button" (click)="connect(profile.id)">Connect</button>
+            <button class="accept-button"  *ngIf="profile.status=='1'" (click)="connect(profile.id)">Connect</button>
+            <button class="accept-button"  *ngIf="profile.status=='0'" (click)="sendRequest(profile.id)">Send request</button>
           </div>
           <div class="line"></div>
         </div>
-       </div>
+      </div>
     </div>
   </div>
 </div>

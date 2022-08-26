@@ -53,10 +53,10 @@ export class AppSkillsComponent implements OnInit {
         'id':data.id,
         'name':data.name
       }).subscribe(data=>{
-        alert('ss')
       })
       alert('Successfully added new skill');
-      this.allSkills.push(data)
+      this.allSkills.push(data);
+      this.addSkillForm.reset();
     }, error => {
       alert('Error! Try again!')
     })

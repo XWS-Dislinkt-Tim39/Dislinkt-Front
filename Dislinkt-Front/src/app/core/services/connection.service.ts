@@ -32,6 +32,10 @@ export class ConnectionService {
     return this.http.post(`${environment.url}Connections/approveFollow`, follow,
       { headers: this.headers, responseType: 'json' });
   }
+  rejectFollow(follow: Connection): Observable<any> {
+    return this.http.post(`${environment.url}Connections/rejectFollow`, follow,
+      { headers: this.headers, responseType: 'json' });
+  }
   getConnections(souceId: string): Observable<any> {
     return this.http.get(`${environment.url}Connections/getFollowing`,
       { params: { sourceId: souceId },headers: this.headers, responseType: 'json' });

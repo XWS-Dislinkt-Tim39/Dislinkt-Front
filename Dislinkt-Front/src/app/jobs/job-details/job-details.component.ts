@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JobService } from 'src/app/core/services/job.service';
+import { JwtService } from 'src/app/core/services/jwt.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
@@ -9,16 +11,24 @@ import { ProfileService } from 'src/app/core/services/profile.service';
 })
 export class JobDetailsComponent implements OnInit {
   routeState: any;
-  selectedJob:any
+  selectedJob:any;
+  requirements:any[]=[];
+  userId:any;
+  recommendedJobs:any[]=[];
   constructor( 
      private router: Router,
-     private profileService:ProfileService
+     private profileService:ProfileService,
+     private jobService:JobService,
+     private jwtService:JwtService,
+
     ) {
     this.routeState = this.router.getCurrentNavigation()?.extras.state;
     this.selectedJob = this.routeState;
    }
 
   ngOnInit(): void {
+    this.userId = this.jwtService.getUserId();
+    this.getRecommendedJobs();
     this.profileService.getAboutInfo(this.selectedJob.publisherId).subscribe(data=>{
       if(this.selectedJob.seniority==0){
         this.selectedJob.seniority="Junior"
@@ -35,6 +45,29 @@ export class JobDetailsComponent implements OnInit {
     },error=>{
       alert('Error!Try again!');
     })
+  }
+  
+  getRecommendedJobs(){
+    this.jobService.getRecommendedJobs(this.userId).subscribe(data=>{
+      data.forEach((el:any) => {
+        if(el.publisherId!=this.userId)
+            this.recommendedJobs.push(el);
+      });
+      console.log(data)
+    },error=>{
+    })
+  }
+
+  getRequirements(){
+    this.selectedJob.forEach((element:any) => {
+
+    });
+  }
+
+  viewJob(selectedJob:any){
+    this.router.navigate(['/job-details'], {
+      state: selectedJob,
+    });
   }
 
 }

@@ -115,7 +115,7 @@
     gap:30px;
 }
 
-.avatar-boy,.avatar-girl {
+.junior,.medior,.senior {
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -126,12 +126,16 @@
     color: white;
     font-weight: 500;
 }
-.avatar-boy{
-    background-color: #1d9bc9
+.junior{
+    background-color: #efe15d
 }
-.avatar-girl{
-    background-color: palevioletred;
+.medior{
+    background-color: rgb(241, 167, 93);
 }
+.senior{
+    background-color: rgb(248, 103, 77);
+}
+
 .add-post {
     display: flex;
     justify-content: flex-end;

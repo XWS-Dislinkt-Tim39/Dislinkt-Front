@@ -19,6 +19,7 @@ export class MyJobsComponent implements OnInit {
   jobsCount:any=1;
   userId: string = "";
   jobs: any[] = [];
+  recommendedJobs:any[]=[];
   constructor(public dialog: MatDialog, 
     private jobService: JobService, 
     private jwtService: JwtService,
@@ -27,6 +28,7 @@ export class MyJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
+    this.getRecommendedJobs();
     this.findAllByUser();
     
   }
@@ -54,6 +56,18 @@ export class MyJobsComponent implements OnInit {
     alert('Error! Try again');
   });
 }
+
+getRecommendedJobs(){
+  this.jobService.getRecommendedJobs(this.userId).subscribe(data=>{
+    data.forEach((el:any) => {
+      if(el.publisherId!=this.userId)
+          this.recommendedJobs.push(el);
+    });
+    console.log(data)
+  },error=>{
+  })
+}
+
 
 viewJob(selectedJob:any){
   this.router.navigate(['/job-details'], {

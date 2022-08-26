@@ -15,8 +15,16 @@
                     <div class="main">
                         <div class="card">
                             <div class="about-info">
-                                <div class="card-image"><img
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                                <div class="card-image">
+                                    <div class="junior" *ngIf="selectedJob.seniority=='Junior'">
+                                       J
+                                    </div>
+                                    <div class="medior" *ngIf="selectedJob.seniority=='Medior'">
+                                        M
+                                    </div>
+                                    <div class="senior" *ngIf="selectedJob.seniority==''">
+                                       S
+                                    </div>
                                 </div>
                                 <div class="name ">
                                     <div class="public">
@@ -66,38 +74,28 @@
         <div class="right">
             <div class="right-content">
                 <div class="subtitle">Suggested jobs</div>
-                <div class="connection">
+                <div class="connection" *ngFor="let item of recommendedJobs">
                     <div class="head-connection">
-                        <div class="image">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
+                        <div class="card-image">
+                            <div class="junior" style="width:50px;height:50px" *ngIf="item.seniority=='0'">
+                               J
+                            </div>
+                            <div class="medior" style="width:50px;height:50px"  *ngIf="item.seniority=='1'">
+                                M
+                            </div>
+                            <div class="senior" style="width:50px;height:50px"  *ngIf="item.seniority=='2'">
+                               S
+                            </div>
                         </div>
                         <div class="info-connection">
-                            <div class="mat-h2">Data Scientist</div>
-                            <div class="mat-h3">IT company</div>
+                            <div class="mat-h2">{{item.positionName}}</div>
                         </div>
                     </div>
                     <div class="accept">
-                        <button class="accept-button">View</button>
+                        <button class="accept-button" (click)="viewJob(item)">View</button>
                     </div>
-                </div>
+                    <div class="line"></div>
 
-                <div class="line"></div>
-
-                <div class="connection">
-                    <div class="head-connection">
-                        <div class="image">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU">
-                        </div>
-                        <div class="info-connection">
-                            <div class="mat-h2">Web developer</div>
-                            <div class="mat-h3">IT company</div>
-                        </div>
-                    </div>
-                    <div class="accept">
-                        <button class="accept-button">View</button>
-                    </div>
                 </div>
             </div>
         </div>

@@ -43,4 +43,14 @@ export class JobService {
     return this.http.post(`${environment.url}Jobs/addSkill`, newSkill,
     { headers: this.headers, responseType: 'json' });
   }
+
+  getRecommendedJobs(sourceId: string): Observable<any> {
+    return this.http.get(`${environment.url}Jobs/getJobRecommendations`,
+      {
+        params: { sourceId: sourceId },
+        headers: this.headers, responseType: 'json'
+      });
+  }
+
+  
 }

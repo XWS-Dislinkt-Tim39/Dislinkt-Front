@@ -7,7 +7,7 @@ export interface NewJobOffer {
   positionName: string,
   description: string,
   dailyActivities: string[],
-  requirements: AppSkill[],
+  requirements: string[],
   seniority:string,
   followersId:string[]
 }

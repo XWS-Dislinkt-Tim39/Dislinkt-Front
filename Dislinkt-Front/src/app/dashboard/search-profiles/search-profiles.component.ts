@@ -94,6 +94,7 @@ export class SearchProfilesComponent implements OnInit {
       this.connections = data;
     })
   }
+  
   isConnected(targetId: any): boolean {
     if (this.connections == null)
       return false;
@@ -148,6 +149,7 @@ export class SearchProfilesComponent implements OnInit {
     });
 
   }
+
   sendRequest(profileId: string) {
     let connection: Connection = {
       sourceId: profileId,
@@ -161,6 +163,7 @@ export class SearchProfilesComponent implements OnInit {
       alert('Error!Try again!')
     })
   }
+  
   unfollow(profileId: string) {
     let connection: Connection = {
       sourceId: this.userId,
