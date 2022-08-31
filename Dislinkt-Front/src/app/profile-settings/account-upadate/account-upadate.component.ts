@@ -26,7 +26,8 @@ export class AccountUpadateComponent implements OnInit {
     dateOfBirth: new Date(),
     biography: "biografija",
     gender:"",
-    seniority:''
+    seniority:'',
+    seniorityUpdated:false
   }
   seniorityList:any[]=['Junior','Medior','Senior'];
   seniority:any='Junior';
@@ -42,10 +43,12 @@ export class AccountUpadateComponent implements OnInit {
     dateOfBirth: new Date(),
     biography: "",
     gender:"",
-    seniority:""
+    seniority:"",
+    seniorityUpdated:false
   }
   isEdit:boolean=false;
   user:any;
+  oldSeniority:any;
   constructor(
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
@@ -88,13 +91,16 @@ export class AccountUpadateComponent implements OnInit {
     this.profileForm.get('biography')?.setValue(userDetails.user.biography);
     if(userDetails.user.seniority==0){
       this.seniority='Junior';
+      this.oldSeniority='Junior';
       this.profileForm.get('seniority')?.setValue('Junior');
     }
     else if(userDetails.user.seniority==1){
       this.seniority='Medior';
+      this.oldSeniority='Medior';
       this.profileForm.get('seniority')?.setValue('Medior');
     }else{
       this.seniority='Senior';
+      this.oldSeniority='Senior';
       this.profileForm.get('seniority')?.setValue('Senior');
     }
     this.date1=new FormControl(userDetails.user.dateOfBirth);
@@ -126,6 +132,9 @@ export class AccountUpadateComponent implements OnInit {
     this.editedProfile.gender =userDetails.user.gender;
     this.editedProfile.dateOfBirth =this.dateOfBirth;
     this.editedProfile.seniority=this.seniority;
+    if(this.editedProfile.seniority!=this.oldSeniority){
+      this.editedProfile.seniorityUpdated=true;
+    }
     this.profileService.editAboutInfo(this.editedProfile).subscribe(
       (data: any) => {
           this.oldUserInfo = data;

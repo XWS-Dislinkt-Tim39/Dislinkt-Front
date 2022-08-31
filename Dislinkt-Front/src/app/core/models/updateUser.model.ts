@@ -11,4 +11,5 @@ export interface UpdateUser {
     dateOfBirth: Date;
     gender:string;
     seniority:string;
+    seniorityUpdated:boolean
 }

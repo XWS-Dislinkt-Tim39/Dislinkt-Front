@@ -14,6 +14,7 @@ export class JobDetailsComponent implements OnInit {
   selectedJob:any;
   requirements:any[]=[];
   userId:any;
+  allSkills:any[]=[]
   recommendedJobs:any[]=[];
   constructor( 
      private router: Router,
@@ -28,6 +29,7 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.jwtService.getUserId();
+    this.getAllSKills();
     this.getRecommendedJobs();
     this.profileService.getAboutInfo(this.selectedJob.publisherId).subscribe(data=>{
       if(this.selectedJob.seniority==0){
@@ -46,6 +48,13 @@ export class JobDetailsComponent implements OnInit {
       alert('Error!Try again!');
     })
   }
+
+  getAllSKills(){
+    this.profileService.getAllSkills().subscribe(data=>{
+      this.allSkills=data;
+      this.getRequirements();
+    })
+  }
   
   getRecommendedJobs(){
     this.jobService.getRecommendedJobs(this.userId).subscribe(data=>{
@@ -59,8 +68,13 @@ export class JobDetailsComponent implements OnInit {
   }
 
   getRequirements(){
-    this.selectedJob.forEach((element:any) => {
-
+    this.selectedJob.skills=[];
+    this.selectedJob.requirements.forEach((element:any) => {
+        this.allSkills.forEach(el => {
+          if(element==el.id){
+            this.selectedJob.skills.push(el.name)
+          }
+        });
     });
   }
 

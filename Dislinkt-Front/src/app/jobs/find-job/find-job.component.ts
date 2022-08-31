@@ -15,6 +15,7 @@ export class FindJobComponent implements OnInit {
   searchForm: FormGroup;
   jobsCount:any=1;
   userId:any;
+  
   recommendedJobs:any[]=[];
   constructor(private jobService: JobService,
     private formBuilder: FormBuilder,
@@ -83,6 +84,7 @@ export class FindJobComponent implements OnInit {
 
   getRecommendedJobs(){
     this.jobService.getRecommendedJobs(this.userId).subscribe(data=>{
+      console.log(data)
       data.forEach((el:any) => {
         if(el.publisherId!=this.userId)
             this.recommendedJobs.push(el);
@@ -93,6 +95,7 @@ export class FindJobComponent implements OnInit {
   }
 
   viewJob(selectedJob:any){
+    console.log(selectedJob)
     this.router.navigate(['/job-details'], {
       state: selectedJob,
     });

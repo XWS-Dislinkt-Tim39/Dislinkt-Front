@@ -56,10 +56,10 @@
                               <div class="list">
                                 <div class="job-subtitle">What do we expect from you?</div>
                                 <mat-grid-list cols="1" rowHeight="30:1">
-                                  <mat-grid-tile  *ngFor="let item of selectedJob.requirements">
+                                  <mat-grid-tile  *ngFor="let item of selectedJob.skills">
                                     <div class="interest">
                                       <mat-icon>check_circle</mat-icon>
-                                      <div>{{item.name}}</div>
+                                      <div>{{item}}</div>
                                     </div>
                                   </mat-grid-tile>
                                 </mat-grid-list>
