@@ -22,7 +22,7 @@ export class PostService {
     private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     
     private headers1 = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
-    url= 'https://localhost:44315/';
+    url= 'http://localhost:8072/';
 
     constructor(
         private http: HttpClient

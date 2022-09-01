@@ -19,7 +19,7 @@ export class AuthenticationService {
   ) { }
 
   signUp(user: UserSignIn): Observable<any> {
-    return this.http.get(`https://localhost:44343/api/Profile/sign-up`, {
+    return this.http.get(`http://localhost:8072/api/Profile/sign-up`, {
       params: {
         username: user.username,
         password: user.password
